@@ -1,0 +1,35 @@
+# swiftlint 규칙파일
+
+disabled_rules: # rule identifiers to exclude from running
+  - variable_name
+  - nesting
+  - function_parameter_count
+  - line_length
+  - trailint_whitespace
+  
+included: # paths to include during linting. `--path` is ignored if present.
+  - Project
+  - ProjectTests
+  - ProjectUITests
+  
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Pods
+  - Project/R.generated.swift
+
+# configurable rules can be customized from this configuration file
+# binary rules can set their severity level
+force_cast: warning # implicitly. Give warning only for force casting
+
+force_try:
+  severity: warning # explicitly. Give warning only for force try
+
+# or they can set both explicitly
+file_length:
+  warning: 500
+   
+# naming rules can set warnings/errors for min_length and max_length
+# additionally they can set excluded names
+type_name:
+  min_length: 4 # only warning
+  max_length: # warning and error
+    warning: 30
