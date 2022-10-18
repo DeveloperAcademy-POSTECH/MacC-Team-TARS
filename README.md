@@ -1,7 +1,7 @@
 # MacC-Team-TARS
 
 # 📱 (앱 이름)
-시각장애인에게 우주를 전달하는 앱
+시각장애인에게 우주를 전달하는 앱 <br/>
 An app that provides astronomy experience to BVI(blind and visually impaired) people.
 
 <br/>
