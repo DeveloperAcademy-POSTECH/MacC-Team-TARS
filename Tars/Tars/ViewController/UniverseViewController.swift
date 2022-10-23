@@ -30,7 +30,6 @@ class UniverseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        view.addSubview(guideCircleView)
         
         sceneView.delegate = self
         sceneView.isPlaying = true
