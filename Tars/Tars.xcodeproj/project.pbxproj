@@ -11,6 +11,7 @@
 		BF788B802903C903002BF8C0 /* DashedCircle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF788B7F2903C903002BF8C0 /* DashedCircle+Extension.swift */; };
 		BF788B822903D1A7002BF8C0 /* CustomCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF788B812903D1A7002BF8C0 /* CustomCircleView.swift */; };
 		BF788B842903D3BB002BF8C0 /* CommonVariables+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF788B832903D3BB002BF8C0 /* CommonVariables+Extension.swift */; };
+		BF788B8629052230002BF8C0 /* UniverseBackground.scn in Resources */ = {isa = PBXBuildFile; fileRef = BF788B8529052230002BF8C0 /* UniverseBackground.scn */; };
 		BF7B4FB628FE431900F83158 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B4FB528FE431900F83158 /* AppDelegate.swift */; };
 		BF7B4FB828FE431900F83158 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B4FB728FE431900F83158 /* SceneDelegate.swift */; };
 		BF7B4FBF28FE431A00F83158 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4FBE28FE431A00F83158 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		BF788B7F2903C903002BF8C0 /* DashedCircle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashedCircle+Extension.swift"; sourceTree = "<group>"; };
 		BF788B812903D1A7002BF8C0 /* CustomCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCircleView.swift; sourceTree = "<group>"; };
 		BF788B832903D3BB002BF8C0 /* CommonVariables+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CommonVariables+Extension.swift"; sourceTree = "<group>"; };
+		BF788B8529052230002BF8C0 /* UniverseBackground.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = UniverseBackground.scn; sourceTree = "<group>"; };
 		BF7B4FB228FE431900F83158 /* Tars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF7B4FB528FE431900F83158 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF7B4FB728FE431900F83158 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				BF7B4FBE28FE431A00F83158 /* Assets.xcassets */,
 				BF7B4FC028FE431A00F83158 /* LaunchScreen.storyboard */,
 				BF7B4FC328FE431A00F83158 /* Info.plist */,
+				BF788B8529052230002BF8C0 /* UniverseBackground.scn */,
 			);
 			path = Tars;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF7B4FD528FE47B200F83158 /* .swiftlint.yml in Resources */,
+				BF788B8629052230002BF8C0 /* UniverseBackground.scn in Resources */,
 				BF7B4FC228FE431A00F83158 /* LaunchScreen.storyboard in Resources */,
 				BF7B4FBF28FE431A00F83158 /* Assets.xcassets in Resources */,
 			);
