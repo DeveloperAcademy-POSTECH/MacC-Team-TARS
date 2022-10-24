@@ -5,7 +5,7 @@ disabled_rules: # rule identifiers to exclude from running
   - nesting
   - function_parameter_count
   - line_length
-  - trailint_whitespace
+  - trailing_whitespace
   
 included: # paths to include during linting. `--path` is ignored if present.
   - Project
