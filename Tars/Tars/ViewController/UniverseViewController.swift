@@ -45,7 +45,7 @@ class UniverseViewController: UIViewController {
             motionManager.deviceMotionUpdateInterval = 1/30.0
             motionManager.startDeviceMotionUpdates(using: .xArbitraryZVertical,
                                                    to: OperationQueue(),
-                                                   withHandler: { (deviceMotion, error) in
+                                                   withHandler: { (deviceMotion, _) in
                 guard let data = deviceMotion else { return }
                 self.deviceQuaternion = data.attitude.quaternion
             })
