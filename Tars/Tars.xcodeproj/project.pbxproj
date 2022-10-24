@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		37AE64BC2906B9A7000ABC86 /* BodiesPositionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AE64BB2906B9A7000ABC86 /* BodiesPositionsResponse.swift */; };
 		37AE64BE2906B9BC000ABC86 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AE64BD2906B9BC000ABC86 /* Body.swift */; };
+		37AE64C12906BCB7000ABC86 /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AE64C02906BCB7000ABC86 /* URLConstants.swift */; };
+		37AE64C32906BD10000ABC86 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AE64C22906BD10000ABC86 /* Keys.swift */; };
 		BF788B7E2903C8CF002BF8C0 /* UniverseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF788B7D2903C8CF002BF8C0 /* UniverseViewController.swift */; };
 		BF788B802903C903002BF8C0 /* DashedCircle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF788B7F2903C903002BF8C0 /* DashedCircle+Extension.swift */; };
 		BF788B822903D1A7002BF8C0 /* CustomCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF788B812903D1A7002BF8C0 /* CustomCircleView.swift */; };
@@ -26,6 +28,8 @@
 /* Begin PBXFileReference section */
 		37AE64BB2906B9A7000ABC86 /* BodiesPositionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodiesPositionsResponse.swift; sourceTree = "<group>"; };
 		37AE64BD2906B9BC000ABC86 /* Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
+		37AE64C02906BCB7000ABC86 /* URLConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
+		37AE64C22906BD10000ABC86 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		BF788B7D2903C8CF002BF8C0 /* UniverseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseViewController.swift; sourceTree = "<group>"; };
 		BF788B7F2903C903002BF8C0 /* DashedCircle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashedCircle+Extension.swift"; sourceTree = "<group>"; };
 		BF788B812903D1A7002BF8C0 /* CustomCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCircleView.swift; sourceTree = "<group>"; };
@@ -56,8 +60,18 @@
 		37AE64B82906B766000ABC86 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				37AE64BF2906BCA5000ABC86 /* Base */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		37AE64BF2906BCA5000ABC86 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				37AE64C02906BCB7000ABC86 /* URLConstants.swift */,
+				37AE64C22906BD10000ABC86 /* Keys.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		BF7B4FA928FE431900F83158 = {
@@ -227,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF788B822903D1A7002BF8C0 /* CustomCircleView.swift in Sources */,
+				37AE64C32906BD10000ABC86 /* Keys.swift in Sources */,
 				BF788B7E2903C8CF002BF8C0 /* UniverseViewController.swift in Sources */,
 				37AE64BC2906B9A7000ABC86 /* BodiesPositionsResponse.swift in Sources */,
 				BF788B842903D3BB002BF8C0 /* CommonVariables+Extension.swift in Sources */,
@@ -234,6 +249,7 @@
 				BF7B4FB828FE431900F83158 /* SceneDelegate.swift in Sources */,
 				BF788B802903C903002BF8C0 /* DashedCircle+Extension.swift in Sources */,
 				BF7B4FD028FE452200F83158 /* Color+Extension.swift in Sources */,
+				37AE64C12906BCB7000ABC86 /* URLConstants.swift in Sources */,
 				BF7B4FD228FE454A00F83158 /* View+Extension.swift in Sources */,
 				37AE64BE2906B9BC000ABC86 /* Body.swift in Sources */,
 			);
