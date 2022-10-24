@@ -52,7 +52,6 @@
 		BF7B4FA928FE431900F83158 = {
 			isa = PBXGroup;
 			children = (
-				BF7B4FD428FE47B200F83158 /* .swiftlint.yml */,
 				BF7B4FB428FE431900F83158 /* Tars */,
 				BF7B4FB328FE431900F83158 /* Products */,
 			);
@@ -69,6 +68,7 @@
 		BF7B4FB428FE431900F83158 /* Tars */ = {
 			isa = PBXGroup;
 			children = (
+				BF7B4FD428FE47B200F83158 /* .swiftlint.yml */,
 				BF7B4FC928FE445200F83158 /* Model */,
 				BF7B4FCC28FE448000F83158 /* ViewController */,
 				BF7B4FCA28FE447000F83158 /* View */,
@@ -124,7 +124,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF7B4FC628FE431A00F83158 /* Build configuration list for PBXNativeTarget "Tars" */;
 			buildPhases = (
-				BF7B4FD328FE472700F83158 /* SwiftLint Script */,
+				BF7B4FD328FE472700F83158 /* Run Script */,
 				BF7B4FAE28FE431900F83158 /* Sources */,
 				BF7B4FAF28FE431900F83158 /* Frameworks */,
 				BF7B4FB028FE431900F83158 /* Resources */,
@@ -186,23 +186,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		BF7B4FD328FE472700F83158 /* SwiftLint Script */ = {
+		BF7B4FD328FE472700F83158 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			alwaysOutOfDate = 1;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
 			);
 			inputPaths = (
 			);
-			name = "SwiftLint Script";
+			name = "Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nexport PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
