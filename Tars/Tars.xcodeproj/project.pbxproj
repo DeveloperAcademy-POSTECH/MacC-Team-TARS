@@ -7,24 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF788B7E2903C8CF002BF8C0 /* UniverseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF788B7D2903C8CF002BF8C0 /* UniverseViewController.swift */; };
+		BF788B802903C903002BF8C0 /* DashedCircle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF788B7F2903C903002BF8C0 /* DashedCircle+Extension.swift */; };
+		BF788B822903D1A7002BF8C0 /* CustomCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF788B812903D1A7002BF8C0 /* CustomCircleView.swift */; };
+		BF788B842903D3BB002BF8C0 /* CommonVariables+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF788B832903D3BB002BF8C0 /* CommonVariables+Extension.swift */; };
+		BF788B8629052230002BF8C0 /* UniverseBackground.scn in Resources */ = {isa = PBXBuildFile; fileRef = BF788B8529052230002BF8C0 /* UniverseBackground.scn */; };
 		BF7B4FB628FE431900F83158 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B4FB528FE431900F83158 /* AppDelegate.swift */; };
 		BF7B4FB828FE431900F83158 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B4FB728FE431900F83158 /* SceneDelegate.swift */; };
 		BF7B4FBF28FE431A00F83158 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4FBE28FE431A00F83158 /* Assets.xcassets */; };
 		BF7B4FC228FE431A00F83158 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4FC028FE431A00F83158 /* LaunchScreen.storyboard */; };
-		BF7B4FD028FE452200F83158 /* Color_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B4FCF28FE452200F83158 /* Color_Extension.swift */; };
-		BF7B4FD228FE454A00F83158 /* View_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B4FD128FE454A00F83158 /* View_Extension.swift */; };
+		BF7B4FD028FE452200F83158 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B4FCF28FE452200F83158 /* Color+Extension.swift */; };
+		BF7B4FD228FE454A00F83158 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B4FD128FE454A00F83158 /* View+Extension.swift */; };
 		BF7B4FD528FE47B200F83158 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4FD428FE47B200F83158 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF788B7D2903C8CF002BF8C0 /* UniverseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseViewController.swift; sourceTree = "<group>"; };
+		BF788B7F2903C903002BF8C0 /* DashedCircle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashedCircle+Extension.swift"; sourceTree = "<group>"; };
+		BF788B812903D1A7002BF8C0 /* CustomCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCircleView.swift; sourceTree = "<group>"; };
+		BF788B832903D3BB002BF8C0 /* CommonVariables+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CommonVariables+Extension.swift"; sourceTree = "<group>"; };
+		BF788B8529052230002BF8C0 /* UniverseBackground.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = UniverseBackground.scn; sourceTree = "<group>"; };
 		BF7B4FB228FE431900F83158 /* Tars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF7B4FB528FE431900F83158 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF7B4FB728FE431900F83158 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BF7B4FBE28FE431A00F83158 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF7B4FC128FE431A00F83158 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF7B4FC328FE431A00F83158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF7B4FCF28FE452200F83158 /* Color_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_Extension.swift; sourceTree = "<group>"; };
-		BF7B4FD128FE454A00F83158 /* View_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View_Extension.swift; sourceTree = "<group>"; };
+		BF7B4FCF28FE452200F83158 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		BF7B4FD128FE454A00F83158 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		BF7B4FD428FE47B200F83158 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -42,7 +52,6 @@
 		BF7B4FA928FE431900F83158 = {
 			isa = PBXGroup;
 			children = (
-				BF7B4FD428FE47B200F83158 /* .swiftlint.yml */,
 				BF7B4FB428FE431900F83158 /* Tars */,
 				BF7B4FB328FE431900F83158 /* Products */,
 			);
@@ -59,6 +68,7 @@
 		BF7B4FB428FE431900F83158 /* Tars */ = {
 			isa = PBXGroup;
 			children = (
+				BF7B4FD428FE47B200F83158 /* .swiftlint.yml */,
 				BF7B4FC928FE445200F83158 /* Model */,
 				BF7B4FCC28FE448000F83158 /* ViewController */,
 				BF7B4FCA28FE447000F83158 /* View */,
@@ -68,6 +78,7 @@
 				BF7B4FBE28FE431A00F83158 /* Assets.xcassets */,
 				BF7B4FC028FE431A00F83158 /* LaunchScreen.storyboard */,
 				BF7B4FC328FE431A00F83158 /* Info.plist */,
+				BF788B8529052230002BF8C0 /* UniverseBackground.scn */,
 			);
 			path = Tars;
 			sourceTree = "<group>";
@@ -82,6 +93,7 @@
 		BF7B4FCA28FE447000F83158 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BF788B812903D1A7002BF8C0 /* CustomCircleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -89,6 +101,7 @@
 		BF7B4FCC28FE448000F83158 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				BF788B7D2903C8CF002BF8C0 /* UniverseViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -96,8 +109,10 @@
 		BF7B4FCE28FE44D000F83158 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				BF7B4FCF28FE452200F83158 /* Color_Extension.swift */,
-				BF7B4FD128FE454A00F83158 /* View_Extension.swift */,
+				BF7B4FCF28FE452200F83158 /* Color+Extension.swift */,
+				BF7B4FD128FE454A00F83158 /* View+Extension.swift */,
+				BF788B7F2903C903002BF8C0 /* DashedCircle+Extension.swift */,
+				BF788B832903D3BB002BF8C0 /* CommonVariables+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -109,7 +124,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF7B4FC628FE431A00F83158 /* Build configuration list for PBXNativeTarget "Tars" */;
 			buildPhases = (
-				BF7B4FD328FE472700F83158 /* SwiftLint Script */,
+				BF7B4FD328FE472700F83158 /* Run Script */,
 				BF7B4FAE28FE431900F83158 /* Sources */,
 				BF7B4FAF28FE431900F83158 /* Frameworks */,
 				BF7B4FB028FE431900F83158 /* Resources */,
@@ -162,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF7B4FD528FE47B200F83158 /* .swiftlint.yml in Resources */,
+				BF788B8629052230002BF8C0 /* UniverseBackground.scn in Resources */,
 				BF7B4FC228FE431A00F83158 /* LaunchScreen.storyboard in Resources */,
 				BF7B4FBF28FE431A00F83158 /* Assets.xcassets in Resources */,
 			);
@@ -170,23 +186,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		BF7B4FD328FE472700F83158 /* SwiftLint Script */ = {
+		BF7B4FD328FE472700F83158 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			alwaysOutOfDate = 1;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
 			);
 			inputPaths = (
 			);
-			name = "SwiftLint Script";
+			name = "Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nexport PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -195,10 +212,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF788B822903D1A7002BF8C0 /* CustomCircleView.swift in Sources */,
+				BF788B7E2903C8CF002BF8C0 /* UniverseViewController.swift in Sources */,
+				BF788B842903D3BB002BF8C0 /* CommonVariables+Extension.swift in Sources */,
 				BF7B4FB628FE431900F83158 /* AppDelegate.swift in Sources */,
 				BF7B4FB828FE431900F83158 /* SceneDelegate.swift in Sources */,
-				BF7B4FD028FE452200F83158 /* Color_Extension.swift in Sources */,
-				BF7B4FD228FE454A00F83158 /* View_Extension.swift in Sources */,
+				BF788B802903C903002BF8C0 /* DashedCircle+Extension.swift in Sources */,
+				BF7B4FD028FE452200F83158 /* Color+Extension.swift in Sources */,
+				BF7B4FD228FE454A00F83158 /* View+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
