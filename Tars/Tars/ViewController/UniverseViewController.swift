@@ -70,7 +70,7 @@ class UniverseViewController: UIViewController {
 extension UniverseViewController: SCNSceneRendererDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didApplyAnimationsAtTime time: TimeInterval) {
        if let q = self.deviceQuaternion {
-          let quaternion = SCNQuaternion(q.y, -q.x, -q.z, q.w)
+          let quaternion = SCNQuaternion(q.x, q.y, q.z, q.w)
            sceneView.scene?.rootNode.orientation = quaternion
        }
     }
