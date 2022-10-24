@@ -14,7 +14,7 @@ class AstronomyAPIManager: NetworkService {
         let endpoint = url.getEndpoint(with: parameters)
         guard let request = endpoint.getURLRequest() else { throw  NetworkError.invalidURL}
         let data: BodiesPositionsResponse = try await getRequest(request)
-        print(data.bodiesData)
+        
         return data.bodiesData
     }
 }
