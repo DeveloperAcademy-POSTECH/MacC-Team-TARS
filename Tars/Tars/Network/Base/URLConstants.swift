@@ -10,6 +10,7 @@ import Foundation
 protocol URLConstants {
     var url: String { get }
     var httpMethod: String { get }
+    func getEndpoint(with parameters: [String: String]?) -> Endpoint
 }
 
 // MARK: - Astronomy API
@@ -28,6 +29,12 @@ enum AstronomyURL: String, URLConstants {
             return "GET"
         }
     }
+    
+    func getEndpoint(with parameters: [String: String]?) -> Endpoint {
+        let hash = "\(Keys.applicationId):\(Keys.applicationSecret)"
+        let headers = ["Authorization": "Basic \(hash.toBase64())"]
+        return Endpoint(url: self.url, method: self.httpMethod, headers: headers, queryParameters: parameters)
+    }
 }
 
 // MARK: - Horizon API
@@ -43,5 +50,9 @@ enum HorizonURL: String, URLConstants {
         case .horizonAPI:
             return "GET"
         }
+    }
+    
+    func getEndpoint(with parameters: [String: String]?) -> Endpoint {
+        return Endpoint(url: self.url, method: self.httpMethod, queryParameters: parameters)
     }
 }
