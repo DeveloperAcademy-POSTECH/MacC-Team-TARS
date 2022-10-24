@@ -15,6 +15,7 @@
 		37AE64C72906BE54000ABC86 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AE64C62906BE54000ABC86 /* String+Extension.swift */; };
 		37AE64C92906BF2B000ABC86 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AE64C82906BF2B000ABC86 /* NetworkService.swift */; };
 		37AE64CD2906BF77000ABC86 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AE64CC2906BF77000ABC86 /* APIManager.swift */; };
+		37D401FA2906D1620090D225 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D401F92906D1620090D225 /* LocationManager.swift */; };
 		BF788B7E2903C8CF002BF8C0 /* UniverseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF788B7D2903C8CF002BF8C0 /* UniverseViewController.swift */; };
 		BF788B802903C903002BF8C0 /* DashedCircle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF788B7F2903C903002BF8C0 /* DashedCircle+Extension.swift */; };
 		BF788B822903D1A7002BF8C0 /* CustomCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF788B812903D1A7002BF8C0 /* CustomCircleView.swift */; };
@@ -38,6 +39,7 @@
 		37AE64C62906BE54000ABC86 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		37AE64C82906BF2B000ABC86 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		37AE64CC2906BF77000ABC86 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		37D401F92906D1620090D225 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		BF788B7D2903C8CF002BF8C0 /* UniverseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseViewController.swift; sourceTree = "<group>"; };
 		BF788B7F2903C903002BF8C0 /* DashedCircle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashedCircle+Extension.swift"; sourceTree = "<group>"; };
 		BF788B812903D1A7002BF8C0 /* CustomCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCircleView.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				37AE64C42906BDE2000ABC86 /* Endpoint.swift */,
 				37AE64C82906BF2B000ABC86 /* NetworkService.swift */,
 				37AE64CC2906BF77000ABC86 /* APIManager.swift */,
+				37D401F92906D1620090D225 /* LocationManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF788B822903D1A7002BF8C0 /* CustomCircleView.swift in Sources */,
+				37D401FA2906D1620090D225 /* LocationManager.swift in Sources */,
 				37AE64C32906BD10000ABC86 /* Keys.swift in Sources */,
 				BF788B7E2903C8CF002BF8C0 /* UniverseViewController.swift in Sources */,
 				37AE64C52906BDE2000ABC86 /* Endpoint.swift in Sources */,
