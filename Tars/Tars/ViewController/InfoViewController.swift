@@ -31,10 +31,10 @@ class InfoViewController: UIViewController {
         let planetInfo = UILabel()
         planetInfo.text = "목성은 태양계의 다섯번째 행성이자 가장 큰 행성이다. 태양의 질량의 1,000분의 1배에 달하는 거대행성으로, 태양계에 있는 다른 모든 행성들을 합한 질량의 약 2.5배에 이른다"
         planetInfo.font = .preferredFont(forTextStyle: .title3)
+        planetInfo.setLineSpacing(spacing: 6)
         planetInfo.textColor = .white
         planetInfo.adjustsFontForContentSizeCategory = true
         planetInfo.numberOfLines = 0
-        
         return planetInfo
     }()
     
