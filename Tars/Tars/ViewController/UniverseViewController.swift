@@ -38,7 +38,66 @@ class UniverseViewController: UIViewController {
         sceneView.addSubview(guideCircleView)
         detectDeviceMotion()
         configureConstraints()
+        
+        Task {
+            let bodies = try await AstronomyAPIManager().fetchBodies()
+            
+            setPlanetPosition(to: sceneView.scene, planets: bodies)
+//            print(bodies)
+        }
+        
+//        let sphere3 = SCNSphere(radius: 1)
+//        sphere3.firstMaterial?.diffuse.contents = UIImage(named: "jupiter")
+//
+//        let sphereNode3 = SCNNode(geometry : sphere3)
+//        sphereNode3.position = SCNVector3(0.5, 5, -1)
+//
+//        sceneView.scene?.rootNode.addChildNode(sphereNode3)
+        
     }
+    
+    private func setPlanetPosition(to scene: SCNScene?, planets: [Body]) {
+        
+        for planet in planets {
+            
+            
+            print(planet.name)
+        }
+        
+//        for planet in Planet.allCases {
+//            let identifier = planet.rawValue
+//
+//            let sphere = SCNSphere(radius: 0.1)
+//            sphere.firstMaterial?.diffuse.contents = UIImage(named: identifier)
+//
+//            let sphereNode = SCNNode(geometry : sphere)
+//            sphereNode.position = SCNVector3(x, y, z)
+//
+//            scene?.rootNode.addChildNode(sphereNode)
+//
+//        }
+    }
+    
+//    private func applyTextures(to scene: SCNScene?) {
+//        // Planet 열거형을 통해 모든 행성을 나열
+//        for planet in Planet.allCases {
+//          // planet.rawValue 는 행성에 적용해온 식별자 (mercury, venus 등)
+//          let identifier = planet.rawValue
+//
+//          let sphere = SCNSphere(radius: 0.1)
+//
+//          // 식별자를 사용하여 행성의 노드에 대한 참조
+//          let node = scene?.rootNode
+//            .childNode(withName: identifier, recursively: false)
+//
+//          // Assets 에 있는 이름도 행성의 식별자와 일치
+//          let texture = UIImage(named: identifier)
+//
+//          // 이미지를 node의 재료에 행성의 duffuse 로 사용, 색상을 대체
+//          node?.geometry?.firstMaterial?.diffuse.contents = texture
+//        }
+//    }
+
        
     private func detectDeviceMotion() {
         if motionManager.isDeviceMotionAvailable {

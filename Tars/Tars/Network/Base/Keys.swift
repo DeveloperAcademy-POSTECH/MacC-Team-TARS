@@ -8,6 +8,6 @@
 import Foundation
 
 struct Keys {
-    static let applicationId = "applicationID"
-    static let applicationSecret = "applicationSecret"
+    static let applicationId = "asdf"
+    static let applicationSecret = "asdf"
 }

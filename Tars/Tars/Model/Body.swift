@@ -13,6 +13,7 @@ struct Body: Decodable {
     var distanceFromEarth: String
     var altitude: String
     var azimuth: String
+    var coordinate: (x: Float, y: Float, z: Float)?
 
     enum CodingKeys: String, CodingKey {
         case cells, id, name, distance, position
@@ -38,5 +39,15 @@ extension Body {
         self.distanceFromEarth = try fromEarth.decode(String.self, forKey: .km)
         self.altitude = try altitude.decode(String.self, forKey: .degrees)
         self.azimuth = try azimuth.decode(String.self, forKey: .degrees)
+        self.coordinate = horizontalCoordinateTo3D(azimuth: self.azimuth, altitude: self.altitude)
+    }
+    
+    private func horizontalCoordinateTo3D(azimuth: String, altitude: String) -> (x: Float, y: Float, z: Float)? {
+        guard let azimuth = Float(azimuth), let altitude = Float(altitude) else { return nil }
+        let x = cos(altitude) * sin(azimuth)
+        let y = cos(altitude) * cos(azimuth)
+        let z = sin(altitude)
+        
+        return (x, y, z)
     }
 }
