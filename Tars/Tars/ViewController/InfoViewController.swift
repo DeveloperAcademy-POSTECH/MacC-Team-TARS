@@ -18,7 +18,7 @@ class InfoViewController: UIViewController {
     lazy var planetName: UILabel = {
         let planetName = UILabel()
         planetName.text = "목성"
-        planetName.font = .preferredFont(forTextStyle: .title1)
+        planetName.font = .preferredFont(forTextStyle: .largeTitle)
         planetName.textColor = .white
         planetName.adjustsFontForContentSizeCategory = true
         return planetName
@@ -43,21 +43,13 @@ class InfoViewController: UIViewController {
     }
     
     private func configureConstraints() {
-        planetImageView.translatesAutoresizingMaskIntoConstraints = false
-        planetName.translatesAutoresizingMaskIntoConstraints = false
-        planetInfo.translatesAutoresizingMaskIntoConstraints = false
+        planetImageView.centerX(inView: view)
+        planetImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: screenHeight / 21.6, width: screenWidth / 1.41, height: screenWidth / 1.41)
         
-        NSLayoutConstraint.activate([
-            planetImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            planetImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
-            
-            planetName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            planetName.topAnchor.constraint(equalTo: planetImageView.bottomAnchor, constant: 24),
-            
-            planetInfo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            planetInfo.topAnchor.constraint(equalTo: planetName.bottomAnchor, constant: 16),
-            planetInfo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            planetInfo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-        ])
+        planetName.centerX(inView: view)
+        planetName.anchor(top: planetImageView.bottomAnchor, paddingTop: screenHeight / 35.1)
+        
+        planetInfo.centerX(inView: view)
+        planetInfo.anchor(top: planetName.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: screenWidth / 52.7, paddingLeading: screenWidth / 9.75, paddingTrailing: screenWidth / 9.75)
     }
 }
