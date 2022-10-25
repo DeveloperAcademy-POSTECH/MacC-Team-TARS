@@ -19,7 +19,6 @@ class InfoViewController: UIViewController {
         let planetName = UILabel()
         planetName.text = "목성"
         planetName.font = .preferredFont(forTextStyle: .largeTitle)
-        /// Dynamic Type 유지하면서 Bold 줄 수 있는 코드
         if let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .title1).withSymbolicTraits(.traitBold) {
             planetName.font = .init(descriptor: descriptor, size: 0)
         }
@@ -35,6 +34,7 @@ class InfoViewController: UIViewController {
         planetInfo.textColor = .white
         planetInfo.adjustsFontForContentSizeCategory = true
         planetInfo.numberOfLines = 0
+        
         return planetInfo
     }()
     
@@ -48,12 +48,12 @@ class InfoViewController: UIViewController {
     
     private func configureConstraints() {
         planetImageView.centerX(inView: view)
-        planetImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: screenHeight / 21.6, width: screenWidth / 1.41, height: screenWidth / 1.41)
+        planetImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: screenHeight / 21.6, width: screenWidth / 1.56, height: screenWidth / 1.56)
         
         planetName.centerX(inView: view)
         planetName.anchor(top: planetImageView.bottomAnchor, paddingTop: screenHeight / 35.1)
         
         planetInfo.centerX(inView: view)
-        planetInfo.anchor(top: planetName.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: screenWidth / 52.7, paddingLeading: screenWidth / 9.75, paddingTrailing: screenWidth / 9.75)
+        planetInfo.anchor(top: planetName.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: screenWidth / 35.1, paddingLeading: screenWidth / 9.75, paddingTrailing: screenWidth / 9.75)
     }
 }
