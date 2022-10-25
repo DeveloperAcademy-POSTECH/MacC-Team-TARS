@@ -14,6 +14,7 @@ protocol URLConstants {
 }
 
 // MARK: - Astronomy API
+// https://astronomyapi.com/
 enum AstronomyURL: String, URLConstants {
     case bodies = "api/v2/bodies" // Get available bodies
     case bodiesPosition = "api/v2/bodies/positions" // Get all bodies positions
@@ -30,7 +31,11 @@ enum AstronomyURL: String, URLConstants {
         }
     }
     
+    /// getEndpoint
+    /// - Parameter parameters: query parameters for urlrequest
+    /// - Returns: Endpoint with query parameters and authorization header
     func getEndpoint(with parameters: [String: String]?) -> Endpoint {
+        // Get API key and create hash for authorization
         let hash = "\(Keys.applicationId):\(Keys.applicationSecret)"
         let headers = ["Authorization": "Basic \(hash.toBase64())"]
         return Endpoint(url: self.url, method: self.httpMethod, headers: headers, queryParameters: parameters)
@@ -38,6 +43,7 @@ enum AstronomyURL: String, URLConstants {
 }
 
 // MARK: - Horizon API
+// https://ssd-api.jpl.nasa.gov/doc/horizons.html
 enum HorizonURL: String, URLConstants {
     case horizonAPI = "api/horizons.api"
     
