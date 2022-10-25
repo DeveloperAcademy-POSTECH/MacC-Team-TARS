@@ -19,6 +19,10 @@ class InfoViewController: UIViewController {
         let planetName = UILabel()
         planetName.text = "목성"
         planetName.font = .preferredFont(forTextStyle: .largeTitle)
+        /// Dynamic Type 유지하면서 Bold 줄 수 있는 코드
+        if let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .title1).withSymbolicTraits(.traitBold) {
+            planetName.font = .init(descriptor: descriptor, size: 0)
+        }
         planetName.textColor = .white
         planetName.adjustsFontForContentSizeCategory = true
         return planetName
@@ -33,7 +37,7 @@ class InfoViewController: UIViewController {
         planetInfo.numberOfLines = 0
         return planetInfo
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
