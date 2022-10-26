@@ -44,9 +44,9 @@ extension Body {
     
     private func horizontalCoordinateTo3D(azimuth: String, altitude: String) -> (x: Float, y: Float, z: Float)? {
         guard let azimuth = Float(azimuth), let altitude = Float(altitude) else { return nil }
-        let x = cos(altitude) * sin(azimuth)
-        let y = cos(altitude) * cos(azimuth)
-        let z = sin(altitude)
+        let x = 2 * cos(altitude) * sin(azimuth)
+        let y = 2 * cos(altitude) * cos(azimuth)
+        let z = 2 * sin(altitude)
         
         return (x, y, z)
     }

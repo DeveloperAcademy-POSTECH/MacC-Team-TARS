@@ -8,6 +8,7 @@
 import UIKit
 import CoreMotion
 import SceneKit
+import CoreLocation
 
 class UniverseViewController: UIViewController {
     
@@ -16,17 +17,35 @@ class UniverseViewController: UIViewController {
     let skyboxImages = (1...6).map { UIImage(named: "sky\($0)") }
     public var guideCircleView = CustomCircleView()
     
+    lazy var locationManager: CLLocationManager = {
+        let manager = CLLocationManager()
+        // desiredAccurcy 는 위치의 정확도를 설정
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+//        manager.distanceFilter = kCLHeadingFilterNone ?? 뭔지 모름
+        manager.delegate = self
+        return manager
+    }()
+    
     /// 3D 배경 세팅을 위한 sceneView 선언
     lazy var sceneView: SCNView = {
         let sceneView = SCNView()
         let backgroundSceneView = SCNScene(named: "UniverseBackground.scn")
         sceneView.scene = backgroundSceneView
         sceneView.scene?.background.contents = skyboxImages
+        
+        let camera = SCNCamera()
+        let cameraNode = SCNNode()
+        cameraNode.camera = camera
+        cameraNode.position = SCNVector3Make(0, 0, 0) // set your camera position
+        
+        sceneView.scene?.rootNode.addChildNode(cameraNode)
+        
+        
         sceneView.translatesAutoresizingMaskIntoConstraints = false
         sceneView.allowsCameraControl = true
         return sceneView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -38,66 +57,37 @@ class UniverseViewController: UIViewController {
         sceneView.addSubview(guideCircleView)
         detectDeviceMotion()
         configureConstraints()
+
         
         Task {
             let bodies = try await AstronomyAPIManager().fetchBodies()
             
             setPlanetPosition(to: sceneView.scene, planets: bodies)
-//            print(bodies)
+            
+//            locationManager.startUpdatingHeading()
+            
         }
-        
-//        let sphere3 = SCNSphere(radius: 1)
-//        sphere3.firstMaterial?.diffuse.contents = UIImage(named: "jupiter")
-//
-//        let sphereNode3 = SCNNode(geometry : sphere3)
-//        sphereNode3.position = SCNVector3(0.5, 5, -1)
-//
-//        sceneView.scene?.rootNode.addChildNode(sphereNode3)
-        
     }
     
     private func setPlanetPosition(to scene: SCNScene?, planets: [Body]) {
         
         for planet in planets {
             
+            print(planet)
             
-            print(planet.name)
-        }
-        
-//        for planet in Planet.allCases {
-//            let identifier = planet.rawValue
-//
-//            let sphere = SCNSphere(radius: 0.1)
-//            sphere.firstMaterial?.diffuse.contents = UIImage(named: identifier)
-//
-//            let sphereNode = SCNNode(geometry : sphere)
-//            sphereNode.position = SCNVector3(x, y, z)
-//
-//            scene?.rootNode.addChildNode(sphereNode)
-//
-//        }
-    }
-    
-//    private func applyTextures(to scene: SCNScene?) {
-//        // Planet 열거형을 통해 모든 행성을 나열
-//        for planet in Planet.allCases {
-//          // planet.rawValue 는 행성에 적용해온 식별자 (mercury, venus 등)
-//          let identifier = planet.rawValue
-//
-//          let sphere = SCNSphere(radius: 0.1)
-//
-//          // 식별자를 사용하여 행성의 노드에 대한 참조
-//          let node = scene?.rootNode
-//            .childNode(withName: identifier, recursively: false)
-//
-//          // Assets 에 있는 이름도 행성의 식별자와 일치
-//          let texture = UIImage(named: identifier)
-//
-//          // 이미지를 node의 재료에 행성의 duffuse 로 사용, 색상을 대체
-//          node?.geometry?.firstMaterial?.diffuse.contents = texture
-//        }
-//    }
+            if planet.name == "Earth" || planet.name == "Pluto" {
+                continue
+            } else {
+                let sphere = SCNSphere(radius: 0.1)
+                sphere.firstMaterial?.diffuse.contents = UIImage(named: planet.name)
 
+                let sphereNode = SCNNode(geometry : sphere)
+                sphereNode.worldPosition = SCNVector3(planet.coordinate!.x, planet.coordinate!.y, planet.coordinate!.z)
+                
+                scene?.rootNode.addChildNode(sphereNode)
+            }
+        }
+    }
        
     private func detectDeviceMotion() {
         if motionManager.isDeviceMotionAvailable {
@@ -133,4 +123,33 @@ extension UniverseViewController: SCNSceneRendererDelegate {
            sceneView.scene?.rootNode.orientation = quaternion
        }
     }
+}
+
+extension UniverseViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        
+        // 자기 북쪽을 기준으로 하는 표제
+        let userMagnetic = Int(newHeading.magneticHeading)
+        
+        // 진북쪽을 기준으로 하는 표제
+        let userTrue = Int(newHeading.trueHeading)
+        
+        // 보고된 방향과 실제 지자기 방향 사이의 최대 편차 (도)
+        let accuracy = Int(newHeading.headingAccuracy)
+        
+        // 최대 편차는 25에서 변하지 않음
+//        print(userMagnetic, userTrue, accuracy)
+        print("현재 방위 : ", userMagnetic)
+        
+        
+        let sunAzimuth = 242
+        
+        
+        if (userMagnetic >= sunAzimuth - 5) && (userMagnetic <= sunAzimuth + 5) {
+            print("태양을 찾았습니다")
+        }
+        
+    }
+
 }
