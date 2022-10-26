@@ -15,6 +15,7 @@ class UniverseViewController: UIViewController {
     var deviceQuaternion: CMQuaternion?
     let skyboxImages = (1...6).map { UIImage(named: "sky\($0)") }
     public var guideCircleView = CustomCircleView()
+    public var selectedSquareView = CustomSquareView()
     
     /// 3D 배경 세팅을 위한 sceneView 선언
     lazy var sceneView: SCNView = {
@@ -34,8 +35,8 @@ class UniverseViewController: UIViewController {
         sceneView.delegate = self
         sceneView.isPlaying = true
         
-        [guideCircleView, sceneView].forEach { view.addSubview($0) }
-        sceneView.addSubview(guideCircleView)
+        [guideCircleView, sceneView, selectedSquareView].forEach { view.addSubview($0) }
+        sceneView.addSubview(selectedSquareView)
         detectDeviceMotion()
         configureConstraints()
         
@@ -86,7 +87,7 @@ class UniverseViewController: UIViewController {
             motionManager.deviceMotionUpdateInterval = 1/30.0
             motionManager.startDeviceMotionUpdates(using: .xArbitraryZVertical,
                                                    to: OperationQueue(),
-                                                   withHandler: { (deviceMotion, error) in
+                                                   withHandler: { (deviceMotion, _) in
                 guard let data = deviceMotion else { return }
                 self.deviceQuaternion = data.attitude.quaternion
             })
@@ -95,6 +96,9 @@ class UniverseViewController: UIViewController {
     
     private func configureConstraints() {
         guideCircleView.translatesAutoresizingMaskIntoConstraints = false
+        selectedSquareView.translatesAutoresizingMaskIntoConstraints = false
+        selectedSquareView.centerX(inView: sceneView)
+        selectedSquareView.centerY(inView: sceneView)
         
         NSLayoutConstraint.activate([
             sceneView.widthAnchor.constraint(equalTo: view.widthAnchor),

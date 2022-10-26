@@ -15,7 +15,7 @@ extension UIView {
         circleLayer.strokeColor =  UIColor.customYellow.cgColor
         circleLayer.fillColor = UIColor.clear.cgColor
         circleLayer.lineJoin = .round
-        circleLayer.lineDashPattern = [15,3]
+        circleLayer.lineDashPattern = [15, 3]
         layer.addSublayer(circleLayer)
     }
 }
