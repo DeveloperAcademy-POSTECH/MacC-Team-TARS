@@ -20,8 +20,6 @@
 		BF7B4FD028FE452200F83158 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B4FCF28FE452200F83158 /* Color+Extension.swift */; };
 		BF7B4FD228FE454A00F83158 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B4FD128FE454A00F83158 /* View+Extension.swift */; };
 		BF7B4FD528FE47B200F83158 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4FD428FE47B200F83158 /* .swiftlint.yml */; };
-		DDB7DD932906B2B000FC0BA4 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */; };
-		DDB7DD97290814AB00FC0BA4 /* Label+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB7DD96290814AB00FC0BA4 /* Label+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,8 +38,6 @@
 		BF7B4FCF28FE452200F83158 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		BF7B4FD128FE454A00F83158 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		BF7B4FD428FE47B200F83158 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
-		DDB7DD96290814AB00FC0BA4 /* Label+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				BF788B7D2903C8CF002BF8C0 /* UniverseViewController.swift */,
-				DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -142,7 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				BF7B4FCF28FE452200F83158 /* Color+Extension.swift */,
-				DDB7DD96290814AB00FC0BA4 /* Label+Extension.swift */,
 				BF7B4FD128FE454A00F83158 /* View+Extension.swift */,
 				BF788B7F2903C903002BF8C0 /* DashedCircle+Extension.swift */,
 				BF788B832903D3BB002BF8C0 /* CommonVariables+Extension.swift */,
@@ -255,9 +249,7 @@
 				37AE64BC2906B9A7000ABC86 /* BodiesPositionsResponse.swift in Sources */,
 				BF788B842903D3BB002BF8C0 /* CommonVariables+Extension.swift in Sources */,
 				BF7B4FB628FE431900F83158 /* AppDelegate.swift in Sources */,
-				DDB7DD932906B2B000FC0BA4 /* InfoViewController.swift in Sources */,
 				BF7B4FB828FE431900F83158 /* SceneDelegate.swift in Sources */,
-				DDB7DD97290814AB00FC0BA4 /* Label+Extension.swift in Sources */,
 				37AE64C72906BE54000ABC86 /* String+Extension.swift in Sources */,
 				BF788B802903C903002BF8C0 /* DashedCircle+Extension.swift in Sources */,
 				37AE64C92906BF2B000ABC86 /* NetworkService.swift in Sources */,
@@ -404,7 +396,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = D9CAJN27UH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tars/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -432,7 +424,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = D9CAJN27UH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tars/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
