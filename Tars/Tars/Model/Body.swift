@@ -46,9 +46,9 @@ extension Body {
         let azimuth = (azimuth as NSString).floatValue.degreeToRadian()
         let altitude = (altitude as NSString).floatValue.degreeToRadian()
         
-        let x = cos(altitude) * sin(azimuth)
-        let y = sin(altitude)
-        let z = -(cos(altitude) * cos(azimuth))
+        let x = 5 * cos(altitude) * sin(azimuth)
+        let y = 5 * sin(altitude)
+        let z = 5 * -(cos(altitude) * cos(azimuth))
         
         return (x, y, z)
     }
