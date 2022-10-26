@@ -47,8 +47,8 @@ extension Body {
         let altitude = (altitude as NSString).floatValue
         
         let x = cos(altitude) * sin(azimuth)
-        let y = cos(altitude) * cos(azimuth)
-        let z = sin(altitude)
+        let y = sin(altitude)
+        let z = -(cos(altitude) * cos(azimuth))
         
         return (x, y, z)
     }
