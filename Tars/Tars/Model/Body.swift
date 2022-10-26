@@ -43,8 +43,8 @@ extension Body {
     }
 
     private static func horizontalCoordinateToXYZ(azimuth: String, altitude: String) -> (x: Float, y: Float, z: Float) {
-        let azimuth = (azimuth as NSString).floatValue
-        let altitude = (altitude as NSString).floatValue
+        let azimuth = (azimuth as NSString).floatValue.degreeToRadian()
+        let altitude = (altitude as NSString).floatValue.degreeToRadian()
         
         let x = cos(altitude) * sin(azimuth)
         let y = sin(altitude)
