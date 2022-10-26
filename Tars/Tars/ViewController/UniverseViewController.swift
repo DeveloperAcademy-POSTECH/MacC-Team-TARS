@@ -6,39 +6,28 @@
 //
 
 import UIKit
-import CoreMotion
 import SceneKit
+import ARKit
 
-class UniverseViewController: UIViewController {
+class UniverseViewController: UIViewController, ARSCNViewDelegate {
     
-    let motionManager = CMMotionManager()
-    var deviceQuaternion: CMQuaternion?
-    let skyboxImages = (1...6).map { UIImage(named: "sky\($0)") }
     public var guideCircleView = CustomCircleView()
     public var selectedSquareView = CustomSquareView()
     
-    /// 3D 배경 세팅을 위한 sceneView 선언
-    lazy var sceneView: SCNView = {
-        let sceneView = SCNView()
-        let backgroundSceneView = SCNScene(named: "UniverseBackground.scn")
-        sceneView.scene = backgroundSceneView
-        sceneView.scene?.background.contents = skyboxImages
-        sceneView.translatesAutoresizingMaskIntoConstraints = false
-        sceneView.allowsCameraControl = true
+    /// ARKit 을 사용하기 위한 view 선언
+    lazy var sceneView: ARSCNView = {
+        let sceneView = ARSCNView()
+        sceneView.delegate = self
         return sceneView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        
-        sceneView.delegate = self
-        sceneView.isPlaying = true
-        
         [guideCircleView, sceneView, selectedSquareView].forEach { view.addSubview($0) }
-        sceneView.addSubview(selectedSquareView)
-        detectDeviceMotion()
+        sceneView.addSubview(guideCircleView)
         configureConstraints()
+        
+        selectedSquareView.isHidden = true
         
         Task {
             let bodies = try await AstronomyAPIManager().fetchBodies()
@@ -46,7 +35,7 @@ class UniverseViewController: UIViewController {
         }
     }
     
-    // 행성을 배치하기 위한 함수
+    /// 행성을 배치하기 위한 함수
     private func setPlanetPosition(to scene: SCNScene?, planets: [Body]) {
         
         for planet in planets {
@@ -56,52 +45,60 @@ class UniverseViewController: UIViewController {
             if planet.name == "Earth" || planet.name == "Pluto" {
                 continue
             } else {
-                let sphere = SCNSphere(radius: 0.07)
-                sphere.firstMaterial?.diffuse.contents = UIImage(named: planet.name)
-
-                let sphereNode = SCNNode(geometry : sphere)
+                let sphere = SCNSphere(radius: 0.2)
+                sphere.firstMaterial?.diffuse.contents = UIImage(named: planet.name + "_Map")
+                let sphereNode = SCNNode(geometry: sphere)
                 sphereNode.position = SCNVector3(planet.coordinate.x, planet.coordinate.y, planet.coordinate.z)
 
                 scene?.rootNode.addChildNode(sphereNode)
             }
         }
     }
-       
-    private func detectDeviceMotion() {
-        if motionManager.isDeviceMotionAvailable {
-            motionManager.deviceMotionUpdateInterval = 1/30.0
-            motionManager.startDeviceMotionUpdates(using: .xArbitraryZVertical,
-                                                   to: OperationQueue(),
-                                                   withHandler: { (deviceMotion, _) in
-                guard let data = deviceMotion else { return }
-                self.deviceQuaternion = data.attitude.quaternion
-            })
-        }
-    }
     
     private func configureConstraints() {
-        guideCircleView.translatesAutoresizingMaskIntoConstraints = false
-        selectedSquareView.translatesAutoresizingMaskIntoConstraints = false
+        
+        sceneView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
+        
         selectedSquareView.centerX(inView: sceneView)
         selectedSquareView.centerY(inView: sceneView)
         
-        NSLayoutConstraint.activate([
-            sceneView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            sceneView.heightAnchor.constraint(equalTo: view.heightAnchor),
-            sceneView.topAnchor.constraint(equalTo: view.topAnchor),
-            sceneView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            
-            guideCircleView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            guideCircleView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+        guideCircleView.centerX(inView: view)
+        guideCircleView.centerY(inView: view)
     }
-}
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Create a session configuration
+        let configuration = ARWorldTrackingConfiguration()
+        
+        configuration.worldAlignment = .gravityAndHeading
 
-extension UniverseViewController: SCNSceneRendererDelegate {
-    func renderer(_ renderer: SCNSceneRenderer, didApplyAnimationsAtTime time: TimeInterval) {
-       if let q = self.deviceQuaternion {
-          let quaternion = SCNQuaternion(q.x, q.y, q.z, q.w)
-           sceneView.scene?.rootNode.orientation = quaternion
-       }
+        // Run the view's session
+        sceneView.session.run(configuration)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Pause the view's session
+        sceneView.session.pause()
+    }
+
+    // MARK: - ARSCNViewDelegate
+    func session(_ session: ARSession, didFailWithError error: Error) {
+        // Present an error message to the user
+        
+    }
+    
+    func sessionWasInterrupted(_ session: ARSession) {
+        // Inform the user that the session has been interrupted, for example, by presenting an overlay
+        
+    }
+    
+    func sessionInterruptionEnded(_ session: ARSession) {
+        // Reset tracking and/or remove existing anchors if consistent tracking is required
+        
+    }
+    
 }
