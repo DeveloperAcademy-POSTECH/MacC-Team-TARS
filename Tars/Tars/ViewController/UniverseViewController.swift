@@ -46,21 +46,6 @@ class UniverseViewController: UIViewController {
         }
     }
     
-    private func settingLocationPlanet(to scene: SCNScene?, x: Float, y: Float, z: Float) {
-        
-        for planet in Planet.allCases {
-            let identifier = planet.rawValue
-            
-            let sphere = SCNSphere(radius: 0.1)
-            sphere.firstMaterial?.diffuse.contents = UIImage(named: identifier)
-            
-            let sphereNode = SCNNode(geometry : sphere)
-            sphereNode.position = SCNVector3(x, y, z)
-            
-            scene?.rootNode.addChildNode(sphereNode)
-        }
-    }
-    
     // 행성을 배치하기 위한 함수
     private func setPlanetPosition(to scene: SCNScene?, planets: [Body]) {
         
