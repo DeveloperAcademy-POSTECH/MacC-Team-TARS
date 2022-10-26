@@ -51,9 +51,9 @@ class InfoViewController: UIViewController {
         planetImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: screenHeight / 21.6, width: screenWidth / 1.56, height: screenWidth / 1.56)
         
         planetName.centerX(inView: view)
-        planetName.anchor(top: planetImageView.bottomAnchor, paddingTop: screenHeight / 35.1)
+        planetName.anchor(top: planetImageView.bottomAnchor, paddingTop: screenHeight / 21.6)
         
         planetInfo.centerX(inView: view)
-        planetInfo.anchor(top: planetName.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: screenWidth / 35.1, paddingLeading: screenWidth / 9.75, paddingTrailing: screenWidth / 9.75)
+        planetInfo.anchor(top: planetName.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: screenWidth / 26.3, paddingLeading: screenWidth / 9.75, paddingTrailing: screenWidth / 9.75)
     }
 }
