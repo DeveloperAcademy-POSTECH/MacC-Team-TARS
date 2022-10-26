@@ -45,7 +45,7 @@ class UniverseViewController: UIViewController {
         }
     }
     
-    private func settinglocationPlanet(to scene: SCNScene?, x : Double, y : Double, z : Double) {
+    private func settingLocationPlanet(to scene: SCNScene?, x: Float, y: Float, z: Float) {
         
         for planet in Planet.allCases {
             let identifier = planet.rawValue
@@ -74,7 +74,7 @@ class UniverseViewController: UIViewController {
                 sphere.firstMaterial?.diffuse.contents = UIImage(named: planet.name)
 
                 let sphereNode = SCNNode(geometry : sphere)
-                sphereNode.position = SCNVector3(planet.coordinate!.x, planet.coordinate!.y, planet.coordinate!.z)
+                sphereNode.position = SCNVector3(planet.coordinate.x, planet.coordinate.y, planet.coordinate.z)
 
                 scene?.rootNode.addChildNode(sphereNode)
             }
