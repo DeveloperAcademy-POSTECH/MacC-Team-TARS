@@ -39,32 +39,10 @@ class UniverseViewController: UIViewController {
         detectDeviceMotion()
         configureConstraints()
         
-        applyTextures(to: sceneView.scene)
-
-//        let sphere = SCNSphere(radius: 0.1)
-//        sphere.firstMaterial?.diffuse.contents = UIImage(named: "sun")
-//
-//        let sphereNode = SCNNode(geometry : sphere)
-//        sphereNode.position = SCNVector3(0.5, 0.1, -1)
-//
-//        sceneView.scene?.rootNode.addChildNode(sphereNode)
-//
-//        let sphere2 = SCNSphere(radius: 0.1)
-//        sphere2.firstMaterial?.diffuse.contents = UIImage(named: "moon")
-//
-//        let sphereNode2 = SCNNode(geometry : sphere2)
-//        sphereNode2.position = SCNVector3(0.5, 3, -1)
-//
-//        sceneView.scene?.rootNode.addChildNode(sphereNode2)
-//
-//        let sphere3 = SCNSphere(radius: 1)
-//        sphere3.firstMaterial?.diffuse.contents = UIImage(named: "jupiter")
-//
-//        let sphereNode3 = SCNNode(geometry : sphere3)
-//        sphereNode3.position = SCNVector3(0.5, 5, -1)
-//
-//        sceneView.scene?.rootNode.addChildNode(sphereNode3)
-        
+        Task {
+            let bodies = try await AstronomyAPIManager().fetchBodies()
+            setPlanetPosition(to: sceneView.scene, planets: bodies)
+        }
     }
     
     private func settinglocationPlanet(to scene: SCNScene?, x : Double, y : Double, z : Double) {
@@ -79,27 +57,27 @@ class UniverseViewController: UIViewController {
             sphereNode.position = SCNVector3(x, y, z)
             
             scene?.rootNode.addChildNode(sphereNode)
-            
         }
     }
     
-    private func applyTextures(to scene: SCNScene?) {
-        // Planet 열거형을 통해 모든 행성을 나열
-        for planet in Planet.allCases {
-          // planet.rawValue 는 행성에 적용해온 식별자 (mercury, venus 등)
-          let identifier = planet.rawValue
+    // 행성을 배치하기 위한 함수
+    private func setPlanetPosition(to scene: SCNScene?, planets: [Body]) {
+        
+        for planet in planets {
             
-          let sphere = SCNSphere(radius: 0.1)
+            print(planet)
             
-          // 식별자를 사용하여 행성의 노드에 대한 참조
-          let node = scene?.rootNode
-            .childNode(withName: identifier, recursively: false)
+            if planet.name == "Earth" || planet.name == "Pluto" {
+                continue
+            } else {
+                let sphere = SCNSphere(radius: 0.07)
+                sphere.firstMaterial?.diffuse.contents = UIImage(named: planet.name)
 
-          // Assets 에 있는 이름도 행성의 식별자와 일치
-          let texture = UIImage(named: identifier)
+                let sphereNode = SCNNode(geometry : sphere)
+                sphereNode.position = SCNVector3(planet.coordinate!.x, planet.coordinate!.y, planet.coordinate!.z)
 
-          // 이미지를 node의 재료에 행성의 duffuse 로 사용, 색상을 대체
-          node?.geometry?.firstMaterial?.diffuse.contents = texture
+                scene?.rootNode.addChildNode(sphereNode)
+            }
         }
     }
        
