@@ -34,10 +34,11 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     func getCurrentLocation() -> (Double, Double, Double)? {
         locationManager.requestLocation()
-        guard let location = locationManager.location else { return nil }
+        location = locationManager.location ?? LocationManager().location
         let latitude = location.coordinate.latitude
         let longtitude = location.coordinate.longitude
         let altitude = location.altitude
+        print("current position: \(latitude), \(longtitude), \(altitude)")
         return (latitude, longtitude, altitude)
     }
 }
