@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		374FEE372909597B00E0C56B /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FEE362909597B00E0C56B /* Float+Extension.swift */; };
+		55F3B9AC290FA1FE0033041E /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9AB290FA1FE0033041E /* Keys.swift */; };
+		55F3B9AE290FA2600033041E /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9AD290FA2600033041E /* Planet.swift */; };
+		55F3B9B0290FA2930033041E /* ContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9AF290FA2930033041E /* ContentsViewController.swift */; };
+		55F3B9B3290FA2D50033041E /* SelectPlanetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9B2290FA2D50033041E /* SelectPlanetCollectionViewCell.swift */; };
+		55F3B9B5290FA2ED0033041E /* SelectPlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9B4290FA2ED0033041E /* SelectPlanetViewController.swift */; };
 		5943244C2908EFB9000518FD /* CustomSquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943244B2908EFB9000518FD /* CustomSquareView.swift */; };
 		5943244E2908EFFF000518FD /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943244D2908EFFF000518FD /* String+Extension.swift */; };
 		BF6BCBA629090E060042B522 /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BCBA529090E050042B522 /* URLConstants.swift */; };
@@ -17,7 +22,6 @@
 		BF6BCBAE29090E1C0042B522 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BCBAD29090E1C0042B522 /* NetworkService.swift */; };
 		BF6BCBB129090E4E0042B522 /* BodiesPositionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BCBAF29090E4E0042B522 /* BodiesPositionsResponse.swift */; };
 		BF6BCBB229090E4E0042B522 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BCBB029090E4E0042B522 /* Body.swift */; };
-		BF6BCBB4290970720042B522 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BCBB3290970720042B522 /* Keys.swift */; };
 		BF788B7E2903C8CF002BF8C0 /* UniverseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF788B7D2903C8CF002BF8C0 /* UniverseViewController.swift */; };
 		BF788B802903C903002BF8C0 /* DashedCircle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF788B7F2903C903002BF8C0 /* DashedCircle+Extension.swift */; };
 		BF788B822903D1A7002BF8C0 /* CustomCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF788B812903D1A7002BF8C0 /* CustomCircleView.swift */; };
@@ -36,6 +40,11 @@
 
 /* Begin PBXFileReference section */
 		374FEE362909597B00E0C56B /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
+		55F3B9AB290FA1FE0033041E /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		55F3B9AD290FA2600033041E /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		55F3B9AF290FA2930033041E /* ContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsViewController.swift; sourceTree = "<group>"; };
+		55F3B9B2290FA2D50033041E /* SelectPlanetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlanetCollectionViewCell.swift; sourceTree = "<group>"; };
+		55F3B9B4290FA2ED0033041E /* SelectPlanetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlanetViewController.swift; sourceTree = "<group>"; };
 		5943244B2908EFB9000518FD /* CustomSquareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSquareView.swift; sourceTree = "<group>"; };
 		5943244D2908EFFF000518FD /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		BF6BCBA529090E050042B522 /* URLConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
@@ -45,7 +54,6 @@
 		BF6BCBAD29090E1C0042B522 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		BF6BCBAF29090E4E0042B522 /* BodiesPositionsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodiesPositionsResponse.swift; sourceTree = "<group>"; };
 		BF6BCBB029090E4E0042B522 /* Body.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
-		BF6BCBB3290970720042B522 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		BF788B7D2903C8CF002BF8C0 /* UniverseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseViewController.swift; sourceTree = "<group>"; };
 		BF788B7F2903C903002BF8C0 /* DashedCircle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashedCircle+Extension.swift"; sourceTree = "<group>"; };
 		BF788B812903D1A7002BF8C0 /* CustomCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCircleView.swift; sourceTree = "<group>"; };
@@ -91,9 +99,17 @@
 			isa = PBXGroup;
 			children = (
 				BF6BCBA529090E050042B522 /* URLConstants.swift */,
-				BF6BCBB3290970720042B522 /* Keys.swift */,
+				55F3B9AB290FA1FE0033041E /* Keys.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		55F3B9B1290FA2C40033041E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				55F3B9B2290FA2D50033041E /* SelectPlanetCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		BF7B4FA928FE431900F83158 = {
@@ -136,6 +152,7 @@
 			children = (
 				BF6BCBAF29090E4E0042B522 /* BodiesPositionsResponse.swift */,
 				BF6BCBB029090E4E0042B522 /* Body.swift */,
+				55F3B9AD290FA2600033041E /* Planet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -154,6 +171,9 @@
 			children = (
 				BF788B7D2903C8CF002BF8C0 /* UniverseViewController.swift */,
 				DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */,
+				55F3B9AF290FA2930033041E /* ContentsViewController.swift */,
+				55F3B9B4290FA2ED0033041E /* SelectPlanetViewController.swift */,
+				55F3B9B1290FA2C40033041E /* Cell */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -271,11 +291,15 @@
 				BF6BCBAC29090E180042B522 /* LocationManager.swift in Sources */,
 				BF6BCBB129090E4E0042B522 /* BodiesPositionsResponse.swift in Sources */,
 				5943244C2908EFB9000518FD /* CustomSquareView.swift in Sources */,
-				BF6BCBB4290970720042B522 /* Keys.swift in Sources */,
+				55F3B9B5290FA2ED0033041E /* SelectPlanetViewController.swift in Sources */,
+				55F3B9AC290FA1FE0033041E /* Keys.swift in Sources */,
+				55F3B9AE290FA2600033041E /* Planet.swift in Sources */,
 				BF788B7E2903C8CF002BF8C0 /* UniverseViewController.swift in Sources */,
 				BF6BCBAE29090E1C0042B522 /* NetworkService.swift in Sources */,
 				BF6BCBA629090E060042B522 /* URLConstants.swift in Sources */,
 				BF788B842903D3BB002BF8C0 /* CommonVariables+Extension.swift in Sources */,
+				55F3B9B3290FA2D50033041E /* SelectPlanetCollectionViewCell.swift in Sources */,
+				55F3B9B0290FA2930033041E /* ContentsViewController.swift in Sources */,
 				5943244E2908EFFF000518FD /* String+Extension.swift in Sources */,
 				374FEE372909597B00E0C56B /* Float+Extension.swift in Sources */,
 				BF7B4FB628FE431900F83158 /* AppDelegate.swift in Sources */,
