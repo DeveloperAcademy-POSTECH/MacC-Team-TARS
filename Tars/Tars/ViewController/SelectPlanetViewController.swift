@@ -12,10 +12,9 @@ class SelectPlanetViewController: UIViewController {
     
     public let selectPlanetCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 20
-        layout.minimumInteritemSpacing = 1000
+        layout.minimumInteritemSpacing = CGFloat(UInt16.max)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(SelectPlanetCollectionViewCell.self,
