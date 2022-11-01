@@ -30,7 +30,7 @@ class UniverseViewController: UIViewController, ARSCNViewDelegate {
         selectedSquareView.isHidden = true
         
         Task {
-            let bodies = try await AstronomyAPIManager().fetchBodies()
+            let bodies = try await AstronomyAPIManager().requestBodies()
             setPlanetPosition(to: sceneView.scene, planets: bodies)
         }
     }
