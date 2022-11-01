@@ -32,7 +32,7 @@ extension AstronomyAPIManager {
         parameters["time"] =  String(currentTime)
         
         // Get current Location
-        let locationManager = LocationManager()
+        let locationManager = LocationManager.shared
         guard let (latitude, longtitude, elevation) = locationManager.getCurrentLocation() else { throw LocationError.currentLocationFailure}
         parameters["latitude"] = String(latitude)
         parameters["longitude"] = String(longtitude)

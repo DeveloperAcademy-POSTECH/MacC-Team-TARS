@@ -29,6 +29,8 @@ class UniverseViewController: UIViewController, ARSCNViewDelegate {
         
         selectedSquareView.isHidden = true
         
+        let locationManager = LocationManager.shared
+        locationManager.updateLocation()
         Task {
             let bodies = try await AstronomyAPIManager().requestBodies()
             setPlanetPosition(to: sceneView.scene, planets: bodies)
@@ -100,5 +102,4 @@ class UniverseViewController: UIViewController, ARSCNViewDelegate {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
     }
-    
 }
