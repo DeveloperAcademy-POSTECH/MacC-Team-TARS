@@ -59,7 +59,7 @@ extension SelectPlanetViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectPlanetCollectionViewCell", for: indexPath) as? SelectPlanetCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectPlanetCollectionViewCell.identifier, for: indexPath) as? SelectPlanetCollectionViewCell else { return UICollectionViewCell() }
         
         let selectedPlanetName = planetList[indexPath.row].planetName
         let selectedPlanetImage = planetList[indexPath.row].planetImage
@@ -71,7 +71,8 @@ extension SelectPlanetViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectPlanetCollectionViewCell", for: indexPath) as? SelectPlanetCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectPlanetCollectionViewCell.identifier, for: indexPath) as? SelectPlanetCollectionViewCell
+        
         let selectedPlanetName = planetList[indexPath.row].planetName
         let selectedPlanetImage = planetList[indexPath.row].planetImage
         
