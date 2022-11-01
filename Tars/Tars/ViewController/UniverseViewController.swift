@@ -9,7 +9,7 @@ import UIKit
 import SceneKit
 import ARKit
 
-class UniverseViewController: UIViewController, ARSCNViewDelegate {
+class UniverseViewController: UIViewController, ARSCNViewDelegate, LocationManagerDelegate {
     
     public var guideCircleView = CustomCircleView()
     public var selectedSquareView = CustomSquareView()
@@ -30,11 +30,8 @@ class UniverseViewController: UIViewController, ARSCNViewDelegate {
         selectedSquareView.isHidden = true
         
         let locationManager = LocationManager.shared
+        locationManager.delegate = self
         locationManager.updateLocation()
-        Task {
-            let bodies = try await AstronomyAPIManager().requestBodies()
-            setPlanetPosition(to: sceneView.scene, planets: bodies)
-        }
     }
     
     /// 행성을 배치하기 위한 함수
@@ -102,4 +99,14 @@ class UniverseViewController: UIViewController, ARSCNViewDelegate {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
     }
+    
+    // MARK: - LocationManagerDelegate
+    
+    func didUpdateUserLocation() {
+        Task {
+            let bodies = try await AstronomyAPIManager().requestBodies()
+            setPlanetPosition(to: sceneView.scene, planets: bodies)
+        }
+    }
+    
 }

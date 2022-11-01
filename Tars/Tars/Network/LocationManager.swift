@@ -7,13 +7,19 @@
 
 import Foundation
 import CoreLocation
+import UIKit
 
 enum LocationError: Error {
     case currentLocationFailure
 }
 
+protocol LocationManagerDelegate: AnyObject, UIViewController {
+    func didUpdateUserLocation()
+}
+
 class LocationManager: NSObject, CLLocationManagerDelegate {
     static let shared = LocationManager()
+    weak var delegate: LocationManagerDelegate?
 
     private let locationManager = CLLocationManager()
     private var location: CLLocation?
@@ -31,6 +37,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             manager.stopUpdatingLocation()
             let location = locations[locations.count - 1]
             self.location = location
+            
+            didUpdateUserLocation()
         }
     }
     
@@ -65,5 +73,11 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         let longtitude = location.coordinate.longitude
         let altitude = location.altitude
         return (latitude, longtitude, altitude)
+    }
+    
+    private func didUpdateUserLocation() {
+        guard let delegate = delegate else { return }
+        delegate.didUpdateUserLocation()
+        print("updateUserLocation()")
     }
 }
