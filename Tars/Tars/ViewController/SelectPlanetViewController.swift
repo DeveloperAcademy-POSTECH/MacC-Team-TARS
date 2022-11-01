@@ -72,11 +72,10 @@ extension SelectPlanetViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectPlanetCollectionViewCell.identifier, for: indexPath) as? SelectPlanetCollectionViewCell
         
-        let selectedPlanetName = planetList[indexPath.row].planetName
-        let selectedPlanetImage = planetList[indexPath.row].planetImage
+        let selectedPlanet = planetList[indexPath.row]
         
         if (cell?.isSelected) != nil {
-            contentsViewController.setPlanet(name: selectedPlanetName, image: selectedPlanetImage ?? UIImage())
+            contentsViewController.planet = selectedPlanet
             navigationController?.pushViewController(contentsViewController, animated: true)
         }
     }

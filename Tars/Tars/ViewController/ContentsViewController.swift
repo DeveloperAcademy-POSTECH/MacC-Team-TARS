@@ -12,10 +12,6 @@ class ContentsViewController: UIViewController {
     
     public var planet: Planet =  Planet(planetName: "default", planetImage: UIImage(named: "default"))
     
-    func setPlanet(name: String, image: UIImage) {
-        planet = Planet(planetName: name, planetImage: image)
-    }
-    
     let planetImageView: UIImageView = {
         let imageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: screenWidth * 0.5, height: screenHeight * 0.23))
         imageView.isUserInteractionEnabled = true
