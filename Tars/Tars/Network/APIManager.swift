@@ -8,7 +8,7 @@
 import Foundation
 
 class AstronomyAPIManager: NetworkService {
-    func fetchBodies() async throws -> [Body] {
+    func requestBodies() async throws -> [Body] {
         let parameters = try getBodiesPositionsParameters()
         let url = AstronomyURL.bodiesPosition
         let endpoint = url.getEndpoint(with: parameters)
