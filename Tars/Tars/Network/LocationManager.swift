@@ -13,17 +13,23 @@ enum LocationError: Error {
 }
 
 class LocationManager: NSObject, CLLocationManagerDelegate {
-    var locationManager = CLLocationManager()
-    var location = CLLocation()
-    
+    static let shared = LocationManager()
+
+    private let locationManager = CLLocationManager()
+    private var location: CLLocation?
+    private var isLocationUpdated: Bool = false
+
     override init() {
         super.init()
         locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
+        if !isLocationUpdated {
+            isLocationUpdated = true
+
+            manager.stopUpdatingLocation()
+            let location = locations[locations.count - 1]
             self.location = location
         }
     }
@@ -32,9 +38,29 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         print("\(error): \(error.localizedDescription)")
     }
     
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+        case .authorizedWhenInUse:
+            manager.startUpdatingLocation()
+        case .restricted, .denied:
+            print("authorization restricted or denied")
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        default:
+            break
+        }
+    }
+    
+    func updateLocation() {
+        if locationManager.authorizationStatus == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+        } else {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
     func getCurrentLocation() -> (Double, Double, Double)? {
-        locationManager.requestLocation()
-        guard let location = locationManager.location else { return nil }
+        guard let location = location else { return nil }
         let latitude = location.coordinate.latitude
         let longtitude = location.coordinate.longitude
         let altitude = location.altitude
