@@ -11,13 +11,13 @@ class SelectPlanetCollectionViewCell: UICollectionViewCell {
     static let identifier: String = "SelectPlanetCollectionViewCell"
     
     let planetBackgroundView: UIImageView = {
-        let imageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 109, height: 145))
+        let imageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: screenWidth * 0.27, height: screenWidth * 0.17))
         imageView.image = UIImage(named: "BackgroundImage")
         return imageView
     }()
     
     let planetImageView: UIImageView = {
-        let imageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 95, height: 95))
+        let imageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: screenWidth * 0.24, height: screenWidth * 0.24))
         imageView.isUserInteractionEnabled = true
         imageView.image = UIImage(named: "default")
         imageView.sizeToFit()
@@ -40,10 +40,10 @@ class SelectPlanetCollectionViewCell: UICollectionViewCell {
             self.contentView.addSubview($0)
         }
         
-        planetImageView.anchor(top: self.topAnchor, paddingTop: 5)
+        planetImageView.anchor(top: self.topAnchor, paddingTop: screenHeight * 0.005)
         planetImageView.centerX(inView: self)
-        planetImageView.setWidth(width: 135)
-        planetImageView.setHeight(height: 105)
+        planetImageView.setWidth(width: screenWidth * 0.34)
+        planetImageView.setHeight(height: screenHeight * 0.12)
         
         planetNameLabel.anchor(top: planetImageView.bottomAnchor)
         planetNameLabel.centerX(inView: planetImageView)

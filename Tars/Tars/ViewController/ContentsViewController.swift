@@ -17,7 +17,7 @@ class ContentsViewController: UIViewController {
     }
     
     let planetImageView: UIImageView = {
-        let imageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+        let imageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: screenWidth * 0.5, height: screenHeight * 0.23))
         imageView.isUserInteractionEnabled = true
         imageView.image = UIImage(named: "default")
         imageView.sizeToFit()
@@ -30,7 +30,7 @@ class ContentsViewController: UIViewController {
         view.backgroundColor = .black
         view.addSubview(planetImageView)
 
-        planetImageView.anchor(top: view.topAnchor, paddingTop: 150)
+        planetImageView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.17)
         planetImageView.centerX(inView: view)
     }
     

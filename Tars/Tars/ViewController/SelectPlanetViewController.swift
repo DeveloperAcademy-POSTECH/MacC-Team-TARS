@@ -13,13 +13,13 @@ class SelectPlanetViewController: UIViewController {
     public let selectPlanetCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 20
+        layout.minimumLineSpacing = screenWidth * 0.05
         layout.minimumInteritemSpacing = CGFloat(UInt16.max)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(SelectPlanetCollectionViewCell.self,
                                 forCellWithReuseIdentifier: SelectPlanetCollectionViewCell.identifier)
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 38, bottom: 0, right: 38)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: screenWidth * 0.09, bottom: 0, right: screenWidth * 0.09)
         collectionView.showsHorizontalScrollIndicator = true
         collectionView.backgroundColor = .clear
         
@@ -35,9 +35,9 @@ class SelectPlanetViewController: UIViewController {
         view.layer.masksToBounds = true
 
         view.addSubview(selectPlanetCollectionView)
-        selectPlanetCollectionView.anchor(top: view.topAnchor, paddingTop: 300)
-        selectPlanetCollectionView.setHeight(height: 300)
-        selectPlanetCollectionView.setWidth(width: 390)
+        selectPlanetCollectionView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.35)
+        selectPlanetCollectionView.setHeight(height: screenHeight * 0.35)
+        selectPlanetCollectionView.setWidth(width: screenWidth)
         selectPlanetCollectionView.centerX(inView: view)
     }
 }
@@ -45,8 +45,8 @@ class SelectPlanetViewController: UIViewController {
 extension SelectPlanetViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cellWidth = 109
-        let cellHeight = 145
+        let cellWidth = screenWidth * 0.27
+        let cellHeight = screenHeight * 0.17
         
         return CGSize(width: cellWidth, height: cellHeight)
     }
