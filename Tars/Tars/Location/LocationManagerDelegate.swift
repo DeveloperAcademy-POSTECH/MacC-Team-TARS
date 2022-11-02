@@ -5,7 +5,6 @@
 //  Created by 이윤영 on 2022/11/02.
 //
 
-import Foundation
 import UIKit
 
 protocol LocationManagerDelegate: AnyObject, UIViewController {
