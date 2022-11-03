@@ -6,16 +6,18 @@
 //
 
 import UIKit
-import SceneKit
+// import SceneKit
 import ARKit
 
 class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, LocationManagerDelegate {
 
     public var guideCircleView = CustomCircleView()
     public var selectedSquareView = CustomSquareView()
+    let contentsViewController = ContentsViewController()
+    
     var planetObjectList: [SCNNode] = []
     
-    let contentsViewController = ContentsViewController()
+    // TODO: 가이드 라벨 삽입 "빠르게 천체 찾기" top anchor 기준으로 주기
     
     public let selectPlanetCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -28,7 +30,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                                 forCellWithReuseIdentifier: SelectPlanetCollectionViewCell.identifier)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: screenWidth * 0.09, bottom: 0, right: screenWidth * 0.09)
         collectionView.showsHorizontalScrollIndicator = true
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = .black
         
         return collectionView
     }()
@@ -83,6 +85,16 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         }
     }
     
+    /// 행성 선택 시, 네비게이션 효과 삽입
+    // hit_test로 활용 vivi
+    func addNodeAction(node: SCNNode) {
+        // SCNNode에 시각적 애니메이션 삽입
+        // 해당 노드가 선택되면(터치) ->
+        let rotateOne = SCNAction.rotateBy(x: 0, y: CGFloat(Float.pi), z: 0, duration: 5.0)
+        let repeatForever = SCNAction.repeatForever(rotateOne)
+        node.runAction(repeatForever)
+    }
+    
     private func configureConstraints() {
         sceneView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
         
@@ -90,9 +102,9 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         selectedSquareView.centerY(inView: sceneView)
         
         guideCircleView.centerX(inView: view)
-        guideCircleView.centerY(inView: view)
+        guideCircleView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.23)
         
-        selectPlanetCollectionView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.70)
+        selectPlanetCollectionView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.68)
         selectPlanetCollectionView.setHeight(height: screenHeight * 0.35)
         selectPlanetCollectionView.setWidth(width: screenWidth)
         selectPlanetCollectionView.centerX(inView: view)
@@ -140,45 +152,6 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
             let bodies = try await AstronomyAPIManager().requestBodies()
             setPlanetPosition(to: sceneView.scene, planets: bodies)
             getPlanetNodeList(planets: bodies)
-        }
-    }
-}
-
-extension UniverseSearchViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let cellWidth = screenWidth * 0.27
-        let cellHeight = screenHeight * 0.17
-        
-        return CGSize(width: cellWidth, height: cellHeight)
-    }
-}
-
-extension UniverseSearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return planetList.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectPlanetCollectionViewCell.identifier, for: indexPath) as? SelectPlanetCollectionViewCell else { return UICollectionViewCell() }
-        
-        let selectedPlanetName = planetList[indexPath.row].planetName
-        let selectedPlanetImage = planetList[indexPath.row].planetImage
-        
-        cell.planetNameLabel.text = selectedPlanetName
-        cell.planetImageView.image = selectedPlanetImage
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectPlanetCollectionViewCell.identifier, for: indexPath) as? SelectPlanetCollectionViewCell
-        
-        let selectedPlanet = planetList[indexPath.row]
-        
-        if (cell?.isSelected) != nil {
-            contentsViewController.planet = selectedPlanet
-            navigationController?.pushViewController(contentsViewController, animated: true)
         }
     }
 }

@@ -30,8 +30,11 @@ extension UniverseSearchViewController: UICollectionViewDataSource {
         let selectedPlanet = planetList[indexPath.row]
         
         if (cell?.isSelected) != nil {
-            contentsViewController.planet = selectedPlanet
-            navigationController?.pushViewController(contentsViewController, animated: true)
+            // TODO: 선택 시 동작 구현 (왜 안될까?)
+            cell?.planetNameLabel.textColor = .black
+            cell?.backgroundView = cell?.planetBackgroundView
+//            contentsViewController.planet = selectedPlanet
+//            navigationController?.pushViewController(contentsViewController, animated: true)
         }
     }
 }
