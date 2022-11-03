@@ -17,7 +17,14 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     
     var planetObjectList: [SCNNode] = []
     
-    // TODO: 가이드 라벨 삽입 "빠르게 천체 찾기" top anchor 기준으로 주기
+    let searchGuideLabel: UILabel = {
+        let label: UILabel = UILabel()
+        label.text = "빠르게 천체 찾기"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        return label
+    }()
     
     public let selectPlanetCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -47,11 +54,12 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         selectPlanetCollectionView.delegate = self
         selectPlanetCollectionView.dataSource = self
         
-        [guideCircleView, sceneView, selectedSquareView, selectPlanetCollectionView].forEach { view.addSubview($0) }
+        [guideCircleView, sceneView, selectedSquareView, searchGuideLabel, selectPlanetCollectionView].forEach { view.addSubview($0) }
         sceneView.addSubview(guideCircleView)
         configureConstraints()
         
         selectedSquareView.isHidden = true
+        view.bringSubviewToFront(searchGuideLabel)
         
         let locationManager = LocationManager.shared
         locationManager.delegate = self
@@ -103,6 +111,9 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         
         guideCircleView.centerX(inView: view)
         guideCircleView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.23)
+        
+        searchGuideLabel.centerX(inView: view)
+        searchGuideLabel.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.7)
         
         selectPlanetCollectionView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.68)
         selectPlanetCollectionView.setHeight(height: screenHeight * 0.35)
