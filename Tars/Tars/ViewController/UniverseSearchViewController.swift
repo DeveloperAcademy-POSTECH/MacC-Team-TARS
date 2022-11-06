@@ -6,7 +6,7 @@
 //
 
 import UIKit
-// import SceneKit
+import SceneKit
 import ARKit
 
 class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, LocationManagerDelegate {
@@ -93,15 +93,8 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         }
     }
     
-    /// 행성 선택 시, 네비게이션 효과 삽입
-    // hit_test로 활용 vivi
-    func addNodeAction(node: SCNNode) {
-        // SCNNode에 시각적 애니메이션 삽입
-        // 해당 노드가 선택되면(터치) ->
-        let rotateOne = SCNAction.rotateBy(x: 0, y: CGFloat(Float.pi), z: 0, duration: 5.0)
-        let repeatForever = SCNAction.repeatForever(rotateOne)
-        node.runAction(repeatForever)
-    }
+    // TODO: 행성 선택 시, 네비게이션 효과 삽입
+    // hit_test로 활용: vivi
     
     private func configureConstraints() {
         sceneView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
@@ -123,20 +116,22 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
-        
-        configuration.worldAlignment = .gravityAndHeading
+        navigationController?.isNavigationBarHidden = false
 
-        // Run the view's session
+        DispatchQueue.main.async {
+            // TODO: Fix title error
+            self.navigationController?.navigationItem.title = "우주 둘러보기"
+            self.navigationController?.navigationBar.tintColor = .white
+            self.navigationController?.navigationBar.backgroundColor = .black
+        }
+        
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.worldAlignment = .gravityAndHeading
         sceneView.session.run(configuration)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // Pause the view's session
         sceneView.session.pause()
     }
 

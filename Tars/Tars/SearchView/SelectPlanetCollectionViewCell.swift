@@ -34,7 +34,6 @@ class SelectPlanetCollectionViewCell: UICollectionViewCell {
     }()
     
     override func layoutSubviews() {
-        // self.backgroundView = planetBackgroundView
         
         [planetImageView, planetNameLabel].forEach {
             self.contentView.addSubview($0)
