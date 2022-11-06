@@ -61,6 +61,9 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         selectedSquareView.isHidden = true
         view.bringSubviewToFront(searchGuideLabel)
         
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        self.sceneView.addGestureRecognizer(tapGestureRecognizer)
+        
         let locationManager = LocationManager.shared
         locationManager.delegate = self
         locationManager.updateLocation()
@@ -93,8 +96,22 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         }
     }
     
-    // TODO: 행성 선택 시, 네비게이션 효과 삽입
-    // hit_test로 활용: vivi
+    /// hitTest 객체(행성 노드)를 인식하는 함수
+    @objc func handleTap(sender: UITapGestureRecognizer) {
+        let sceneViewTappdeOn = sender.view as! SCNView
+        let touchCoordinates = sender.location(in: sceneViewTappdeOn)
+        let hitTest = sceneViewTappdeOn.hitTest(touchCoordinates)
+        
+        if hitTest.isEmpty {
+            print("didn't touch anything")
+        } else {
+            let results = hitTest.first!
+            let geometry = results.node.geometry
+            print(geometry)
+            let node = results.node
+            print(node)
+        }
+    }
     
     private func configureConstraints() {
         sceneView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
