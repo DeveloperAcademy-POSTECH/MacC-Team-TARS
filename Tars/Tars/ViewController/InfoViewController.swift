@@ -17,7 +17,7 @@ class InfoViewController: UIViewController {
     
     lazy var planetName: UILabel = {
         let planetName = UILabel()
-        planetName.text = "목성"
+        planetName.text = PlanetStrings.jupiter.localizedKey
         planetName.font = .preferredFont(forTextStyle: .largeTitle)
         if let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .title1).withSymbolicTraits(.traitBold) {
             planetName.font = .init(descriptor: descriptor, size: 0)
@@ -29,7 +29,7 @@ class InfoViewController: UIViewController {
     
     lazy var planetInfo: UILabel = {
         let planetInfo = UILabel()
-        planetInfo.text = "목성은 태양계의 다섯번째 행성이자 가장 큰 행성이다. 태양의 질량의 1,000분의 1배에 달하는 거대행성으로, 태양계에 있는 다른 모든 행성들을 합한 질량의 약 2.5배에 이른다"
+        planetInfo.text = PlanetStrings.jupiterContent.localizedKey
         planetInfo.font = .preferredFont(forTextStyle: .title3)
         planetInfo.setLineSpacing(spacing: 6)
         planetInfo.textColor = .white
