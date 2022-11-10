@@ -33,13 +33,14 @@ extension UniverseSearchViewController: UICollectionViewDataSource {
         guard let cell = collectionView.cellForItem(at: indexPath) as? SelectPlanetCollectionViewCell else { return }
 
         if cell.isSelected {
-            DispatchQueue.main.async {
-                cell.planetNameLabel.textColor = .black
-                cell.backgroundView = cell.planetBackgroundView
-                // TODO: Fix title error
-                self.navigationController?.navigationItem.title = "천체 탐색 중"
-                self.navigationController?.navigationBar.backgroundColor = .systemYellow
-            }
+            cell.planetNameLabel.textColor = .black
+            cell.backgroundView = cell.planetBackgroundView
+            
+            // navigation title 변경
+            self.navigationController?.topViewController?.title = "천체 탐색 중"
+            self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
+            self.navigationController?.navigationBar.backgroundColor = .black
+            
         }
     }
 

@@ -107,14 +107,13 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         } else {
             let results = hitTest.first!
             let geometry = results.node.geometry
-            print(geometry)
-            let node = results.node
-            print(node)
+            let planetName = geometry?.firstMaterial?.diffuse.contents
+            print(planetName as Any)
         }
     }
     
     private func configureConstraints() {
-        sceneView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
+        sceneView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, paddingTop: screenHeight * 0.1)
         
         selectedSquareView.centerX(inView: sceneView)
         selectedSquareView.centerY(inView: sceneView)
@@ -133,14 +132,12 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = false
-
-        DispatchQueue.main.async {
-            // TODO: Fix title error
-            self.navigationController?.navigationItem.title = "우주 둘러보기"
-            self.navigationController?.navigationBar.tintColor = .white
-            self.navigationController?.navigationBar.backgroundColor = .black
-        }
+        
+        // navigation title 설정
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.topViewController?.title = "우주 둘러보기"
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.backgroundColor = .black
         
         let configuration = ARWorldTrackingConfiguration()
         configuration.worldAlignment = .gravityAndHeading
