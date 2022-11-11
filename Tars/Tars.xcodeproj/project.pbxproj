@@ -36,9 +36,16 @@
 		BF7B4FD028FE452200F83158 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B4FCF28FE452200F83158 /* Color+Extension.swift */; };
 		BF7B4FD228FE454A00F83158 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B4FD128FE454A00F83158 /* View+Extension.swift */; };
 		BF7B4FD528FE47B200F83158 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4FD428FE47B200F83158 /* .swiftlint.yml */; };
+		DD0701DD2919FF5B004FD8AB /* Moon.wav in Resources */ = {isa = PBXBuildFile; fileRef = DD0701D62919FF5B004FD8AB /* Moon.wav */; };
+		DD0701DE2919FF5B004FD8AB /* Venus.wav in Resources */ = {isa = PBXBuildFile; fileRef = DD0701D72919FF5B004FD8AB /* Venus.wav */; };
+		DD0701DF2919FF5B004FD8AB /* Uranus.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DD0701D82919FF5B004FD8AB /* Uranus.mp3 */; };
+		DD0701E02919FF5B004FD8AB /* Mars.wav in Resources */ = {isa = PBXBuildFile; fileRef = DD0701D92919FF5B004FD8AB /* Mars.wav */; };
+		DD0701E12919FF5B004FD8AB /* Sun.wav in Resources */ = {isa = PBXBuildFile; fileRef = DD0701DA2919FF5B004FD8AB /* Sun.wav */; };
+		DD0701E22919FF5B004FD8AB /* Jupiter.wav in Resources */ = {isa = PBXBuildFile; fileRef = DD0701DB2919FF5B004FD8AB /* Jupiter.wav */; };
+		DD0701E32919FF5B004FD8AB /* Mercury.wav in Resources */ = {isa = PBXBuildFile; fileRef = DD0701DC2919FF5B004FD8AB /* Mercury.wav */; };
 		DDB7DD932906B2B000FC0BA4 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */; };
 		DDB7DD97290814AB00FC0BA4 /* Label+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB7DD96290814AB00FC0BA4 /* Label+Extension.swift */; };
-		DDB7DD992912BB5C00FC0BA4 /* MercurySound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DDB7DD982912BB5C00FC0BA4 /* MercurySound.mp3 */; };
+		DDB7DDA329180DAF00FC0BA4 /* Venus_Searching.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DDB7DDA229180DAE00FC0BA4 /* Venus_Searching.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,9 +80,16 @@
 		BF7B4FCF28FE452200F83158 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		BF7B4FD128FE454A00F83158 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		BF7B4FD428FE47B200F83158 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		DD0701D62919FF5B004FD8AB /* Moon.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Moon.wav; path = ../../../../Moon.wav; sourceTree = "<group>"; };
+		DD0701D72919FF5B004FD8AB /* Venus.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Venus.wav; path = ../../../../Venus.wav; sourceTree = "<group>"; };
+		DD0701D82919FF5B004FD8AB /* Uranus.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Uranus.mp3; path = ../../../../Uranus.mp3; sourceTree = "<group>"; };
+		DD0701D92919FF5B004FD8AB /* Mars.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Mars.wav; path = ../../../../Mars.wav; sourceTree = "<group>"; };
+		DD0701DA2919FF5B004FD8AB /* Sun.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Sun.wav; path = ../../../../Sun.wav; sourceTree = "<group>"; };
+		DD0701DB2919FF5B004FD8AB /* Jupiter.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Jupiter.wav; path = ../../../../Jupiter.wav; sourceTree = "<group>"; };
+		DD0701DC2919FF5B004FD8AB /* Mercury.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Mercury.wav; path = ../../../../Mercury.wav; sourceTree = "<group>"; };
 		DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		DDB7DD96290814AB00FC0BA4 /* Label+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+Extension.swift"; sourceTree = "<group>"; };
-		DDB7DD982912BB5C00FC0BA4 /* MercurySound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = MercurySound.mp3; path = ../../../../MercurySound.mp3; sourceTree = "<group>"; };
+		DDB7DDA229180DAE00FC0BA4 /* Venus_Searching.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Venus_Searching.mp3; path = ../../../../Venus_Searching.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,7 +172,14 @@
 				BF7B4FC028FE431A00F83158 /* LaunchScreen.storyboard */,
 				BF7B4FC328FE431A00F83158 /* Info.plist */,
 				BF788B8529052230002BF8C0 /* UniverseBackground.scn */,
-				DDB7DD982912BB5C00FC0BA4 /* MercurySound.mp3 */,
+				DDB7DDA229180DAE00FC0BA4 /* Venus_Searching.mp3 */,
+				DD0701D92919FF5B004FD8AB /* Mars.wav */,
+				DD0701DB2919FF5B004FD8AB /* Jupiter.wav */,
+				DD0701D72919FF5B004FD8AB /* Venus.wav */,
+				DD0701D62919FF5B004FD8AB /* Moon.wav */,
+				DD0701DA2919FF5B004FD8AB /* Sun.wav */,
+				DD0701DC2919FF5B004FD8AB /* Mercury.wav */,
+				DD0701D82919FF5B004FD8AB /* Uranus.mp3 */,
 			);
 			path = Tars;
 			sourceTree = "<group>";
@@ -269,9 +290,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF7B4FD528FE47B200F83158 /* .swiftlint.yml in Resources */,
+				DD0701E02919FF5B004FD8AB /* Mars.wav in Resources */,
+				DD0701DE2919FF5B004FD8AB /* Venus.wav in Resources */,
 				BF788B8629052230002BF8C0 /* UniverseBackground.scn in Resources */,
 				BF7B4FC228FE431A00F83158 /* LaunchScreen.storyboard in Resources */,
-				DDB7DD992912BB5C00FC0BA4 /* MercurySound.mp3 in Resources */,
+				DD0701E12919FF5B004FD8AB /* Sun.wav in Resources */,
+				DD0701E22919FF5B004FD8AB /* Jupiter.wav in Resources */,
+				DDB7DDA329180DAF00FC0BA4 /* Venus_Searching.mp3 in Resources */,
+				DD0701DD2919FF5B004FD8AB /* Moon.wav in Resources */,
+				DD0701DF2919FF5B004FD8AB /* Uranus.mp3 in Resources */,
+				DD0701E32919FF5B004FD8AB /* Mercury.wav in Resources */,
 				BF7B4FBF28FE431A00F83158 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

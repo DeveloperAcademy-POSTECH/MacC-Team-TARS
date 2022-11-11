@@ -15,12 +15,12 @@ class UniverseViewController: UIViewController, ARSCNViewDelegate, LocationManag
     public var selectedSquareView = CustomSquareView()
     
     /// Source for audio playback
-    lazy var audioSource: SCNAudioSource = {
-      let source = SCNAudioSource(fileNamed: "MercurySound.mp3")!
-      source.loops = true
-      source.load()
-      return source
-    }()
+//    lazy var audioSource: SCNAudioSource = {
+//    let source = SCNAudioSource(fileNamed: "Venus_Searching.mp3")!
+//    source.loops = true
+//    source.load()
+//    return source
+//    }()
     
     /// ARKit 을 사용하기 위한 view 선언
     lazy var sceneView: ARSCNView = {
@@ -58,7 +58,18 @@ class UniverseViewController: UIViewController, ARSCNViewDelegate, LocationManag
                 sphereNode.position = SCNVector3(planet.coordinate.x, planet.coordinate.y, planet.coordinate.z)
                 
                 scene?.rootNode.addChildNode(sphereNode)
-                sphereNode.addAudioPlayer(SCNAudioPlayer(source: audioSource))
+                if planet.name == "Mars" {
+                    print(planet.name)
+                    let audioSource: SCNAudioSource = {
+                        let source = SCNAudioSource(fileNamed: "\(planet.name).wav")!
+                        source.loops = true
+                        source.load()
+                        return source
+                    }()
+                    
+                    sphereNode.removeAllAudioPlayers()
+                    sphereNode.addAudioPlayer(SCNAudioPlayer(source: audioSource))
+                }
             }
         }
     }
