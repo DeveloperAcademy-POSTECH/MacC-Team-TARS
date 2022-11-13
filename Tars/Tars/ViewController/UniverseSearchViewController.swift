@@ -59,11 +59,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         configureConstraints()
         
         selectedSquareView.isHidden = true
-        view.bringSubviewToFront(searchGuideLabel)
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        self.sceneView.addGestureRecognizer(tapGestureRecognizer)
-        
+
         let locationManager = LocationManager.shared
         locationManager.delegate = self
         locationManager.updateLocation()
@@ -93,22 +89,6 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                 sphereNode.position = SCNVector3(planet.coordinate.x, planet.coordinate.y, planet.coordinate.z)
                 scene?.rootNode.addChildNode(sphereNode)
             }
-        }
-    }
-    
-    /// hitTest 객체(행성 노드)를 인식하는 함수
-    @objc func handleTap(sender: UITapGestureRecognizer) {
-        let sceneViewTappdeOn = sender.view as! SCNView
-        let touchCoordinates = sender.location(in: sceneViewTappdeOn)
-        let hitTest = sceneViewTappdeOn.hitTest(touchCoordinates)
-        
-        if hitTest.isEmpty {
-            print("didn't touch anything")
-        } else {
-            let results = hitTest.first!
-            let geometry = results.node.geometry
-            let planetName = geometry?.firstMaterial?.diffuse.contents
-            print(planetName as Any)
         }
     }
     
