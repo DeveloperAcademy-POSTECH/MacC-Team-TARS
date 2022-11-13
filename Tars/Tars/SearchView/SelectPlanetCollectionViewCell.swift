@@ -27,14 +27,13 @@ class SelectPlanetCollectionViewCell: UICollectionViewCell {
     let planetNameLabel: UILabel = {
         let label: UILabel = UILabel()
         label.text = "default"
-        label.textColor = .black
+        label.textColor = .white
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
         return label
     }()
     
     override func layoutSubviews() {
-        self.backgroundView = planetBackgroundView
         
         [planetImageView, planetNameLabel].forEach {
             self.contentView.addSubview($0)
