@@ -37,7 +37,7 @@ extension UniverseSearchViewController: UICollectionViewDataSource {
             cell.backgroundView = cell.planetBackgroundView
             
             // navigation title 변경
-            self.navigationController?.topViewController?.title = "천체 탐색 중"
+            self.navigationController?.topViewController?.title = "\(cell.planetNameLabel.text ?? "천체") 탐색 중"
             self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
             self.navigationController?.navigationBar.backgroundColor = .black
             
