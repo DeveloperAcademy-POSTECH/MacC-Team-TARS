@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		37024B0F2912083E00BC64AE /* LocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37024B0E2912083E00BC64AE /* LocationManagerDelegate.swift */; };
 		374FEE372909597B00E0C56B /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FEE362909597B00E0C56B /* Float+Extension.swift */; };
+		3FF5AB952921DE8A007EC4F3 /* Mars.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF5AB942921DE8A007EC4F3 /* Mars.mp3 */; };
+		3FF5AB9D2921E556007EC4F3 /* Jupiter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF5AB962921E555007EC4F3 /* Jupiter.mp3 */; };
+		3FF5AB9F2921E556007EC4F3 /* Moon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF5AB982921E556007EC4F3 /* Moon.mp3 */; };
+		3FF5ABA02921E556007EC4F3 /* Mercury.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF5AB992921E556007EC4F3 /* Mercury.mp3 */; };
+		3FF5ABA12921E556007EC4F3 /* Uranus.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF5AB9A2921E556007EC4F3 /* Uranus.mp3 */; };
+		3FF5ABA22921E556007EC4F3 /* Sun.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF5AB9B2921E556007EC4F3 /* Sun.mp3 */; };
+		3FF5ABA32921E556007EC4F3 /* Saturn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF5AB9C2921E556007EC4F3 /* Saturn.mp3 */; };
 		5533717729123F17004AD6E8 /* UniverseSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */; };
 		558932C9291429E90032D459 /* UniverseSearchViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558932C8291429E90032D459 /* UniverseSearchViewController+DataSource.swift */; };
 		558932CB29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558932CA29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift */; };
@@ -46,6 +53,13 @@
 /* Begin PBXFileReference section */
 		37024B0E2912083E00BC64AE /* LocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerDelegate.swift; sourceTree = "<group>"; };
 		374FEE362909597B00E0C56B /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
+		3FF5AB942921DE8A007EC4F3 /* Mars.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Mars.mp3; sourceTree = "<group>"; };
+		3FF5AB962921E555007EC4F3 /* Jupiter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Jupiter.mp3; sourceTree = "<group>"; };
+		3FF5AB982921E556007EC4F3 /* Moon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Moon.mp3; sourceTree = "<group>"; };
+		3FF5AB992921E556007EC4F3 /* Mercury.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Mercury.mp3; sourceTree = "<group>"; };
+		3FF5AB9A2921E556007EC4F3 /* Uranus.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Uranus.mp3; sourceTree = "<group>"; };
+		3FF5AB9B2921E556007EC4F3 /* Sun.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Sun.mp3; sourceTree = "<group>"; };
+		3FF5AB9C2921E556007EC4F3 /* Saturn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Saturn.mp3; sourceTree = "<group>"; };
 		5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseSearchViewController.swift; sourceTree = "<group>"; };
 		558932C8291429E90032D459 /* UniverseSearchViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UniverseSearchViewController+DataSource.swift"; sourceTree = "<group>"; };
 		558932CA29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UniverseSearchViewController+FlowLayoutDelegate.swift"; sourceTree = "<group>"; };
@@ -165,6 +179,13 @@
 				BF7B4FC028FE431A00F83158 /* LaunchScreen.storyboard */,
 				BF7B4FC328FE431A00F83158 /* Info.plist */,
 				BF788B8529052230002BF8C0 /* UniverseBackground.scn */,
+				3FF5AB992921E556007EC4F3 /* Mercury.mp3 */,
+				3FF5AB982921E556007EC4F3 /* Moon.mp3 */,
+				3FF5AB9C2921E556007EC4F3 /* Saturn.mp3 */,
+				3FF5AB9B2921E556007EC4F3 /* Sun.mp3 */,
+				3FF5AB9A2921E556007EC4F3 /* Uranus.mp3 */,
+				3FF5AB942921DE8A007EC4F3 /* Mars.mp3 */,
+				3FF5AB962921E555007EC4F3 /* Jupiter.mp3 */,
 			);
 			path = Tars;
 			sourceTree = "<group>";
@@ -274,10 +295,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FF5AB9F2921E556007EC4F3 /* Moon.mp3 in Resources */,
+				3FF5ABA02921E556007EC4F3 /* Mercury.mp3 in Resources */,
+				3FF5ABA22921E556007EC4F3 /* Sun.mp3 in Resources */,
 				BF7B4FD528FE47B200F83158 /* .swiftlint.yml in Resources */,
+				3FF5AB9D2921E556007EC4F3 /* Jupiter.mp3 in Resources */,
 				BF788B8629052230002BF8C0 /* UniverseBackground.scn in Resources */,
+				3FF5AB952921DE8A007EC4F3 /* Mars.mp3 in Resources */,
 				BF7B4FC228FE431A00F83158 /* LaunchScreen.storyboard in Resources */,
+				3FF5ABA32921E556007EC4F3 /* Saturn.mp3 in Resources */,
 				BF7B4FBF28FE431A00F83158 /* Assets.xcassets in Resources */,
+				3FF5ABA12921E556007EC4F3 /* Uranus.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,7 +506,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = N3H27N59VG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tars/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라를 사용하기 위해 권한이 필요합니다.";
@@ -508,7 +536,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = N3H27N59VG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tars/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라를 사용하기 위해 권한이 필요합니다.";
