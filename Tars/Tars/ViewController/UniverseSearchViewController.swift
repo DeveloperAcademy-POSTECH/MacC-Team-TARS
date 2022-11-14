@@ -15,6 +15,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     public var selectedSquareView = CustomSquareView()
     let contentsViewController = ContentsViewController()
     
+    var isSelected: Bool = false
     var planetObjectList: [SCNNode] = []
     
     let searchGuideLabel: UILabel = {
@@ -128,25 +129,8 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         super.viewWillDisappear(animated)
         sceneView.session.pause()
     }
-
-    // MARK: - ARSCNViewDelegate
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-        
-    }
-    
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
-    }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
-    }
     
     // MARK: - LocationManagerDelegate
-    
     func didUpdateUserLocation() {
         Task {
             let bodies = try await AstronomyAPIManager().requestBodies()
