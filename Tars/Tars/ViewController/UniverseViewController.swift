@@ -58,10 +58,10 @@ class UniverseViewController: UIViewController, ARSCNViewDelegate, LocationManag
                 sphereNode.position = SCNVector3(planet.coordinate.x, planet.coordinate.y, planet.coordinate.z)
                 
                 scene?.rootNode.addChildNode(sphereNode)
-                if planet.name == "Mars" {
+                if planet.name == "Moon" {
                     print(planet.name)
                     let audioSource: SCNAudioSource = {
-                        let source = SCNAudioSource(fileNamed: "\(planet.name).wav")!
+                        let source = SCNAudioSource(fileNamed: "\(planet.name).mp3")!
                         source.loops = true
                         source.load()
                         return source
