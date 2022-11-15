@@ -57,4 +57,8 @@ class CustomSquareView: UIView {
                            width: screenWidth / 5.65,
                            height: screenHeight / 26.375)
     }
+    
+    func setLabel(_ name: String) {
+        self.planetLabel.text = name
+    }
 }
