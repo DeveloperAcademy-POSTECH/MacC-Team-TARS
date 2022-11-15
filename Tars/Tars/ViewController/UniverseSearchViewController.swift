@@ -161,6 +161,16 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
             setPlanetPosition(to: sceneView.scene, planets: bodies)
         }
     }
+    
+    // MARK: - ARSCNViewDelegate
+    func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
+        switch mode {
+        case .explore:
+            explore()
+        case .search(planet: let name):
+            search(for: name)
+        }
+    }
 }
 
 // MARK: - 레이아웃 설정 함수
@@ -212,5 +222,44 @@ extension UniverseSearchViewController {
         DispatchQueue.main.async {
             self.guideArrowView.isHidden = true
         }
+    }
+}
+
+extension UniverseSearchViewController {
+    // MARK: - 탐색 모드 기능
+    private func explore() {
+        var detectNode: SCNNode?
+        var nodeCenter: CGPoint = .zero
+        var minDistance: CGFloat = screenHeight
+
+        guard let pointOfView = sceneView.pointOfView else { return }
+        let detectNodes = sceneView.nodesInsideFrustum(of: pointOfView)
+        
+        for node in detectNodes {
+            let nodePosition = sceneView.projectPoint(node.position)
+            let nodeScreenPos = nodePosition.toCGPoint()
+            let distance = circleCenter.distanceTo(nodeScreenPos)
+
+            if distance < screenWidth / 3 && distance < minDistance {
+                detectNode = node
+                nodeCenter = nodeScreenPos
+                minDistance = distance
+            }
+        }
+
+        if let detectNode = detectNode {
+            guard let planetName = detectNode.name else { return }
+            guard let name = planetNameDict[planetName] else { return }
+
+            let nodeOrigin = CGPoint(x: nodeCenter.x - screenWidth / 11.3, y: nodeCenter.y - screenWidth / 11.3)
+            setDetectedLayout(name: name, point: nodeOrigin)
+        } else {
+            setNotDetectedLayout()
+        }
+    }
+    
+    // MARK: - 검색 모드 기능
+    private func search(for name: String) {
+
     }
 }
