@@ -36,10 +36,10 @@ extension UniverseSearchViewController: UICollectionViewDataSource {
         
         if cell.isSelected {
             // cell이 재선택 된 경우
-            // TODO: 탐색 모드로 변환
             cell.planetNameLabel.textColor = .white
             cell.backgroundView = nil
-            self.navigationController?.topViewController?.title = "빠르게 천체 찾기"
+            self.mode = .explore
+            
             collectionView.deselectItem(at: indexPath, animated: true)
             return false
         } else {
@@ -54,10 +54,7 @@ extension UniverseSearchViewController: UICollectionViewDataSource {
             cell.planetNameLabel.textColor = .black
             cell.backgroundView = cell.planetBackgroundView
             
-            // navigation title 변경
-            self.navigationController?.topViewController?.title = "\(cell.planetNameLabel.text ?? "천체") 탐색 중"
-            self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
-            self.navigationController?.navigationBar.backgroundColor = .black
+            self.mode = .search(planet: planetNames[indexPath.row])
         }
     }
 
