@@ -18,7 +18,7 @@ enum Mode {
         case .explore:
             return "우주 둘러보기"
         case .search(planet: let name):
-            return "\(name) 찾는 중"
+            return "\(planetNameDict[name] ?? name) 찾는 중"
         }
     }
 }
