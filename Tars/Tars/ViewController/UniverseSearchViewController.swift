@@ -54,7 +54,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         selectPlanetCollectionView.delegate = self
         selectPlanetCollectionView.dataSource = self
         
-        [guideCircleView, sceneView, selectedSquareView, searchGuideLabel, selectPlanetCollectionView].forEach { view.addSubview($0) }
+        [guideCircleView, sceneView, selectedSquareView, selectPlanetCollectionView, searchGuideLabel].forEach { view.addSubview($0) }
         sceneView.addSubview(guideCircleView)
         configureConstraints()
         
@@ -117,6 +117,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         
         searchGuideLabel.centerX(inView: view)
         searchGuideLabel.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.7)
+
         
         selectPlanetCollectionView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.68)
         selectPlanetCollectionView.setHeight(height: screenHeight * 0.35)
