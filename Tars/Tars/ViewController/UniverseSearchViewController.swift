@@ -36,6 +36,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         }
     }
     var planetObjectList: [String: SCNNode] = [:]
+    var circleCenter: CGPoint = .zero
     
     let searchGuideLabel: UILabel = {
         let label: UILabel = UILabel()
@@ -141,6 +142,11 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         let configuration = ARWorldTrackingConfiguration()
         configuration.worldAlignment = .gravityAndHeading
         sceneView.session.run(configuration)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        circleCenter = guideCircleView.center
     }
     
     override func viewWillDisappear(_ animated: Bool) {
