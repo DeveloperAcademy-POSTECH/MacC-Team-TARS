@@ -35,7 +35,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
             setNeedsLayout()
         }
     }
-    var planetObjectList: [SCNNode] = []
+    var planetObjectList: [String: SCNNode] = [:]
     
     let searchGuideLabel: UILabel = {
         let label: UILabel = UILabel()
@@ -100,18 +100,6 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         self.navigationController?.pushViewController(SettingViewController(), animated: false)
     }
     
-    /// 행성을 리스트에 저장하기 위한 함수
-    private func getPlanetNodeList(planets: [Body]) {
-        for planet in planets {
-            if planet.name != "Earth" && planet.name != "Pluto" {
-                let sphere = SCNSphere(radius: 0.2)
-                let sphereNode = SCNNode(geometry: sphere)
-                sphereNode.position = SCNVector3(planet.coordinate.x, planet.coordinate.y, planet.coordinate.z)
-                planetObjectList.append(sphereNode)
-            }
-        }
-    }
-    
     /// 행성을 배치하기 위한 함수
     private func setPlanetPosition(to scene: SCNScene?, planets: [Body]) {
         for planet in planets {
@@ -122,7 +110,9 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                 sphere.firstMaterial?.diffuse.contents = UIImage(named: planet.name + "_Map")
                 let sphereNode = SCNNode(geometry: sphere)
                 sphereNode.position = SCNVector3(planet.coordinate.x, planet.coordinate.y, planet.coordinate.z)
+                sphereNode.name = planet.name
                 scene?.rootNode.addChildNode(sphereNode)
+                planetObjectList[planet.name] = sphereNode
             }
         }
     }
