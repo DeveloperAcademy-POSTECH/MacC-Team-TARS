@@ -218,6 +218,7 @@ extension UniverseSearchViewController {
         }
     }
     
+    // 화살표 숨김 설정
     private func setArrowHidden() {
         DispatchQueue.main.async {
             self.guideArrowView.isHidden = true
@@ -233,13 +234,14 @@ extension UniverseSearchViewController {
         var minDistance: CGFloat = screenHeight
 
         guard let pointOfView = sceneView.pointOfView else { return }
-        let detectNodes = sceneView.nodesInsideFrustum(of: pointOfView)
+        let detectNodes = sceneView.nodesInsideFrustum(of: pointOfView) // 화면에 들어온 노드 리스트
         
         for node in detectNodes {
             let nodePosition = sceneView.projectPoint(node.position)
             let nodeScreenPos = nodePosition.toCGPoint()
             let distance = circleCenter.distanceTo(nodeScreenPos)
 
+            // 원 안에 들어온 가장 짧은 거리, 노드, 화면상의 위치 저장
             if distance < screenWidth / 3 && distance < minDistance {
                 detectNode = node
                 nodeCenter = nodeScreenPos
@@ -248,12 +250,14 @@ extension UniverseSearchViewController {
         }
 
         if let detectNode = detectNode {
+            // 원 안에 들어온 노드 존재했을 때
             guard let planetName = detectNode.name else { return }
             guard let name = planetNameDict[planetName] else { return }
 
             let nodeOrigin = CGPoint(x: nodeCenter.x - screenWidth / 11.3, y: nodeCenter.y - screenWidth / 11.3)
             setDetectedLayout(name: name, point: nodeOrigin)
         } else {
+            // 탐지된 노드가 없을 때
             setNotDetectedLayout()
         }
     }
@@ -266,14 +270,16 @@ extension UniverseSearchViewController {
         let distanceToCenter = circleCenter.distanceTo(nodeScreenPos)
 
         if nodePosition.z >= 1 {
+            // 찾는 노드가 뒤에 있을 때
             setNotDetectedLayout()
             setArrowLayout(point: nodeScreenPos, distance: distanceToCenter, locatedBehind: true)
         } else if distanceToCenter >= (screenWidth / 3) {
+            // 찾는 노드가 원의 바깥에 있을 때
             setNotDetectedLayout()
             setArrowLayout(point: nodeScreenPos, distance: distanceToCenter)
         } else {
+            // 찾는 노드가 원 안에 있을 때
             let nodeOrigin = CGPoint(x: nodeScreenPos.x - screenWidth / 11.3, y: nodeScreenPos.y - screenWidth / 11.3)
-            
             setArrowHidden()
             setDetectedLayout(name: name, point: nodeOrigin)
         }
