@@ -59,10 +59,24 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         configureConstraints()
         
         selectedSquareView.isHidden = true
-
+        
         let locationManager = LocationManager.shared
         locationManager.delegate = self
         locationManager.updateLocation()
+        
+        // navigation title 설정
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.topViewController?.title = "우주 둘러보기"
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.backgroundColor = .black
+        
+        // settingButton navigationItem
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(settingButtonTapped))
+        self.navigationItem.rightBarButtonItem?.tintColor = .white
+    }
+    
+    @objc func settingButtonTapped() {
+        self.navigationController?.pushViewController(SettingViewController(), animated: false)
     }
     
     /// 행성을 리스트에 저장하기 위한 함수
@@ -112,12 +126,6 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // navigation title 설정
-        self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.topViewController?.title = "우주 둘러보기"
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
-        self.navigationController?.navigationBar.backgroundColor = .black
         
         let configuration = ARWorldTrackingConfiguration()
         configuration.worldAlignment = .gravityAndHeading
