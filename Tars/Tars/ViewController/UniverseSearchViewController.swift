@@ -15,7 +15,6 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     public var selectedSquareView = CustomSquareView()
     let contentsViewController = ContentsViewController()
     
-    var isSelected: Bool = false
     var planetObjectList: [SCNNode] = []
     
     let searchGuideLabel: UILabel = {
