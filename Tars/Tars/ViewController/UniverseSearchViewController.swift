@@ -156,6 +156,13 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     
     private func setNeedsLayout() {
         // TODO: - 모드 변경에 따른 레이아웃 설정
+        self.navigationController?.topViewController?.title = mode.titleText
+        switch mode {
+        case .explore:
+            break
+        case .search(planet: _):
+            break
+        }
     }
 
     // MARK: - LocationManagerDelegate
