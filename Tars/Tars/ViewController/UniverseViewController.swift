@@ -14,14 +14,6 @@ class UniverseViewController: UIViewController, ARSCNViewDelegate, LocationManag
     public var guideCircleView = CustomCircleView()
     public var selectedSquareView = CustomSquareView()
     
-    /// Source for audio playback
-//    lazy var audioSource: SCNAudioSource = {
-//    let source = SCNAudioSource(fileNamed: "Venus_Searching.mp3")!
-//    source.loops = true
-//    source.load()
-//    return source
-//    }()
-    
     /// ARKit 을 사용하기 위한 view 선언
     lazy var sceneView: ARSCNView = {
         let sceneView = ARSCNView()
@@ -57,19 +49,17 @@ class UniverseViewController: UIViewController, ARSCNViewDelegate, LocationManag
                 let sphereNode = SCNNode(geometry: sphere)
                 sphereNode.position = SCNVector3(planet.coordinate.x, planet.coordinate.y, planet.coordinate.z)
                 
-                scene?.rootNode.addChildNode(sphereNode)
-                if planet.name == "Moon" {
-                    print(planet.name)
-                    let audioSource: SCNAudioSource = {
-                        let source = SCNAudioSource(fileNamed: "\(planet.name).mp3")!
-                        source.loops = true
-                        source.load()
-                        return source
-                    }()
-                    
-                    sphereNode.removeAllAudioPlayers()
-                    sphereNode.addAudioPlayer(SCNAudioPlayer(source: audioSource))
-                }
+                    scene?.rootNode.addChildNode(sphereNode)
+                        print(planet.name)
+                        let audioSource: SCNAudioSource = {
+                            let source = SCNAudioSource(fileNamed: "\(planet.name).mp3")!
+                            source.loops = true
+                            source.load()
+                            return source
+                        }()
+                        
+                        sphereNode.removeAllAudioPlayers()
+                        sphereNode.addAudioPlayer(SCNAudioPlayer(source: audioSource))
             }
         }
     }
