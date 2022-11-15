@@ -25,8 +25,9 @@ enum Mode {
 
 class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, LocationManagerDelegate {
 
-    public var guideCircleView = CustomCircleView()
-    public var selectedSquareView = CustomSquareView()
+    private var guideCircleView = CustomCircleView()
+    private var selectedSquareView = CustomSquareView()
+    private var guideArrowView = CustomArrowView()
     let contentsViewController = ContentsViewController()
     
     var mode: Mode = .explore {
@@ -73,11 +74,12 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         selectPlanetCollectionView.delegate = self
         selectPlanetCollectionView.dataSource = self
         
-        [guideCircleView, sceneView, selectedSquareView, selectPlanetCollectionView, searchGuideLabel].forEach { view.addSubview($0) }
-        sceneView.addSubview(guideCircleView)
+        [guideCircleView, guideArrowView, selectedSquareView].forEach { sceneView.addSubview($0) }
+        [sceneView, selectPlanetCollectionView, searchGuideLabel].forEach { view.addSubview($0) }
         configureConstraints()
         
         selectedSquareView.isHidden = true
+        guideArrowView.isHidden = true
         
         let locationManager = LocationManager.shared
         locationManager.delegate = self
@@ -128,20 +130,19 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     private func configureConstraints() {
         sceneView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, paddingTop: screenHeight * 0.1)
         
-        selectedSquareView.centerX(inView: sceneView)
-        selectedSquareView.centerY(inView: sceneView)
-        
         guideCircleView.centerX(inView: view)
         guideCircleView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.23)
         
         searchGuideLabel.centerX(inView: view)
         searchGuideLabel.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.7)
 
-        
         selectPlanetCollectionView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.68)
         selectPlanetCollectionView.setHeight(height: screenHeight * 0.35)
         selectPlanetCollectionView.setWidth(width: screenWidth)
         selectPlanetCollectionView.centerX(inView: view)
+        
+        selectedSquareView.frame = CGRect(x: 0, y: 0, width: screenWidth / 5.65, height: (screenWidth / 5.65) + (screenHeight / 26.375))
+        guideArrowView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
     }
     
     override func viewWillAppear(_ animated: Bool) {
