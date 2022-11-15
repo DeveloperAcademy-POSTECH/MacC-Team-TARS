@@ -9,12 +9,31 @@ import UIKit
 import SceneKit
 import ARKit
 
+enum Mode {
+    case explore
+    case search(planet: String)
+    
+    var titleText: String {
+        switch self {
+        case .explore:
+            return "우주 둘러보기"
+        case .search(planet: let name):
+            return "\(name) 찾는 중"
+        }
+    }
+}
+
 class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, LocationManagerDelegate {
 
     public var guideCircleView = CustomCircleView()
     public var selectedSquareView = CustomSquareView()
     let contentsViewController = ContentsViewController()
     
+    var mode: Mode = .explore {
+        didSet {
+            setNeedsLayout()
+        }
+    }
     var planetObjectList: [SCNNode] = []
     
     let searchGuideLabel: UILabel = {
@@ -138,6 +157,10 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         sceneView.session.pause()
     }
     
+    private func setNeedsLayout() {
+        // TODO: - 모드 변경에 따른 레이아웃 설정
+    }
+
     // MARK: - LocationManagerDelegate
     func didUpdateUserLocation() {
         Task {
