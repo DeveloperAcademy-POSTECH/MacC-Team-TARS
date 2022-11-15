@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		37024B0F2912083E00BC64AE /* LocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37024B0E2912083E00BC64AE /* LocationManagerDelegate.swift */; };
 		374FEE372909597B00E0C56B /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FEE362909597B00E0C56B /* Float+Extension.swift */; };
+		5533717729123F17004AD6E8 /* UniverseSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */; };
+		558932C9291429E90032D459 /* UniverseSearchViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558932C8291429E90032D459 /* UniverseSearchViewController+DataSource.swift */; };
+		558932CB29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558932CA29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift */; };
 		55C8495A2910A9F00041F334 /* PlanetList+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C849592910A9F00041F334 /* PlanetList+Extension.swift */; };
 		55F3B9AC290FA1FE0033041E /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9AB290FA1FE0033041E /* Keys.swift */; };
 		55F3B9AE290FA2600033041E /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9AD290FA2600033041E /* Planet.swift */; };
@@ -17,6 +20,8 @@
 		55F3B9B5290FA2ED0033041E /* SelectPlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9B4290FA2ED0033041E /* SelectPlanetViewController.swift */; };
 		5943244C2908EFB9000518FD /* CustomSquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943244B2908EFB9000518FD /* CustomSquareView.swift */; };
 		5943244E2908EFFF000518FD /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943244D2908EFFF000518FD /* String+Extension.swift */; };
+		599A78CB2917F75F0070CE15 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 599A78CD2917F75F0070CE15 /* Localizable.strings */; };
+		599A78D12917FF4E0070CE15 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599A78D02917FF4E0070CE15 /* Localized.swift */; };
 		BF6BCBA629090E060042B522 /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BCBA529090E050042B522 /* URLConstants.swift */; };
 		BF6BCBA829090E0E0042B522 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BCBA729090E0E0042B522 /* APIManager.swift */; };
 		BF6BCBAA29090E130042B522 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BCBA929090E120042B522 /* Endpoint.swift */; };
@@ -52,6 +57,9 @@
 /* Begin PBXFileReference section */
 		37024B0E2912083E00BC64AE /* LocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerDelegate.swift; sourceTree = "<group>"; };
 		374FEE362909597B00E0C56B /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
+		5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseSearchViewController.swift; sourceTree = "<group>"; };
+		558932C8291429E90032D459 /* UniverseSearchViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UniverseSearchViewController+DataSource.swift"; sourceTree = "<group>"; };
+		558932CA29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UniverseSearchViewController+FlowLayoutDelegate.swift"; sourceTree = "<group>"; };
 		55C849592910A9F00041F334 /* PlanetList+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanetList+Extension.swift"; sourceTree = "<group>"; };
 		55F3B9AB290FA1FE0033041E /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		55F3B9AD290FA2600033041E /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
@@ -60,6 +68,10 @@
 		55F3B9B4290FA2ED0033041E /* SelectPlanetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlanetViewController.swift; sourceTree = "<group>"; };
 		5943244B2908EFB9000518FD /* CustomSquareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSquareView.swift; sourceTree = "<group>"; };
 		5943244D2908EFFF000518FD /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		599A78CC2917F75F0070CE15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		599A78CE2917F7DF0070CE15 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		599A78CF2917F7DF0070CE15 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		599A78D02917FF4E0070CE15 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		BF6BCBA529090E050042B522 /* URLConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
 		BF6BCBA729090E0E0042B522 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		BF6BCBA929090E120042B522 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -134,17 +146,20 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		55F3B9B1290FA2C40033041E /* Cell */ = {
+		558932CC29142B0C0032D459 /* SearchView */ = {
 			isa = PBXGroup;
 			children = (
+				558932C8291429E90032D459 /* UniverseSearchViewController+DataSource.swift */,
+				558932CA29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift */,
 				55F3B9B2290FA2D50033041E /* SelectPlanetCollectionViewCell.swift */,
 			);
-			path = Cell;
+			path = SearchView;
 			sourceTree = "<group>";
 		};
 		BF7B4FA928FE431900F83158 = {
 			isa = PBXGroup;
 			children = (
+				599A78CD2917F75F0070CE15 /* Localizable.strings */,
 				BF7B4FB428FE431900F83158 /* Tars */,
 				BF7B4FB328FE431900F83158 /* Products */,
 			);
@@ -165,6 +180,7 @@
 				BF7B4FC928FE445200F83158 /* Model */,
 				BF7B4FCC28FE448000F83158 /* ViewController */,
 				BF7B4FCA28FE447000F83158 /* View */,
+				558932CC29142B0C0032D459 /* SearchView */,
 				BF7B4FCE28FE44D000F83158 /* Extensions */,
 				37024B0D2912082500BC64AE /* Location */,
 				37AE64B82906B766000ABC86 /* Network */,
@@ -210,10 +226,10 @@
 			isa = PBXGroup;
 			children = (
 				BF788B7D2903C8CF002BF8C0 /* UniverseViewController.swift */,
+				5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */,
 				DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */,
 				55F3B9AF290FA2930033041E /* ContentsViewController.swift */,
 				55F3B9B4290FA2ED0033041E /* SelectPlanetViewController.swift */,
-				55F3B9B1290FA2C40033041E /* Cell */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -225,6 +241,7 @@
 				DDB7DD96290814AB00FC0BA4 /* Label+Extension.swift */,
 				5943244D2908EFFF000518FD /* String+Extension.swift */,
 				BF7B4FD128FE454A00F83158 /* View+Extension.swift */,
+				599A78D02917FF4E0070CE15 /* Localized.swift */,
 				BF788B7F2903C903002BF8C0 /* DashedCircle+Extension.swift */,
 				BF788B832903D3BB002BF8C0 /* CommonVariables+Extension.swift */,
 				374FEE362909597B00E0C56B /* Float+Extension.swift */,
@@ -276,6 +293,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = BF7B4FA928FE431900F83158;
 			productRefGroup = BF7B4FB328FE431900F83158 /* Products */;
@@ -292,10 +310,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD0702102921DC4F004FD8AB /* Uranus.mp3 in Resources */,
-				DD07020F2921DC4F004FD8AB /* Sun.mp3 in Resources */,
-				DD07020C2921DC4F004FD8AB /* Mercury.mp3 in Resources */,
-				DD07020D2921DC4F004FD8AB /* Saturn.mp3 in Resources */,
+				599A78CB2917F75F0070CE15 /* Localizable.strings in Resources */,
 				BF7B4FD528FE47B200F83158 /* .swiftlint.yml in Resources */,
 				BF788B8629052230002BF8C0 /* UniverseBackground.scn in Resources */,
 				BF7B4FC228FE431A00F83158 /* LaunchScreen.storyboard in Resources */,
@@ -345,17 +360,21 @@
 				55F3B9AC290FA1FE0033041E /* Keys.swift in Sources */,
 				55F3B9AE290FA2600033041E /* Planet.swift in Sources */,
 				BF788B7E2903C8CF002BF8C0 /* UniverseViewController.swift in Sources */,
+				558932CB29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift in Sources */,
 				BF6BCBAE29090E1C0042B522 /* NetworkService.swift in Sources */,
 				BF6BCBA629090E060042B522 /* URLConstants.swift in Sources */,
 				BF788B842903D3BB002BF8C0 /* CommonVariables+Extension.swift in Sources */,
 				37024B0F2912083E00BC64AE /* LocationManagerDelegate.swift in Sources */,
 				55C8495A2910A9F00041F334 /* PlanetList+Extension.swift in Sources */,
+				599A78D12917FF4E0070CE15 /* Localized.swift in Sources */,
 				55F3B9B3290FA2D50033041E /* SelectPlanetCollectionViewCell.swift in Sources */,
 				55F3B9B0290FA2930033041E /* ContentsViewController.swift in Sources */,
 				5943244E2908EFFF000518FD /* String+Extension.swift in Sources */,
 				374FEE372909597B00E0C56B /* Float+Extension.swift in Sources */,
 				BF7B4FB628FE431900F83158 /* AppDelegate.swift in Sources */,
+				558932C9291429E90032D459 /* UniverseSearchViewController+DataSource.swift in Sources */,
 				DDB7DD932906B2B000FC0BA4 /* InfoViewController.swift in Sources */,
+				5533717729123F17004AD6E8 /* UniverseSearchViewController.swift in Sources */,
 				BF7B4FB828FE431900F83158 /* SceneDelegate.swift in Sources */,
 				BF6BCBAA29090E130042B522 /* Endpoint.swift in Sources */,
 				DDB7DD97290814AB00FC0BA4 /* Label+Extension.swift in Sources */,
@@ -370,10 +389,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		599A78CD2917F75F0070CE15 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				599A78CC2917F75F0070CE15 /* en */,
+				599A78CF2917F7DF0070CE15 /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		BF7B4FC028FE431A00F83158 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BF7B4FC128FE431A00F83158 /* Base */,
+				599A78CE2917F7DF0070CE15 /* ko */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -385,6 +414,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -445,6 +475,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
