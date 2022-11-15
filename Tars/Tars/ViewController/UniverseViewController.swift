@@ -52,7 +52,7 @@ class UniverseViewController: UIViewController, ARSCNViewDelegate, LocationManag
                 scene?.rootNode.addChildNode(sphereNode)
                 
                 let audioSource: SCNAudioSource = {
-                    let source = SCNAudioSource(fileNamed: "\(planet.name)2.mp3")!
+                    let source = SCNAudioSource(fileNamed: "\(planet.name)3.mp3")!
                     
                     /// 노드와 해당 위치에와 소스의 볼륨, 반향 및 거리에 따라 자동으로 변경
                     source.isPositional = true
