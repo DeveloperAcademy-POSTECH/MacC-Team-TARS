@@ -153,24 +153,64 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         super.viewWillDisappear(animated)
         sceneView.session.pause()
     }
-    
-    private func setNeedsLayout() {
-        // TODO: - 모드 변경에 따른 레이아웃 설정
-        self.navigationController?.topViewController?.title = mode.titleText
-        switch mode {
-        case .explore:
-            break
-        case .search(planet: _):
-            break
-        }
-    }
 
     // MARK: - LocationManagerDelegate
     func didUpdateUserLocation() {
         Task {
             let bodies = try await AstronomyAPIManager().requestBodies()
             setPlanetPosition(to: sceneView.scene, planets: bodies)
-            getPlanetNodeList(planets: bodies)
+        }
+    }
+}
+
+// MARK: - 레이아웃 설정 함수
+extension UniverseSearchViewController {
+    // 모드 변경에 따른 레이아웃 설정
+    private func setNeedsLayout() {
+        self.navigationController?.topViewController?.title = mode.titleText
+        switch mode {
+        case .explore:
+            setArrowHidden()
+        case .search(planet: _):
+            break
+        }
+    }
+    
+    // 행성이 탐지되지 않았을 때 레이아웃 설정
+    private func setNotDetectedLayout() {
+        DispatchQueue.main.async {
+            self.guideCircleView.isHidden = false
+            self.selectedSquareView.isHidden = true
+        }
+    }
+
+    // 행성이 탐지되었을 때 레이아웃 설정
+    private func setDetectedLayout(name: String, point: CGPoint) {
+        DispatchQueue.main.async {
+            self.selectedSquareView.frame.origin = point
+            self.selectedSquareView.setLabel(planetNameDict[name] ?? name)
+            self.guideCircleView.isHidden = true
+            self.selectedSquareView.isHidden = false
+        }
+    }
+    
+    // 검색 시 화살표 레이아웃 설정
+    private func setArrowLayout(point: CGPoint, distance: CGFloat, locatedBehind: Bool = false) {
+        let dx = screenWidth / 3  * (point.x - circleCenter.x) / distance
+        let dy = screenWidth / 3  * (circleCenter.y - point.y) / distance
+        let angle = locatedBehind ? atan2(point.y - circleCenter.y, point.x - circleCenter.x) + .pi : atan2(point.y - circleCenter.y, point.x - circleCenter.x)
+        let arrowPosition = locatedBehind ? CGPoint(x: circleCenter.x - dx, y: circleCenter.y + dy) : CGPoint(x: circleCenter.x + dx, y: circleCenter.y - dy)
+                
+        DispatchQueue.main.async {
+            self.guideArrowView.transform = CGAffineTransform(rotationAngle: angle)
+            self.guideArrowView.layer.position = arrowPosition
+            self.guideArrowView.isHidden = false
+        }
+    }
+    
+    private func setArrowHidden() {
+        DispatchQueue.main.async {
+            self.guideArrowView.isHidden = true
         }
     }
 }
