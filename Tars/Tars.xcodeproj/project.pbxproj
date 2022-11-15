@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		37024B0F2912083E00BC64AE /* LocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37024B0E2912083E00BC64AE /* LocationManagerDelegate.swift */; };
+		3726FE002923A8740062B667 /* CustomArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3726FDFF2923A8740062B667 /* CustomArrowView.swift */; };
 		374FEE372909597B00E0C56B /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FEE362909597B00E0C56B /* Float+Extension.swift */; };
 		5533717729123F17004AD6E8 /* UniverseSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */; };
 		558932C9291429E90032D459 /* UniverseSearchViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558932C8291429E90032D459 /* UniverseSearchViewController+DataSource.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		37024B0E2912083E00BC64AE /* LocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerDelegate.swift; sourceTree = "<group>"; };
+		3726FDFF2923A8740062B667 /* CustomArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomArrowView.swift; sourceTree = "<group>"; };
 		374FEE362909597B00E0C56B /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 		5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseSearchViewController.swift; sourceTree = "<group>"; };
 		558932C8291429E90032D459 /* UniverseSearchViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UniverseSearchViewController+DataSource.swift"; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			children = (
 				BF788B812903D1A7002BF8C0 /* CustomCircleView.swift */,
 				5943244B2908EFB9000518FD /* CustomSquareView.swift */,
+				3726FDFF2923A8740062B667 /* CustomArrowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				55F3B9B3290FA2D50033041E /* SelectPlanetCollectionViewCell.swift in Sources */,
 				55F3B9B0290FA2930033041E /* ContentsViewController.swift in Sources */,
 				5943244E2908EFFF000518FD /* String+Extension.swift in Sources */,
+				3726FE002923A8740062B667 /* CustomArrowView.swift in Sources */,
 				374FEE372909597B00E0C56B /* Float+Extension.swift in Sources */,
 				BF7B4FB628FE431900F83158 /* AppDelegate.swift in Sources */,
 				558932C9291429E90032D459 /* UniverseSearchViewController+DataSource.swift in Sources */,
