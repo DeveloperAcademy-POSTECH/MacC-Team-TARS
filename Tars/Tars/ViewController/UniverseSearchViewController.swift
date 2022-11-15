@@ -54,19 +54,29 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         selectPlanetCollectionView.delegate = self
         selectPlanetCollectionView.dataSource = self
         
-        [guideCircleView, sceneView, selectedSquareView, searchGuideLabel, selectPlanetCollectionView].forEach { view.addSubview($0) }
+        [guideCircleView, sceneView, selectedSquareView, selectPlanetCollectionView, searchGuideLabel].forEach { view.addSubview($0) }
         sceneView.addSubview(guideCircleView)
         configureConstraints()
         
         selectedSquareView.isHidden = true
-        view.bringSubviewToFront(searchGuideLabel)
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        self.sceneView.addGestureRecognizer(tapGestureRecognizer)
         
         let locationManager = LocationManager.shared
         locationManager.delegate = self
         locationManager.updateLocation()
+        
+        // navigation title 설정
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.topViewController?.title = "우주 둘러보기"
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.backgroundColor = .black
+        
+        // settingButton navigationItem
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(settingButtonTapped))
+        self.navigationItem.rightBarButtonItem?.tintColor = .white
+    }
+    
+    @objc func settingButtonTapped() {
+        self.navigationController?.pushViewController(SettingViewController(), animated: false)
     }
     
     /// 행성을 리스트에 저장하기 위한 함수
@@ -96,22 +106,6 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         }
     }
     
-    /// hitTest 객체(행성 노드)를 인식하는 함수
-    @objc func handleTap(sender: UITapGestureRecognizer) {
-        let sceneViewTappdeOn = sender.view as! SCNView
-        let touchCoordinates = sender.location(in: sceneViewTappdeOn)
-        let hitTest = sceneViewTappdeOn.hitTest(touchCoordinates)
-        
-        if hitTest.isEmpty {
-            print("didn't touch anything")
-        } else {
-            let results = hitTest.first!
-            let geometry = results.node.geometry
-            let planetName = geometry?.firstMaterial?.diffuse.contents
-            print(planetName as Any)
-        }
-    }
-    
     private func configureConstraints() {
         sceneView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, paddingTop: screenHeight * 0.1)
         
@@ -123,6 +117,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         
         searchGuideLabel.centerX(inView: view)
         searchGuideLabel.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.7)
+
         
         selectPlanetCollectionView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.68)
         selectPlanetCollectionView.setHeight(height: screenHeight * 0.35)
@@ -133,12 +128,6 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // navigation title 설정
-        self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.topViewController?.title = "우주 둘러보기"
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
-        self.navigationController?.navigationBar.backgroundColor = .black
-        
         let configuration = ARWorldTrackingConfiguration()
         configuration.worldAlignment = .gravityAndHeading
         sceneView.session.run(configuration)
@@ -148,25 +137,8 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         super.viewWillDisappear(animated)
         sceneView.session.pause()
     }
-
-    // MARK: - ARSCNViewDelegate
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-        
-    }
-    
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
-    }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
-    }
     
     // MARK: - LocationManagerDelegate
-    
     func didUpdateUserLocation() {
         Task {
             let bodies = try await AstronomyAPIManager().requestBodies()

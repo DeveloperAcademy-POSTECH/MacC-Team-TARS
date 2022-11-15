@@ -12,12 +12,12 @@
 		5533717729123F17004AD6E8 /* UniverseSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */; };
 		558932C9291429E90032D459 /* UniverseSearchViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558932C8291429E90032D459 /* UniverseSearchViewController+DataSource.swift */; };
 		558932CB29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558932CA29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift */; };
+		55A8876629238C9C0078CB7E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A8876529238C9C0078CB7E /* SettingViewController.swift */; };
 		55C8495A2910A9F00041F334 /* PlanetList+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C849592910A9F00041F334 /* PlanetList+Extension.swift */; };
 		55F3B9AC290FA1FE0033041E /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9AB290FA1FE0033041E /* Keys.swift */; };
 		55F3B9AE290FA2600033041E /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9AD290FA2600033041E /* Planet.swift */; };
 		55F3B9B0290FA2930033041E /* ContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9AF290FA2930033041E /* ContentsViewController.swift */; };
 		55F3B9B3290FA2D50033041E /* SelectPlanetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9B2290FA2D50033041E /* SelectPlanetCollectionViewCell.swift */; };
-		55F3B9B5290FA2ED0033041E /* SelectPlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9B4290FA2ED0033041E /* SelectPlanetViewController.swift */; };
 		5943244C2908EFB9000518FD /* CustomSquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943244B2908EFB9000518FD /* CustomSquareView.swift */; };
 		5943244E2908EFFF000518FD /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943244D2908EFFF000518FD /* String+Extension.swift */; };
 		599A78CB2917F75F0070CE15 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 599A78CD2917F75F0070CE15 /* Localizable.strings */; };
@@ -51,12 +51,12 @@
 		5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseSearchViewController.swift; sourceTree = "<group>"; };
 		558932C8291429E90032D459 /* UniverseSearchViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UniverseSearchViewController+DataSource.swift"; sourceTree = "<group>"; };
 		558932CA29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UniverseSearchViewController+FlowLayoutDelegate.swift"; sourceTree = "<group>"; };
+		55A8876529238C9C0078CB7E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		55C849592910A9F00041F334 /* PlanetList+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanetList+Extension.swift"; sourceTree = "<group>"; };
 		55F3B9AB290FA1FE0033041E /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		55F3B9AD290FA2600033041E /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		55F3B9AF290FA2930033041E /* ContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsViewController.swift; sourceTree = "<group>"; };
 		55F3B9B2290FA2D50033041E /* SelectPlanetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlanetCollectionViewCell.swift; sourceTree = "<group>"; };
-		55F3B9B4290FA2ED0033041E /* SelectPlanetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlanetViewController.swift; sourceTree = "<group>"; };
 		5943244B2908EFB9000518FD /* CustomSquareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSquareView.swift; sourceTree = "<group>"; };
 		5943244D2908EFFF000518FD /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		599A78CC2917F75F0070CE15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -200,9 +200,9 @@
 			children = (
 				BF788B7D2903C8CF002BF8C0 /* UniverseViewController.swift */,
 				5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */,
+				55A8876529238C9C0078CB7E /* SettingViewController.swift */,
 				DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */,
 				55F3B9AF290FA2930033041E /* ContentsViewController.swift */,
-				55F3B9B4290FA2ED0033041E /* SelectPlanetViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -324,7 +324,6 @@
 				BF6BCBAC29090E180042B522 /* LocationManager.swift in Sources */,
 				BF6BCBB129090E4E0042B522 /* BodiesPositionsResponse.swift in Sources */,
 				5943244C2908EFB9000518FD /* CustomSquareView.swift in Sources */,
-				55F3B9B5290FA2ED0033041E /* SelectPlanetViewController.swift in Sources */,
 				55F3B9AC290FA1FE0033041E /* Keys.swift in Sources */,
 				55F3B9AE290FA2600033041E /* Planet.swift in Sources */,
 				BF788B7E2903C8CF002BF8C0 /* UniverseViewController.swift in Sources */,
@@ -347,6 +346,7 @@
 				BF6BCBAA29090E130042B522 /* Endpoint.swift in Sources */,
 				DDB7DD97290814AB00FC0BA4 /* Label+Extension.swift in Sources */,
 				BF788B802903C903002BF8C0 /* DashedCircle+Extension.swift in Sources */,
+				55A8876629238C9C0078CB7E /* SettingViewController.swift in Sources */,
 				BF6BCBA829090E0E0042B522 /* APIManager.swift in Sources */,
 				BF7B4FD028FE452200F83158 /* Color+Extension.swift in Sources */,
 				BF7B4FD228FE454A00F83158 /* View+Extension.swift in Sources */,
