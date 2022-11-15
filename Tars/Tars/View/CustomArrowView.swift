@@ -21,8 +21,8 @@ class CustomArrowView: UIView {
         triangle.lineJoinStyle = .round
         triangle.lineWidth = 5.0
         triangle.move(to: CGPoint(x: 12, y: 12))
-        triangle.addLine(to: CGPoint(x: frame.width - 12, y: frame.height / 2))
-        triangle.addLine(to: CGPoint(x: 12, y: frame.height-12))
+        triangle.addLine(to: CGPoint(x: bounds.width - 12, y: bounds.height / 2))
+        triangle.addLine(to: CGPoint(x: 12, y: bounds.height-12))
         
         UIColor.customYellow.set()
         triangle.close()
