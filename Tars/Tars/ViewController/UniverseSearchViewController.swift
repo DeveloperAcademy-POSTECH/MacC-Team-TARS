@@ -260,6 +260,22 @@ extension UniverseSearchViewController {
     
     // MARK: - 검색 모드 기능
     private func search(for name: String) {
+        guard let node = planetObjectList[name] else {return}
+        let nodePosition = sceneView.projectPoint(node.position)
+        let nodeScreenPos = nodePosition.toCGPoint()
+        let distanceToCenter = circleCenter.distanceTo(nodeScreenPos)
 
+        if nodePosition.z >= 1 {
+            setNotDetectedLayout()
+            setArrowLayout(point: nodeScreenPos, distance: distanceToCenter, locatedBehind: true)
+        } else if distanceToCenter >= (screenWidth / 3) {
+            setNotDetectedLayout()
+            setArrowLayout(point: nodeScreenPos, distance: distanceToCenter)
+        } else {
+            let nodeOrigin = CGPoint(x: nodeScreenPos.x - screenWidth / 11.3, y: nodeScreenPos.y - screenWidth / 11.3)
+            
+            setArrowHidden()
+            setDetectedLayout(name: name, point: nodeOrigin)
+        }
     }
 }
