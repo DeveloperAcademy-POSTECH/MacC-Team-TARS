@@ -176,7 +176,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
 // MARK: - 레이아웃 설정 함수
 extension UniverseSearchViewController {
     // 모드 변경에 따른 레이아웃 설정
-    private func setNeedsLayout() {
+    private func setModeChangedLayout() {
         self.navigationController?.topViewController?.title = mode.titleText
         switch mode {
         case .explore:
