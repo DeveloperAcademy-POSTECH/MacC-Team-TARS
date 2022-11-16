@@ -19,9 +19,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="KKN-Li-FBh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <accessibility key="accessibilityConfiguration" hint="제대로 우주 공간을 경험하기 위해서는 반드시 에어팟을 착용해주세요" label="제대로 우주 공간을 경험하기 위해서는 반드시 에어팟을 착용해주세요">
+                        <accessibility key="accessibilityConfiguration">
                             <accessibilityTraits key="traits" notEnabled="YES"/>
-                            <bool key="isElement" value="YES"/>
+                            <bool key="isElement" value="NO"/>
                         </accessibility>
                         <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="20" bottom="0.0" trailing="20"/>
                     </view>
