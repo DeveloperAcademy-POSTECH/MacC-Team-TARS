@@ -11,9 +11,9 @@ class LaunchScreenViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let AirPodsInstruction: UILabel = {
+    private let airPodsInstruction: UILabel = {
         let label = UILabel()
-        let attributedString = NSMutableAttributedString(string: PlanetStrings.airPodsInstructions.localizedKey)
+        let attributedString = NSMutableAttributedString(string: PlanetStrings.airPodsInstructionstring.localizedKey)
         let paragraphStyle = NSMutableParagraphStyle()
         
         label.font = .preferredFont(forTextStyle: .largeTitle)
@@ -32,7 +32,7 @@ class LaunchScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        [AirPodsInstruction].forEach { view.addSubview($0) }
+        [airPodsInstruction].forEach { view.addSubview($0) }
         configureConstraints()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
@@ -43,8 +43,8 @@ class LaunchScreenViewController: UIViewController {
     }
     
     private func configureConstraints() {
-        AirPodsInstruction.anchor(leading: view.leadingAnchor, trailing: view.trailingAnchor)
-        AirPodsInstruction.centerX(inView: view)
-        AirPodsInstruction.centerY(inView: view)
+        airPodsInstruction.anchor(leading: view.leadingAnchor, trailing: view.trailingAnchor)
+        airPodsInstruction.centerX(inView: view)
+        airPodsInstruction.centerY(inView: view)
     }
 }
