@@ -52,7 +52,6 @@
 		DD07022529238BBE004FD8AB /* Uranus.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DD07021C29238BBE004FD8AB /* Uranus.mp3 */; };
 		DDB7DD932906B2B000FC0BA4 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */; };
 		DDB7DD97290814AB00FC0BA4 /* Label+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB7DD96290814AB00FC0BA4 /* Label+Extension.swift */; };
-		DDB7DDA329180DAF00FC0BA4 /* Venus_Searching.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DDB7DDA229180DAE00FC0BA4 /* Venus_Searching.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,7 +104,6 @@
 		DD07021C29238BBE004FD8AB /* Uranus.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Uranus.mp3; path = "../../../../레나 행성 소리/Uranus.mp3"; sourceTree = "<group>"; };
 		DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		DDB7DD96290814AB00FC0BA4 /* Label+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+Extension.swift"; sourceTree = "<group>"; };
-		DDB7DDA229180DAE00FC0BA4 /* Venus_Searching.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Venus_Searching.mp3; path = ../../../../Venus_Searching.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,7 +190,6 @@
 				BF7B4FC028FE431A00F83158 /* LaunchScreen.storyboard */,
 				BF7B4FC328FE431A00F83158 /* Info.plist */,
 				BF788B8529052230002BF8C0 /* UniverseBackground.scn */,
-				DDB7DDA229180DAE00FC0BA4 /* Venus_Searching.mp3 */,
 				DD07021929238BBE004FD8AB /* Jupiter.mp3 */,
 				DD07021429238BBE004FD8AB /* Mars.mp3 */,
 				DD07021629238BBE004FD8AB /* Mercury.mp3 */,
@@ -322,7 +319,6 @@
 				DD07022129238BBE004FD8AB /* Moon.mp3 in Resources */,
 				BF7B4FC228FE431A00F83158 /* LaunchScreen.storyboard in Resources */,
 				DD07022029238BBE004FD8AB /* Sun.mp3 in Resources */,
-				DDB7DDA329180DAF00FC0BA4 /* Venus_Searching.mp3 in Resources */,
 				DD07022529238BBE004FD8AB /* Uranus.mp3 in Resources */,
 				DD07022229238BBE004FD8AB /* Jupiter.mp3 in Resources */,
 				DD07021F29238BBE004FD8AB /* Mercury.mp3 in Resources */,
@@ -541,7 +537,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 848PGS94YW;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tars/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라를 사용하기 위해 권한이 필요합니다.";
@@ -571,7 +567,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 848PGS94YW;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tars/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라를 사용하기 위해 권한이 필요합니다.";
