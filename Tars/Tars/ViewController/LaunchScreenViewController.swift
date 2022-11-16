@@ -35,7 +35,7 @@ class LaunchScreenViewController: UIViewController {
         [AirPodsInstruction].forEach { view.addSubview($0) }
         configureConstraints()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             let universeVC = UniverseViewController()
             self.navigationController?.pushViewController(universeVC, animated: true)
             self.navigationController?.isNavigationBarHidden = true
