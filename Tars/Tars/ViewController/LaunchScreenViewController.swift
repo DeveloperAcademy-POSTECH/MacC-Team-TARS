@@ -36,7 +36,6 @@ class LaunchScreenViewController: UIViewController {
         configureConstraints()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            print("test")
             let universeVC = UniverseViewController()
             self.navigationController?.pushViewController(universeVC, animated: true)
             self.navigationController?.isNavigationBarHidden = true
@@ -48,5 +47,4 @@ class LaunchScreenViewController: UIViewController {
         AirPodsInstruction.centerX(inView: view)
         AirPodsInstruction.centerY(inView: view)
     }
-    
 }
