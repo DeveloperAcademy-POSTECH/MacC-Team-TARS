@@ -32,7 +32,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     
     var mode: Mode = .explore {
         didSet {
-            setNeedsLayout()
+            setModeChangedLayout()
         }
     }
     var planetObjectList: [String: SCNNode] = [:]
