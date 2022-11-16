@@ -34,6 +34,13 @@ class LaunchScreenViewController: UIViewController {
         super.viewDidLoad()
         [AirPodsInstruction].forEach { view.addSubview($0) }
         configureConstraints()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            print("test")
+            let universeVC = UniverseViewController()
+            self.navigationController?.pushViewController(universeVC, animated: true)
+            self.navigationController?.isNavigationBarHidden = true
+        }
     }
     
     private func configureConstraints() {
@@ -41,5 +48,5 @@ class LaunchScreenViewController: UIViewController {
         AirPodsInstruction.centerX(inView: view)
         AirPodsInstruction.centerY(inView: view)
     }
-
+    
 }
