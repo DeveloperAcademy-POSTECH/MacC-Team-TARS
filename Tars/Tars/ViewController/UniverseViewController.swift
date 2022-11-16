@@ -49,17 +49,17 @@ class UniverseViewController: UIViewController, ARSCNViewDelegate, LocationManag
                 let sphereNode = SCNNode(geometry: sphere)
                 sphereNode.position = SCNVector3(planet.coordinate.x, planet.coordinate.y, planet.coordinate.z)
                 
-                    scene?.rootNode.addChildNode(sphereNode)
-                        print(planet.name)
-                        let audioSource: SCNAudioSource = {
-                            let source = SCNAudioSource(fileNamed: "\(planet.name).mp3")!
-                            source.loops = true
-                            source.load()
-                            return source
-                        }()
-                        
-                        sphereNode.removeAllAudioPlayers()
-                        sphereNode.addAudioPlayer(SCNAudioPlayer(source: audioSource))
+                scene?.rootNode.addChildNode(sphereNode)
+                print(planet.name)
+                let audioSource: SCNAudioSource = {
+                    let source = SCNAudioSource(fileNamed: "\(planet.name).mp3")!
+                    source.loops = true
+                    source.load()
+                    return source
+                }()
+                
+                sphereNode.removeAllAudioPlayers()
+                sphereNode.addAudioPlayer(SCNAudioPlayer(source: audioSource))
             }
         }
     }
