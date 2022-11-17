@@ -113,7 +113,18 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                 sphereNode.position = SCNVector3(planet.coordinate.x, planet.coordinate.y, planet.coordinate.z)
                 sphereNode.name = planet.name
                 scene?.rootNode.addChildNode(sphereNode)
+                print(planet.name)
                 planetObjectList[planet.name] = sphereNode
+                
+                let audioSource: SCNAudioSource = {
+                    let source = SCNAudioSource(fileNamed: "\(planet.name).mp3")!
+                    source.loops = true
+                    source.load()
+                    return source
+                }()
+                
+                sphereNode.removeAllAudioPlayers()
+                sphereNode.addAudioPlayer(SCNAudioPlayer(source: audioSource))
             }
         }
     }
