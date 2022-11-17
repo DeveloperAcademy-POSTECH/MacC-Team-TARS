@@ -29,18 +29,32 @@ extension UniverseSearchViewController: UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? SelectPlanetCollectionViewCell else {
+            return true
+        }
+        
+        if cell.isSelected {
+            // cell이 재선택 된 경우
+            cell.planetNameLabel.textColor = .white
+            cell.backgroundView = nil
+            self.mode = .explore
+            
+            collectionView.deselectItem(at: indexPath, animated: true)
+            return false
+        } else {
+            return true
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? SelectPlanetCollectionViewCell else { return }
-
+        
         if cell.isSelected {
             cell.planetNameLabel.textColor = .black
             cell.backgroundView = cell.planetBackgroundView
             
-            // navigation title 변경
-            self.navigationController?.topViewController?.title = "천체 탐색 중"
-            self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
-            self.navigationController?.navigationBar.backgroundColor = .black
-            
+            self.mode = .search(planet: planetNames[indexPath.row])
         }
     }
 
