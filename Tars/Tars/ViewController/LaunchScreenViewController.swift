@@ -43,7 +43,7 @@ class LaunchScreenViewController: UIViewController {
     }
     
     private func configureConstraints() {
-        airPodsInstruction.anchor(leading: view.leadingAnchor, trailing: view.trailingAnchor)
+        airPodsInstruction.anchor(leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingLeading: screenWidth / 9.75, paddingTrailing: screenWidth / 9.75)
         airPodsInstruction.centerX(inView: view)
         airPodsInstruction.centerY(inView: view)
     }
