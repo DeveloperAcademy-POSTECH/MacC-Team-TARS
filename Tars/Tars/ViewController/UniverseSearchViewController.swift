@@ -36,6 +36,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         }
     }
     var planetObjectList: [String: SCNNode] = [:]
+    var planetObjectSound: [String: SCNAudioPlayer] = [:]
     var circleCenter: CGPoint = .zero
     
     let searchGuideLabel: UILabel = {
@@ -114,6 +115,32 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                 sphereNode.name = planet.name
                 scene?.rootNode.addChildNode(sphereNode)
                 planetObjectList[planet.name] = sphereNode
+                
+                let source = SCNAudioSource(fileNamed: "\(planet.name)4.mp3")!
+
+                let audioSource: SCNAudioSource = {
+                    let source = SCNAudioSource(fileNamed: "\(planet.name)4.mp3")!
+                    /// 노드와 해당 위치에와 소스의 볼륨, 반향 및 거리에 따라 자동으로 변경
+                    source.isPositional = true
+                    source.volume = 0.3
+                    /// 오디오 소스를 반복적으로 재상할지 여부를 결정
+                    source.loops = true
+                    source.load()
+                    return source
+                }()
+                
+                let audioPlayer = SCNAudioPlayer(source: audioSource)
+                
+                planetObjectSound[planet.name] = audioPlayer
+                
+//                guard let avNode = audioPlayer.audioNode as? AVAudioMixing else {
+//                    return
+//                }
+//
+//                avNode.volume = 15
+                
+                sphereNode.removeAllAudioPlayers()
+                sphereNode.addAudioPlayer(SCNAudioPlayer(source: audioSource))
             }
         }
     }
@@ -282,6 +309,30 @@ extension UniverseSearchViewController {
             let nodeOrigin = CGPoint(x: nodeScreenPos.x - screenWidth / 11.3, y: nodeScreenPos.y - screenWidth / 11.3)
             setArrowHidden()
             setDetectedLayout(name: name, point: nodeOrigin)
+            soundUp(soundPlayer: planetObjectSound, name: name)
         }
     }
 }
+
+extension UniverseSearchViewController {
+    private func soundUp(soundPlayer: [String: SCNAudioPlayer], name: String) {
+        
+        print(name)
+        let audioPlayer = soundPlayer[name]
+    
+        guard let avNode = audioPlayer?.audioNode as? AVAudioMixing else {
+            return
+        }
+        
+        print("원래", avNode.volume.hashValue)
+        avNode.volume = 1.0
+        print("바뀌고", avNode.volume.hashValue)
+        
+    }
+    
+//    private func soundDown(_ scene: SCNScene) {
+//
+//    }
+}
+
+
