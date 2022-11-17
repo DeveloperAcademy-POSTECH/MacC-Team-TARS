@@ -36,7 +36,7 @@ class LaunchScreenViewController: UIViewController {
         configureConstraints()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-            let universeVC = UniverseViewController()
+            let universeVC = UniverseSearchViewController()
             self.navigationController?.pushViewController(universeVC, animated: true)
             self.navigationController?.isNavigationBarHidden = true
         }

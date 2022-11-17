@@ -20,7 +20,7 @@ class UniverseViewController: UIViewController, ARSCNViewDelegate, LocationManag
         sceneView.delegate = self
         return sceneView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         [guideCircleView, sceneView, selectedSquareView].forEach { view.addSubview($0) }
@@ -48,8 +48,18 @@ class UniverseViewController: UIViewController, ARSCNViewDelegate, LocationManag
                 sphere.firstMaterial?.diffuse.contents = UIImage(named: planet.name + "_Map")
                 let sphereNode = SCNNode(geometry: sphere)
                 sphereNode.position = SCNVector3(planet.coordinate.x, planet.coordinate.y, planet.coordinate.z)
-
+                
                 scene?.rootNode.addChildNode(sphereNode)
+                print(planet.name)
+                let audioSource: SCNAudioSource = {
+                    let source = SCNAudioSource(fileNamed: "\(planet.name).mp3")!
+                    source.loops = true
+                    source.load()
+                    return source
+                }()
+                
+                sphereNode.removeAllAudioPlayers()
+                sphereNode.addAudioPlayer(SCNAudioPlayer(source: audioSource))
             }
         }
     }
@@ -72,7 +82,7 @@ class UniverseViewController: UIViewController, ARSCNViewDelegate, LocationManag
         let configuration = ARWorldTrackingConfiguration()
         
         configuration.worldAlignment = .gravityAndHeading
-
+        
         // Run the view's session
         sceneView.session.run(configuration)
     }
@@ -83,7 +93,7 @@ class UniverseViewController: UIViewController, ARSCNViewDelegate, LocationManag
         // Pause the view's session
         sceneView.session.pause()
     }
-
+    
     // MARK: - ARSCNViewDelegate
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
@@ -108,5 +118,4 @@ class UniverseViewController: UIViewController, ARSCNViewDelegate, LocationManag
             setPlanetPosition(to: sceneView.scene, planets: bodies)
         }
     }
-    
 }
