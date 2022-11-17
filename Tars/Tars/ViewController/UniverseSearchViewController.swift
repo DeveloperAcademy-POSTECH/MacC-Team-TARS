@@ -95,6 +95,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         // settingButton navigationItem
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(settingButtonTapped))
         self.navigationItem.rightBarButtonItem?.tintColor = .white
+        self.navigationItem.hidesBackButton = true
     }
     
     @objc func settingButtonTapped() {
