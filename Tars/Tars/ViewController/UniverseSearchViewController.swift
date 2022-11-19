@@ -97,6 +97,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         // settingButton navigationItem
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(settingButtonTapped))
         self.navigationItem.rightBarButtonItem?.tintColor = .white
+        self.navigationItem.hidesBackButton = true
     }
     
     @objc func settingButtonTapped() {
@@ -115,6 +116,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                 sphereNode.position = SCNVector3(planet.coordinate.x, planet.coordinate.y, planet.coordinate.z)
                 sphereNode.name = planet.name
                 scene?.rootNode.addChildNode(sphereNode)
+                print(planet.name)
                 planetObjectList[planet.name] = sphereNode
                 
                 let audioSource: SCNAudioSource = {
