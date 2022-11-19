@@ -39,7 +39,6 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     var planetObjectList: [String: SCNNode] = [:]
     var planetObjectSound: [String: SCNAudioPlayer] = [:]
     var circleCenter: CGPoint = .zero
-    var player: AVAudioPlayer?
     
     let searchGuideLabel: UILabel = {
         let label: UILabel = UILabel()
@@ -118,11 +117,8 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                 scene?.rootNode.addChildNode(sphereNode)
                 planetObjectList[planet.name] = sphereNode
                 
-                let source = SCNAudioSource(fileNamed: "\(planet.name)4.mp3")!
-                
-               
                 let audioSource: SCNAudioSource = {
-                    let source = SCNAudioSource(fileNamed: "\(planet.name)4.mp3")!
+                    let source = SCNAudioSource(fileNamed: "\(planet.name).mp3")!
                     /// 노드와 해당 위치에와 소스의 볼륨, 반향 및 거리에 따라 자동으로 변경
                     source.isPositional = true
                     source.volume = 0.5
@@ -315,6 +311,8 @@ extension UniverseSearchViewController {
         }
     }
 }
+
+// MARK: - 모드에 따른 소리 증감 기능
 
 extension UniverseSearchViewController {
     
