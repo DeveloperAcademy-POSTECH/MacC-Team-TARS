@@ -29,6 +29,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     private var selectedSquareView = CustomSquareView()
     private var guideArrowView = CustomArrowView()
     private var coachingOverlayView = CustomOnboardingOverlayView()
+    private var coachingBackgroundOverlayView = CustomBackgroundOverlayView()
     let contentsViewController = ContentsViewController()
     
     var mode: Mode = .explore {
@@ -76,16 +77,18 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         selectPlanetCollectionView.delegate = self
         selectPlanetCollectionView.dataSource = self
         
-        [coachingOverlayView, guideCircleView, guideArrowView, selectedSquareView].forEach { sceneView.addSubview($0) }
-        [sceneView, selectPlanetCollectionView, searchGuideLabel].forEach { view.addSubview($0) }
+        [guideCircleView, guideArrowView, selectedSquareView].forEach { sceneView.addSubview($0) }
+        [coachingBackgroundOverlayView, coachingOverlayView, sceneView, selectPlanetCollectionView, searchGuideLabel].forEach { view.addSubview($0) }
         configureConstraints()
         
         coachingOverlayView.isAccessibilityElement = true
         coachingOverlayView.accessibilityLabel = "Face the iphone camera forwards and move it around as if you're moving your head"
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
             self.coachingOverlayView.isAccessibilityElement = false
             self.coachingOverlayView.removeFromSuperview()
+            self.coachingBackgroundOverlayView.removeFromSuperview()
+            self.navigationController?.navigationBar.layer.zPosition = 0
         }
         
         selectedSquareView.isHidden = true
@@ -142,8 +145,12 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     private func configureConstraints() {
         sceneView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, paddingTop: screenHeight * 0.1)
         
+        coachingOverlayView.layer.zPosition = 2
         coachingOverlayView.centerX(inView: view)
         coachingOverlayView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.23)
+        
+        coachingBackgroundOverlayView.layer.zPosition = 1
+        self.navigationController?.navigationBar.layer.zPosition = -1
 
         guideCircleView.centerX(inView: view)
         guideCircleView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.23)
