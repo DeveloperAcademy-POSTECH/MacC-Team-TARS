@@ -11,12 +11,13 @@ class CustomOnboardingOverlayView: UIView {
 
     lazy var coachingOnboardingLabel: UILabel = {
         let coachingOverlay = UILabel()
-        coachingOverlay.text = "move iphone"
+        coachingOverlay.text = "move iphone around"
         coachingOverlay.font = .preferredFont(forTextStyle: .largeTitle)
+        coachingOverlay.textAlignment = .center
         if let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body).withSymbolicTraits(.traitBold) {
             coachingOverlay.font = .init(descriptor: descriptor, size: 0)
         }
-        coachingOverlay.textColor = .red
+        coachingOverlay.textColor = .white
         coachingOverlay.adjustsFontForContentSizeCategory = true
         coachingOverlay.translatesAutoresizingMaskIntoConstraints = false
         return coachingOverlay
@@ -32,7 +33,6 @@ class CustomOnboardingOverlayView: UIView {
     }
     
     private func configureCoachingOverlay() {
-
         addSubview(coachingOnboardingLabel)
         
         NSLayoutConstraint.activate([
