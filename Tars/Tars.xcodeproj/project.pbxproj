@@ -28,6 +28,7 @@
 		599A78CB2917F75F0070CE15 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 599A78CD2917F75F0070CE15 /* Localizable.strings */; };
 		599A78D12917FF4E0070CE15 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599A78D02917FF4E0070CE15 /* Localized.swift */; };
 		59B270782929049800061825 /* CustomOnboardingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B270772929049800061825 /* CustomOnboardingOverlayView.swift */; };
+		59B2707E2929188600061825 /* CustomBackgroundOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B2707D2929188600061825 /* CustomBackgroundOverlayView.swift */; };
 		BF6BCBA629090E060042B522 /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BCBA529090E050042B522 /* URLConstants.swift */; };
 		BF6BCBA829090E0E0042B522 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BCBA729090E0E0042B522 /* APIManager.swift */; };
 		BF6BCBAA29090E130042B522 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BCBA929090E120042B522 /* Endpoint.swift */; };
@@ -83,6 +84,7 @@
 		599A78CF2917F7DF0070CE15 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		599A78D02917FF4E0070CE15 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		59B270772929049800061825 /* CustomOnboardingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOnboardingOverlayView.swift; sourceTree = "<group>"; };
+		59B2707D2929188600061825 /* CustomBackgroundOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundOverlayView.swift; sourceTree = "<group>"; };
 		BF6BCBA529090E050042B522 /* URLConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
 		BF6BCBA729090E0E0042B522 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		BF6BCBA929090E120042B522 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				5943244B2908EFB9000518FD /* CustomSquareView.swift */,
 				3726FDFF2923A8740062B667 /* CustomArrowView.swift */,
 				59B270772929049800061825 /* CustomOnboardingOverlayView.swift */,
+				59B2707D2929188600061825 /* CustomBackgroundOverlayView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				3726FE022923B02E0062B667 /* CGPoint+Extension.swift in Sources */,
 				BF7B4FB828FE431900F83158 /* SceneDelegate.swift in Sources */,
 				59261F45292379BB005B6E3D /* UserDefaults+Extension.swift in Sources */,
+				59B2707E2929188600061825 /* CustomBackgroundOverlayView.swift in Sources */,
 				BF6BCBAA29090E130042B522 /* Endpoint.swift in Sources */,
 				DDB7DD97290814AB00FC0BA4 /* Label+Extension.swift in Sources */,
 				59B270782929049800061825 /* CustomOnboardingOverlayView.swift in Sources */,
@@ -567,7 +571,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = D9CAJN27UH;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tars/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라를 사용하기 위해 권한이 필요합니다.";
@@ -597,7 +601,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = D9CAJN27UH;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tars/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라를 사용하기 위해 권한이 필요합니다.";
