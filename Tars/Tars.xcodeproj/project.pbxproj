@@ -23,7 +23,6 @@
 		55F3B9B3290FA2D50033041E /* SelectPlanetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9B2290FA2D50033041E /* SelectPlanetCollectionViewCell.swift */; };
 		59261F432923798F005B6E3D /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59261F422923798F005B6E3D /* LaunchScreenViewController.swift */; };
 		59261F45292379BB005B6E3D /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59261F44292379BB005B6E3D /* UserDefaults+Extension.swift */; };
-		59261F47292379F2005B6E3D /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59261F46292379F2005B6E3D /* OnboardingViewController.swift */; };
 		5943244C2908EFB9000518FD /* CustomSquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943244B2908EFB9000518FD /* CustomSquareView.swift */; };
 		5943244E2908EFFF000518FD /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943244D2908EFFF000518FD /* String+Extension.swift */; };
 		599A78CB2917F75F0070CE15 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 599A78CD2917F75F0070CE15 /* Localizable.strings */; };
@@ -78,7 +77,6 @@
 		55F3B9B2290FA2D50033041E /* SelectPlanetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlanetCollectionViewCell.swift; sourceTree = "<group>"; };
 		59261F422923798F005B6E3D /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		59261F44292379BB005B6E3D /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
-		59261F46292379F2005B6E3D /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		5943244B2908EFB9000518FD /* CustomSquareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSquareView.swift; sourceTree = "<group>"; };
 		5943244D2908EFFF000518FD /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		599A78CC2917F75F0070CE15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -238,7 +236,6 @@
 				DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */,
 				55F3B9AF290FA2930033041E /* ContentsViewController.swift */,
 				59261F422923798F005B6E3D /* LaunchScreenViewController.swift */,
-				59261F46292379F2005B6E3D /* OnboardingViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -387,7 +384,6 @@
 				BF788B822903D1A7002BF8C0 /* CustomCircleView.swift in Sources */,
 				BF6BCBAC29090E180042B522 /* LocationManager.swift in Sources */,
 				BF6BCBB129090E4E0042B522 /* BodiesPositionsResponse.swift in Sources */,
-				59261F47292379F2005B6E3D /* OnboardingViewController.swift in Sources */,
 				5943244C2908EFB9000518FD /* CustomSquareView.swift in Sources */,
 				55F3B9AC290FA1FE0033041E /* Keys.swift in Sources */,
 				55F3B9AE290FA2600033041E /* Planet.swift in Sources */,
