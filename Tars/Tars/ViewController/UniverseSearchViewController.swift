@@ -74,15 +74,16 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        coachingOverlayView.isAccessibilityElement = true
+        coachingOverlayView.accessibilityLabel = PlanetStrings.onboardingInstructionstring.localizedKey
+        coachingOverlayView.becomeFirstResponder()
+        
         selectPlanetCollectionView.delegate = self
         selectPlanetCollectionView.dataSource = self
         
         [guideCircleView, guideArrowView, selectedSquareView].forEach { sceneView.addSubview($0) }
         [coachingBackgroundOverlayView, coachingOverlayView, sceneView, selectPlanetCollectionView, searchGuideLabel].forEach { view.addSubview($0) }
         configureConstraints()
-        
-        coachingOverlayView.isAccessibilityElement = true
-        coachingOverlayView.accessibilityLabel = "Face the iphone camera forwards and move it around as if you're moving your head"
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
             self.coachingOverlayView.isAccessibilityElement = false
