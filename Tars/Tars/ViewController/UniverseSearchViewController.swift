@@ -75,31 +75,31 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        [guideCircleView, guideArrowView, selectedSquareView].forEach { sceneView.addSubview($0) }
-        [coachingBackgroundOverlayView, coachingOverlayView, sceneView, selectPlanetCollectionView, searchGuideLabel].forEach { view.addSubview($0) }
-        configureConstraints()
-        
         coachingOverlayView.isAccessibilityElement = true
         coachingOverlayView.accessibilityLabel = PlanetStrings.onboardingInstructionstring.localizedKey
         UIAccessibility.post(notification: .layoutChanged, argument: coachingOverlayView)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 8.0) {
+        [guideCircleView, guideArrowView, selectedSquareView].forEach { sceneView.addSubview($0) }
+        [coachingBackgroundOverlayView, coachingOverlayView, sceneView, selectPlanetCollectionView, searchGuideLabel].forEach { view.addSubview($0) }
+        configureConstraints()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
             self.coachingOverlayView.isAccessibilityElement = false
             self.coachingOverlayView.removeFromSuperview()
             self.coachingBackgroundOverlayView.removeFromSuperview()
             self.navigationController?.navigationBar.layer.zPosition = 0
+            
+            // navigation title 설정
+            self.navigationController?.isNavigationBarHidden = false
+            self.navigationController?.topViewController?.title = "우주 둘러보기"
+            self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
+            self.navigationController?.navigationBar.backgroundColor = .black
+            
+            // settingButton navigationItem
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(self.settingButtonTapped))
+            self.navigationItem.rightBarButtonItem?.tintColor = .white
+            self.navigationItem.hidesBackButton = true
         }
-        
-        // navigation title 설정
-        self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.topViewController?.title = "우주 둘러보기"
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
-        self.navigationController?.navigationBar.backgroundColor = .black
-        
-        // settingButton navigationItem
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(settingButtonTapped))
-        self.navigationItem.rightBarButtonItem?.tintColor = .white
-        self.navigationItem.hidesBackButton = true
         
         selectPlanetCollectionView.delegate = self
         selectPlanetCollectionView.dataSource = self
