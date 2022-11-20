@@ -74,32 +74,21 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        coachingOverlayView.isAccessibilityElement = true
-        coachingOverlayView.accessibilityLabel = PlanetStrings.onboardingInstructionstring.localizedKey
-        coachingOverlayView.becomeFirstResponder()
-        
-        selectPlanetCollectionView.delegate = self
-        selectPlanetCollectionView.dataSource = self
         
         [guideCircleView, guideArrowView, selectedSquareView].forEach { sceneView.addSubview($0) }
         [coachingBackgroundOverlayView, coachingOverlayView, sceneView, selectPlanetCollectionView, searchGuideLabel].forEach { view.addSubview($0) }
         configureConstraints()
-
+        
         coachingOverlayView.isAccessibilityElement = true
         coachingOverlayView.accessibilityLabel = PlanetStrings.onboardingInstructionstring.localizedKey
         UIAccessibility.post(notification: .layoutChanged, argument: coachingOverlayView)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 8.0) {
             self.coachingOverlayView.isAccessibilityElement = false
             self.coachingOverlayView.removeFromSuperview()
             self.coachingBackgroundOverlayView.removeFromSuperview()
             self.navigationController?.navigationBar.layer.zPosition = 0
         }
-        
-        selectedSquareView.isHidden = true
-        guideArrowView.isHidden = true
-        
-        let locationManager = LocationManager.shared
-        locationManager.delegate = self
-        locationManager.updateLocation()
         
         // navigation title 설정
         self.navigationController?.isNavigationBarHidden = false
@@ -111,6 +100,16 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(settingButtonTapped))
         self.navigationItem.rightBarButtonItem?.tintColor = .white
         self.navigationItem.hidesBackButton = true
+        
+        selectPlanetCollectionView.delegate = self
+        selectPlanetCollectionView.dataSource = self
+        
+        selectedSquareView.isHidden = true
+        guideArrowView.isHidden = true
+        
+        let locationManager = LocationManager.shared
+        locationManager.delegate = self
+        locationManager.updateLocation()
     }
     
     @objc func settingButtonTapped() {
