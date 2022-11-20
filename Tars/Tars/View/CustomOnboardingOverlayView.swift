@@ -11,7 +11,7 @@ class CustomOnboardingOverlayView: UIView {
 
     lazy var coachingOnboardingLabel: UILabel = {
         let coachingOverlay = UILabel()
-        coachingOverlay.text = "move iphone around"
+        coachingOverlay.text = PlanetStrings.onboardingInstructionTitle.localizedKey
         coachingOverlay.font = .preferredFont(forTextStyle: .largeTitle)
         coachingOverlay.textAlignment = .center
         if let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body).withSymbolicTraits(.traitBold) {

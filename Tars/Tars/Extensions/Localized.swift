@@ -13,10 +13,11 @@ struct LocalizableStrings {
     
     static let airPodsInstructionstring = NSLocalizedString("제대로 우주 공간을 경험하기 위해서는 반드시 에어팟을 착용해주세요", comment: "")
     static let onboardingInstructionstring = NSLocalizedString("팔을 뻗어 아이폰 카메라를 정면으로 향하게 하고 주변을 스캔하듯 아이폰을 움직이세요. 이제부터 우주탐색뷰로 넘어갑니다.", comment: "")
+    static let onboardingInstructionTitle = NSLocalizedString("아이폰을 움직여 주변을 스캔하세요", comment: "")
 }
 
 enum PlanetStrings: String {
-    case jupiter, jupiterContent, airPodsInstructionstring, onboardingInstructionstring
+    case jupiter, jupiterContent, airPodsInstructionstring, onboardingInstructionstring, onboardingInstructionTitle
     
     var localizedKey: String {
         switch self {
@@ -28,6 +29,8 @@ enum PlanetStrings: String {
             return LocalizableStrings.airPodsInstructionstring
         case .onboardingInstructionstring:
             return LocalizableStrings.onboardingInstructionstring
+        case .onboardingInstructionTitle:
+            return LocalizableStrings.onboardingInstructionTitle
         }
     }
 }
