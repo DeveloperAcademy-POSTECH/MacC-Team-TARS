@@ -257,8 +257,6 @@ extension UniverseSearchViewController {
         guard let pointOfView = sceneView.pointOfView else { return }
         let detectNodes = sceneView.nodesInsideFrustum(of: pointOfView) // 화면에 들어온 노드 리스트
         
-//        exploreModeSound(soundPlayer: planetObjectSound)
-        
         for node in detectNodes {
             let nodePosition = sceneView.projectPoint(node.position)
             let nodeScreenPos = nodePosition.toCGPoint()
@@ -279,11 +277,11 @@ extension UniverseSearchViewController {
 
             let nodeOrigin = CGPoint(x: nodeCenter.x - screenWidth / 11.3, y: nodeCenter.y - screenWidth / 11.3)
             setDetectedLayout(name: name, point: nodeOrigin)
-            isSelectExploreSound(soundPlayer: planetObjectSound, selectedName: planetName)
+            selectedExploreSoundPlay(soundPlayer: planetObjectSound, selectedName: planetName)
         } else {
             // 탐지된 노드가 없을 때
             setNotDetectedLayout()
-            exploreModeSound(soundPlayer: planetObjectSound)
+            exploreModeSoundPlay(soundPlayer: planetObjectSound)
         }
     }
     
@@ -294,7 +292,7 @@ extension UniverseSearchViewController {
         let nodeScreenPos = nodePosition.toCGPoint()
         let distanceToCenter = circleCenter.distanceTo(nodeScreenPos)
         
-        selectModeSound(soundPlayer: planetObjectSound, selectedName: name)
+        selectModeSoundPlay(soundPlayer: planetObjectSound, selectedName: name)
 
         if nodePosition.z >= 1 {
             // 찾는 노드가 뒤에 있을 때
@@ -319,7 +317,7 @@ extension UniverseSearchViewController {
 extension UniverseSearchViewController {
     
     /// 탐색 모드일 때 - 모든 행성의 소리의 음량을 동일하게
-    private func exploreModeSound(soundPlayer: [String: SCNAudioPlayer]) {
+    private func exploreModeSoundPlay(soundPlayer: [String: SCNAudioPlayer]) {
         
         print("탐색 원상태 돌아옴")
         
@@ -331,7 +329,7 @@ extension UniverseSearchViewController {
     }
     
     /// 검색 모드일때 - 선택된 이외의 행성의 소리 음소거
-    private func selectModeSound(soundPlayer: [String: SCNAudioPlayer], selectedName: String) {
+    private func selectModeSoundPlay(soundPlayer: [String: SCNAudioPlayer], selectedName: String) {
         
         print("현재 검색하는 행성 ", selectedName)
         
@@ -349,7 +347,7 @@ extension UniverseSearchViewController {
     }
     
     /// 탐색된 행성 있을 때 - 탐색된 행성 소리는 증가 다른 행성은 감소
-    private func isSelectExploreSound(soundPlayer: [String: SCNAudioPlayer], selectedName: String) {
+    private func selectedExploreSoundPlay(soundPlayer: [String: SCNAudioPlayer], selectedName: String) {
         
         print("현재 탐색된 행성 ", selectedName)
         
