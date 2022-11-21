@@ -8,6 +8,7 @@
 import UIKit
 import SceneKit
 import ARKit
+import AVFoundation
 
 enum Mode {
     case explore
@@ -36,6 +37,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         }
     }
     var planetObjectList: [String: SCNNode] = [:]
+    var planetObjectSound: [String: SCNAudioPlayer] = [:]
     var circleCenter: CGPoint = .zero
     
     let searchGuideLabel: UILabel = {
@@ -119,13 +121,20 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                 
                 let audioSource: SCNAudioSource = {
                     let source = SCNAudioSource(fileNamed: "\(planet.name).mp3")!
+                    /// 노드와 해당 위치에와 소스의 볼륨, 반향 및 거리에 따라 자동으로 변경
+                    source.isPositional = true
+                    source.volume = 0.5
+                    /// 오디오 소스를 반복적으로 재상할지 여부를 결정
                     source.loops = true
                     source.load()
                     return source
                 }()
                 
+                let scnPlayer = SCNAudioPlayer(source: audioSource)
+                planetObjectSound[planet.name] = scnPlayer
                 sphereNode.removeAllAudioPlayers()
-                sphereNode.addAudioPlayer(SCNAudioPlayer(source: audioSource))
+                sphereNode.addAudioPlayer(scnPlayer)
+                
             }
         }
     }
@@ -268,9 +277,11 @@ extension UniverseSearchViewController {
 
             let nodeOrigin = CGPoint(x: nodeCenter.x - screenWidth / 11.3, y: nodeCenter.y - screenWidth / 11.3)
             setDetectedLayout(name: name, point: nodeOrigin)
+            selectedExploreSoundPlay(soundPlayer: planetObjectSound, selectedName: planetName)
         } else {
             // 탐지된 노드가 없을 때
             setNotDetectedLayout()
+            exploreModeSoundPlay(soundPlayer: planetObjectSound)
         }
     }
     
@@ -280,6 +291,8 @@ extension UniverseSearchViewController {
         let nodePosition = sceneView.projectPoint(node.position)
         let nodeScreenPos = nodePosition.toCGPoint()
         let distanceToCenter = circleCenter.distanceTo(nodeScreenPos)
+        
+        selectModeSoundPlay(soundPlayer: planetObjectSound, selectedName: name)
 
         if nodePosition.z >= 1 {
             // 찾는 노드가 뒤에 있을 때
@@ -294,6 +307,64 @@ extension UniverseSearchViewController {
             let nodeOrigin = CGPoint(x: nodeScreenPos.x - screenWidth / 11.3, y: nodeScreenPos.y - screenWidth / 11.3)
             setArrowHidden()
             setDetectedLayout(name: name, point: nodeOrigin)
+            
+        }
+    }
+}
+
+// MARK: - 모드에 따른 소리 증감 기능
+
+extension UniverseSearchViewController {
+    
+    /// 탐색 모드일 때 - 모든 행성의 소리의 음량을 동일하게
+    private func exploreModeSoundPlay(soundPlayer: [String: SCNAudioPlayer]) {
+        
+        print("탐색 원상태 돌아옴")
+        
+        for audioPlayer in soundPlayer.values {
+            guard let avNode = audioPlayer.audioNode as? AVAudioMixing else { return }
+            
+            avNode.volume = 0.5
+        }
+    }
+    
+    /// 검색 모드일때 - 선택된 이외의 행성의 소리 음소거
+    private func selectModeSoundPlay(soundPlayer: [String: SCNAudioPlayer], selectedName: String) {
+        
+        print("현재 검색하는 행성 ", selectedName)
+        
+        for name in soundPlayer.keys {
+            if name == selectedName {
+                continue
+            } else {
+                let audioPlayer = soundPlayer[name]
+                
+                guard let avNode = audioPlayer?.audioNode as? AVAudioMixing else { return }
+                
+                avNode.volume = 0.0
+            }
+        }
+    }
+    
+    /// 탐색된 행성 있을 때 - 탐색된 행성 소리는 증가 다른 행성은 감소
+    private func selectedExploreSoundPlay(soundPlayer: [String: SCNAudioPlayer], selectedName: String) {
+        
+        print("현재 탐색된 행성 ", selectedName)
+        
+        for name in soundPlayer.keys {
+            if name == selectedName {
+                let audioPlayer = soundPlayer[name]
+                
+                guard let avNode = audioPlayer?.audioNode as? AVAudioMixing else { return }
+                
+                avNode.volume = 1.0
+            } else {
+                let audioPlayer = soundPlayer[name]
+                
+                guard let avNode = audioPlayer?.audioNode as? AVAudioMixing else { return }
+                
+                avNode.volume = 0.3
+            }
         }
     }
 }

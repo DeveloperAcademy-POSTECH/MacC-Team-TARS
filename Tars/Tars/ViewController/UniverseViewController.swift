@@ -36,11 +36,11 @@ class UniverseViewController: UIViewController, ARSCNViewDelegate, LocationManag
     
     /// 행성을 배치하기 위한 함수
     private func setPlanetPosition(to scene: SCNScene?, planets: [Body]) {
-        
+
         for planet in planets {
-            
+
             print(planet)
-            
+
             if planet.name == "Earth" || planet.name == "Pluto" {
                 continue
             } else {
@@ -51,8 +51,13 @@ class UniverseViewController: UIViewController, ARSCNViewDelegate, LocationManag
                 
                 scene?.rootNode.addChildNode(sphereNode)
                 print(planet.name)
+                
                 let audioSource: SCNAudioSource = {
-                    let source = SCNAudioSource(fileNamed: "\(planet.name).mp3")!
+                    let source = SCNAudioSource(fileNamed: "\(planet.name)3.mp3")!
+                    
+                    /// 노드와 해당 위치에와 소스의 볼륨, 반향 및 거리에 따라 자동으로 변경
+                    source.isPositional = true
+                    /// 오디오 소스를 반복적으로 재상할지 여부를 결정
                     source.loops = true
                     source.load()
                     return source
