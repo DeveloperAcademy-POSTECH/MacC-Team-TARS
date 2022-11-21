@@ -6,13 +6,43 @@
 //
 
 import UIKit
+import SceneKit.ModelIO
 
 class InfoViewController: UIViewController {
-    lazy var planetImageView: UIImageView = {
-        let planetImage = UIImageView()
-        planetImage.image = UIImage(named: "jupiter")
-        planetImage.contentMode = .scaleAspectFill
-        return planetImage
+    
+    lazy var sceneView: SCNView = {
+        let sceneView = SCNView()
+        
+        // usdz 파일 사용하기 위해 url 받아온 뒤 scene을 생성합니다.
+        guard let url = Bundle.main.url(forResource: "Jupiter", withExtension: "usdz") else { fatalError() }
+        let mdlAsset = MDLAsset(url: url)
+        mdlAsset.loadTextures()
+        let scene = SCNScene(mdlAsset: mdlAsset)
+
+        scene.rootNode.childNode(withName: "Cube_002", recursively: true)
+        scene.rootNode.scale = SCNVector3(1.13, 1.13, 1.13)
+        
+        // 오브젝트가 회전하는 애니메이션(액션)을 추가합니다.
+        let action = SCNAction.rotateBy(x: 0, y: CGFloat(GLKMathDegreesToRadians(-360)), z: 0, duration: 30)
+        let rotateForever = SCNAction.repeatForever(action)
+        scene.rootNode.childNode(withName: "Cube_002", recursively: true)?.runAction(rotateForever)
+        
+        sceneView.allowsCameraControl = true
+        sceneView.backgroundColor = UIColor.clear
+        
+        sceneView.cameraControlConfiguration.allowsTranslation = false
+        sceneView.cameraControlConfiguration.autoSwitchToFreeCamera = true
+        for reco in sceneView.gestureRecognizers! {
+            if let panReco = reco as? UIPanGestureRecognizer {
+                panReco.maximumNumberOfTouches = 1
+            }
+        }
+        
+        // 조명 추가
+        sceneView.autoenablesDefaultLighting = true
+        sceneView.scene = scene
+        
+        return sceneView
     }()
     
     lazy var planetName: UILabel = {
@@ -42,16 +72,16 @@ class InfoViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .black
-        [planetImageView, planetName, planetInfo].forEach { view.addSubview($0) }
+        [sceneView, planetName, planetInfo].forEach { view.addSubview($0) }
         configureConstraints()
     }
     
     private func configureConstraints() {
-        planetImageView.centerX(inView: view)
-        planetImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: screenHeight / 21.6, width: screenWidth / 1.56, height: screenWidth / 1.56)
+        sceneView.centerX(inView: view)
+        sceneView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: screenHeight / 21.6, width: screenWidth, height: screenWidth / 1.56)
         
         planetName.centerX(inView: view)
-        planetName.anchor(top: planetImageView.bottomAnchor, paddingTop: screenHeight / 21.6)
+        planetName.anchor(top: sceneView.bottomAnchor, paddingTop: screenHeight / 21.6)
         
         planetInfo.centerX(inView: view)
         planetInfo.anchor(top: planetName.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: screenWidth / 26.3, paddingLeading: screenWidth / 9.75, paddingTrailing: screenWidth / 9.75)
