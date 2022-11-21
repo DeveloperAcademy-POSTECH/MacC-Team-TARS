@@ -36,6 +36,9 @@ class InfoViewController: UIViewController {
             if let panReco = reco as? UIPanGestureRecognizer {
                 panReco.maximumNumberOfTouches = 1
             }
+            if let panReco = reco as? UIPinchGestureRecognizer {
+                panReco.isEnabled = false
+            }
         }
         
         // 조명 추가
