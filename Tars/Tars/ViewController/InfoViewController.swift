@@ -48,6 +48,9 @@ class InfoViewController: UIViewController {
         sceneView.autoenablesDefaultLighting = true
         sceneView.scene = scene
         
+        sceneView.isAccessibilityElement = true
+        sceneView.accessibilityLabel = "\(planet.planetKoreanName) 이미지"
+        
         return sceneView
     }()
     
