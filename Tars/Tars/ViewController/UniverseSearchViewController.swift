@@ -87,6 +87,8 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         [coachingBackgroundOverlayView, coachingOverlayView, sceneView, selectPlanetCollectionView, searchGuideLabel].forEach { view.addSubview($0) }
         configureConstraints()
         
+        self.accessibilityElements = [selectPlanetCollectionView]
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
             self.coachingOverlayView.isAccessibilityElement = false
             self.coachingOverlayView.removeFromSuperview()
