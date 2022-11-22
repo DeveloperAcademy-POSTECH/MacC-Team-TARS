@@ -29,6 +29,6 @@ class CustomBackgroundOverlayView: UIView {
         
         [coachingOnboardingBackground].forEach { addSubview($0) }
         
-        coachingOnboardingBackground.anchor(width: 100000, height: 100000)
+        coachingOnboardingBackground.anchor(width: screenWidth, height: screenHeight)
     }
 }
