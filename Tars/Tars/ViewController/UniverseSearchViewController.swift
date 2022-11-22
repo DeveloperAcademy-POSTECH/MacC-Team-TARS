@@ -120,7 +120,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                 planetObjectList[planet.name] = sphereNode
                 
                 let audioSource: SCNAudioSource = {
-                    let source = SCNAudioSource(fileNamed: "\(planet.name).mp3")!
+                    let source = SCNAudioSource(fileNamed: "Searching_\(planet.name).mp3")!
                     /// 노드와 해당 위치에와 소스의 볼륨, 반향 및 거리에 따라 자동으로 변경
                     source.isPositional = true
                     source.volume = 0.5
