@@ -9,14 +9,16 @@ import UIKit
 import SceneKit.ModelIO
 
 class InfoViewController: UIViewController {
-    public var planet: Planet =  Planet(planetName: "default", planetImage: UIImage(named: "default"))
-
+    public var planet: Planet = Planet(planetKoreanName: "", planetEnglishName: "", planetImage: UIImage(named: ""))
+    
     lazy var sceneView: SCNView = {
         let sceneView = SCNView()
         
         // usdz 파일 사용하기 위해 url 받아온 뒤 scene을 생성합니다.
-        guard let url = Bundle.main.url(forResource: "Jupiter", withExtension: "usdz") else { fatalError() }
-        let mdlAsset = MDLAsset(url: url)
+        let path = Bundle.main.path(forResource: planet.planetEnglishName, ofType: "usdz", inDirectory: "3dPlanets") ?? ""
+        let url = URL(string: path)
+
+        let mdlAsset = MDLAsset(url: url!)
         mdlAsset.loadTextures()
         let scene = SCNScene(mdlAsset: mdlAsset)
 
@@ -51,7 +53,7 @@ class InfoViewController: UIViewController {
     
     lazy var planetName: UILabel = {
         let planetName = UILabel()
-        planetName.text = PlanetStrings.jupiter.localizedKey
+        planetName.text = planet.planetKoreanName
         planetName.font = .preferredFont(forTextStyle: .largeTitle)
         if let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .title1).withSymbolicTraits(.traitBold) {
             planetName.font = .init(descriptor: descriptor, size: 0)
@@ -63,6 +65,7 @@ class InfoViewController: UIViewController {
     
     lazy var planetInfo: UILabel = {
         let planetInfo = UILabel()
+        // TODO: content text 수정
         planetInfo.text = PlanetStrings.jupiterContent.localizedKey
         planetInfo.font = .preferredFont(forTextStyle: .title3)
         planetInfo.setLineSpacing(spacing: 6)
@@ -79,12 +82,7 @@ class InfoViewController: UIViewController {
         [sceneView, planetName, planetInfo].forEach { view.addSubview($0) }
         configureConstraints()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        // TODO: planet 정보 넘기기 동작 구현
-        
-    }
-    
+
     private func configureConstraints() {
         sceneView.centerX(inView: view)
         sceneView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: screenHeight / 21.6, width: screenWidth, height: screenWidth / 1.56)

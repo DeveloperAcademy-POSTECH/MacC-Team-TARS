@@ -31,7 +31,6 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     private var guideArrowView = CustomArrowView()
     private var coachingOverlayView = CustomOnboardingOverlayView()
     private var coachingBackgroundOverlayView = CustomBackgroundOverlayView()
-    let infoViewController = InfoViewController()
     
     // TapGesture 선언
     let selectedSquareViewTap = UITapGestureRecognizer()
@@ -119,15 +118,19 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         locationManager.updateLocation()
         
         // TapGesture와 View 연결
-        selectedSquareViewTap.delegate = self
         selectedSquareViewTap.addTarget(self, action: #selector(squareViewTapped))
         selectedSquareView.addGestureRecognizer(selectedSquareViewTap)
     }
     
     // TapGesture 화면 전환 동작
     @objc func squareViewTapped() {
-        // print(self.selectedSquareView.planetLabel.text ?? "nil")
-        // infoViewController.planet.planetName = self.selectedSquareView.planetLabel.text ?? "Sun"
+        let planetKoreanName = self.selectedSquareView.planetLabel.text ?? ""
+        let index: Int = planetList.firstIndex(where: { $0.planetKoreanName == planetKoreanName }) ?? 0
+        
+        // tap 실행 시 매번 infoViewController 생성
+        let infoViewController = InfoViewController()
+        infoViewController.planet.planetKoreanName = planetKoreanName
+        infoViewController.planet.planetEnglishName = planetEnglishNames[index]
         self.navigationController?.pushViewController(infoViewController, animated: true)
     }
     
