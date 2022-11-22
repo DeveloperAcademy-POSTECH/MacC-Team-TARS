@@ -335,7 +335,11 @@ extension UniverseSearchViewController {
         
         for name in soundPlayer.keys {
             if name == selectedName {
-                continue
+                let audioPlayer = soundPlayer[name]
+                
+                guard let avNode = audioPlayer?.audioNode as? AVAudioMixing else { return }
+                
+                avNode.volume = 0.5
             } else {
                 let audioPlayer = soundPlayer[name]
                 
