@@ -47,6 +47,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     let searchGuideLabel: UILabel = {
         let label: UILabel = UILabel()
         label.text = "빠르게 천체 찾기"
+        label.accessibilityHint = "찾고싶은 천체를 선택해보세요"
         label.textColor = .white
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
@@ -105,6 +106,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
             
             // settingButton navigationItem
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(self.settingButtonTapped))
+            self.navigationItem.rightBarButtonItem?.accessibilityLabel = "설정"
             self.navigationItem.rightBarButtonItem?.tintColor = .white
             self.navigationItem.hidesBackButton = true
         }
