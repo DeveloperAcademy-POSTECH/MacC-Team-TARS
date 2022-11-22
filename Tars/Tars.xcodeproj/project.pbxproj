@@ -12,6 +12,7 @@
 		3726FE022923B02E0062B667 /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3726FE012923B02E0062B667 /* CGPoint+Extension.swift */; };
 		3726FE042923B12C0062B667 /* SCNVector3+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3726FE032923B12C0062B667 /* SCNVector3+Extension.swift */; };
 		374FEE372909597B00E0C56B /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FEE362909597B00E0C56B /* Float+Extension.swift */; };
+		3F6BD6B2292CB2E700BFA1A8 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6BD6B1292CB2E700BFA1A8 /* SettingTableViewCell.swift */; };
 		5533717729123F17004AD6E8 /* UniverseSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */; };
 		558932C9291429E90032D459 /* UniverseSearchViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558932C8291429E90032D459 /* UniverseSearchViewController+DataSource.swift */; };
 		558932CB29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558932CA29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift */; };
@@ -68,6 +69,7 @@
 		3726FE012923B02E0062B667 /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
 		3726FE032923B12C0062B667 /* SCNVector3+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Extension.swift"; sourceTree = "<group>"; };
 		374FEE362909597B00E0C56B /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
+		3F6BD6B1292CB2E700BFA1A8 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseSearchViewController.swift; sourceTree = "<group>"; };
 		558932C8291429E90032D459 /* UniverseSearchViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UniverseSearchViewController+DataSource.swift"; sourceTree = "<group>"; };
 		558932CA29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UniverseSearchViewController+FlowLayoutDelegate.swift"; sourceTree = "<group>"; };
@@ -170,6 +172,14 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		3F6BD6B0292CB2BB00BFA1A8 /* SettingVIew */ = {
+			isa = PBXGroup;
+			children = (
+				3F6BD6B1292CB2E700BFA1A8 /* SettingTableViewCell.swift */,
+			);
+			path = SettingVIew;
+			sourceTree = "<group>";
+		};
 		558932CC29142B0C0032D459 /* SearchView */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +215,7 @@
 				BF7B4FCC28FE448000F83158 /* ViewController */,
 				BF7B4FCA28FE447000F83158 /* View */,
 				558932CC29142B0C0032D459 /* SearchView */,
+				3F6BD6B0292CB2BB00BFA1A8 /* SettingVIew */,
 				BF7B4FCE28FE44D000F83158 /* Extensions */,
 				37024B0D2912082500BC64AE /* Location */,
 				37AE64B82906B766000ABC86 /* Network */,
@@ -444,6 +455,7 @@
 				5943244E2908EFFF000518FD /* String+Extension.swift in Sources */,
 				3726FE002923A8740062B667 /* CustomArrowView.swift in Sources */,
 				374FEE372909597B00E0C56B /* Float+Extension.swift in Sources */,
+				3F6BD6B2292CB2E700BFA1A8 /* SettingTableViewCell.swift in Sources */,
 				BF7B4FB628FE431900F83158 /* AppDelegate.swift in Sources */,
 				558932C9291429E90032D459 /* UniverseSearchViewController+DataSource.swift in Sources */,
 				DDB7DD932906B2B000FC0BA4 /* InfoViewController.swift in Sources */,
@@ -610,7 +622,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = N3H27N59VG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tars/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라를 사용하기 위해 권한이 필요합니다.";
@@ -640,7 +652,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = N3H27N59VG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tars/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라를 사용하기 위해 권한이 필요합니다.";
