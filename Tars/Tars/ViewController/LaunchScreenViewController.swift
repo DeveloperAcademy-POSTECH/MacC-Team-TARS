@@ -35,7 +35,11 @@ class LaunchScreenViewController: UIViewController {
         [airPodsInstruction].forEach { view.addSubview($0) }
         configureConstraints()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+        airPodsInstruction.isAccessibilityElement = true
+        airPodsInstruction.accessibilityLabel = PlanetStrings.airPodsInstructionstring.localizedKey
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            self.airPodsInstruction.isAccessibilityElement = false
             let universeVC = UniverseSearchViewController()
             self.navigationController?.pushViewController(universeVC, animated: true)
             self.navigationController?.isNavigationBarHidden = true
