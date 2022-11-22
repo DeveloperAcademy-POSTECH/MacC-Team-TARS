@@ -57,6 +57,7 @@
 		BFAD1EA6292C62F00081C4A3 /* Searching_Venus.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFAD1E9D292C62F00081C4A3 /* Searching_Venus.mp3 */; };
 		BFAD1EA7292C62F00081C4A3 /* Searching_Saturn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFAD1E9E292C62F00081C4A3 /* Searching_Saturn.mp3 */; };
 		BFAD1EA8292C62F00081C4A3 /* Searching_Moon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFAD1E9F292C62F00081C4A3 /* Searching_Moon.mp3 */; };
+		BFAD1EC8292C80030081C4A3 /* 3dPlanets in Resources */ = {isa = PBXBuildFile; fileRef = BFAD1EC7292C80030081C4A3 /* 3dPlanets */; };
 		DDB7DD932906B2B000FC0BA4 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */; };
 		DDB7DD97290814AB00FC0BA4 /* Label+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB7DD96290814AB00FC0BA4 /* Label+Extension.swift */; };
 /* End PBXBuildFile section */
@@ -124,6 +125,7 @@
 		BFAD1EAF292C63050081C4A3 /* Detail_Mercury.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Detail_Mercury.aif; sourceTree = "<group>"; };
 		BFAD1EB0292C63060081C4A3 /* Detail_Uranus.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Detail_Uranus.aif; sourceTree = "<group>"; };
 		BFAD1EB1292C63070081C4A3 /* Detail_Moon.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Detail_Moon.aif; sourceTree = "<group>"; };
+		BFAD1EC7292C80030081C4A3 /* 3dPlanets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 3dPlanets; sourceTree = "<group>"; };
 		DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		DDB7DD96290814AB00FC0BA4 /* Label+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -212,6 +214,7 @@
 				BF7B4FC028FE431A00F83158 /* LaunchScreen.storyboard */,
 				BF7B4FC328FE431A00F83158 /* Info.plist */,
 				BF788B8529052230002BF8C0 /* UniverseBackground.scn */,
+				BFAD1EC7292C80030081C4A3 /* 3dPlanets */,
 				BFAD1EB2292C63180081C4A3 /* SoundAssets */,
 			);
 			path = Tars;
@@ -373,6 +376,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				599A78CB2917F75F0070CE15 /* Localizable.strings in Resources */,
+				BFAD1EC8292C80030081C4A3 /* 3dPlanets in Resources */,
 				BFAD1EA0292C62F00081C4A3 /* Searching_Neptune.mp3 in Resources */,
 				BF7B4FD528FE47B200F83158 /* .swiftlint.yml in Resources */,
 				BF788B8629052230002BF8C0 /* UniverseBackground.scn in Resources */,
