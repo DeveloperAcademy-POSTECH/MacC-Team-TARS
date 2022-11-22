@@ -342,8 +342,6 @@ extension UniverseSearchViewController {
     /// 탐색 모드일 때 - 모든 행성의 소리의 음량을 동일하게
     private func exploreModeSoundPlay(soundPlayer: [String: SCNAudioPlayer]) {
         
-        print("탐색 원상태 돌아옴")
-        
         for audioPlayer in soundPlayer.values {
             guard let avNode = audioPlayer.audioNode as? AVAudioMixing else { return }
             
@@ -354,11 +352,13 @@ extension UniverseSearchViewController {
     /// 검색 모드일때 - 선택된 이외의 행성의 소리 음소거
     private func selectModeSoundPlay(soundPlayer: [String: SCNAudioPlayer], selectedName: String) {
         
-        print("현재 검색하는 행성 ", selectedName)
-        
         for name in soundPlayer.keys {
             if name == selectedName {
-                continue
+                let audioPlayer = soundPlayer[name]
+                
+                guard let avNode = audioPlayer?.audioNode as? AVAudioMixing else { return }
+                
+                avNode.volume = 0.5
             } else {
                 let audioPlayer = soundPlayer[name]
                 
@@ -372,8 +372,6 @@ extension UniverseSearchViewController {
     /// 탐색된 행성 있을 때 - 탐색된 행성 소리는 증가 다른 행성은 감소
     private func selectedExploreSoundPlay(soundPlayer: [String: SCNAudioPlayer], selectedName: String) {
         
-        print("현재 탐색된 행성 ", selectedName)
-        
         for name in soundPlayer.keys {
             if name == selectedName {
                 let audioPlayer = soundPlayer[name]
@@ -386,7 +384,7 @@ extension UniverseSearchViewController {
                 
                 guard let avNode = audioPlayer?.audioNode as? AVAudioMixing else { return }
                 
-                avNode.volume = 0.3
+                avNode.volume = 0.15
             }
         }
     }
