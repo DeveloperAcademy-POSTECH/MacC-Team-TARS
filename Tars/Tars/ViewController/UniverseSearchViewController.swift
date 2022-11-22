@@ -44,6 +44,14 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     var planetObjectSound: [String: SCNAudioPlayer] = [:]
     var circleCenter: CGPoint = .zero
     
+    var detectedNode: String = "" {
+            didSet {
+                if oldValue != detectedNode && detectedNode != "" {
+                    guideDetectedAnnounce(name: detectedNode)
+                }
+            }
+        }
+    
     let searchGuideLabel: UILabel = {
         let label: UILabel = UILabel()
         label.text = "빠르게 천체 찾기"
@@ -252,6 +260,7 @@ extension UniverseSearchViewController {
     
     // 행성이 탐지되지 않았을 때 레이아웃 설정
     private func setNotDetectedLayout() {
+        detectedNode = ""
         DispatchQueue.main.async {
             self.guideCircleView.isHidden = false
             self.selectedSquareView.isHidden = true
@@ -260,11 +269,14 @@ extension UniverseSearchViewController {
 
     // 행성이 탐지되었을 때 레이아웃 설정
     private func setDetectedLayout(name: String, point: CGPoint) {
+        detectedNode = name
         DispatchQueue.main.async {
             self.selectedSquareView.frame.origin = point
             self.selectedSquareView.setLabel(planetNameDict[name] ?? name)
             self.guideCircleView.isHidden = true
             self.selectedSquareView.isHidden = false
+            self.selectedSquareView.isAccessibilityElement = true
+            self.selectedSquareView.accessibilityLabel = planetNameDict[name] ?? name
         }
     }
     
@@ -287,6 +299,11 @@ extension UniverseSearchViewController {
         DispatchQueue.main.async {
             self.guideArrowView.isHidden = true
         }
+    }
+    
+    // 행성 detect되었을 때 announce
+    private func guideDetectedAnnounce(name: String) {
+        UIAccessibility.post(notification: .announcement, argument: planetNameDict[name] ?? name)
     }
 }
 
