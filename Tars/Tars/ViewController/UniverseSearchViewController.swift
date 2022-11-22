@@ -24,14 +24,16 @@ enum Mode {
     }
 }
 
-class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, LocationManagerDelegate {
+class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, LocationManagerDelegate, UIGestureRecognizerDelegate {
 
     private var guideCircleView = CustomCircleView()
     private var selectedSquareView = CustomSquareView()
     private var guideArrowView = CustomArrowView()
     private var coachingOverlayView = CustomOnboardingOverlayView()
     private var coachingBackgroundOverlayView = CustomBackgroundOverlayView()
-    let contentsViewController = ContentsViewController()
+    
+    // TapGesture 선언
+    let selectedSquareViewTap = UITapGestureRecognizer()
     
     var mode: Mode = .explore {
         didSet {
@@ -114,6 +116,22 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         let locationManager = LocationManager.shared
         locationManager.delegate = self
         locationManager.updateLocation()
+        
+        // TapGesture와 View 연결
+        selectedSquareViewTap.addTarget(self, action: #selector(squareViewTapped))
+        selectedSquareView.addGestureRecognizer(selectedSquareViewTap)
+    }
+    
+    // TapGesture 화면 전환 동작
+    @objc func squareViewTapped() {
+        let planetKoreanName = self.selectedSquareView.planetLabel.text ?? ""
+        let index: Int = planetList.firstIndex(where: { $0.planetKoreanName == planetKoreanName }) ?? 0
+        
+        // tap 실행 시 매번 infoViewController 생성
+        let infoViewController = InfoViewController()
+        infoViewController.planet.planetKoreanName = planetKoreanName
+        infoViewController.planet.planetEnglishName = planetEnglishNames[index]
+        self.navigationController?.pushViewController(infoViewController, animated: true)
     }
     
     @objc func settingButtonTapped() {
@@ -132,7 +150,6 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                 sphereNode.position = SCNVector3(planet.coordinate.x, planet.coordinate.y, planet.coordinate.z)
                 sphereNode.name = planet.name
                 scene?.rootNode.addChildNode(sphereNode)
-                print(planet.name)
                 planetObjectList[planet.name] = sphereNode
                 
                 let audioSource: SCNAudioSource = {
@@ -150,7 +167,6 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                 planetObjectSound[planet.name] = scnPlayer
                 sphereNode.removeAllAudioPlayers()
                 sphereNode.addAudioPlayer(scnPlayer)
-                
             }
         }
     }

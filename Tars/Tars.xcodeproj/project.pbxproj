@@ -19,7 +19,6 @@
 		55C8495A2910A9F00041F334 /* PlanetList+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C849592910A9F00041F334 /* PlanetList+Extension.swift */; };
 		55F3B9AC290FA1FE0033041E /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9AB290FA1FE0033041E /* Keys.swift */; };
 		55F3B9AE290FA2600033041E /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9AD290FA2600033041E /* Planet.swift */; };
-		55F3B9B0290FA2930033041E /* ContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9AF290FA2930033041E /* ContentsViewController.swift */; };
 		55F3B9B3290FA2D50033041E /* SelectPlanetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9B2290FA2D50033041E /* SelectPlanetCollectionViewCell.swift */; };
 		59261F432923798F005B6E3D /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59261F422923798F005B6E3D /* LaunchScreenViewController.swift */; };
 		59261F45292379BB005B6E3D /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59261F44292379BB005B6E3D /* UserDefaults+Extension.swift */; };
@@ -36,7 +35,6 @@
 		BF6BCBAE29090E1C0042B522 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BCBAD29090E1C0042B522 /* NetworkService.swift */; };
 		BF6BCBB129090E4E0042B522 /* BodiesPositionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BCBAF29090E4E0042B522 /* BodiesPositionsResponse.swift */; };
 		BF6BCBB229090E4E0042B522 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BCBB029090E4E0042B522 /* Body.swift */; };
-		BF788B7E2903C8CF002BF8C0 /* UniverseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF788B7D2903C8CF002BF8C0 /* UniverseViewController.swift */; };
 		BF788B802903C903002BF8C0 /* DashedCircle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF788B7F2903C903002BF8C0 /* DashedCircle+Extension.swift */; };
 		BF788B822903D1A7002BF8C0 /* CustomCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF788B812903D1A7002BF8C0 /* CustomCircleView.swift */; };
 		BF788B842903D3BB002BF8C0 /* CommonVariables+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF788B832903D3BB002BF8C0 /* CommonVariables+Extension.swift */; };
@@ -75,7 +73,6 @@
 		55C849592910A9F00041F334 /* PlanetList+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanetList+Extension.swift"; sourceTree = "<group>"; };
 		55F3B9AB290FA1FE0033041E /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		55F3B9AD290FA2600033041E /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
-		55F3B9AF290FA2930033041E /* ContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsViewController.swift; sourceTree = "<group>"; };
 		55F3B9B2290FA2D50033041E /* SelectPlanetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlanetCollectionViewCell.swift; sourceTree = "<group>"; };
 		59261F422923798F005B6E3D /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		59261F44292379BB005B6E3D /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
@@ -93,7 +90,6 @@
 		BF6BCBAD29090E1C0042B522 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		BF6BCBAF29090E4E0042B522 /* BodiesPositionsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodiesPositionsResponse.swift; sourceTree = "<group>"; };
 		BF6BCBB029090E4E0042B522 /* Body.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
-		BF788B7D2903C8CF002BF8C0 /* UniverseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseViewController.swift; sourceTree = "<group>"; };
 		BF788B7F2903C903002BF8C0 /* DashedCircle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashedCircle+Extension.swift"; sourceTree = "<group>"; };
 		BF788B812903D1A7002BF8C0 /* CustomCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCircleView.swift; sourceTree = "<group>"; };
 		BF788B832903D3BB002BF8C0 /* CommonVariables+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CommonVariables+Extension.swift"; sourceTree = "<group>"; };
@@ -245,11 +241,9 @@
 		BF7B4FCC28FE448000F83158 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				BF788B7D2903C8CF002BF8C0 /* UniverseViewController.swift */,
 				5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */,
 				55A8876529238C9C0078CB7E /* SettingViewController.swift */,
 				DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */,
-				55F3B9AF290FA2930033041E /* ContentsViewController.swift */,
 				59261F422923798F005B6E3D /* LaunchScreenViewController.swift */,
 			);
 			path = ViewController;
@@ -429,7 +423,6 @@
 				5943244C2908EFB9000518FD /* CustomSquareView.swift in Sources */,
 				55F3B9AC290FA1FE0033041E /* Keys.swift in Sources */,
 				55F3B9AE290FA2600033041E /* Planet.swift in Sources */,
-				BF788B7E2903C8CF002BF8C0 /* UniverseViewController.swift in Sources */,
 				558932CB29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift in Sources */,
 				BF6BCBAE29090E1C0042B522 /* NetworkService.swift in Sources */,
 				59261F432923798F005B6E3D /* LaunchScreenViewController.swift in Sources */,
@@ -440,7 +433,6 @@
 				55C8495A2910A9F00041F334 /* PlanetList+Extension.swift in Sources */,
 				599A78D12917FF4E0070CE15 /* Localized.swift in Sources */,
 				55F3B9B3290FA2D50033041E /* SelectPlanetCollectionViewCell.swift in Sources */,
-				55F3B9B0290FA2930033041E /* ContentsViewController.swift in Sources */,
 				5943244E2908EFFF000518FD /* String+Extension.swift in Sources */,
 				3726FE002923A8740062B667 /* CustomArrowView.swift in Sources */,
 				374FEE372909597B00E0C56B /* Float+Extension.swift in Sources */,
