@@ -20,7 +20,7 @@ extension UniverseSearchViewController: UICollectionViewDataSource {
         cell.backgroundView = nil
         cell.planetNameLabel.textColor = .white
         
-        let selectedPlanetName = planetList[indexPath.row].planetName
+        let selectedPlanetName = planetList[indexPath.row].planetKoreanName
         let selectedPlanetImage = planetList[indexPath.row].planetImage
         
         cell.planetNameLabel.text = selectedPlanetName
@@ -54,7 +54,7 @@ extension UniverseSearchViewController: UICollectionViewDataSource {
             cell.planetNameLabel.textColor = .black
             cell.backgroundView = cell.planetBackgroundView
             
-            self.mode = .search(planet: planetNames[indexPath.row])
+            self.mode = .search(planet: planetEnglishNames[indexPath.row])
         }
     }
 
