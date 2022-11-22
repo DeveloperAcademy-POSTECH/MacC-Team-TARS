@@ -276,7 +276,7 @@ extension UniverseSearchViewController {
             self.guideCircleView.isHidden = true
             self.selectedSquareView.isHidden = false
             self.selectedSquareView.isAccessibilityElement = true
-            self.selectedSquareView.accessibilityLabel = planetNameDict[name] ?? name
+//            self.selectedSquareView.accessibilityLabel = planetNameDict[name] ?? name
         }
     }
     
@@ -303,7 +303,9 @@ extension UniverseSearchViewController {
     
     // 행성 detect되었을 때 announce
     private func guideDetectedAnnounce(name: String) {
+        UIAccessibility.post(notification: .layoutChanged, argument: selectedSquareView)
         UIAccessibility.post(notification: .announcement, argument: planetNameDict[name] ?? name)
+    
     }
 }
 
