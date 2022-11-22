@@ -31,7 +31,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     private var guideArrowView = CustomArrowView()
     private var coachingOverlayView = CustomOnboardingOverlayView()
     private var coachingBackgroundOverlayView = CustomBackgroundOverlayView()
-    let contentsViewController = ContentsViewController()
+    let infoViewController = InfoViewController()
     
     var mode: Mode = .explore {
         didSet {

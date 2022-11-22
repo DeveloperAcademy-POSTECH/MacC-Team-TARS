@@ -19,7 +19,6 @@
 		55C8495A2910A9F00041F334 /* PlanetList+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C849592910A9F00041F334 /* PlanetList+Extension.swift */; };
 		55F3B9AC290FA1FE0033041E /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9AB290FA1FE0033041E /* Keys.swift */; };
 		55F3B9AE290FA2600033041E /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9AD290FA2600033041E /* Planet.swift */; };
-		55F3B9B0290FA2930033041E /* ContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9AF290FA2930033041E /* ContentsViewController.swift */; };
 		55F3B9B3290FA2D50033041E /* SelectPlanetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F3B9B2290FA2D50033041E /* SelectPlanetCollectionViewCell.swift */; };
 		59261F432923798F005B6E3D /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59261F422923798F005B6E3D /* LaunchScreenViewController.swift */; };
 		59261F45292379BB005B6E3D /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59261F44292379BB005B6E3D /* UserDefaults+Extension.swift */; };
@@ -74,7 +73,6 @@
 		55C849592910A9F00041F334 /* PlanetList+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanetList+Extension.swift"; sourceTree = "<group>"; };
 		55F3B9AB290FA1FE0033041E /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		55F3B9AD290FA2600033041E /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
-		55F3B9AF290FA2930033041E /* ContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsViewController.swift; sourceTree = "<group>"; };
 		55F3B9B2290FA2D50033041E /* SelectPlanetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlanetCollectionViewCell.swift; sourceTree = "<group>"; };
 		59261F422923798F005B6E3D /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		59261F44292379BB005B6E3D /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
@@ -246,7 +244,6 @@
 				5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */,
 				55A8876529238C9C0078CB7E /* SettingViewController.swift */,
 				DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */,
-				55F3B9AF290FA2930033041E /* ContentsViewController.swift */,
 				59261F422923798F005B6E3D /* LaunchScreenViewController.swift */,
 			);
 			path = ViewController;
@@ -436,7 +433,6 @@
 				55C8495A2910A9F00041F334 /* PlanetList+Extension.swift in Sources */,
 				599A78D12917FF4E0070CE15 /* Localized.swift in Sources */,
 				55F3B9B3290FA2D50033041E /* SelectPlanetCollectionViewCell.swift in Sources */,
-				55F3B9B0290FA2930033041E /* ContentsViewController.swift in Sources */,
 				5943244E2908EFFF000518FD /* String+Extension.swift in Sources */,
 				3726FE002923A8740062B667 /* CustomArrowView.swift in Sources */,
 				374FEE372909597B00E0C56B /* Float+Extension.swift in Sources */,
