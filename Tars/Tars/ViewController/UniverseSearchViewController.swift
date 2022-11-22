@@ -8,6 +8,7 @@
 import UIKit
 import SceneKit
 import ARKit
+import AVFoundation
 
 enum Mode {
     case explore
@@ -28,6 +29,8 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     private var guideCircleView = CustomCircleView()
     private var selectedSquareView = CustomSquareView()
     private var guideArrowView = CustomArrowView()
+    private var coachingOverlayView = CustomOnboardingOverlayView()
+    private var coachingBackgroundOverlayView = CustomBackgroundOverlayView()
     let contentsViewController = ContentsViewController()
     
     var mode: Mode = .explore {
@@ -36,6 +39,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         }
     }
     var planetObjectList: [String: SCNNode] = [:]
+    var planetObjectSound: [String: SCNAudioPlayer] = [:]
     var circleCenter: CGPoint = .zero
     
     let searchGuideLabel: UILabel = {
@@ -72,12 +76,37 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectPlanetCollectionView.delegate = self
-        selectPlanetCollectionView.dataSource = self
+        
+        coachingOverlayView.isAccessibilityElement = true
+        coachingOverlayView.accessibilityLabel = PlanetStrings.onboardingInstructionstring.localizedKey
+        UIAccessibility.post(notification: .layoutChanged, argument: coachingOverlayView)
         
         [guideCircleView, guideArrowView, selectedSquareView].forEach { sceneView.addSubview($0) }
-        [sceneView, selectPlanetCollectionView, searchGuideLabel].forEach { view.addSubview($0) }
+        [coachingBackgroundOverlayView, coachingOverlayView, sceneView, selectPlanetCollectionView, searchGuideLabel].forEach { view.addSubview($0) }
         configureConstraints()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
+            self.coachingOverlayView.isAccessibilityElement = false
+            self.coachingOverlayView.removeFromSuperview()
+            self.coachingBackgroundOverlayView.removeFromSuperview()
+            self.navigationController?.navigationBar.layer.zPosition = 0
+            
+            // UIAccessibility.post(notification: .layoutChanged, argument: self.sceneView)
+            
+            // navigation title 설정
+            self.navigationController?.isNavigationBarHidden = false
+            self.navigationController?.topViewController?.title = "우주 둘러보기"
+            self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
+            self.navigationController?.navigationBar.backgroundColor = .black
+            
+            // settingButton navigationItem
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(self.settingButtonTapped))
+            self.navigationItem.rightBarButtonItem?.tintColor = .white
+            self.navigationItem.hidesBackButton = true
+        }
+        
+        selectPlanetCollectionView.delegate = self
+        selectPlanetCollectionView.dataSource = self
         
         selectedSquareView.isHidden = true
         guideArrowView.isHidden = true
@@ -85,17 +114,6 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         let locationManager = LocationManager.shared
         locationManager.delegate = self
         locationManager.updateLocation()
-        
-        // navigation title 설정
-        self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.topViewController?.title = "우주 둘러보기"
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
-        self.navigationController?.navigationBar.backgroundColor = .black
-        
-        // settingButton navigationItem
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(settingButtonTapped))
-        self.navigationItem.rightBarButtonItem?.tintColor = .white
-        self.navigationItem.hidesBackButton = true
     }
     
     @objc func settingButtonTapped() {
@@ -118,14 +136,21 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                 planetObjectList[planet.name] = sphereNode
                 
                 let audioSource: SCNAudioSource = {
-                    let source = SCNAudioSource(fileNamed: "\(planet.name).mp3")!
+                    let source = SCNAudioSource(fileNamed: "Searching_\(planet.name).mp3")!
+                    /// 노드와 해당 위치에와 소스의 볼륨, 반향 및 거리에 따라 자동으로 변경
+                    source.isPositional = true
+                    source.volume = 0.5
+                    /// 오디오 소스를 반복적으로 재상할지 여부를 결정
                     source.loops = true
                     source.load()
                     return source
                 }()
                 
+                let scnPlayer = SCNAudioPlayer(source: audioSource)
+                planetObjectSound[planet.name] = scnPlayer
                 sphereNode.removeAllAudioPlayers()
-                sphereNode.addAudioPlayer(SCNAudioPlayer(source: audioSource))
+                sphereNode.addAudioPlayer(scnPlayer)
+                
             }
         }
     }
@@ -133,6 +158,13 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     private func configureConstraints() {
         sceneView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, paddingTop: screenHeight * 0.1)
         
+        coachingOverlayView.layer.zPosition = 2
+        coachingOverlayView.centerX(inView: view)
+        coachingOverlayView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.23)
+        
+        coachingBackgroundOverlayView.layer.zPosition = 1
+        self.navigationController?.navigationBar.layer.zPosition = -1
+
         guideCircleView.centerX(inView: view)
         guideCircleView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.23)
         
@@ -268,9 +300,11 @@ extension UniverseSearchViewController {
 
             let nodeOrigin = CGPoint(x: nodeCenter.x - screenWidth / 11.3, y: nodeCenter.y - screenWidth / 11.3)
             setDetectedLayout(name: name, point: nodeOrigin)
+            selectedExploreSoundPlay(soundPlayer: planetObjectSound, selectedName: planetName)
         } else {
             // 탐지된 노드가 없을 때
             setNotDetectedLayout()
+            exploreModeSoundPlay(soundPlayer: planetObjectSound)
         }
     }
     
@@ -280,6 +314,8 @@ extension UniverseSearchViewController {
         let nodePosition = sceneView.projectPoint(node.position)
         let nodeScreenPos = nodePosition.toCGPoint()
         let distanceToCenter = circleCenter.distanceTo(nodeScreenPos)
+        
+        selectModeSoundPlay(soundPlayer: planetObjectSound, selectedName: name)
 
         if nodePosition.z >= 1 {
             // 찾는 노드가 뒤에 있을 때
@@ -294,6 +330,64 @@ extension UniverseSearchViewController {
             let nodeOrigin = CGPoint(x: nodeScreenPos.x - screenWidth / 11.3, y: nodeScreenPos.y - screenWidth / 11.3)
             setArrowHidden()
             setDetectedLayout(name: name, point: nodeOrigin)
+            
+        }
+    }
+}
+
+// MARK: - 모드에 따른 소리 증감 기능
+
+extension UniverseSearchViewController {
+    
+    /// 탐색 모드일 때 - 모든 행성의 소리의 음량을 동일하게
+    private func exploreModeSoundPlay(soundPlayer: [String: SCNAudioPlayer]) {
+        
+        print("탐색 원상태 돌아옴")
+        
+        for audioPlayer in soundPlayer.values {
+            guard let avNode = audioPlayer.audioNode as? AVAudioMixing else { return }
+            
+            avNode.volume = 0.5
+        }
+    }
+    
+    /// 검색 모드일때 - 선택된 이외의 행성의 소리 음소거
+    private func selectModeSoundPlay(soundPlayer: [String: SCNAudioPlayer], selectedName: String) {
+        
+        print("현재 검색하는 행성 ", selectedName)
+        
+        for name in soundPlayer.keys {
+            if name == selectedName {
+                continue
+            } else {
+                let audioPlayer = soundPlayer[name]
+                
+                guard let avNode = audioPlayer?.audioNode as? AVAudioMixing else { return }
+                
+                avNode.volume = 0.0
+            }
+        }
+    }
+    
+    /// 탐색된 행성 있을 때 - 탐색된 행성 소리는 증가 다른 행성은 감소
+    private func selectedExploreSoundPlay(soundPlayer: [String: SCNAudioPlayer], selectedName: String) {
+        
+        print("현재 탐색된 행성 ", selectedName)
+        
+        for name in soundPlayer.keys {
+            if name == selectedName {
+                let audioPlayer = soundPlayer[name]
+                
+                guard let avNode = audioPlayer?.audioNode as? AVAudioMixing else { return }
+                
+                avNode.volume = 1.0
+            } else {
+                let audioPlayer = soundPlayer[name]
+                
+                guard let avNode = audioPlayer?.audioNode as? AVAudioMixing else { return }
+                
+                avNode.volume = 0.3
+            }
         }
     }
 }
