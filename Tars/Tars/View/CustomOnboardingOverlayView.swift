@@ -33,7 +33,8 @@ class CustomOnboardingOverlayView: UIView {
     }
     
     private func configureCoachingOverlay() {
-        addSubview(coachingOnboardingLabel)
+        
+        [coachingOnboardingLabel].forEach { addSubview($0) }
         
         NSLayoutConstraint.activate([
             coachingOnboardingLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
