@@ -89,6 +89,8 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
             self.coachingBackgroundOverlayView.removeFromSuperview()
             self.navigationController?.navigationBar.layer.zPosition = 0
             
+            // UIAccessibility.post(notification: .layoutChanged, argument: self.sceneView)
+            
             // navigation title 설정
             self.navigationController?.isNavigationBarHidden = false
             self.navigationController?.topViewController?.title = "우주 둘러보기"
