@@ -24,7 +24,7 @@ enum Mode {
     }
 }
 
-class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, LocationManagerDelegate {
+class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, LocationManagerDelegate, UIGestureRecognizerDelegate {
 
     private var guideCircleView = CustomCircleView()
     private var selectedSquareView = CustomSquareView()
@@ -32,6 +32,9 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     private var coachingOverlayView = CustomOnboardingOverlayView()
     private var coachingBackgroundOverlayView = CustomBackgroundOverlayView()
     let infoViewController = InfoViewController()
+    
+    // TapGesture 선언
+    let selectedSquareViewTap = UITapGestureRecognizer()
     
     var mode: Mode = .explore {
         didSet {
@@ -114,6 +117,18 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         let locationManager = LocationManager.shared
         locationManager.delegate = self
         locationManager.updateLocation()
+        
+        // TapGesture와 View 연결
+        selectedSquareViewTap.delegate = self
+        selectedSquareViewTap.addTarget(self, action: #selector(squareViewTapped))
+        selectedSquareView.addGestureRecognizer(selectedSquareViewTap)
+    }
+    
+    // TapGesture 화면 전환 동작
+    @objc func squareViewTapped() {
+        // print(self.selectedSquareView.planetLabel.text ?? "nil")
+        // infoViewController.planet.planetName = self.selectedSquareView.planetLabel.text ?? "Sun"
+        self.navigationController?.pushViewController(infoViewController, animated: true)
     }
     
     @objc func settingButtonTapped() {

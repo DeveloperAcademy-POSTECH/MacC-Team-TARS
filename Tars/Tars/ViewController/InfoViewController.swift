@@ -9,7 +9,8 @@ import UIKit
 import SceneKit.ModelIO
 
 class InfoViewController: UIViewController {
-    
+    public var planet: Planet =  Planet(planetName: "default", planetImage: UIImage(named: "default"))
+
     lazy var sceneView: SCNView = {
         let sceneView = SCNView()
         
@@ -77,6 +78,11 @@ class InfoViewController: UIViewController {
         view.backgroundColor = .black
         [sceneView, planetName, planetInfo].forEach { view.addSubview($0) }
         configureConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // TODO: planet 정보 넘기기 동작 구현
+        
     }
     
     private func configureConstraints() {
