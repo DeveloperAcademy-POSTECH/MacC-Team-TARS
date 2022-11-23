@@ -12,5 +12,6 @@ extension Float {
 }
 
 extension FloatingPoint {
+    var degreeToRadians: Self { self * .pi / 180 }
     var radiansToDegree: Self { self * 180 / .pi }
 }
