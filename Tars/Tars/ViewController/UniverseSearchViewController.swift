@@ -346,7 +346,8 @@ extension UniverseSearchViewController {
         let dx = screenWidth / 3  * cos(radian)
         let dy = screenWidth / 3  * sin(radian)
         let arrowPosition = CGPoint(x: circleCenter.x + dx, y: circleCenter.y - dy)
-        
+        arrowCardinal = getCardinal(angle: degree)
+
         DispatchQueue.main.async {
             self.guideArrowView.transform = CGAffineTransform(rotationAngle: -radian)
             self.guideArrowView.layer.position = arrowPosition
