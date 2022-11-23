@@ -8,7 +8,9 @@
 import Foundation
 
 extension Float {
-    func degreeToRadian() -> Float {
-        return self * .pi / 180
-    }
+    var degreeToRadian: Self { self * .pi / 180 }
+}
+
+extension FloatingPoint {
+    var radiansToDegree: Self { self * 180 / .pi }
 }
