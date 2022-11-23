@@ -57,6 +57,7 @@
 		BFAD1EA8292C62F00081C4A3 /* Searching_Moon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFAD1E9F292C62F00081C4A3 /* Searching_Moon.mp3 */; };
 		BFAD1EC8292C80030081C4A3 /* 3dPlanets in Resources */ = {isa = PBXBuildFile; fileRef = BFAD1EC7292C80030081C4A3 /* 3dPlanets */; };
 		DD653AAE292E13490061211D /* PlanetContentsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD653AAD292E13490061211D /* PlanetContentsList.swift */; };
+		DD653AB0292E14F90061211D /* CustomPlanetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD653AAF292E14F90061211D /* CustomPlanetInfoView.swift */; };
 		DDB7DD932906B2B000FC0BA4 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */; };
 		DDB7DD97290814AB00FC0BA4 /* Label+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB7DD96290814AB00FC0BA4 /* Label+Extension.swift */; };
 /* End PBXBuildFile section */
@@ -124,6 +125,7 @@
 		BFAD1EB1292C63070081C4A3 /* Detail_Moon.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Detail_Moon.aif; sourceTree = "<group>"; };
 		BFAD1EC7292C80030081C4A3 /* 3dPlanets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 3dPlanets; sourceTree = "<group>"; };
 		DD653AAD292E13490061211D /* PlanetContentsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetContentsList.swift; sourceTree = "<group>"; };
+		DD653AAF292E14F90061211D /* CustomPlanetInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlanetInfoView.swift; sourceTree = "<group>"; };
 		DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		DDB7DD96290814AB00FC0BA4 /* Label+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -237,6 +239,7 @@
 				3726FDFF2923A8740062B667 /* CustomArrowView.swift */,
 				59B270772929049800061825 /* CustomOnboardingOverlayView.swift */,
 				59B2707D2929188600061825 /* CustomBackgroundOverlayView.swift */,
+				DD653AAF292E14F90061211D /* CustomPlanetInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				BF7B4FD028FE452200F83158 /* Color+Extension.swift in Sources */,
 				BF7B4FD228FE454A00F83158 /* View+Extension.swift in Sources */,
 				BF6BCBB229090E4E0042B522 /* Body.swift in Sources */,
+				DD653AB0292E14F90061211D /* CustomPlanetInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
