@@ -147,6 +147,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                     
                     // settingButton navigationItem
                     self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(self.settingButtonTapped))
+                    self.navigationItem.rightBarButtonItem?.accessibilityLabel = "설정"
                     self.navigationItem.rightBarButtonItem?.tintColor = .white
                     self.navigationItem.hidesBackButton = true
                     
@@ -367,6 +368,8 @@ extension UniverseSearchViewController {
     private func guideDetectedAnnounce(name: String) {
         UIAccessibility.post(notification: .layoutChanged, argument: selectedSquareView)
         UIAccessibility.post(notification: .announcement, argument: planetNameDict[name] ?? name)
+        HapticManager.instance.hapticImpact(style: .soft)
+
     }
     
     // 화살표 변경시 가이드 음성
