@@ -11,7 +11,7 @@ import ARKit
 import AVFoundation
 
 class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, LocationManagerDelegate, UIGestureRecognizerDelegate {
-
+    
     private var guideCircleView = CustomCircleView()
     private var selectedSquareView = CustomSquareView()
     private var guideArrowView = CustomArrowView()
@@ -31,13 +31,13 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     var circleCenter: CGPoint = .zero
     
     var detectedNode: String = "" {
-            didSet {
-                if oldValue != detectedNode && detectedNode != "" {
-                    guideDetectedAnnounce(name: detectedNode)
-                }
+        didSet {
+            if oldValue != detectedNode && detectedNode != "" {
+                guideDetectedAnnounce(name: detectedNode)
             }
         }
-
+    }
+    
     var announceCardinal: Cardinal = .None
     var arrowCardinal: Cardinal = .None {
         didSet {
@@ -80,7 +80,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         sceneView.delegate = self
         return sceneView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -124,7 +124,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         let locationManager = LocationManager.shared
         locationManager.delegate = self
         locationManager.updateLocation()
-
+        
         var result: Bool = checkAuthorization()
         
         // 권한을 체크해서 허용인 경우에만 overlay뷰가 없어지도록 구현
@@ -233,13 +233,13 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         
         coachingBackgroundOverlayView.layer.zPosition = 1
         self.navigationController?.navigationBar.layer.zPosition = -1
-
+        
         guideCircleView.centerX(inView: view)
         guideCircleView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.23)
         
         searchGuideLabel.centerX(inView: view)
         searchGuideLabel.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.7)
-
+        
         selectPlanetCollectionView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.68)
         selectPlanetCollectionView.setHeight(height: screenHeight * 0.35)
         selectPlanetCollectionView.setWidth(width: screenWidth)
@@ -266,7 +266,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         super.viewWillDisappear(animated)
         sceneView.session.pause()
     }
-
+    
     // MARK: - LocationManagerDelegate
     func didUpdateUserLocation() {
         Task {
@@ -308,7 +308,7 @@ extension UniverseSearchViewController {
             self.selectedSquareView.isHidden = true
         }
     }
-
+    
     // 행성이 탐지되었을 때 레이아웃 설정
     private func setDetectedLayout(name: String, point: CGPoint) {
         detectedNode = name
@@ -319,41 +319,41 @@ extension UniverseSearchViewController {
             self.selectedSquareView.isHidden = false
             self.selectedSquareView.isAccessibilityElement = true
             
-//추후 사용예정 주석
-//            self.selectedSquareView.accessibilityLabel = planetNameDict[name] ?? name
+            // 추후 사용예정 주석
+            // self.selectedSquareView.accessibilityLabel = planetNameDict[name] ?? name
         }
     }
     
     // 검색 시 화살표 레이아웃 설정
     private func setArrowLayout(point: CGPoint, locatedBehind: Bool = false) {
-            var radian = locatedBehind ? atan2(circleCenter.y - point.y, point.x - circleCenter.x)
-            + .pi : atan2(circleCenter.y - point.y, point.x - circleCenter.x)
-            var degree = radian.radiansToDegree
-            
-            if locatedBehind {
-                if degree > 45 && degree <= 90 {
-                    degree = 45
-                } else if degree > 90 && degree < 135 {
-                    degree = 135
-                } else if degree > 225 && degree < 270 {
-                    degree = 225
-                } else if degree < 315 && degree >= 270 {
-                    degree = 315
-                }
-                radian = degree.degreeToRadians
+        var radian = locatedBehind ? atan2(circleCenter.y - point.y, point.x - circleCenter.x)
+        + .pi : atan2(circleCenter.y - point.y, point.x - circleCenter.x)
+        var degree = radian.radiansToDegree
+        
+        if locatedBehind {
+            if degree > 45 && degree <= 90 {
+                degree = 45
+            } else if degree > 90 && degree < 135 {
+                degree = 135
+            } else if degree > 225 && degree < 270 {
+                degree = 225
+            } else if degree < 315 && degree >= 270 {
+                degree = 315
             }
-            
-            let dx = screenWidth / 3  * cos(radian)
-            let dy = screenWidth / 3  * sin(radian)
-            let arrowPosition = CGPoint(x: circleCenter.x + dx, y: circleCenter.y - dy)
-            
-            DispatchQueue.main.async {
-                self.guideArrowView.transform = CGAffineTransform(rotationAngle: -radian)
-                self.guideArrowView.layer.position = arrowPosition
-                self.guideArrowView.isHidden = false
-            }
-            
+            radian = degree.degreeToRadians
         }
+        
+        let dx = screenWidth / 3  * cos(radian)
+        let dy = screenWidth / 3  * sin(radian)
+        let arrowPosition = CGPoint(x: circleCenter.x + dx, y: circleCenter.y - dy)
+        
+        DispatchQueue.main.async {
+            self.guideArrowView.transform = CGAffineTransform(rotationAngle: -radian)
+            self.guideArrowView.layer.position = arrowPosition
+            self.guideArrowView.isHidden = false
+        }
+        
+    }
     
     // 화살표 숨김 설정
     private func setArrowHidden() {
@@ -465,13 +465,15 @@ extension UniverseSearchViewController {
     }
 }
 
+// MARK: - 탐색 / 검색 모드 기능
+
 extension UniverseSearchViewController {
     // MARK: - 탐색 모드 기능
     private func explore() {
         var detectNode: SCNNode?
         var nodeCenter: CGPoint = .zero
         var minDistance: CGFloat = screenHeight
-
+        
         guard let pointOfView = sceneView.pointOfView else { return }
         let detectNodes = sceneView.nodesInsideFrustum(of: pointOfView) // 화면에 들어온 노드 리스트
         
@@ -479,7 +481,7 @@ extension UniverseSearchViewController {
             let nodePosition = sceneView.projectPoint(node.position)
             let nodeScreenPos = nodePosition.toCGPoint()
             let distance = circleCenter.distanceTo(nodeScreenPos)
-
+            
             // 원 안에 들어온 가장 짧은 거리, 노드, 화면상의 위치 저장
             if distance < screenWidth / 3 && distance < minDistance {
                 detectNode = node
@@ -487,12 +489,12 @@ extension UniverseSearchViewController {
                 minDistance = distance
             }
         }
-
+        
         if let detectNode = detectNode {
             // 원 안에 들어온 노드 존재했을 때
             guard let planetName = detectNode.name else { return }
             guard let name = planetNameDict[planetName] else { return }
-
+            
             let nodeOrigin = CGPoint(x: nodeCenter.x - screenWidth / 11.3, y: nodeCenter.y - screenWidth / 11.3)
             setDetectedLayout(name: name, point: nodeOrigin)
             selectedExploreSoundPlay(soundPlayer: planetObjectSound, selectedName: planetName)
@@ -511,7 +513,7 @@ extension UniverseSearchViewController {
         let distanceToCenter = circleCenter.distanceTo(nodeScreenPos)
         
         selectModeSoundPlay(soundPlayer: planetObjectSound, selectedName: name)
-
+        
         if nodePosition.z >= 1 {
             // 찾는 노드가 뒤에 있을 때
             setNotDetectedLayout()
