@@ -44,9 +44,18 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     var planetObjectSound: [String: SCNAudioPlayer] = [:]
     var circleCenter: CGPoint = .zero
     
+    var detectedNode: String = "" {
+            didSet {
+                if oldValue != detectedNode && detectedNode != "" {
+                    guideDetectedAnnounce(name: detectedNode)
+                }
+            }
+        }
+    
     let searchGuideLabel: UILabel = {
         let label: UILabel = UILabel()
         label.text = "빠르게 천체 찾기"
+        label.accessibilityHint = "찾고싶은 천체를 선택해보세요"
         label.textColor = .white
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
@@ -87,6 +96,8 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         [coachingBackgroundOverlayView, coachingOverlayView, sceneView, selectPlanetCollectionView, searchGuideLabel].forEach { view.addSubview($0) }
         configureConstraints()
         
+        self.accessibilityElements = [selectPlanetCollectionView]
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
             self.coachingOverlayView.isAccessibilityElement = false
             self.coachingOverlayView.removeFromSuperview()
@@ -103,6 +114,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
             
             // settingButton navigationItem
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(self.settingButtonTapped))
+            self.navigationItem.rightBarButtonItem?.accessibilityLabel = "설정"
             self.navigationItem.rightBarButtonItem?.tintColor = .white
             self.navigationItem.hidesBackButton = true
         }
@@ -116,6 +128,37 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         let locationManager = LocationManager.shared
         locationManager.delegate = self
         locationManager.updateLocation()
+
+        var result: Bool = checkAuthorization()
+        
+        // 권한을 체크해서 허용인 경우에만 overlay뷰가 없어지도록 구현
+        let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            if result == true {
+                timer.invalidate()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
+                    self.coachingOverlayView.isAccessibilityElement = false
+                    self.coachingOverlayView.removeFromSuperview()
+                    self.coachingBackgroundOverlayView.removeFromSuperview()
+                    self.navigationController?.navigationBar.layer.zPosition = 0
+                    
+                    // UIAccessibility.post(notification: .layoutChanged, argument: self.sceneView)
+                    
+                    // navigation title 설정
+                    self.navigationController?.isNavigationBarHidden = false
+                    self.navigationController?.topViewController?.title = "우주 둘러보기"
+                    self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
+                    self.navigationController?.navigationBar.backgroundColor = .black
+                    
+                    // settingButton navigationItem
+                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(self.settingButtonTapped))
+                    self.navigationItem.rightBarButtonItem?.tintColor = .white
+                    self.navigationItem.hidesBackButton = true
+                    
+                }
+            } else {
+                result = self.checkAuthorization()
+            }
+        }
         
         // TapGesture와 View 연결
         selectedSquareViewTap.addTarget(self, action: #selector(squareViewTapped))
@@ -132,6 +175,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         infoViewController.planet.planetKoreanName = planetKoreanName
         infoViewController.planet.planetEnglishName = planetEnglishNames[index]
         self.navigationController?.pushViewController(infoViewController, animated: true)
+
     }
     
     @objc func settingButtonTapped() {
@@ -168,6 +212,20 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                 sphereNode.removeAllAudioPlayers()
                 sphereNode.addAudioPlayer(scnPlayer)
             }
+        }
+    }
+    
+    /// 위치사용 및 카메라 사용권한을 체크하기 위한 함수 (사용권한이 모두 허용된 경우에만 true를 반환)
+    func checkAuthorization() -> Bool {
+        let locationStatus = CLLocationManager.authorizationStatus()
+        let cameraStatus = AVCaptureDevice.authorizationStatus(for: .video)
+        
+        if locationStatus == .authorizedAlways ||
+            locationStatus == .authorizedWhenInUse &&
+            cameraStatus == .authorized {
+            return true
+        } else {
+            return false
         }
     }
     
@@ -248,6 +306,7 @@ extension UniverseSearchViewController {
     
     // 행성이 탐지되지 않았을 때 레이아웃 설정
     private func setNotDetectedLayout() {
+        detectedNode = ""
         DispatchQueue.main.async {
             self.guideCircleView.isHidden = false
             self.selectedSquareView.isHidden = true
@@ -256,11 +315,16 @@ extension UniverseSearchViewController {
 
     // 행성이 탐지되었을 때 레이아웃 설정
     private func setDetectedLayout(name: String, point: CGPoint) {
+        detectedNode = name
         DispatchQueue.main.async {
             self.selectedSquareView.frame.origin = point
             self.selectedSquareView.setLabel(planetNameDict[name] ?? name)
             self.guideCircleView.isHidden = true
             self.selectedSquareView.isHidden = false
+            self.selectedSquareView.isAccessibilityElement = true
+            
+//추후 사용예정 주석
+//            self.selectedSquareView.accessibilityLabel = planetNameDict[name] ?? name
         }
     }
     
@@ -283,6 +347,13 @@ extension UniverseSearchViewController {
         DispatchQueue.main.async {
             self.guideArrowView.isHidden = true
         }
+    }
+    
+    // 행성 detect되었을 때 announce
+    private func guideDetectedAnnounce(name: String) {
+        UIAccessibility.post(notification: .layoutChanged, argument: selectedSquareView)
+        UIAccessibility.post(notification: .announcement, argument: planetNameDict[name] ?? name)
+    
     }
 }
 
