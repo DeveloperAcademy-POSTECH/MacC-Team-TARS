@@ -12,6 +12,7 @@
 		3726FE022923B02E0062B667 /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3726FE012923B02E0062B667 /* CGPoint+Extension.swift */; };
 		3726FE042923B12C0062B667 /* SCNVector3+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3726FE032923B12C0062B667 /* SCNVector3+Extension.swift */; };
 		374FEE372909597B00E0C56B /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FEE362909597B00E0C56B /* Float+Extension.swift */; };
+		452F77C5292E28DD0088E684 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452F77C4292E28DD0088E684 /* HapticManager.swift */; };
 		5533717729123F17004AD6E8 /* UniverseSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */; };
 		558932C9291429E90032D459 /* UniverseSearchViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558932C8291429E90032D459 /* UniverseSearchViewController+DataSource.swift */; };
 		558932CB29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558932CA29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift */; };
@@ -66,6 +67,7 @@
 		3726FE012923B02E0062B667 /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
 		3726FE032923B12C0062B667 /* SCNVector3+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Extension.swift"; sourceTree = "<group>"; };
 		374FEE362909597B00E0C56B /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
+		452F77C4292E28DD0088E684 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseSearchViewController.swift; sourceTree = "<group>"; };
 		558932C8291429E90032D459 /* UniverseSearchViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UniverseSearchViewController+DataSource.swift"; sourceTree = "<group>"; };
 		558932CA29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UniverseSearchViewController+FlowLayoutDelegate.swift"; sourceTree = "<group>"; };
@@ -112,7 +114,7 @@
 		BFAD1E9D292C62F00081C4A3 /* Searching_Venus.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Searching_Venus.mp3; sourceTree = "<group>"; };
 		BFAD1E9E292C62F00081C4A3 /* Searching_Saturn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Searching_Saturn.mp3; sourceTree = "<group>"; };
 		BFAD1E9F292C62F00081C4A3 /* Searching_Moon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Searching_Moon.mp3; sourceTree = "<group>"; };
-		BFAD1EA9292C62FC0081C4A3 /* Detail_Neptune.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Detail_Neptune.aif; sourceTree = "<group>"; };
+		BFAD1EA9292C62FC0081C4A3 /* Detail_Neptune.aif */ = {isa = PBXFileReference; lastKnownFileType = text; path = Detail_Neptune.aif; sourceTree = "<group>"; };
 		BFAD1EAA292C62FE0081C4A3 /* Detail_Saturn.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Detail_Saturn.aif; sourceTree = "<group>"; };
 		BFAD1EAB292C62FF0081C4A3 /* Detail_Mars.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Detail_Mars.aif; sourceTree = "<group>"; };
 		BFAD1EAC292C63000081C4A3 /* Detail_Jupiter.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Detail_Jupiter.aif; sourceTree = "<group>"; };
@@ -166,6 +168,14 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		452F77C3292E28A00088E684 /* Haptic */ = {
+			isa = PBXGroup;
+			children = (
+				452F77C4292E28DD0088E684 /* HapticManager.swift */,
+			);
+			path = Haptic;
+			sourceTree = "<group>";
+		};
 		558932CC29142B0C0032D459 /* SearchView */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +214,7 @@
 				BF7B4FCE28FE44D000F83158 /* Extensions */,
 				37024B0D2912082500BC64AE /* Location */,
 				37AE64B82906B766000ABC86 /* Network */,
+				452F77C3292E28A00088E684 /* Haptic */,
 				BF7B4FB528FE431900F83158 /* AppDelegate.swift */,
 				BF7B4FB728FE431900F83158 /* SceneDelegate.swift */,
 				BF7B4FBE28FE431A00F83158 /* Assets.xcassets */,
@@ -422,6 +433,7 @@
 				BF6BCBB129090E4E0042B522 /* BodiesPositionsResponse.swift in Sources */,
 				5943244C2908EFB9000518FD /* CustomSquareView.swift in Sources */,
 				55F3B9AC290FA1FE0033041E /* Keys.swift in Sources */,
+				452F77C5292E28DD0088E684 /* HapticManager.swift in Sources */,
 				55F3B9AE290FA2600033041E /* Planet.swift in Sources */,
 				558932CB29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift in Sources */,
 				BF6BCBAE29090E1C0042B522 /* NetworkService.swift in Sources */,

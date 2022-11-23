@@ -367,6 +367,8 @@ extension UniverseSearchViewController {
     private func guideDetectedAnnounce(name: String) {
         UIAccessibility.post(notification: .layoutChanged, argument: selectedSquareView)
         UIAccessibility.post(notification: .announcement, argument: planetNameDict[name] ?? name)
+        HapticManager.instance.hapticImpact(style: .soft)
+
     }
     
     // 화살표 변경시 가이드 음성
