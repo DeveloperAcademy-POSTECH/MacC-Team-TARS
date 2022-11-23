@@ -315,18 +315,34 @@ extension UniverseSearchViewController {
     }
     
     // 검색 시 화살표 레이아웃 설정
-    private func setArrowLayout(point: CGPoint, distance: CGFloat, locatedBehind: Bool = false) {
-        let dx = screenWidth / 3  * (point.x - circleCenter.x) / distance
-        let dy = screenWidth / 3  * (circleCenter.y - point.y) / distance
-        let angle = locatedBehind ? atan2(point.y - circleCenter.y, point.x - circleCenter.x) + .pi : atan2(point.y - circleCenter.y, point.x - circleCenter.x)
-        let arrowPosition = locatedBehind ? CGPoint(x: circleCenter.x - dx, y: circleCenter.y + dy) : CGPoint(x: circleCenter.x + dx, y: circleCenter.y - dy)
-                
-        DispatchQueue.main.async {
-            self.guideArrowView.transform = CGAffineTransform(rotationAngle: angle)
-            self.guideArrowView.layer.position = arrowPosition
-            self.guideArrowView.isHidden = false
+    private func setArrowLayout(point: CGPoint, locatedBehind: Bool = false) {
+            let radian = locatedBehind ? atan2(circleCenter.y - point.y, point.x - circleCenter.x)
+            + .pi : atan2(circleCenter.y - point.y, point.x - circleCenter.x)
+            var degree = radian.radiansToDegree
+            
+            if locatedBehind {
+                if degree > 45 && degree <= 90 {
+                    degree = 45
+                } else if degree > 90 && degree < 135 {
+                    degree = 135
+                } else if degree > 225 && degree < 270 {
+                    degree = 225
+                } else if degree < 315 && degree >= 270 {
+                    degree = 315
+                }
+            }
+            
+            let dx = screenWidth / 3  * cos(radian)
+            let dy = screenWidth / 3  * sin(radian)
+            let arrowPosition = CGPoint(x: circleCenter.x + dx, y: circleCenter.y - dy)
+            
+            DispatchQueue.main.async {
+                self.guideArrowView.transform = CGAffineTransform(rotationAngle: -radian)
+                self.guideArrowView.layer.position = arrowPosition
+                self.guideArrowView.isHidden = false
+            }
+            
         }
-    }
     
     // 화살표 숨김 설정
     private func setArrowHidden() {
@@ -456,11 +472,11 @@ extension UniverseSearchViewController {
         if nodePosition.z >= 1 {
             // 찾는 노드가 뒤에 있을 때
             setNotDetectedLayout()
-            setArrowLayout(point: nodeScreenPos, distance: distanceToCenter, locatedBehind: true)
+            setArrowLayout(point: nodeScreenPos, locatedBehind: true)
         } else if distanceToCenter >= (screenWidth / 3) {
             // 찾는 노드가 원의 바깥에 있을 때
             setNotDetectedLayout()
-            setArrowLayout(point: nodeScreenPos, distance: distanceToCenter)
+            setArrowLayout(point: nodeScreenPos)
         } else {
             // 찾는 노드가 원 안에 있을 때
             let nodeOrigin = CGPoint(x: nodeScreenPos.x - screenWidth / 11.3, y: nodeScreenPos.y - screenWidth / 11.3)
