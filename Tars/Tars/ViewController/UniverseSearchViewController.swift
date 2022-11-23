@@ -276,6 +276,8 @@ extension UniverseSearchViewController {
             self.guideCircleView.isHidden = true
             self.selectedSquareView.isHidden = false
             self.selectedSquareView.isAccessibilityElement = true
+            
+//추후 사용예정 주석
 //            self.selectedSquareView.accessibilityLabel = planetNameDict[name] ?? name
         }
     }
