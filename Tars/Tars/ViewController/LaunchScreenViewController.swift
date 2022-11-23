@@ -32,6 +32,9 @@ class LaunchScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.layer.configureGradientBackground(UIColor.customGradientPurple.cgColor, UIColor.customGradientBlue.cgColor)
+
         [airPodsInstruction].forEach { view.addSubview($0) }
         configureConstraints()
         
