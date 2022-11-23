@@ -37,6 +37,16 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                 }
             }
         }
+
+    var announceCardinal: Cardinal = .None
+    var arrowCardinal: Cardinal = .None {
+        didSet {
+            if !announceCardinal.isNear(new: self.arrowCardinal) {
+                guideAnnounce()
+                announceCardinal = arrowCardinal
+            }
+        }
+    }
     
     let searchGuideLabel: UILabel = {
         let label: UILabel = UILabel()
@@ -161,7 +171,6 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         infoViewController.planet.planetKoreanName = planetKoreanName
         infoViewController.planet.planetEnglishName = planetEnglishNames[index]
         self.navigationController?.pushViewController(infoViewController, animated: true)
-
     }
     
     @objc func settingButtonTapped() {
@@ -285,8 +294,9 @@ extension UniverseSearchViewController {
         switch mode {
         case .explore:
             setArrowHidden()
+            announceCardinal = .None
         case .search(planet: _):
-            break
+            announceCardinal = .None
         }
     }
     
@@ -356,7 +366,15 @@ extension UniverseSearchViewController {
     private func guideDetectedAnnounce(name: String) {
         UIAccessibility.post(notification: .layoutChanged, argument: selectedSquareView)
         UIAccessibility.post(notification: .announcement, argument: planetNameDict[name] ?? name)
+    }
     
+    // 화살표 변경시 가이드 음성
+    private func guideAnnounce() {
+        let announcementText = "\(arrowCardinal.directionText) 이동하세요"
+        Task {
+            try await Task.sleep(nanoseconds: 100)
+            UIAccessibility.post(notification: .announcement, argument: announcementText)
+        }
     }
 }
 
@@ -421,6 +439,30 @@ extension UniverseSearchViewController {
             }
         }
     }
+    
+    private func getCardinal(angle: CGFloat) -> Cardinal {
+        let angle = angle < 0 ? angle + 360 : angle
+        
+        if angle >= 22.5 && angle < 67.5 {
+            return Cardinal.NE
+        } else if angle >= 67.5 && angle < 112.5 {
+            return Cardinal.N
+        } else if angle >= 112.5 && angle < 157.5 {
+            return Cardinal.NW
+        } else if angle >= 157.5 && angle < 202.5 {
+            return Cardinal.W
+        } else if angle >= 202.5 && angle < 247.5 {
+            return Cardinal.SW
+        } else if angle >= 247.5 && angle < 292.5 {
+            return Cardinal.S
+        } else if angle >= 292.5 && angle < 337.5 {
+            return Cardinal.SE
+        } else if (angle >= 337.5 && angle < 360) || (angle >= 0 && angle < 22.5) {
+            return Cardinal.E
+        }
+        
+        return Cardinal.None
+    }
 }
 
 extension UniverseSearchViewController {
@@ -483,7 +525,7 @@ extension UniverseSearchViewController {
             let nodeOrigin = CGPoint(x: nodeScreenPos.x - screenWidth / 11.3, y: nodeScreenPos.y - screenWidth / 11.3)
             setArrowHidden()
             setDetectedLayout(name: name, point: nodeOrigin)
-            
+            announceCardinal = .None
         }
     }
 }
