@@ -10,20 +10,6 @@ import SceneKit
 import ARKit
 import AVFoundation
 
-enum Mode {
-    case explore
-    case search(planet: String)
-    
-    var titleText: String {
-        switch self {
-        case .explore:
-            return "우주 둘러보기"
-        case .search(planet: let name):
-            return "\(planetNameDict[name] ?? name) 찾는 중"
-        }
-    }
-}
-
 class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, LocationManagerDelegate, UIGestureRecognizerDelegate {
 
     private var guideCircleView = CustomCircleView()
@@ -354,6 +340,69 @@ extension UniverseSearchViewController {
         UIAccessibility.post(notification: .layoutChanged, argument: selectedSquareView)
         UIAccessibility.post(notification: .announcement, argument: planetNameDict[name] ?? name)
     
+    }
+}
+
+// MARK: - enum
+extension UniverseSearchViewController {
+    enum Mode {
+        case explore
+        case search(planet: String)
+        
+        var titleText: String {
+            switch self {
+            case .explore:
+                return "우주 둘러보기"
+            case .search(planet: let name):
+                return "\(planetNameDict[name] ?? name) 찾는 중"
+            }
+        }
+    }
+    
+    enum Cardinal: Int {
+        case N = 0
+        case NE = 1
+        case E = 2
+        case SE = 3
+        case S = 4
+        case SW = 5
+        case W = 6
+        case NW = 7
+        case None
+        
+        func isNear(new: Cardinal) -> Bool {
+            if new == .None {
+                return true
+            } else if self == .None {
+                return false
+            } else {
+                let difference = abs(self.rawValue - new.rawValue) % 7
+                return difference <= 1
+            }
+        }
+        
+        var directionText: String {
+            switch self {
+            case .N:
+                return "위로"
+            case .NE:
+                return "오른쪽 위로"
+            case .E:
+                return "오른쪽으로"
+            case .SE:
+                return "오른쪽 아래로"
+            case .S:
+                return "아래로"
+            case .SW:
+                return "왼쪽 아래로"
+            case .W:
+                return "왼쪽으로"
+            case .NW:
+                return "왼쪽 위로"
+            default:
+                return ""
+            }
+        }
     }
 }
 
