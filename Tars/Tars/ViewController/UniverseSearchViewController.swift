@@ -316,7 +316,7 @@ extension UniverseSearchViewController {
     
     // 검색 시 화살표 레이아웃 설정
     private func setArrowLayout(point: CGPoint, locatedBehind: Bool = false) {
-            let radian = locatedBehind ? atan2(circleCenter.y - point.y, point.x - circleCenter.x)
+            var radian = locatedBehind ? atan2(circleCenter.y - point.y, point.x - circleCenter.x)
             + .pi : atan2(circleCenter.y - point.y, point.x - circleCenter.x)
             var degree = radian.radiansToDegree
             
@@ -330,6 +330,7 @@ extension UniverseSearchViewController {
                 } else if degree < 315 && degree >= 270 {
                     degree = 315
                 }
+                radian = degree.degreeToRadians
             }
             
             let dx = screenWidth / 3  * cos(radian)
