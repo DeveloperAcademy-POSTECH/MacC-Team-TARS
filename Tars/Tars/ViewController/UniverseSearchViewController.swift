@@ -44,9 +44,18 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     var planetObjectSound: [String: SCNAudioPlayer] = [:]
     var circleCenter: CGPoint = .zero
     
+    var detectedNode: String = "" {
+            didSet {
+                if oldValue != detectedNode && detectedNode != "" {
+                    guideDetectedAnnounce(name: detectedNode)
+                }
+            }
+        }
+    
     let searchGuideLabel: UILabel = {
         let label: UILabel = UILabel()
         label.text = "빠르게 천체 찾기"
+        label.accessibilityHint = "찾고싶은 천체를 선택해보세요"
         label.textColor = .white
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
@@ -86,6 +95,29 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         [guideCircleView, guideArrowView, selectedSquareView].forEach { sceneView.addSubview($0) }
         [coachingBackgroundOverlayView, coachingOverlayView, sceneView, selectPlanetCollectionView, searchGuideLabel].forEach { view.addSubview($0) }
         configureConstraints()
+        
+        self.accessibilityElements = [selectPlanetCollectionView]
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
+            self.coachingOverlayView.isAccessibilityElement = false
+            self.coachingOverlayView.removeFromSuperview()
+            self.coachingBackgroundOverlayView.removeFromSuperview()
+            self.navigationController?.navigationBar.layer.zPosition = 0
+            
+            // UIAccessibility.post(notification: .layoutChanged, argument: self.sceneView)
+            
+            // navigation title 설정
+            self.navigationController?.isNavigationBarHidden = false
+            self.navigationController?.topViewController?.title = "우주 둘러보기"
+            self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
+            self.navigationController?.navigationBar.backgroundColor = .black
+            
+            // settingButton navigationItem
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(self.settingButtonTapped))
+            self.navigationItem.rightBarButtonItem?.accessibilityLabel = "설정"
+            self.navigationItem.rightBarButtonItem?.tintColor = .white
+            self.navigationItem.hidesBackButton = true
+        }
         
         selectPlanetCollectionView.delegate = self
         selectPlanetCollectionView.dataSource = self
@@ -274,6 +306,7 @@ extension UniverseSearchViewController {
     
     // 행성이 탐지되지 않았을 때 레이아웃 설정
     private func setNotDetectedLayout() {
+        detectedNode = ""
         DispatchQueue.main.async {
             self.guideCircleView.isHidden = false
             self.selectedSquareView.isHidden = true
@@ -282,11 +315,16 @@ extension UniverseSearchViewController {
 
     // 행성이 탐지되었을 때 레이아웃 설정
     private func setDetectedLayout(name: String, point: CGPoint) {
+        detectedNode = name
         DispatchQueue.main.async {
             self.selectedSquareView.frame.origin = point
             self.selectedSquareView.setLabel(planetNameDict[name] ?? name)
             self.guideCircleView.isHidden = true
             self.selectedSquareView.isHidden = false
+            self.selectedSquareView.isAccessibilityElement = true
+            
+//추후 사용예정 주석
+//            self.selectedSquareView.accessibilityLabel = planetNameDict[name] ?? name
         }
     }
     
@@ -309,6 +347,13 @@ extension UniverseSearchViewController {
         DispatchQueue.main.async {
             self.guideArrowView.isHidden = true
         }
+    }
+    
+    // 행성 detect되었을 때 announce
+    private func guideDetectedAnnounce(name: String) {
+        UIAccessibility.post(notification: .layoutChanged, argument: selectedSquareView)
+        UIAccessibility.post(notification: .announcement, argument: planetNameDict[name] ?? name)
+    
     }
 }
 

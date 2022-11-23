@@ -26,6 +26,10 @@ extension UniverseSearchViewController: UICollectionViewDataSource {
         cell.planetNameLabel.text = selectedPlanetName
         cell.planetImageView.image = selectedPlanetImage
         
+        // VoiceOver 처리
+        cell.isAccessibilityElement = true
+        cell.accessibilityValue = cell.planetNameLabel.text
+        
         return cell
     }
     
