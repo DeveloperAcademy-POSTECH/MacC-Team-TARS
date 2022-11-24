@@ -11,7 +11,7 @@ struct LocalizableStrings {
     static let jupiter  = NSLocalizedString("목성", comment: "")
     static let jupiterContent = NSLocalizedString("목성은 태양계의 다섯번째 행성이자 가장 큰 행성이다. 태양의 질량의 1,000분의 1배에 달하는 거대행성으로, 태양계에 있는 다른 모든 행성들을 합한 질량의 약 2.5배에 이른다", comment: "")
     
-    static let airPodsInstructionstring = NSLocalizedString("제대로 우주 공간을 경험하기 위해서는 반드시 에어팟을 착용해주세요", comment: "")
+    static let airPodsInstructionstring = NSLocalizedString("몰입감 있게 우주를 경험하려면 에어팟을 꼭 착용해주세요", comment: "")
     static let onboardingInstructionstring = NSLocalizedString("팔을 뻗어 아이폰 카메라를 정면으로 향하게 하고 주변을 스캔하듯 아이폰을 움직이세요. 이제부터 우주탐색뷰로 넘어갑니다.", comment: "")
     static let onboardingInstructionTitle = NSLocalizedString("아이폰을 움직여 주변을 스캔하세요", comment: "")
 }

@@ -34,4 +34,10 @@ extension UIColor {
     static var customYellow: UIColor {
         return UIColor(rgb: 0xFFD426)
     }
+    static var customGradientPurple: UIColor {
+        return UIColor(rgb: 0x19063A)
+    }
+    static var customGradientBlue: UIColor {
+        return UIColor(rgb: 0x315EB6)
+    }
 }
