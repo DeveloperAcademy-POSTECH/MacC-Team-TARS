@@ -9,7 +9,12 @@ import UIKit
 import SceneKit.ModelIO
 
 class InfoViewController: UIViewController {
+    
     public var planet: Planet = Planet(planetKoreanName: "", planetEnglishName: "", planetImage: UIImage(named: ""))
+    private var customPlanetInfoChapterOne = CustomPlanetInfoView()
+    private var customPlanetInfoChapterTwo = CustomPlanetInfoView()
+    private var customPlanetInfoChapterThree = CustomPlanetInfoView()
+    private var planetContentsList = PlanetContent.planetContentsList
     
     lazy var sceneView: SCNView = {
         let sceneView = SCNView()
@@ -54,35 +59,46 @@ class InfoViewController: UIViewController {
         return sceneView
     }()
     
-    lazy var planetName: UILabel = {
-        let planetName = UILabel()
-        planetName.text = planet.planetKoreanName
-        planetName.font = .preferredFont(forTextStyle: .largeTitle)
-        if let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .title1).withSymbolicTraits(.traitBold) {
-            planetName.font = .init(descriptor: descriptor, size: 0)
+    lazy var customInfoStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [customPlanetInfoChapterOne, customPlanetInfoChapterTwo, customPlanetInfoChapterThree])
+        
+        planetContentsList.forEach {
+            if planet.planetKoreanName == $0.planetName {
+                customPlanetInfoChapterOne.chapter.text = "Chapter 1"
+                customPlanetInfoChapterOne.planetInfoTitle.text = $0.planetTitle1
+                customPlanetInfoChapterOne.planetInfoContents.text = $0.planetContents1
+                print("$0.planetTitle1: \($0.planetTitle1)")
+                customPlanetInfoChapterTwo.chapter.text = "Chapter 2"
+                customPlanetInfoChapterTwo.planetInfoTitle.text = $0.planetTitle2
+                customPlanetInfoChapterTwo.planetInfoContents.text = $0.planetContents2
+                customPlanetInfoChapterThree.chapter.text = "Chapter 3"
+                customPlanetInfoChapterThree.planetInfoTitle.text = $0.planetTitle3
+                customPlanetInfoChapterThree.planetInfoContents.text = $0.planetContents3
+            }
         }
-        planetName.textColor = .white
-        planetName.adjustsFontForContentSizeCategory = true
-        return planetName
-    }()
-    
-    lazy var planetInfo: UILabel = {
-        let planetInfo = UILabel()
-        // TODO: content text 수정
-        planetInfo.text = PlanetStrings.jupiterContent.localizedKey
-        planetInfo.font = .preferredFont(forTextStyle: .title3)
-        planetInfo.setLineSpacing(spacing: 6)
-        planetInfo.textColor = .white
-        planetInfo.adjustsFontForContentSizeCategory = true
-        planetInfo.numberOfLines = 0
-        return planetInfo
+//        for i in 0..<planetContentsList.count {
+//            if planet.planetKoreanName == planetContentsList[i].planetName {
+//                customPlanetInfoChapterOne.chapter.text = "Chapter 1"
+//                customPlanetInfoChapterOne.planetInfoTitle.text = planetContentsList[i].planetTitle1
+//                customPlanetInfoChapterOne.planetInfoContents.text = planetContentsList[i].planetContents1
+//                customPlanetInfoChapterTwo.chapter.text = "Chapter 2"
+//                customPlanetInfoChapterTwo.planetInfoTitle.text = planetContentsList[i].planetTitle2
+//                customPlanetInfoChapterTwo.planetInfoContents.text = planetContentsList[i].planetContents2
+//                customPlanetInfoChapterThree.chapter.text = "Chapter 3"
+//                customPlanetInfoChapterThree.planetInfoTitle.text = planetContentsList[i].planetTitle3
+//                customPlanetInfoChapterThree.planetInfoContents.text = planetContentsList[i].planetContents3
+//            }
+//        }
+        stackView.distribution = .fillEqually
+        stackView.axis = .vertical
+        return stackView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .black
-        [sceneView, planetName, planetInfo].forEach { view.addSubview($0) }
+        [sceneView, customInfoStackView].forEach { view.addSubview($0) }
         configureConstraints()
     }
 
@@ -90,10 +106,12 @@ class InfoViewController: UIViewController {
         sceneView.centerX(inView: view)
         sceneView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: screenHeight / 21.6, width: screenWidth, height: screenWidth / 1.56)
         
-        planetName.centerX(inView: view)
-        planetName.anchor(top: sceneView.bottomAnchor, paddingTop: screenHeight / 21.6)
+        customInfoStackView.anchor(top: sceneView.bottomAnchor,
+                                   leading: view.leadingAnchor,
+                                   bottom: view.bottomAnchor,
+                                   trailing: view.trailingAnchor,
+                                   paddingTop: screenHeight / 21.1,
+                                   paddingLeading: screenWidth / 12.18)
         
-        planetInfo.centerX(inView: view)
-        planetInfo.anchor(top: planetName.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingTop: screenWidth / 26.3, paddingLeading: screenWidth / 9.75, paddingTrailing: screenWidth / 9.75)
     }
 }
