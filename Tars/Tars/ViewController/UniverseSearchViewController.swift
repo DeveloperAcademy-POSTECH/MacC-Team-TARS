@@ -109,8 +109,8 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
             self.navigationController?.navigationBar.backgroundColor = .black
             
             // settingButton navigationItem
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(self.settingButtonTapped))
-            self.navigationItem.rightBarButtonItem?.accessibilityLabel = "설정"
+//            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(self.settingButtonTapped))
+//            self.navigationItem.rightBarButtonItem?.accessibilityLabel = "설정"
             self.navigationItem.rightBarButtonItem?.tintColor = .white
             self.navigationItem.hidesBackButton = true
         }
@@ -146,8 +146,8 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                     self.navigationController?.navigationBar.backgroundColor = .black
                     
                     // settingButton navigationItem
-                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(self.settingButtonTapped))
-                    self.navigationItem.rightBarButtonItem?.accessibilityLabel = "설정"
+//                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(self.settingButtonTapped))
+//                    self.navigationItem.rightBarButtonItem?.accessibilityLabel = "설정"
                     self.navigationItem.rightBarButtonItem?.tintColor = .white
                     self.navigationItem.hidesBackButton = true
                     
@@ -174,9 +174,9 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         self.navigationController?.pushViewController(infoViewController, animated: true)
     }
     
-    @objc func settingButtonTapped() {
-        self.navigationController?.pushViewController(SettingViewController(), animated: false)
-    }
+//    @objc func settingButtonTapped() {
+//        self.navigationController?.pushViewController(SettingViewController(), animated: false)
+//    }
     
     /// 행성을 배치하기 위한 함수
     private func setPlanetPosition(to scene: SCNScene?, planets: [Body]) {
