@@ -45,7 +45,6 @@ extension PlanetContent {
         PlanetContent(planetName: "화성",
                            planetTitle1: "화성에 도착하다",
                            planetContents1: "지구에서 58,000km/h로 달리는 가장 빠른 우주선을 타고 이동하니 39일만에 저 멀리 화성이 보입니다. 화성의 표면은 주로 울퉁불퉁한 현무암으로 구성되어 있고 토양에 산화철이 널리 퍼져 있어 붉은색을 띄고 있네요.",
-                           //                       planetInfoSecondTitle: "화성을 관광하다",
                            planetTitle2: "화성을 관광하다",
                            planetContents2: "드디어 화성에 내렸습니다. 이번 여행은 화성의 다이나믹한 지형을 즐기는 산악여행입니다. 저기 웅장한 마리너 계곡이 있습니다. 마리너 계곡은 길이 4,023km, 깊이 10km에 달하는 태양계에서 가장 큰 골짜기로 그 크기만으로도 압도적인 화성의 필수 산악 코스입니다. 이러한 지형은 과거 엄청난 양의 물이 흐르면서 형성된 것으로, 그 수량은 아마존강의 2백 배 이상으로 추정되고 있습니다.",
                            planetTitle3: "여행의 마무리",
@@ -62,4 +61,3 @@ extension PlanetContent {
         PlanetContent(planetName: "해왕성")
     ]
 }
-
