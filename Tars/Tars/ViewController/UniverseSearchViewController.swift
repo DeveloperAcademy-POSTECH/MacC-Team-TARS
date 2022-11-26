@@ -19,6 +19,8 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     private var coachingOverlayView = CustomOnboardingOverlayView()
     private var coachingBackgroundOverlayView = CustomBackgroundOverlayView()
     
+    private var audioManager = AudioManager.shared
+    
     // TapGesture 선언
     let selectedSquareViewTap = UITapGestureRecognizer()
     
