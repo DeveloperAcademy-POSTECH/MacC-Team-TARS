@@ -8,9 +8,10 @@
 import UIKit
 import SceneKit
 import ARKit
-import AVFoundation
 
 class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, LocationManagerDelegate, UIGestureRecognizerDelegate {
+    
+    // MARK: properties
     
     private var guideCircleView = CustomCircleView()
     private var selectedSquareView = CustomSquareView()
@@ -80,6 +81,8 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         sceneView.delegate = self
         return sceneView
     }()
+    
+    // MARK: Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
