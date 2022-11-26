@@ -76,19 +76,6 @@ class InfoViewController: UIViewController {
                 customPlanetInfoChapterThree.planetInfoContents.text = $0.planetContents3
             }
         }
-//        for i in 0..<planetContentsList.count {
-//            if planet.planetKoreanName == planetContentsList[i].planetName {
-//                customPlanetInfoChapterOne.chapter.text = "Chapter 1"
-//                customPlanetInfoChapterOne.planetInfoTitle.text = planetContentsList[i].planetTitle1
-//                customPlanetInfoChapterOne.planetInfoContents.text = planetContentsList[i].planetContents1
-//                customPlanetInfoChapterTwo.chapter.text = "Chapter 2"
-//                customPlanetInfoChapterTwo.planetInfoTitle.text = planetContentsList[i].planetTitle2
-//                customPlanetInfoChapterTwo.planetInfoContents.text = planetContentsList[i].planetContents2
-//                customPlanetInfoChapterThree.chapter.text = "Chapter 3"
-//                customPlanetInfoChapterThree.planetInfoTitle.text = planetContentsList[i].planetTitle3
-//                customPlanetInfoChapterThree.planetInfoContents.text = planetContentsList[i].planetContents3
-//            }
-//        }
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
         return stackView

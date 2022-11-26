@@ -23,7 +23,6 @@ let planetEnglishNames: [String] = ["Sun", "Moon", "Mercury", "Venus", "Mars", "
 
 let planetNameDict: [String: String] = ["Sun": "태양", "Moon": "달", "Mercury": "수성", "Venus": "금성", "Mars": "화성", "Jupiter": "목성", "Saturn": "토성", "Uranus": "천왕성", "Neptune": "해왕성"]
 
-
 extension PlanetContent {
     static let planetContentsList: [PlanetContent] = [
         PlanetContent(planetName: "태양",
@@ -62,4 +61,3 @@ extension PlanetContent {
         PlanetContent(planetName: "해왕성")
     ]
 }
-

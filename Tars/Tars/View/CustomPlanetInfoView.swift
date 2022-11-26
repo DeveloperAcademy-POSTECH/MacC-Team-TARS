@@ -29,18 +29,6 @@ class CustomPlanetInfoView: UIView {
        return planetInfoTitle
     }()
     
-//    lazy var planetInfoContents: UILabel = {
-//        let planetInfoContents = UILabel()
-//        planetInfoContents.text = ""
-//        planetInfoContents.font = .preferredFont(forTextStyle: .title2)
-//        planetInfoContents.textColor = .white
-//        planetInfoContents.textAlignment = .left
-//        planetInfoContents.numberOfLines = 0
-//        planetInfoContents.setLineSpacing(spacing: 6)
-//        planetInfoContents.adjustsFontForContentSizeCategory = true
-//       return planetInfoContents
-//    }()
-    
     lazy var planetInfoContents: UILabel = {
         let label = UILabel()
         let attributedString = NSMutableAttributedString(string: "")
