@@ -70,17 +70,9 @@ class InfoViewController: UIViewController {
         
         planetContentsList.forEach {
             if planet.planetKoreanName == $0.planetName {
-                customPlanetInfoChapterOne.chapter.text = "Chapter 1"
-                customPlanetInfoChapterOne.planetInfoTitle.text = $0.planetTitle1
-                customPlanetInfoChapterOne.planetInfoContents.text = $0.planetContents1
-                
-                customPlanetInfoChapterTwo.chapter.text = "Chapter 2"
-                customPlanetInfoChapterTwo.planetInfoTitle.text = $0.planetTitle2
-                customPlanetInfoChapterTwo.planetInfoContents.text = $0.planetContents2
-                
-                customPlanetInfoChapterThree.chapter.text = "Chapter 3"
-                customPlanetInfoChapterThree.planetInfoTitle.text = $0.planetTitle3
-                customPlanetInfoChapterThree.planetInfoContents.text = $0.planetContents3
+                customPlanetInfoChapterOne.setInfoContents(chapter: "Chapter 1", title: $0.planetTitle1, contents: $0.planetContents1)
+                customPlanetInfoChapterTwo.setInfoContents(chapter: "Chapter 2", title: $0.planetTitle2, contents: $0.planetContents2)
+                customPlanetInfoChapterThree.setInfoContents(chapter: "Chapter 3", title: $0.planetTitle3, contents: $0.planetContents3)
             }
         }
 

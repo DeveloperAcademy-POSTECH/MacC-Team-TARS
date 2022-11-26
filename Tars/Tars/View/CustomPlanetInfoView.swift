@@ -54,6 +54,12 @@ class CustomPlanetInfoView: UIView {
         super.init(coder: coder)
     }
     
+    public func setInfoContents(chapter: String, title: String, contents: String) {
+        self.chapter.text = chapter
+        self.planetInfoTitle.text = title
+        self.planetInfoContents.text = contents
+    }
+    
     private func configurePlanetInfoContents() {
         [chapter, planetInfoTitle, planetInfoContents].forEach { addSubview($0) }
         
