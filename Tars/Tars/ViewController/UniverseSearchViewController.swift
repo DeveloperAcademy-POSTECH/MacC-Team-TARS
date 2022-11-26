@@ -145,6 +145,10 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                     self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
                     self.navigationController?.navigationBar.backgroundColor = .black
                     
+                    let backBarButtonItem = UIBarButtonItem(title: self.navigationItem.title, style: .plain, target: self, action: nil)
+                    self.navigationItem.backBarButtonItem = backBarButtonItem
+                    backBarButtonItem.tintColor = .customYellow
+                    
                     // settingButton navigationItem
                     self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(self.settingButtonTapped))
                     self.navigationItem.rightBarButtonItem?.accessibilityLabel = "설정"
