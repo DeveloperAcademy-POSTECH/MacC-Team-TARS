@@ -89,6 +89,7 @@ class InfoViewController: UIViewController {
         [sceneView, customInfoScrollView].forEach { view.addSubview($0) }
         customInfoScrollView.addSubview(customInfoStackView)
         configureConstraints()
+        navigationItem.title = planet.planetKoreanName
     }
 
     private func configureConstraints() {
