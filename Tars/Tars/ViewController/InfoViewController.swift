@@ -16,6 +16,8 @@ class InfoViewController: UIViewController {
     private var customPlanetInfoChapterThree = CustomPlanetInfoView()
     private var planetContentsList: [PlanetContent] = PlanetContent.planetContentsList
     
+    private var audioManager = AudioManager()
+    
     lazy var sceneView: SCNView = {
         let sceneView = SCNView()
         
@@ -82,6 +84,8 @@ class InfoViewController: UIViewController {
         return stackView
     }()
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -90,6 +94,15 @@ class InfoViewController: UIViewController {
         customInfoScrollView.addSubview(customInfoStackView)
         configureConstraints()
         navigationItem.title = planet.planetKoreanName
+        
+        // 해당 천체의 사운드 재생
+        audioManager.playAudio(fileName: planet.planetEnglishName)
+    }
+    
+    /// 화면이 사라질 경우 사운드 재생 중지
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        audioManager.pauseAudio()
     }
 
     private func configureConstraints() {
