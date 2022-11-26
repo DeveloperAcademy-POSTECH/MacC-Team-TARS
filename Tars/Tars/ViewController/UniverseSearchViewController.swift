@@ -275,6 +275,11 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         sceneView.session.pause()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        muteExploreModeSound(soundPlayer: planetObjectSound)
+    }
+    
     // MARK: - LocationManagerDelegate
     func didUpdateUserLocation() {
         Task {
@@ -594,6 +599,16 @@ extension UniverseSearchViewController {
                 
                 avNode.volume = 0.15
             }
+        }
+    }
+    
+    /// 탐색, 검색화면에서의 음소거
+    private func muteExploreModeSound(soundPlayer: [String: SCNAudioPlayer]) {
+        
+        for audioPlayer in soundPlayer.values {
+            guard let avNode = audioPlayer.audioNode as? AVAudioMixing else { return }
+            
+            avNode.volume = 0.0
         }
     }
 }
