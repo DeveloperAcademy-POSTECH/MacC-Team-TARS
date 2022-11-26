@@ -14,7 +14,7 @@ class InfoViewController: UIViewController {
     private var customPlanetInfoChapterOne = CustomPlanetInfoView()
     private var customPlanetInfoChapterTwo = CustomPlanetInfoView()
     private var customPlanetInfoChapterThree = CustomPlanetInfoView()
-    private var planetContentsList = PlanetContent.planetContentsList
+    private var planetContentsList: [PlanetContent] = PlanetContent.planetContentsList
     
     lazy var sceneView: SCNView = {
         let sceneView = SCNView()
@@ -59,6 +59,12 @@ class InfoViewController: UIViewController {
         return sceneView
     }()
     
+    lazy var customInfoScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.backgroundColor = .clear
+        return scrollView
+    }()
+    
     lazy var customInfoStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [customPlanetInfoChapterOne, customPlanetInfoChapterTwo, customPlanetInfoChapterThree])
         
@@ -67,30 +73,20 @@ class InfoViewController: UIViewController {
                 customPlanetInfoChapterOne.chapter.text = "Chapter 1"
                 customPlanetInfoChapterOne.planetInfoTitle.text = $0.planetTitle1
                 customPlanetInfoChapterOne.planetInfoContents.text = $0.planetContents1
-                print("$0.planetTitle1: \($0.planetTitle1)")
+                
                 customPlanetInfoChapterTwo.chapter.text = "Chapter 2"
                 customPlanetInfoChapterTwo.planetInfoTitle.text = $0.planetTitle2
                 customPlanetInfoChapterTwo.planetInfoContents.text = $0.planetContents2
+                
                 customPlanetInfoChapterThree.chapter.text = "Chapter 3"
                 customPlanetInfoChapterThree.planetInfoTitle.text = $0.planetTitle3
                 customPlanetInfoChapterThree.planetInfoContents.text = $0.planetContents3
             }
         }
-//        for i in 0..<planetContentsList.count {
-//            if planet.planetKoreanName == planetContentsList[i].planetName {
-//                customPlanetInfoChapterOne.chapter.text = "Chapter 1"
-//                customPlanetInfoChapterOne.planetInfoTitle.text = planetContentsList[i].planetTitle1
-//                customPlanetInfoChapterOne.planetInfoContents.text = planetContentsList[i].planetContents1
-//                customPlanetInfoChapterTwo.chapter.text = "Chapter 2"
-//                customPlanetInfoChapterTwo.planetInfoTitle.text = planetContentsList[i].planetTitle2
-//                customPlanetInfoChapterTwo.planetInfoContents.text = planetContentsList[i].planetContents2
-//                customPlanetInfoChapterThree.chapter.text = "Chapter 3"
-//                customPlanetInfoChapterThree.planetInfoTitle.text = planetContentsList[i].planetTitle3
-//                customPlanetInfoChapterThree.planetInfoContents.text = planetContentsList[i].planetContents3
-//            }
-//        }
-        stackView.distribution = .fillEqually
+
+        stackView.distribution = .fillProportionally
         stackView.axis = .vertical
+        stackView.alignment = .leading
         return stackView
     }()
     
@@ -98,7 +94,8 @@ class InfoViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .black
-        [sceneView, customInfoStackView].forEach { view.addSubview($0) }
+        [sceneView, customInfoScrollView].forEach { view.addSubview($0) }
+        customInfoScrollView.addSubview(customInfoStackView)
         configureConstraints()
     }
 
@@ -106,12 +103,17 @@ class InfoViewController: UIViewController {
         sceneView.centerX(inView: view)
         sceneView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: screenHeight / 21.6, width: screenWidth, height: screenWidth / 1.56)
         
-        customInfoStackView.anchor(top: sceneView.bottomAnchor,
+        customInfoStackView.anchor(top: customInfoScrollView.topAnchor,
+                                   leading: customInfoScrollView.leadingAnchor,
+                                   bottom: customInfoScrollView.bottomAnchor,
+                                   trailing: customInfoScrollView.trailingAnchor)
+        customInfoStackView.setWidth(width: customInfoScrollView.frame.width)
+        
+        customInfoScrollView.anchor(top: sceneView.bottomAnchor,
                                    leading: view.leadingAnchor,
                                    bottom: view.bottomAnchor,
                                    trailing: view.trailingAnchor,
-                                   paddingTop: screenHeight / 21.1,
-                                   paddingLeading: screenWidth / 12.18)
+                                   paddingTop: screenHeight / 21.1)
         
     }
 }
