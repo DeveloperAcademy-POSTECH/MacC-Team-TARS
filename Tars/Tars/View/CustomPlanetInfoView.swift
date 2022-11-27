@@ -19,7 +19,6 @@ class CustomPlanetInfoView: UIView {
     
     lazy var planetInfoTitle: UILabel = {
         let planetInfoTitle = UILabel()
-        planetInfoTitle.text = ""
         if let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .title1).withSymbolicTraits(.traitBold) {
             planetInfoTitle.font = .init(descriptor: descriptor, size: 0)
         }
