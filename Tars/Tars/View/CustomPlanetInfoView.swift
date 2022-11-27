@@ -36,8 +36,12 @@ class CustomPlanetInfoView: UIView {
         label.font = .preferredFont(forTextStyle: .title2)
         label.numberOfLines = 0
         label.attributedText = attributedString
-        label.textAlignment = .natural
-        paragraphStyle.lineSpacing = 14
+        // 텍스트 양쪽 정렬, 문자 단위로 라인 넘어가기에 관련한 코드입니다.
+        label.textAlignment = .justified
+        label.lineBreakMode = .byCharWrapping
+        paragraphStyle.hyphenationFactor = 1
+        
+        paragraphStyle.lineSpacing = 18
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributedString.length))
         label.textColor = .white
         label.adjustsFontForContentSizeCategory = true
