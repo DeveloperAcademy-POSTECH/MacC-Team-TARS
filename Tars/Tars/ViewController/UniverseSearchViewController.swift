@@ -279,7 +279,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        muteExploreModeSound(soundPlayer: planetObjectSound)
+        muteExploreSearchModeSound(soundPlayer: planetObjectSound)
     }
     
     // MARK: - LocationManagerDelegate
@@ -605,7 +605,7 @@ extension UniverseSearchViewController {
     }
     
     /// 탐색, 검색화면에서의 음소거
-    private func muteExploreModeSound(soundPlayer: [String: SCNAudioPlayer]) {
+    private func muteExploreSearchModeSound(soundPlayer: [String: SCNAudioPlayer]) {
         
         for audioPlayer in soundPlayer.values {
             guard let avNode = audioPlayer.audioNode as? AVAudioMixing else { return }
