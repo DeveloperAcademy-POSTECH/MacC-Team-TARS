@@ -31,8 +31,14 @@ class InfoViewController: UIViewController {
         scene.rootNode.scale = SCNVector3(1.13, 1.13, 1.13)
         
         // 오브젝트가 회전하는 애니메이션(액션)을 추가합니다.
-        let action = SCNAction.rotateBy(x: 0, y: CGFloat(GLKMathDegreesToRadians(-360)), z: 0, duration: 30)
+        var action = SCNAction.rotateBy(x: 0, y: CGFloat(GLKMathDegreesToRadians(-360)), z: 0, duration: 30)
         let rotateForever = SCNAction.repeatForever(action)
+        
+        // 토성인 경우 pitch 각도를 조정합니다.
+        if planet.planetEnglishName == "Saturn" {
+            scene.rootNode.scale = SCNVector3(1.25, 1.25, 1.25)
+            scene.rootNode.eulerAngles = SCNVector3(0.08, 0, 0)
+        }
         scene.rootNode.childNode(withName: "Cube_002", recursively: true)?.runAction(rotateForever)
         
         sceneView.allowsCameraControl = true
@@ -40,6 +46,8 @@ class InfoViewController: UIViewController {
         
         sceneView.cameraControlConfiguration.allowsTranslation = false
         sceneView.cameraControlConfiguration.autoSwitchToFreeCamera = true
+        
+        // 한 손가락을 제외한 손가락 제스처를 막습니다.
         for reco in sceneView.gestureRecognizers! {
             if let panReco = reco as? UIPanGestureRecognizer {
                 panReco.maximumNumberOfTouches = 1
@@ -91,7 +99,22 @@ class InfoViewController: UIViewController {
 
     private func configureConstraints() {
         sceneView.centerX(inView: view)
-        sceneView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: screenHeight / 21.6, width: screenWidth, height: screenWidth / 1.56)
+        if planet.planetEnglishName == "Saturn" {
+            sceneView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                             paddingTop: screenHeight / 35.16,
+                             width: screenWidth,
+                             height: screenHeight)
+            customInfoStackView.anchor(top: sceneView.bottomAnchor,
+                                       leading: view.leadingAnchor,
+                                       bottom: view.bottomAnchor,
+                                       trailing: view.trailingAnchor,
+                                       paddingTop: screenHeight / 26.37,
+                                       paddingLeading: screenWidth / 12.18)
+        }
+        sceneView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                         paddingTop: screenHeight / 21.6,
+                         width: screenWidth,
+                         height: screenWidth / 1.56)
         
         customInfoStackView.anchor(top: sceneView.bottomAnchor,
                                    leading: view.leadingAnchor,
@@ -99,6 +122,5 @@ class InfoViewController: UIViewController {
                                    trailing: view.trailingAnchor,
                                    paddingTop: screenHeight / 21.1,
                                    paddingLeading: screenWidth / 12.18)
-        
     }
 }
