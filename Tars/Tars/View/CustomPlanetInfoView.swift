@@ -47,11 +47,7 @@ class CustomPlanetInfoView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        
-//        for i in planetContentsList {
-//            planetInfoTitle.text = i.planetTitle1
-//            planetInfoContents.text = i.planetContents1
-//        }
+
         configurePlanetInfoContents()
     }
     
