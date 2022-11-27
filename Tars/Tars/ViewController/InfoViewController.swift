@@ -14,7 +14,9 @@ class InfoViewController: UIViewController {
     private var customPlanetInfoChapterOne = CustomPlanetInfoView()
     private var customPlanetInfoChapterTwo = CustomPlanetInfoView()
     private var customPlanetInfoChapterThree = CustomPlanetInfoView()
-    private var planetContentsList = PlanetContent.planetContentsList
+    private var planetContentsList: [PlanetContent] = PlanetContent.planetContentsList
+    
+    private var audioManager = AudioManager()
     
     lazy var sceneView: SCNView = {
         let sceneView = SCNView()
@@ -67,34 +69,48 @@ class InfoViewController: UIViewController {
         return sceneView
     }()
     
+    lazy var customInfoScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.backgroundColor = .clear
+        return scrollView
+    }()
+    
     lazy var customInfoStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [customPlanetInfoChapterOne, customPlanetInfoChapterTwo, customPlanetInfoChapterThree])
         
         planetContentsList.forEach {
             if planet.planetKoreanName == $0.planetName {
-                customPlanetInfoChapterOne.chapter.text = "Chapter 1"
-                customPlanetInfoChapterOne.planetInfoTitle.text = $0.planetTitle1
-                customPlanetInfoChapterOne.planetInfoContents.text = $0.planetContents1
-                print("$0.planetTitle1: \($0.planetTitle1)")
-                customPlanetInfoChapterTwo.chapter.text = "Chapter 2"
-                customPlanetInfoChapterTwo.planetInfoTitle.text = $0.planetTitle2
-                customPlanetInfoChapterTwo.planetInfoContents.text = $0.planetContents2
-                customPlanetInfoChapterThree.chapter.text = "Chapter 3"
-                customPlanetInfoChapterThree.planetInfoTitle.text = $0.planetTitle3
-                customPlanetInfoChapterThree.planetInfoContents.text = $0.planetContents3
+                customPlanetInfoChapterOne.setInfoContents(chapter: "Chapter 1", title: $0.planetTitle1, contents: $0.planetContents1)
+                customPlanetInfoChapterTwo.setInfoContents(chapter: "Chapter 2", title: $0.planetTitle2, contents: $0.planetContents2)
+                customPlanetInfoChapterThree.setInfoContents(chapter: "Chapter 3", title: $0.planetTitle3, contents: $0.planetContents3)
             }
         }
-        stackView.distribution = .fillEqually
+
+        stackView.distribution = .fillProportionally
         stackView.axis = .vertical
+        stackView.alignment = .leading
         return stackView
     }()
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .black
-        [sceneView, customInfoStackView].forEach { view.addSubview($0) }
+        [sceneView, customInfoScrollView].forEach { view.addSubview($0) }
+        customInfoScrollView.addSubview(customInfoStackView)
         configureConstraints()
+        navigationItem.title = planet.planetKoreanName
+        
+        // 해당 천체의 사운드 재생
+        audioManager.playAudio(fileName: planet.planetEnglishName)
+    }
+    
+    /// 화면이 사라질 경우 사운드 재생 중지
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        audioManager.pauseAudio()
     }
 
     private func configureConstraints() {
@@ -116,11 +132,17 @@ class InfoViewController: UIViewController {
                          width: screenWidth,
                          height: screenWidth / 1.56)
         
-        customInfoStackView.anchor(top: sceneView.bottomAnchor,
+        customInfoStackView.anchor(top: customInfoScrollView.topAnchor,
+                                   leading: customInfoScrollView.leadingAnchor,
+                                   bottom: customInfoScrollView.bottomAnchor,
+                                   trailing: customInfoScrollView.trailingAnchor)
+        customInfoStackView.setWidth(width: customInfoScrollView.frame.width)
+        
+        customInfoScrollView.anchor(top: sceneView.bottomAnchor,
                                    leading: view.leadingAnchor,
                                    bottom: view.bottomAnchor,
                                    trailing: view.trailingAnchor,
-                                   paddingTop: screenHeight / 21.1,
-                                   paddingLeading: screenWidth / 12.18)
+                                   paddingTop: screenHeight / 21.1)
+        
     }
 }

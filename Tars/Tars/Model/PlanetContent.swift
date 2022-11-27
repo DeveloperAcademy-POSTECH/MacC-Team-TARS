@@ -30,9 +30,9 @@ struct PlanetContent {
         self.planetName = planetName
         self.planetTitle1 = planetTitle1
         self.planetContents1 = planetContents1
-        self.planetTitle2 = planetTitle1
+        self.planetTitle2 = planetTitle2
         self.planetContents2 = planetContents2
-        self.planetTitle3 = planetTitle1
+        self.planetTitle3 = planetTitle3
         self.planetContents3 = planetContents3
     }
     
