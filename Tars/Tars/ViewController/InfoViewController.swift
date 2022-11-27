@@ -24,11 +24,10 @@ class InfoViewController: UIViewController {
         // usdz 파일 사용하기 위해 url 받아온 뒤 scene을 생성합니다.
         let path = Bundle.main.path(forResource: planet.planetEnglishName, ofType: "usdz", inDirectory: "3dPlanets") ?? ""
         let url = URL(string: path)
-
         let mdlAsset = MDLAsset(url: url!)
         mdlAsset.loadTextures()
         let scene = SCNScene(mdlAsset: mdlAsset)
-
+        
         scene.rootNode.childNode(withName: "Cube_002", recursively: true)
         scene.rootNode.scale = SCNVector3(1.13, 1.13, 1.13)
         
@@ -37,11 +36,17 @@ class InfoViewController: UIViewController {
         let rotateForever = SCNAction.repeatForever(action)
         scene.rootNode.childNode(withName: "Cube_002", recursively: true)?.runAction(rotateForever)
         
+        // 토성인 경우, 고리가 보이게 pitch 각도를 조정합니다.
+        if planet.planetEnglishName == "Saturn" {
+            scene.rootNode.eulerAngles = SCNVector3(0.1, 0, 0)
+        }
         sceneView.allowsCameraControl = true
         sceneView.backgroundColor = UIColor.clear
         
         sceneView.cameraControlConfiguration.allowsTranslation = false
         sceneView.cameraControlConfiguration.autoSwitchToFreeCamera = true
+        
+        // 한 손가락을 제외한 손가락 제스처를 막습니다.
         for reco in sceneView.gestureRecognizers! {
             if let panReco = reco as? UIPanGestureRecognizer {
                 panReco.maximumNumberOfTouches = 1
@@ -77,7 +82,6 @@ class InfoViewController: UIViewController {
                 customPlanetInfoChapterThree.setInfoContents(chapter: "Chapter 3", title: $0.planetTitle3, contents: $0.planetContents3)
             }
         }
-
         stackView.distribution = .fillProportionally
         stackView.axis = .vertical
         stackView.alignment = .leading
@@ -104,22 +108,29 @@ class InfoViewController: UIViewController {
         super.viewDidDisappear(true)
         audioManager.pauseAudio()
     }
-
     private func configureConstraints() {
         sceneView.centerX(inView: view)
-        sceneView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: screenHeight / 21.6, width: screenWidth, height: screenWidth / 1.56)
+        if planet.planetEnglishName != "Saturn" {
+            sceneView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: screenHeight / 21.6, width: screenWidth, height: screenWidth / 1.56)
+            customInfoScrollView.anchor(top: sceneView.bottomAnchor,
+                                        leading: view.leadingAnchor,
+                                        bottom: view.bottomAnchor,
+                                        trailing: view.trailingAnchor,
+                                        paddingTop: screenHeight / 21.1)
+        } else {
+            // 토성의 고리가 보이게 height를 늘리고, 컨텐츠와의 padding 간격을 늘립니다.
+            sceneView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: screenHeight / 52.75, width: screenWidth, height: screenWidth / 1.2)
+            customInfoScrollView.anchor(top: sceneView.bottomAnchor,
+                                        leading: view.leadingAnchor,
+                                        bottom: view.bottomAnchor,
+                                        trailing: view.trailingAnchor,
+                                        paddingTop: screenHeight / 52.75)
+        }
         
         customInfoStackView.anchor(top: customInfoScrollView.topAnchor,
                                    leading: customInfoScrollView.leadingAnchor,
                                    bottom: customInfoScrollView.bottomAnchor,
                                    trailing: customInfoScrollView.trailingAnchor)
         customInfoStackView.setWidth(width: customInfoScrollView.frame.width)
-        
-        customInfoScrollView.anchor(top: sceneView.bottomAnchor,
-                                   leading: view.leadingAnchor,
-                                   bottom: view.bottomAnchor,
-                                   trailing: view.trailingAnchor,
-                                   paddingTop: screenHeight / 21.1)
-        
     }
 }
