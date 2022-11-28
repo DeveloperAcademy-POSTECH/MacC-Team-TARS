@@ -8,20 +8,20 @@
 import UIKit
 
 let planetList: [Planet] = [
-    Planet(planetKoreanName: "태양", planetImage: UIImage(named: "Sun")),
-    Planet(planetKoreanName: "달", planetImage: UIImage(named: "Moon")),
-    Planet(planetKoreanName: "수성", planetImage: UIImage(named: "Mercury")),
-    Planet(planetKoreanName: "금성", planetImage: UIImage(named: "Venus")),
-    Planet(planetKoreanName: "화성", planetImage: UIImage(named: "Mars")),
-    Planet(planetKoreanName: "목성", planetImage: UIImage(named: "Jupiter")),
-    Planet(planetKoreanName: "토성", planetImage: UIImage(named: "Saturn")),
-    Planet(planetKoreanName: "천왕성", planetImage: UIImage(named: "Uranus")),
-    Planet(planetKoreanName: "해왕성", planetImage: UIImage(named: "Neptune"))
+    Planet(planetKoreanName: LocalizableStrings.sun, planetImage: UIImage(named: "Sun")),
+    Planet(planetKoreanName: LocalizableStrings.moon, planetImage: UIImage(named: "Moon")),
+    Planet(planetKoreanName: LocalizableStrings.mercury, planetImage: UIImage(named: "Mercury")),
+    Planet(planetKoreanName: LocalizableStrings.venus, planetImage: UIImage(named: "Venus")),
+    Planet(planetKoreanName: LocalizableStrings.mars, planetImage: UIImage(named: "Mars")),
+    Planet(planetKoreanName: LocalizableStrings.jupiter, planetImage: UIImage(named: "Jupiter")),
+    Planet(planetKoreanName: LocalizableStrings.saturn, planetImage: UIImage(named: "Saturn")),
+    Planet(planetKoreanName: LocalizableStrings.uranus, planetImage: UIImage(named: "Uranus")),
+    Planet(planetKoreanName: LocalizableStrings.neptune, planetImage: UIImage(named: "Neptune"))
 ]
 
 let planetEnglishNames: [String] = ["Sun", "Moon", "Mercury", "Venus", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
 
-let planetNameDict: [String: String] = ["Sun": "태양", "Moon": "달", "Mercury": "수성", "Venus": "금성", "Mars": "화성", "Jupiter": "목성", "Saturn": "토성", "Uranus": "천왕성", "Neptune": "해왕성"]
+let planetNameDict: [String: String] = ["Sun": LocalizableStrings.sun, "Moon": LocalizableStrings.moon, "Mercury": LocalizableStrings.mercury, "Venus": LocalizableStrings.venus, "Mars": LocalizableStrings.mars, "Jupiter": LocalizableStrings.jupiter, "Saturn": LocalizableStrings.saturn, "Uranus": LocalizableStrings.uranus, "Neptune": LocalizableStrings.neptune]
 
 extension PlanetContent {
     static let planetContentsList: [PlanetContent] = [
