@@ -21,9 +21,9 @@ class CustomSquareView: UIView {
     lazy var planetLabel: UILabel = {
         let planetLabel = UILabel()
         planetLabel.frame = CGRect(x: 0, y: 0, width: screenWidth / 5.65, height: screenHeight / 26.375)
-        planetLabel.text = "수성"
         planetLabel.textAlignment = .center
-        planetLabel.font = .systemFont(ofSize: 24)
+        planetLabel.font = .systemFont(ofSize: 20)
+        planetLabel.adjustsFontSizeToFitWidth = true
         planetLabel.textColor = .black
         planetLabel.backgroundColor = .customYellow
         planetLabel.translatesAutoresizingMaskIntoConstraints = false
