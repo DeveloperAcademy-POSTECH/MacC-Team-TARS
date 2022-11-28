@@ -36,7 +36,15 @@
 // components
 "이미지" = "image";
 
-"목성은 태양계의 다섯번째 행성이자 가장 큰 행성이다. 태양의 질량의 1,000분의 1배에 달하는 거대행성으로, 태양계에 있는 다른 모든 행성들을 합한 질량의 약 2.5배에 이른다" = "Jupiter is the fifth and largest planet in the solar system. A giant planet with a mass of one thousandth the mass of the Sun, it is about 2.5 times the mass of all other planets in the solar system combined.";
+// contents
+"화성에 도착하다" = "Arriving on Mars";
+"지구에서 58,000km/h로 달리는 가장 빠른 우주선을 타고 이동하니 39일만에 저 멀리 화성이 보입니다. 화성의 표면은 주로 울퉁불퉁한 현무암으로 구성되어 있고 토양에 산화철이 널리 퍼져 있어 붉은색을 띄고 있네요." = "Moving on the fastest spacecraft traveling from Earth at 58,000 km/h, Mars can be seen in the distance in 39 days. The surface of Mars is mainly composed of rough basalt, and iron oxide is widespread in the soil, giving it a red color.";
+"화성을 관광하다" = "Mars Tour";
+"드디어 화성에 내렸습니다. 이번 여행은 화성의 다이나믹한 지형을 즐기는 산악여행입니다. 저기 웅장한 마리너 계곡이 있습니다. 마리너 계곡은 길이 4,023km, 깊이 10km에 달하는 태양계에서 가장 큰 골짜기로 그 크기만으로도 압도적인 화성의 필수 산악 코스입니다. 이러한 지형은 과거 엄청난 양의 물이 흐르면서 형성된 것으로, 그 수량은 아마존강의 2백 배 이상으로 추정되고 있습니다." = "We finally landed on Mars. This trip is a mountain trip which you can enjoy the dynamic topography of Mars. There is the magnificent Mariner Valley, which is the largest valley in the solar system, 4,023km long and 10km deep. It is an overwhelming must-see mountain course on Mars. This terrain was formed by a huge amount of water flowing in the past, and the quantity is estimated to be more than 200 times that of the Amazon River.";
+"여행의 마무리" = "The end of the trip";
+"드디어 일몰의 시간입니다. 마리너 계곡의 풍경 좋은 곳에 자리를 잡고 앉아 일몰을 관찰합니다. 지평선 너머 푸른빛의 노을을 볼 수 잇습니다. 화성의 붉은 먼지들이 햇빛을 산란시켜 낮에는 붉고 해질녘에는 파랗게 보이는 것입니다. 멋진 일몰을 보며 화성에서의 하루가 마무리됩니다." = "It’s finally sunset time. Sit in a scenic spot in the Mariner Valley and observe the sunset. You can see the blue sunset over the horizon. Red dust on Mars scatters sunlight, making it look red during the day and blue at sunset. The day on Mars ends with a wonderful sunset.";
+
+// onboarding
 "몰입감 있게 우주를 경험하려면 에어팟을 꼭 착용해주세요" = "Please put on AirPods to get full experience of Space";
 "팔을 뻗어 아이폰 카메라를 정면으로 향하게 하고 주변을 스캔하듯 아이폰을 움직이세요. 이제부터 우주탐색뷰로 넘어갑니다." = "Stretch out your iphone, face the camera forwards and move it around to scan your surroundings. You are now entering the universe exploration view.";
 "아이폰을 움직여 주변을 스캔하세요" = "Move iPhone to start";

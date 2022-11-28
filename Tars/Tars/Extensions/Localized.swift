@@ -52,6 +52,13 @@ struct LocalizableStrings {
     // MARK: Components
     static let image = NSLocalizedString("이미지", comment: "")
     
+    // MARK: Contents
+    static let marsChapterOneTitle = NSLocalizedString("화성에 도착하다", comment: "")
+    static let marsChapterOneContent = NSLocalizedString("지구에서 58,000km/h로 달리는 가장 빠른 우주선을 타고 이동하니 39일만에 저 멀리 화성이 보입니다. 화성의 표면은 주로 울퉁불퉁한 현무암으로 구성되어 있고 토양에 산화철이 널리 퍼져 있어 붉은색을 띄고 있네요.", comment: "")
+    static let marsChapterTwoTitle = NSLocalizedString("화성을 관광하다", comment: "")
+    static let marsChapterTwoContent = NSLocalizedString("드디어 화성에 내렸습니다. 이번 여행은 화성의 다이나믹한 지형을 즐기는 산악여행입니다. 저기 웅장한 마리너 계곡이 있습니다. 마리너 계곡은 길이 4,023km, 깊이 10km에 달하는 태양계에서 가장 큰 골짜기로 그 크기만으로도 압도적인 화성의 필수 산악 코스입니다. 이러한 지형은 과거 엄청난 양의 물이 흐르면서 형성된 것으로, 그 수량은 아마존강의 2백 배 이상으로 추정되고 있습니다.", comment: "")
+    static let marsChapterThreeTitle = NSLocalizedString("여행의 마무리", comment: "")
+    static let marsChapterThreeContent = NSLocalizedString("드디어 일몰의 시간입니다. 마리너 계곡의 풍경 좋은 곳에 자리를 잡고 앉아 일몰을 관찰합니다. 지평선 너머 푸른빛의 노을을 볼 수 잇습니다. 화성의 붉은 먼지들이 햇빛을 산란시켜 낮에는 붉고 해질녘에는 파랗게 보이는 것입니다. 멋진 일몰을 보며 화성에서의 하루가 마무리됩니다.", comment: "")
 }
 
 enum PlanetStrings: String {
