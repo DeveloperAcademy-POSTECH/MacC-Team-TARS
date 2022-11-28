@@ -24,14 +24,14 @@
 "우주 둘러보기" = "Exploring Universe";
 
 // searching
-"위로" = "up";
-"오른쪽 위로" = "up and right";
-"오른쪽으로" = "right";
-"오른쪽 아래로" = "down and right";
-"아래로" = "down";
-"왼쪽 아래로" = "down and left";
-"왼쪽으로" = "left";
-"왼쪽 위로" = "up and left";
+"위로 이동하세요" = "move up";
+"오른쪽 위로 이동하세요" = "move up and right";
+"오른쪽으로 이동하세요" = "move right";
+"오른쪽 아래로 이동하세요" = "move down and right";
+"아래로 이동하세요" = "move down";
+"왼쪽 아래로 이동하세요" = "move down and left";
+"왼쪽으로 이동하세요" = "move left";
+"왼쪽 위로 이동하세요" = "move up and left";
 
 // components
 "이미지" = "image";

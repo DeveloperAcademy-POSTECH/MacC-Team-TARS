@@ -40,14 +40,14 @@ struct LocalizableStrings {
     
     // MARK: Direction
     
-    static let directionUp = NSLocalizedString("위로", comment: "")
-    static let directionUpRight = NSLocalizedString("오른쪽 위로", comment: "")
-    static let directionRight = NSLocalizedString("오른쪽으로", comment: "")
-    static let directionDownRight = NSLocalizedString("오른쪽 아래로", comment: "")
-    static let directionDown = NSLocalizedString("아래로", comment: "")
-    static let directionDownLeft = NSLocalizedString("왼쪽 아래로", comment: "")
-    static let directionLeft = NSLocalizedString("왼쪽으로", comment: "")
-    static let directionUpLeft = NSLocalizedString("왼쪽 위로", comment: "")
+    static let directionUp = NSLocalizedString("위로 이동하세요", comment: "")
+    static let directionUpRight = NSLocalizedString("오른쪽 위로 이동하세요", comment: "")
+    static let directionRight = NSLocalizedString("오른쪽으로 이동하세요", comment: "")
+    static let directionDownRight = NSLocalizedString("오른쪽 아래로 이동하세요", comment: "")
+    static let directionDown = NSLocalizedString("아래로 이동하세요", comment: "")
+    static let directionDownLeft = NSLocalizedString("왼쪽 아래로 이동하세요", comment: "")
+    static let directionLeft = NSLocalizedString("왼쪽으로 이동하세요", comment: "")
+    static let directionUpLeft = NSLocalizedString("왼쪽 위로 이동하세요", comment: "")
     
     // MARK: Components
     static let image = NSLocalizedString("이미지", comment: "")
