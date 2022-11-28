@@ -14,6 +14,7 @@ class CustomPlanetInfoView: UIView {
         chapter.font = .preferredFont(forTextStyle: .title2)
         chapter.textColor = .white
         chapter.adjustsFontForContentSizeCategory = true
+        chapter.isAccessibilityElement = true
         return chapter
     }()
     
@@ -25,6 +26,7 @@ class CustomPlanetInfoView: UIView {
         planetInfoTitle.textColor = .white
         planetInfoTitle.textAlignment = .left
         planetInfoTitle.adjustsFontForContentSizeCategory = true
+        planetInfoTitle.isAccessibilityElement = true
        return planetInfoTitle
     }()
     
@@ -45,6 +47,7 @@ class CustomPlanetInfoView: UIView {
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributedString.length))
         label.textColor = .white
         label.adjustsFontForContentSizeCategory = true
+        label.isAccessibilityElement = true
         return label
     }()
     
@@ -61,10 +64,17 @@ class CustomPlanetInfoView: UIView {
         self.chapter.text = chapter
         self.planetInfoTitle.text = title
         self.planetInfoContents.text = contents
+        
+        self.chapter.accessibilityLabel = chapter
+        self.planetInfoTitle.accessibilityLabel = title
+        self.planetInfoContents.accessibilityLabel = contents
     }
     
     private func configurePlanetInfoContents() {
         [chapter, planetInfoTitle, planetInfoContents].forEach { addSubview($0) }
+        
+        self.isAccessibilityElement = false
+        self.accessibilityElements = [chapter, planetInfoTitle, planetInfoContents]
         
         chapter.anchor(top: self.topAnchor,
                        leading: self.leadingAnchor,

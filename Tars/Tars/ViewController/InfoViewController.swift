@@ -69,11 +69,15 @@ class InfoViewController: UIViewController {
     lazy var customInfoScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .clear
+        scrollView.isAccessibilityElement = false
+        scrollView.accessibilityScroll(.down)
         return scrollView
     }()
     
     lazy var customInfoStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [customPlanetInfoChapterOne, customPlanetInfoChapterTwo, customPlanetInfoChapterThree])
+        
+        stackView.isAccessibilityElement = false
         
         planetContentsList.forEach {
             if planet.planetKoreanName == $0.planetName {
@@ -96,9 +100,15 @@ class InfoViewController: UIViewController {
         view.backgroundColor = .black
         [sceneView, customInfoScrollView].forEach { view.addSubview($0) }
         customInfoScrollView.addSubview(customInfoStackView)
+        
+        customPlanetInfoChapterOne.isAccessibilityElement = false
+        customPlanetInfoChapterTwo.isAccessibilityElement = false
+        customPlanetInfoChapterThree.isAccessibilityElement = false
+        customInfoScrollView.accessibilityElements = [customInfoStackView]
+        customInfoStackView.accessibilityElements = [customPlanetInfoChapterOne, customPlanetInfoChapterTwo, customPlanetInfoChapterThree]
+        
         configureConstraints()
         navigationItem.title = planet.planetKoreanName
-        
         // 해당 천체의 사운드 재생
         audioManager.playAudio(fileName: planet.planetEnglishName)
     }
@@ -108,6 +118,7 @@ class InfoViewController: UIViewController {
         super.viewDidDisappear(true)
         audioManager.pauseAudio()
     }
+
     private func configureConstraints() {
         sceneView.centerX(inView: view)
         if planet.planetEnglishName != "Saturn" {
