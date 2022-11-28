@@ -61,7 +61,7 @@ class InfoViewController: UIViewController {
         sceneView.scene = scene
         
         sceneView.isAccessibilityElement = true
-        sceneView.accessibilityLabel = "\(planet.planetKoreanName) 이미지"
+        sceneView.accessibilityLabel = "\(planet.planetKoreanName) \(LocalizableStrings.image)"
         
         return sceneView
     }()

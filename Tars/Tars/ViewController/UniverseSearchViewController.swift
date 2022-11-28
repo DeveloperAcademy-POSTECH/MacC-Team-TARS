@@ -388,7 +388,7 @@ extension UniverseSearchViewController {
     
     // 화살표 변경시 가이드 음성
     private func guideAnnounce() {
-        let announcementText = "\(arrowCardinal.directionText) 이동하세요"
+        let announcementText = "\(arrowCardinal.directionText)"
         Task {
             try await Task.sleep(nanoseconds: 100)
             UIAccessibility.post(notification: .announcement, argument: announcementText)

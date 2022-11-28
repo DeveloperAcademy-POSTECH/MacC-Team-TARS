@@ -49,6 +49,9 @@ struct LocalizableStrings {
     static let directionLeft = NSLocalizedString("왼쪽으로", comment: "")
     static let directionUpLeft = NSLocalizedString("왼쪽 위로", comment: "")
     
+    // MARK: Components
+    static let image = NSLocalizedString("이미지", comment: "")
+    
 }
 
 enum PlanetStrings: String {
