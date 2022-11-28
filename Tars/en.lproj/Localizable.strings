@@ -48,3 +48,9 @@
 "몰입감 있게 우주를 경험하려면 에어팟을 꼭 착용해주세요" = "Please put on AirPods to get full experience of Space";
 "팔을 뻗어 아이폰 카메라를 정면으로 향하게 하고 주변을 스캔하듯 아이폰을 움직이세요. 이제부터 우주탐색뷰로 넘어갑니다." = "Stretch out your iphone, face the camera forwards and move it around to scan your surroundings. You are now entering the universe exploration view.";
 "아이폰을 움직여 주변을 스캔하세요" = "Move iPhone to start";
+
+// alert message
+"위치 서비스 사용" = "Using Location Services";
+"위치서비스를 사용할 수 없습니다. 기기의 설정 > SpaceOver > 위치에서 위치 서비스를 켜주세요" = "Location access is not available. Turn on location access in Device Settings > SpaceOver > Location";
+"설정으로 이동" = "Move to Settings";
+"취소" = "Cancel";

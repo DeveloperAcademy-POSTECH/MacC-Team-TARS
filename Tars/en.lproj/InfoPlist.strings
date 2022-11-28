@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  Tars
+
+  Created by Lena on 2022/11/28.
+  
+*/
+
+"NSCameraUsageDescription" = "The app use camera for AR experience";
+
+"NSLocationWhenInUseUsageDescription" = "Turning on location service allows us to show where the planet is based on location";
