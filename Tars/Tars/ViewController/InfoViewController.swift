@@ -69,16 +69,13 @@ class InfoViewController: UIViewController {
     lazy var customInfoScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .clear
-        scrollView.isAccessibilityElement = false
         scrollView.accessibilityScroll(.down)
         return scrollView
     }()
     
     lazy var customInfoStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [customPlanetInfoChapterOne, customPlanetInfoChapterTwo, customPlanetInfoChapterThree])
-        
-        stackView.isAccessibilityElement = false
-        
+                
         planetContentsList.forEach {
             if planet.planetKoreanName == $0.planetName {
                 customPlanetInfoChapterOne.setInfoContents(chapter: "Chapter 1", title: $0.planetTitle1, contents: $0.planetContents1)
@@ -101,11 +98,7 @@ class InfoViewController: UIViewController {
         [sceneView, customInfoScrollView].forEach { view.addSubview($0) }
         customInfoScrollView.addSubview(customInfoStackView)
         
-        customPlanetInfoChapterOne.isAccessibilityElement = false
-        customPlanetInfoChapterTwo.isAccessibilityElement = false
-        customPlanetInfoChapterThree.isAccessibilityElement = false
-        customInfoScrollView.accessibilityElements = [customInfoStackView]
-        customInfoStackView.accessibilityElements = [customPlanetInfoChapterOne, customPlanetInfoChapterTwo, customPlanetInfoChapterThree]
+        customInfoScrollView.accessibilityElements = [customPlanetInfoChapterOne.chapter, customPlanetInfoChapterOne.planetInfoTitle, customPlanetInfoChapterOne.planetInfoContents, customPlanetInfoChapterTwo.chapter, customPlanetInfoChapterTwo.planetInfoTitle, customPlanetInfoChapterTwo.planetInfoContents, customPlanetInfoChapterThree.chapter, customPlanetInfoChapterThree.planetInfoTitle, customPlanetInfoChapterThree.planetInfoContents]
         
         configureConstraints()
         navigationItem.title = planet.planetKoreanName
