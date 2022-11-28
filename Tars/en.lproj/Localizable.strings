@@ -6,7 +6,34 @@
   
 */
 
+// Planet
+"태양" = "Sun";
+"달" = "Moon";
+"수성" = "Mercury";
+"금성" = "Venus";
+"화성" = "Mars";
 "목성" = "Jupiter";
+"토성" = "Saturn";
+"천왕성" = "Uranus";
+"해왕성" = "Neptune";
+
+// collectionView
+"빠르게 천체 찾기" = "Searching Planets";
+"천체 찾는 중" = "Searching...";
+"찾고싶은 천체를 선택해보세요" = "Select what you want to search";
+"우주 둘러보기" = "Exploring Universe";
+
+// searching
+"위로" = "up";
+"오른쪽 위로" = "up and right";
+"오른쪽으로" = "right";
+"오른쪽 아래로" = "down and right";
+"아래로" = "down";
+"왼쪽 아래로" = "down and left";
+"왼쪽으로" = "left";
+"왼쪽 위로" = "up and left";
+
+
 "목성은 태양계의 다섯번째 행성이자 가장 큰 행성이다. 태양의 질량의 1,000분의 1배에 달하는 거대행성으로, 태양계에 있는 다른 모든 행성들을 합한 질량의 약 2.5배에 이른다" = "Jupiter is the fifth and largest planet in the solar system. A giant planet with a mass of one thousandth the mass of the Sun, it is about 2.5 times the mass of all other planets in the solar system combined.";
 "몰입감 있게 우주를 경험하려면 에어팟을 꼭 착용해주세요" = "Please put on AirPods to get full experience of Space";
 "팔을 뻗어 아이폰 카메라를 정면으로 향하게 하고 주변을 스캔하듯 아이폰을 움직이세요. 이제부터 우주탐색뷰로 넘어갑니다." = "Stretch out your iphone, face the camera forwards and move it around to scan your surroundings. You are now entering the universe exploration view.";
