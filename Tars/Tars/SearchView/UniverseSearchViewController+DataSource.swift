@@ -19,7 +19,6 @@ extension UniverseSearchViewController: UICollectionViewDataSource {
         // reusable cell init
         cell.backgroundView = nil
         cell.planetNameLabel.textColor = .white
-        
         let selectedPlanetName = planetList[indexPath.row].planetKoreanName
         let selectedPlanetImage = planetList[indexPath.row].planetImage
         
