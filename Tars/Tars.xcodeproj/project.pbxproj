@@ -67,6 +67,7 @@
 		BFAD1ED629324D950081C4A3 /* Detail_Sun.aif in Resources */ = {isa = PBXBuildFile; fileRef = BFAD1EAD292C63020081C4A3 /* Detail_Sun.aif */; };
 		BFAD1ED729324D950081C4A3 /* Detail_Uranus.aif in Resources */ = {isa = PBXBuildFile; fileRef = BFAD1EB0292C63060081C4A3 /* Detail_Uranus.aif */; };
 		BFAD1ED829324D950081C4A3 /* Detail_Venus.aif in Resources */ = {isa = PBXBuildFile; fileRef = BFAD1EAE292C63030081C4A3 /* Detail_Venus.aif */; };
+		BFAD1EDB2934C9AD0081C4A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BFAD1EDD2934C9AD0081C4A3 /* InfoPlist.strings */; };
 		DD653AAE292E13490061211D /* PlanetContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD653AAD292E13490061211D /* PlanetContent.swift */; };
 		DD653AB0292E14F90061211D /* CustomPlanetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD653AAF292E14F90061211D /* CustomPlanetInfoView.swift */; };
 		DDB7DD932906B2B000FC0BA4 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */; };
@@ -137,6 +138,8 @@
 		BFAD1EB1292C63070081C4A3 /* Detail_Moon.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = Detail_Moon.aif; sourceTree = "<group>"; };
 		BFAD1EC7292C80030081C4A3 /* 3dPlanets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 3dPlanets; sourceTree = "<group>"; };
 		BFAD1ECD2931F7CC0081C4A3 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		BFAD1EDC2934C9AD0081C4A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BFAD1EDE2934C9B10081C4A3 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DD653AAD292E13490061211D /* PlanetContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetContent.swift; sourceTree = "<group>"; };
 		DD653AAF292E14F90061211D /* CustomPlanetInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlanetInfoView.swift; sourceTree = "<group>"; };
 		DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +207,7 @@
 		BF7B4FA928FE431900F83158 = {
 			isa = PBXGroup;
 			children = (
+				BFAD1EDD2934C9AD0081C4A3 /* InfoPlist.strings */,
 				599A78CD2917F75F0070CE15 /* Localizable.strings */,
 				BF7B4FB428FE431900F83158 /* Tars */,
 				BF7B4FB328FE431900F83158 /* Products */,
@@ -409,6 +413,7 @@
 				BFAD1ED029324D950081C4A3 /* Detail_Jupiter.aif in Resources */,
 				BFAD1ED129324D950081C4A3 /* Detail_Mars.aif in Resources */,
 				BFAD1ED229324D950081C4A3 /* Detail_Mercury.aif in Resources */,
+				BFAD1EDB2934C9AD0081C4A3 /* InfoPlist.strings in Resources */,
 				BFAD1ED329324D950081C4A3 /* Detail_Moon.aif in Resources */,
 				BFAD1ED429324D950081C4A3 /* Detail_Neptune.aif in Resources */,
 				BFAD1ED529324D950081C4A3 /* Detail_Saturn.aif in Resources */,
@@ -524,6 +529,15 @@
 				BF7B4FC128FE431A00F83158 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BFAD1EDD2934C9AD0081C4A3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFAD1EDC2934C9AD0081C4A3 /* en */,
+				BFAD1EDE2934C9B10081C4A3 /* ko */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
