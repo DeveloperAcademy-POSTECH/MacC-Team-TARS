@@ -53,8 +53,8 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     
     let searchGuideLabel: UILabel = {
         let label: UILabel = UILabel()
-        label.text = "빠르게 천체 찾기"
-        label.accessibilityHint = "찾고싶은 천체를 선택해보세요"
+        label.text = LocalizableStrings.collectionViewTitle
+        label.accessibilityHint = LocalizableStrings.collectionViewContent
         label.textColor = .white
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
@@ -109,7 +109,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
             
             // navigation title 설정
             self.navigationController?.isNavigationBarHidden = false
-            self.navigationController?.topViewController?.title = "우주 둘러보기"
+            self.navigationController?.topViewController?.title = LocalizableStrings.exploreUniverseNavigationTitle
             self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
             self.navigationController?.navigationBar.backgroundColor = .black
             
@@ -146,7 +146,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                     
                     // navigation title 설정
                     self.navigationController?.isNavigationBarHidden = false
-                    self.navigationController?.topViewController?.title = "우주 둘러보기"
+                    self.navigationController?.topViewController?.title = LocalizableStrings.exploreUniverseNavigationTitle
                     self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
                     self.navigationController?.navigationBar.backgroundColor = .black
                     
@@ -405,9 +405,9 @@ extension UniverseSearchViewController {
         var titleText: String {
             switch self {
             case .explore:
-                return "우주 둘러보기"
+                return LocalizableStrings.exploreUniverseNavigationTitle
             case .search(planet: let name):
-                return "\(planetNameDict[name] ?? name) 찾는 중"
+                return LocalizableStrings.searchingNavigationTitle
             }
         }
     }
@@ -437,21 +437,21 @@ extension UniverseSearchViewController {
         var directionText: String {
             switch self {
             case .N:
-                return "위로"
+                    return LocalizableStrings.directionUp
             case .NE:
-                return "오른쪽 위로"
+                    return LocalizableStrings.directionUpRight
             case .E:
-                return "오른쪽으로"
+                    return LocalizableStrings.directionRight
             case .SE:
-                return "오른쪽 아래로"
+                    return LocalizableStrings.directionDownRight
             case .S:
-                return "아래로"
+                    return LocalizableStrings.directionDown
             case .SW:
-                return "왼쪽 아래로"
+                    return LocalizableStrings.directionDownLeft
             case .W:
-                return "왼쪽으로"
+                    return LocalizableStrings.directionLeft
             case .NW:
-                return "왼쪽 위로"
+                    return LocalizableStrings.directionUpLeft
             default:
                 return ""
             }
