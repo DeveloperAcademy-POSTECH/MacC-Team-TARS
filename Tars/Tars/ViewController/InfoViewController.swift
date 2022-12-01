@@ -98,6 +98,10 @@ class InfoViewController: UIViewController {
         [sceneView, customInfoScrollView].forEach { view.addSubview($0) }
         customInfoScrollView.addSubview(customInfoStackView)
         
+        customPlanetInfoChapterOne.chapter.accessibilityHint = "총 3 chapter 중에서 chapter 1"
+        customPlanetInfoChapterTwo.chapter.accessibilityHint = "총 3 chapter 중에서 chapter 2"
+        customPlanetInfoChapterThree.chapter.accessibilityHint = "총 3 chapter 중에서 chapter 3"
+        
         customInfoScrollView.accessibilityElements = [customPlanetInfoChapterOne.chapter, customPlanetInfoChapterOne.planetInfoTitle, customPlanetInfoChapterOne.planetInfoContents, customPlanetInfoChapterTwo.chapter, customPlanetInfoChapterTwo.planetInfoTitle, customPlanetInfoChapterTwo.planetInfoContents, customPlanetInfoChapterThree.chapter, customPlanetInfoChapterThree.planetInfoTitle, customPlanetInfoChapterThree.planetInfoContents]
         
         configureConstraints()
