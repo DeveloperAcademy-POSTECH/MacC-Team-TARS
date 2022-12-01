@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BF7B4FB128FE431900F83158"
-               BuildableName = "Tars.app"
+               BuildableName = "SpaceOver.app"
                BlueprintName = "Tars"
                ReferencedContainer = "container:Tars.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BF7B4FB128FE431900F83158"
-            BuildableName = "Tars.app"
+            BuildableName = "SpaceOver.app"
             BlueprintName = "Tars"
             ReferencedContainer = "container:Tars.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BF7B4FB128FE431900F83158"
-            BuildableName = "Tars.app"
+            BuildableName = "SpaceOver.app"
             BlueprintName = "Tars"
             ReferencedContainer = "container:Tars.xcodeproj">
          </BuildableReference>
