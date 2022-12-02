@@ -14,6 +14,8 @@ class CustomOnboardingOverlayView: UIView {
         coachingOverlay.text = PlanetStrings.onboardingInstructionTitle.localizedKey
         coachingOverlay.font = .preferredFont(forTextStyle: .largeTitle)
         coachingOverlay.textAlignment = .center
+        coachingOverlay.numberOfLines = 0
+        coachingOverlay.adjustsFontSizeToFitWidth = true
         if let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body).withSymbolicTraits(.traitBold) {
             coachingOverlay.font = .init(descriptor: descriptor, size: 0)
         }
