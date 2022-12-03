@@ -261,10 +261,12 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         let configuration = ARWorldTrackingConfiguration()
         configuration.worldAlignment = .gravityAndHeading
         sceneView.session.run(configuration)
+        
+        // 전체 탐색 mode가 default
+        self.mode = .explore
     }
     
     override func viewDidAppear(_ animated: Bool) {
