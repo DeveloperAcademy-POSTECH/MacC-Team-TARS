@@ -267,6 +267,8 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         
         // 전체 탐색 mode가 default
         self.mode = .explore
+        // collectionview 초기화
+        selectPlanetCollectionView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
