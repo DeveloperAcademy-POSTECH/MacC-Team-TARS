@@ -17,8 +17,11 @@ extension UniverseSearchViewController: UICollectionViewDataSource {
             else { return UICollectionViewCell() }
         
         // reusable cell init
-        cell.backgroundView = nil
-        cell.planetNameLabel.textColor = .white
+        if cell.isSelected == false {
+            cell.backgroundView = nil
+            cell.planetNameLabel.textColor = .white
+        }
+       
         let selectedPlanetName = planetList[indexPath.row].planetKoreanName
         let selectedPlanetImage = planetList[indexPath.row].planetImage
         

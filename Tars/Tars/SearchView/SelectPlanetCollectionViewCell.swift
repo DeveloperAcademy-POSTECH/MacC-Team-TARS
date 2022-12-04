@@ -55,4 +55,12 @@ class SelectPlanetCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func prepareForReuse() {
+        // reusable cell init
+        if self.isSelected == false {
+            self.backgroundView = nil
+            self.planetNameLabel.textColor = .white
+        }
+    }
 }
