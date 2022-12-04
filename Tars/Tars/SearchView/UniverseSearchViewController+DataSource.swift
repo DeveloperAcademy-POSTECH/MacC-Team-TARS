@@ -22,12 +22,11 @@ extension UniverseSearchViewController: UICollectionViewDataSource {
         let selectedPlanetName = planetList[indexPath.row].planetKoreanName
         let selectedPlanetImage = planetList[indexPath.row].planetImage
         
+        // VoiceOver
+        cell.isAccessibilityElement = true
+        
         cell.planetNameLabel.text = selectedPlanetName
         cell.planetImageView.image = selectedPlanetImage
-        
-        // VoiceOver 처리
-        cell.isAccessibilityElement = true
-        cell.accessibilityValue = cell.planetNameLabel.text
         
         return cell
     }
@@ -43,9 +42,14 @@ extension UniverseSearchViewController: UICollectionViewDataSource {
             cell.backgroundView = nil
             self.mode = .explore
             
+            // VoiceOver
+            cell.accessibilityValue = "선택 취소 \(cell.planetNameLabel.text ?? "")"
+            
             collectionView.deselectItem(at: indexPath, animated: true)
             return false
         } else {
+            // VoiceOver
+            cell.accessibilityValue = cell.planetNameLabel.text
             return true
         }
     }
