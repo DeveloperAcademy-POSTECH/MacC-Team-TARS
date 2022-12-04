@@ -14,6 +14,7 @@
 		374FEE372909597B00E0C56B /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FEE362909597B00E0C56B /* Float+Extension.swift */; };
 		452F77C5292E28DD0088E684 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452F77C4292E28DD0088E684 /* HapticManager.swift */; };
 		5533717729123F17004AD6E8 /* UniverseSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */; };
+		55400E0A293CA6BF0025B9B7 /* EnteringSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55400E09293CA6BF0025B9B7 /* EnteringSound.mp3 */; };
 		558932C9291429E90032D459 /* UniverseSearchViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558932C8291429E90032D459 /* UniverseSearchViewController+DataSource.swift */; };
 		558932CB29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558932CA29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift */; };
 		55A8876629238C9C0078CB7E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A8876529238C9C0078CB7E /* SettingViewController.swift */; };
@@ -82,6 +83,7 @@
 		374FEE362909597B00E0C56B /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 		452F77C4292E28DD0088E684 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseSearchViewController.swift; sourceTree = "<group>"; };
+		55400E09293CA6BF0025B9B7 /* EnteringSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = EnteringSound.mp3; sourceTree = "<group>"; };
 		558932C8291429E90032D459 /* UniverseSearchViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UniverseSearchViewController+DataSource.swift"; sourceTree = "<group>"; };
 		558932CA29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UniverseSearchViewController+FlowLayoutDelegate.swift"; sourceTree = "<group>"; };
 		55A8876529238C9C0078CB7E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 		BFAD1EB2292C63180081C4A3 /* SoundAssets */ = {
 			isa = PBXGroup;
 			children = (
+				55400E09293CA6BF0025B9B7 /* EnteringSound.mp3 */,
 				BFC861A229251AC500D1ADE1 /* SoundMono */,
 				BFAD1E84292C62290081C4A3 /* SoundSpatial */,
 			);
@@ -429,6 +432,7 @@
 				BFAD1EA5292C62F00081C4A3 /* Searching_Sun.mp3 in Resources */,
 				BF7B4FC228FE431A00F83158 /* LaunchScreen.storyboard in Resources */,
 				BFAD1EA4292C62F00081C4A3 /* Searching_Jupiter.mp3 in Resources */,
+				55400E0A293CA6BF0025B9B7 /* EnteringSound.mp3 in Resources */,
 				BFAD1EA7292C62F00081C4A3 /* Searching_Saturn.mp3 in Resources */,
 				BFAD1EA8292C62F00081C4A3 /* Searching_Moon.mp3 in Resources */,
 				BFAD1EA2292C62F00081C4A3 /* Searching_Mercury.mp3 in Resources */,
