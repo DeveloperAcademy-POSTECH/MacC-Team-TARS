@@ -180,7 +180,16 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         let infoViewController = InfoViewController()
         infoViewController.planet.planetKoreanName = planetKoreanName
         infoViewController.planet.planetEnglishName = planetEnglishNames[index]
-        self.navigationController?.pushViewController(infoViewController, animated: true)
+        
+        // sound added
+        DispatchQueue.global().sync {
+            audioManager.pauseAudio()
+            audioManager.playAudio(fileName: "EnteringSound")
+            sleep(3)
+        }
+        DispatchQueue.global().sync {
+            self.navigationController?.pushViewController(infoViewController, animated: true)
+        }
     }
     
 //    @objc func settingButtonTapped() {
