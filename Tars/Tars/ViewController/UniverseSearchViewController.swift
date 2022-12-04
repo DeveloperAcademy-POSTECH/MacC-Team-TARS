@@ -248,9 +248,9 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         guideCircleView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.23)
         
         searchGuideLabel.centerX(inView: view)
-        searchGuideLabel.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.7)
+        searchGuideLabel.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.73)
         
-        selectPlanetCollectionView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.68)
+        selectPlanetCollectionView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.7)
         selectPlanetCollectionView.setHeight(height: screenHeight * 0.35)
         selectPlanetCollectionView.setWidth(width: screenWidth)
         selectPlanetCollectionView.centerX(inView: view)
