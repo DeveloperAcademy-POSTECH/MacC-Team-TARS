@@ -24,7 +24,7 @@
 <br/>
 
 ### :sparkles: Skills & Tech Stack
-|<img height="400" src="https://user-images.githubusercontent.com/50728605/206734339-024bf795-b188-43e3-afcd-2003ab4b320f.png">
+<img height="400" src="https://user-images.githubusercontent.com/50728605/206734339-024bf795-b188-43e3-afcd-2003ab4b320f.png">
 <br/>
 
 ### 🫂 Developers
