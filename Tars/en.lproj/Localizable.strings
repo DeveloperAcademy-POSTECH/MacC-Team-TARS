@@ -40,12 +40,68 @@
 "총 3 chapter 중에서 chapter 3" = "chapter 3 of 3 ";
 
 // contents
-"화성에 도착하다" = "Arriving on Mars";
-"지구에서 가장 빠른 우주선을 타고 이동하니 39일 만에 화성에 도착했습니다. 화성의 표면은 현무암으로 구성되어 있어 울퉁불퉁하네요. 넘어지지 않게 조심해야겠습니다." = "Moving on the fastest spacecraft traveling from Earth, we’ve arrived on Mars. The surface of Mars is constructed of basalt which makes it rough and bumpy. Be careful not to fall over.";
-"화성을 관광하다" = "Mars Tour";
-"이번 여행은 화성의 다이나믹한 지형을 즐기는 산악여행입니다. 저기 웅장한 마리너 계곡이 있습니다. 마리너 계곡의 길이는 그랜드 캐니언의 10배에 달하고 깊이는 3배나 되는 태양계에서 가장 큰 골짜기입니다. 화성 필수 산악 코스인 마리너 계곡을 등산해봅시다." = "This trip is a hiking course where you can enjoy the dynamic rocky valley of Mars. There’s the enormous Mariner Valley. The Mariner Valley is the largest valley in the solar system, 10 times the length and 3 times the depth of the Grand Canyon. Let’s go and take a trip to the must-go tourist attraction on Mars.";
-"마리너 계곡에서의 휴식" = "Getting some rest";
-"웅장한 마리너 계곡을 등산하다 보니 목이 마르지 않으신가요? 하지만 걱정하지 마세요. 마리너 계곡 중앙부의 물질은 40%가 물로 추정됩니다. 계곡의 중앙에 도착할 때까지 조금만 힘내보세요!" = "Aren’t you thirsty while you climbing Mariner Valley? Don’t worry about it. 40 percent of the material in the center of Mariner Valley is estimated as water. Keep going until get to the center of the Valley!";
+"marsChapterOneTitle" = "Arriving on Mars";
+"marsChapterOneContent" = "Moving on the fastest spacecraft traveling from Earth, we’ve arrived on Mars. The surface of Mars is constructed of basalt which makes it rough and bumpy. Be careful not to fall over.";
+"marsChapterTwoTitle" = "Mars Tour";
+"marsChapterTwoContent" = "This trip is a hiking course where you can enjoy the dynamic rocky valley of Mars. There’s the enormous Mariner Valley. The Mariner Valley is the largest valley in the solar system, 10 times the length and 3 times the depth of the Grand Canyon. Let’s go and take a trip to the must-go tourist attraction on Mars.";
+"marsChapterThreeTitle" = "Getting some rest";
+"marsChapterThreeContent" = "Aren’t you thirsty while you climbing Mariner Valley? Don’t worry about it. 40 percent of the material in the center of Mariner Valley is estimated as water. Keep going until get to the center of the Valley!";
+
+"sunChapterOneTitle" = "Arriving on the Sun";
+"sunChapterOneContent" = "The sun is the most important star in the solar system. The heat and light for life on Earth all come from the sun. In fact, the sunlight we get on Earth is light from the sun eight minutes and 20 seconds ago. Isn't that interesting? Then let's get closer to the sun and find out more.";
+"sunChapterTwoTitle" = "Feeling the Sun";
+"sunChapterTwoContent" = "Well, we've arrived at the sun. The Sun is a very large mass of gas consisting of hydrogen and helium. The temperature is too hot to stay in a solid or liquid state. In fact, the center of the sun rises to 15,700,000 degrees. The sun is so hot and bright that you can't look at the sun with your bare eyes from Earth.";
+"sunChapterThreeTitle" = "The Sun from afar";
+"sunChapterThreeContent" = "This time, let's leave the hot sun and feel at the huge sun from a very far distance. There are spots on the surface of the sun that are particularly different from other regions. Sun spots and sun flares are indispensable for the sun. When a lot of energy is accumulated in the sun due to fusion, it erupts, and it suddenly bursts onto the surface. Try and focus on the sunspot to feel this phenomenon.";
+
+"moonChapterOneTitle" = "Arriving on the moon";
+"moonChapterOneContent" = "We have arrived at Earth's one and only, Moon. The moon, which is thought to have been created when Mars-sized boy collided with the earth, is 3.7 times smaller than the earth. If the Earth is the size of a U.S. nickel, the Earth's tiny companion Moon, is about the size of a pea. Did you get a feel for the size of the moon? Still, Earth’s moon is the fifth largest moon in the solar system. Shall we travel to the moon from now on?";
+"moonChapterTwoTitle" = "The sea of the moon";
+"moonChapterTwoContent" = "Early astronomers thought the dark spots on the moon's surface were the moon's seas and named them Mare, which means the sea in Latin. Later, the moon's sea was found to be a plain created by a volcanic eruption and was not related to the Earth's sea, but it is still called Mare. Stop by the Sea of Tranquility among the many seas of the moon. The Sea of Tranquility, where the first manned spacecraft Apollo 11 landed is a must-visit tourist destination when you come to the moon.";
+"moonChapterThreeTitle" = "Those who went first";
+"moonChapterThreeContent" = "The Moon is the only celestial body that humans have visited other than Earth. So far, more than 105  spacecraft have been launched to explore the moon, and 12 people have set foot on it. Look for traces of people who have been there before on the surface of the moon. You can find pieces of equipment left behind by the astronauts, an American flag, a camera, and even footprints left by the Apollo 11 astronauts.";
+
+"mercuryChapterOneTitle" = "Mercury travel essentials";
+"mercuryChapterOneContent" = "We have arrived at Mercury, which is very hot because it is close to the sun. In Mercury, which rises to 179℃ during the day, you should be careful not to step on the ground barefoot. Be sure to bring your shoes! A spacesuit with excellent heat dissipation is also a must-have. Don't worry too much if you accidentally burn yourself. Even on Mercury, which is so hot, there is ice in the craters deep in the polar region, where the sunlight does not reach at all. Shall we go to the ice crater and take a break?";
+"mercuryChapterTwoTitle" = "Treasure hunt in the basin";
+"mercuryChapterTwoContent" = "In addition to craters that contain ice, there is another very popular tourist attraction on Mercury. The Caloris Basin is the largest basin on any planet in the solar system. Created by the impact of a huge comet, this basin is said to have a spider-shaped terrain in the middle, so go and find it!";
+"mercuryChapterThreeTitle" = "Beautiful night of mercury";
+"mercuryChapterThreeContent" = "The key to making Mercury such a beautiful planet are the aurora borealis in the night sky. At night an atmosphere made up of sodium atoms dyes the entire planet a golden hue. Keep in mind the night sky that can only be found on Mercury.";
+
+"venusChapterOneTitle" = "Arriving on Venus";
+"venusChapterOneContent" = "Following the brightest planet after the sun, we arrived at Venus. Venus, shining golden in the night sky, is the most beautiful planet in the solar system and has been called the goddess of beauty through many myths. Let's travel to Venus while thinking of the goddess of beauty.";
+"venusChapterTwoTitle" = "Two faces of Venus";
+"venusChapterTwoContent" = "Those of you who are going to travel to beautiful Venus, you must be prepared from now on. Because it has sharp thorns in its golden beauty. Venus has an extreme greenhouse effect because of its thick and dense atmosphere. In fact, the surface temperature of Venus rises to 465°C. Let's find a place to escape the heat and go in.";
+"venusChapterThreeTitle" = "A day starting on Venus";
+"venusChapterThreeContent" = "When you woke up after sleeping in a place where you could avoid the heat, the sun rises far away.  You can meet very unique natural phenomenon on Venus. That is, the sun rises in the west. It’s because Venus rotates in a clockwise direction unlike earth. Let's feel how different the sun rising in the west is.";
+
+"jupiterChapterOneTitle" = "Arriving on Jupiter";
+"jupiterChapterOneContent" = "Searching for the largest planet in the solar system, we arrived at Jupiter. Jupiter is more than twice as massive as all the other planets in the solar system combined.  Also, Jupiter's radius is 11 times Earth's. If Earth is a grape, Jupiter is about the size of a basketball. Can you feel the size of Jupiter? If you want to travel all of this large Jupiter, you'll have to move quickly.";
+"jupiterChapterTwoTitle" = "Weather of Jupiter";
+"jupiterChapterTwoContent" = "Clear weather is essential for a pleasant trip. On Jupiter, however, you have to watch out for strong thunderstorms and huge storms. Jupiter's Great Red Spot is an elliptical spot. Watch out, this massive and powerful storm, twice the size of Earth, has been swirling around Jupiter for over 150 years.";
+"jupiterChapterThreeTitle" = "Trip to the Jupiter’s moon";
+"jupiterChapterThreeContent" = "Let's go to Jupiter's icy moon Europa. How about skating on the ice-covered Europa? There is evidence that there is a vast ocean under the ice crust that life can live in, drawing attention from scientists. In addition, Jupiter, which has an overflowing charm, has a magnetic field that attracts the surroundings. There are 80 moons around it. Which moon should we travel to next?";
+
+"saturnChapterOneTitle" = "Large and light Saturn";
+"saturnChapterOneContent" = "Our destination is beautiful Saturn. Saturn is the second largest planet in the solar system after Jupiter. It's big enough to hold 765 Earth. It has 100 times the mass of Earth! However, the density is very low, so we cannot land on Saturn’s soil. Don't be too sad if you can't land! There are so many things to find on Saturn without landing.";
+"saturnChapterTwoTitle" = "The jewel of the solar system";
+"saturnChapterTwoContent" = "There is Saturn with beautiful rings. Getting close to the gorgeous rings is one of the biggest attractions of traveling to Saturn. However, you cannot touch the ring with your hands. That's because the rings revolve around Saturn, with trillions of tiny pieces of matter up to the size of rocks. Be careful not to get hurt!";
+"saturnChapterThreeTitle" = "Rivers of Titan";
+"saturnChapterThreeContent" = "This time, let's take a trip to the Saturn’s moon. Saturn has 63 moons, of which Titan is larger than Mercury. Because the temperature is so low, methane that exist as gases on Earth flow like rivers in Saturn.  Did you bring a space suit with enough cold protection? Put on your spacesuit and play in the cold methane river!";
+
+"uranusChapterOneTitle" = "Stinky uranus";
+"uranusChapterOneContent" = "As we get closer to Uranus, there is a strange smell that we have smelled many times. This is because the upper layers of Uranus' clouds are composed of hydrogen sulfide. The concentration of hydrogen sulfide is so high that a person could suffocate near it. Don't forget to bring your gas mask!";
+"uranusChapterTwoTitle" = "A planet rotating while lying down";
+"uranusChapterTwoContent" = "Uranus’s rotation is little strange. Unlike other planets, it rotates while lying on its side. Earth's axis tilt is 23.5°, whereas Uranus' axis tilt is 97.77°, which is tilted by more than 90 degrees. Therefore, when the other planets turn sideways, only Uranus rolls sideways. You might get motion sickness on Uranus.";
+"uranusChapterThreeTitle" = "A cold giant ice planet";
+"uranusChapterThreeContent" = "Uranus is called an giant icy planet. Although Uranus has a diameter four times that of Earth and a mass fourteen times that of Earth, it has a weaker gravity than Earth because its density is the lowest in the solar system after Saturn. While Uranus revolves around the sun, 80 years pass on Earth. How will the four seasons of Uranus come to human life? We are looking forward to the next exploration plan for Uranus, which has been attracting the attention of many scientists as an unknown planet for a long time!";
+
+"neptuneChapterOneTitle" = "Neptune, far and far away";
+"neptuneChapterOneContent" = "Let’s hit the road to go Neptune which is the eighth planet in the solar system and the farthest from the sun. Neptune is so far from Earth that Voyager 2, the only spacecraft to visit Neptune, took 12 years to reach Neptune. Let's go on a long, long journey to Neptune together.";
+"neptuneChapterTwoTitle" = "The Secret of Neptune's Ring";
+"neptuneChapterTwoContent" = "Neptune, in fact, has a ring of planets like Saturn. Five rings surround Neptune, but unfortunately, most rings are so thin and faint that it’s hard to find. Let's get a little closer and find Neptune's rings.";
+"neptuneChapterThreeTitle" = "A huge underwater treasure";
+"neptuneChapterThreeContent" = "In Neptune, there is a diamond ocean where diamonds float. The inner core exists as liquefied diamond, and you can find chunks of diamonds larger than Antarctic icebergs. Shall we go inside Neptune to find diamonds?";
 
 // onboarding
 "몰입감 있게 우주를 경험하려면 에어팟을 꼭 착용해주세요" = "Please put on AirPods to get full experience of Space";

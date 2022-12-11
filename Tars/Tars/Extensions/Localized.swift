@@ -58,12 +58,68 @@ struct LocalizableStrings {
 
     
     // MARK: Contents
-    static let marsChapterOneTitle = NSLocalizedString("화성에 도착하다", comment: "")
-    static let marsChapterOneContent = NSLocalizedString("지구에서 가장 빠른 우주선을 타고 이동하니 39일 만에 화성에 도착했습니다. 화성의 표면은 현무암으로 구성되어 있어 울퉁불퉁하네요. 넘어지지 않게 조심해야겠습니다.", comment: "")
-    static let marsChapterTwoTitle = NSLocalizedString("화성을 관광하다", comment: "")
-    static let marsChapterTwoContent = NSLocalizedString("이번 여행은 화성의 다이나믹한 지형을 즐기는 산악여행입니다. 저기 웅장한 마리너 계곡이 있습니다. 마리너 계곡의 길이는 그랜드 캐니언의 10배에 달하고 깊이는 3배나 되는 태양계에서 가장 큰 골짜기입니다. 화성 필수 산악 코스인 마리너 계곡을 등산해봅시다.", comment: "")
-    static let marsChapterThreeTitle = NSLocalizedString("마리너 계곡에서의 휴식", comment: "")
-    static let marsChapterThreeContent = NSLocalizedString("웅장한 마리너 계곡을 등산하다 보니 목이 마르지 않으신가요? 하지만 걱정하지 마세요. 마리너 계곡 중앙부의 물질은 40%가 물로 추정됩니다. 계곡의 중앙에 도착할 때까지 조금만 힘내보세요!", comment: "")
+    static let sunChapterOneTitle = NSLocalizedString("sunChapterOneTitle", comment: "")
+    static let sunChapterOneContent = NSLocalizedString("sunChapterOneContent", comment: "")
+    static let sunChapterTwoTitle = NSLocalizedString("sunChapterTwoTitle", comment: "")
+    static let sunChapterTwoContent = NSLocalizedString("sunChapterTwoContent", comment: "")
+    static let sunChapterThreeTitle = NSLocalizedString("sunChapterThreeTitle", comment: "")
+    static let sunChapterThreeContent = NSLocalizedString("sunChapterThreeContent", comment: "")
+    
+    static let moonChapterOneTitle = NSLocalizedString("moonChapterOneTitle", comment: "")
+    static let moonChapterOneContent = NSLocalizedString("moonChapterOneContent", comment: "")
+    static let moonChapterTwoTitle = NSLocalizedString("moonChapterTwoTitle", comment: "")
+    static let moonChapterTwoContent = NSLocalizedString("moonChapterTwoContent", comment: "")
+    static let moonChapterThreeTitle = NSLocalizedString("moonChapterThreeTitle", comment: "")
+    static let moonChapterThreeContent = NSLocalizedString("moonChapterThreeContent", comment: "")
+    
+    static let mercuryChapterOneTitle = NSLocalizedString("mercuryChapterOneTitle", comment: "")
+    static let mercuryChapterOneContent = NSLocalizedString("mercuryChapterOneContent", comment: "")
+    static let mercuryChapterTwoTitle = NSLocalizedString("mercuryChapterTwoTitle", comment: "")
+    static let mercuryChapterTwoContent = NSLocalizedString("mercuryChapterTwoContent", comment: "")
+    static let mercuryChapterThreeTitle = NSLocalizedString("mercuryChapterThreeTitle", comment: "")
+    static let mercuryChapterThreeContent = NSLocalizedString("mercuryChapterThreeContent", comment: "")
+    
+    static let venusChapterOneTitle = NSLocalizedString("venusChapterOneTitle", comment: "")
+    static let venusChapterOneContent = NSLocalizedString("venusChapterOneContent", comment: "")
+    static let venusChapterTwoTitle = NSLocalizedString("venusChapterTwoTitle", comment: "")
+    static let venusChapterTwoContent = NSLocalizedString("venusChapterTwoContent", comment: "")
+    static let venusChapterThreeTitle = NSLocalizedString("venusChapterThreeTitle", comment: "")
+    static let venusChapterThreeContent = NSLocalizedString("venusChapterThreeContent", comment: "")
+
+    static let marsChapterOneTitle = NSLocalizedString("marsChapterOneTitle", comment: "")
+    static let marsChapterOneContent = NSLocalizedString("marsChapterOneContent", comment: "")
+    static let marsChapterTwoTitle = NSLocalizedString("marsChapterTwoTitle", comment: "")
+    static let marsChapterTwoContent = NSLocalizedString("marsChapterTwoContent", comment: "")
+    static let marsChapterThreeTitle = NSLocalizedString("marsChapterThreeTitle", comment: "")
+    static let marsChapterThreeContent = NSLocalizedString("marsChapterThreeContent", comment: "")
+    
+    static let jupiterChapterOneTitle = NSLocalizedString("jupiterChapterOneTitle", comment: "")
+    static let jupiterChapterOneContent = NSLocalizedString("jupiterChapterOneContent", comment: "")
+    static let jupiterChapterTwoTitle = NSLocalizedString("jupiterChapterTwoTitle", comment: "")
+    static let jupiterChapterTwoContent = NSLocalizedString("jupiterChapterTwoContent", comment: "")
+    static let jupiterChapterThreeTitle = NSLocalizedString("jupiterChapterThreeTitle", comment: "")
+    static let jupiterChapterThreeContent = NSLocalizedString("jupiterChapterThreeContent", comment: "")
+    
+    static let saturnChapterOneTitle = NSLocalizedString("saturnChapterOneTitle", comment: "")
+    static let saturnChapterOneContent = NSLocalizedString("saturnChapterOneContent", comment: "")
+    static let saturnChapterTwoTitle = NSLocalizedString("saturnChapterTwoTitle", comment: "")
+    static let saturnChapterTwoContent = NSLocalizedString("saturnChapterTwoContent", comment: "")
+    static let saturnChapterThreeTitle = NSLocalizedString("saturnChapterThreeTitle", comment: "")
+    static let saturnChapterThreeContent = NSLocalizedString("saturnChapterThreeContent", comment: "")
+    
+    static let uranusChapterOneTitle = NSLocalizedString("uranusChapterOneTitle", comment: "")
+    static let uranusChapterOneContent = NSLocalizedString("uranusChapterOneContent", comment: "")
+    static let uranusChapterTwoTitle = NSLocalizedString("uranusChapterTwoTitle", comment: "")
+    static let uranusChapterTwoContent = NSLocalizedString("uranusChapterTwoContent", comment: "")
+    static let uranusChapterThreeTitle = NSLocalizedString("uranusChapterThreeTitle", comment: "")
+    static let uranusChapterThreeContent = NSLocalizedString("uranusChapterThreeContent", comment: "")
+    
+    static let neptuneChapterOneTitle = NSLocalizedString("neptuneChapterOneTitle", comment: "")
+    static let neptuneChapterOneContent = NSLocalizedString("neptuneChapterOneContent", comment: "")
+    static let neptuneChapterTwoTitle = NSLocalizedString("neptuneChapterTwoTitle", comment: "")
+    static let neptuneChapterTwoContent = NSLocalizedString("neptuneChapterTwoContent", comment: "")
+    static let neptuneChapterThreeTitle = NSLocalizedString("neptuneChapterThreeTitle", comment: "")
+    static let neptuneChapterThreeContent = NSLocalizedString("neptuneChapterThreeContent", comment: "")
 }
 
 enum PlanetStrings: String {
