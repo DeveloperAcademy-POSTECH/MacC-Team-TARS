@@ -379,7 +379,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					BF7B4FB128FE431900F83158 = {
 						CreatedOnToolsVersion = 14.0.1;
@@ -424,7 +424,6 @@
 				BFAD1EC8292C80030081C4A3 /* 3dPlanets in Resources */,
 				BFAD1EA0292C62F00081C4A3 /* Searching_Neptune.mp3 in Resources */,
 				BF7B4FD528FE47B200F83158 /* .swiftlint.yml in Resources */,
-				BFAD1EA0292C62F00081C4A3 /* Searching_Neptune.mp3 in Resources */,
 				BF788B8629052230002BF8C0 /* UniverseBackground.scn in Resources */,
 				BFAD1EA5292C62F00081C4A3 /* Searching_Sun.mp3 in Resources */,
 				BF7B4FC228FE431A00F83158 /* LaunchScreen.storyboard in Resources */,
