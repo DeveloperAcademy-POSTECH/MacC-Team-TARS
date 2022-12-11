@@ -51,6 +51,11 @@ struct LocalizableStrings {
     
     // MARK: Components
     static let image = NSLocalizedString("이미지", comment: "")
+    static let chapterOneHint = NSLocalizedString("총 3 chapter 중에서 chapter 1", comment: "")
+    static let chapterTwoHint = NSLocalizedString("총 3 chapter 중에서 chapter 2", comment: "")
+    static let chapterThreeHint = NSLocalizedString("총 3 chapter 중에서 chapter 3", comment: "")
+    
+
     
     // MARK: Contents
     static let marsChapterOneTitle = NSLocalizedString("화성에 도착하다", comment: "")
