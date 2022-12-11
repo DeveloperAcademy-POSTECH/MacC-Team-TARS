@@ -28,6 +28,21 @@ class AudioManager {
             print(error.localizedDescription)
         }
     }
+    
+    public func playDetectingAudio(fileName: String) {
+        guard let url = Bundle.main.url(forResource: "\(fileName)", withExtension: "wav") else { return }
+        
+        do {
+            try audioPlayer = AVAudioPlayer(contentsOf: url)
+            
+            audioPlayer?.prepareToPlay()
+            audioPlayer?.volume = 0.3
+            audioPlayer?.play()
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 
     public func pauseAudio() {
         audioPlayer?.pause()
