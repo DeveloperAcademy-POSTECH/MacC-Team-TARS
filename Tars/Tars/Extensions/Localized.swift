@@ -57,8 +57,8 @@ struct LocalizableStrings {
     static let marsChapterOneContent = NSLocalizedString("지구에서 가장 빠른 우주선을 타고 이동하니 39일 만에 화성에 도착했습니다. 화성의 표면은 현무암으로 구성되어 있어 울퉁불퉁하네요. 넘어지지 않게 조심해야겠습니다.", comment: "")
     static let marsChapterTwoTitle = NSLocalizedString("화성을 관광하다", comment: "")
     static let marsChapterTwoContent = NSLocalizedString("이번 여행은 화성의 다이나믹한 지형을 즐기는 산악여행입니다. 저기 웅장한 마리너 계곡이 있습니다. 마리너 계곡의 길이는 그랜드 캐니언의 10배에 달하고 깊이는 3배나 되는 태양계에서 가장 큰 골짜기입니다. 화성 필수 산악 코스인 마리너 계곡을 등산해봅시다.", comment: "")
-    static let marsChapterThreeTitle = NSLocalizedString("여행의 마무리", comment: "")
-    static let marsChapterThreeContent = NSLocalizedString("드디어 일몰의 시간입니다. 마리너 계곡의 풍경 좋은 곳에 자리를 잡고 앉아 일몰을 관찰합니다. 지평선 너머 푸른빛의 노을을 볼 수 잇습니다. 화성의 붉은 먼지들이 햇빛을 산란시켜 낮에는 붉고 해질녘에는 파랗게 보이는 것입니다. 멋진 일몰을 보며 화성에서의 하루가 마무리됩니다.", comment: "")
+    static let marsChapterThreeTitle = NSLocalizedString("마리너 계곡에서의 휴식", comment: "")
+    static let marsChapterThreeContent = NSLocalizedString("웅장한 마리너 계곡을 등산하다 보니 목이 마르지 않으신가요? 하지만 걱정하지 마세요. 마리너 계곡 중앙부의 물질은 40%가 물로 추정됩니다. 계곡의 중앙에 도착할 때까지 조금만 힘내보세요!", comment: "")
 }
 
 enum PlanetStrings: String {
