@@ -383,7 +383,11 @@ extension UniverseSearchViewController {
         UIAccessibility.post(notification: .layoutChanged, argument: selectedSquareView)
         UIAccessibility.post(notification: .announcement, argument: planetNameDict[name] ?? name)
         HapticManager.instance.hapticImpact(style: .soft)
-        self.audioManager.playAudio(pre: "Detecting_", fileName: "Detecting_planet", audioExtension: "wav", audioVolume: 0.3)
+        self.audioManager.playAudio(pre: "Detecting_",
+                                    fileName: "planet",
+                                    audioExtension: "wav",
+                                    audioVolume: 0.3,
+                                    isLoop: false)
     }
     
     // 화살표 변경시 가이드 음성

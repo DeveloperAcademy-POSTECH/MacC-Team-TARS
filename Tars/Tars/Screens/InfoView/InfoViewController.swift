@@ -110,7 +110,8 @@ class InfoViewController: UIViewController {
         audioManager.playAudio(pre: "Detail_",
                                fileName: planet.planetEnglishName,
                                audioExtension: "mp3",
-                               audioVolume: 0.5)
+                               audioVolume: 0.5,
+                               isLoop: true)
     }
     
     /// 화면이 사라질 경우 사운드 재생 중지
