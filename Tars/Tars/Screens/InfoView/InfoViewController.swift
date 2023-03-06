@@ -110,7 +110,7 @@ class InfoViewController: UIViewController {
         audioManager.playAudio(pre: "Detail_",
                                fileName: planet.planetEnglishName,
                                audioExtension: "mp3",
-                               audioVolume: 0.5,
+                               audioVolume: 0.4,
                                isLoop: true)
     }
     
@@ -118,6 +118,7 @@ class InfoViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         audioManager.pauseAudio()
+        audioManager.audioPlayer?.prepareToPlay()
     }
 
     private func configureConstraints() {
