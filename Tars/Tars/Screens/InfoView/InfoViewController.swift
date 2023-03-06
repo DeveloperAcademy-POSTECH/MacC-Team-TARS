@@ -107,7 +107,10 @@ class InfoViewController: UIViewController {
         configureConstraints()
         navigationItem.title = planet.planetKoreanName
         // 해당 천체의 사운드 재생
-        audioManager.playAudio(fileName: planet.planetEnglishName)
+        audioManager.playAudio(pre: "Detail_",
+                               fileName: planet.planetEnglishName,
+                               audioExtension: "mp3",
+                               audioVolume: 0.5)
     }
     
     /// 화면이 사라질 경우 사운드 재생 중지
