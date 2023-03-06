@@ -21,7 +21,8 @@ class AudioManager {
     public func playAudio(pre: String,
                           fileName: String,
                           audioExtension: String,
-                          audioVolume: Float) {
+                          audioVolume: Float,
+                          isLoop: Bool) {
         guard let url = Bundle.main.url(forResource: "\(pre)\(fileName)", withExtension: "\(audioExtension)") else { return }
         
         do {
@@ -30,7 +31,10 @@ class AudioManager {
             audioPlayer?.prepareToPlay()
             audioPlayer?.volume = audioVolume
             audioPlayer?.play()
-            audioPlayer?.numberOfLoops = -1
+            if isLoop {
+                audioPlayer?.numberOfLoops = -1
+            }
+            
         } catch {
             print(error.localizedDescription)
         }
