@@ -383,7 +383,11 @@ extension UniverseSearchViewController {
         UIAccessibility.post(notification: .layoutChanged, argument: selectedSquareView)
         UIAccessibility.post(notification: .announcement, argument: planetNameDict[name] ?? name)
         HapticManager.instance.hapticImpact(style: .soft)
-        self.audioManager.playDetectingAudio(fileName: "Detecting_planet")
+        self.audioManager.playAudio(pre: "Detecting_",
+                                    fileName: "planet",
+                                    audioExtension: "wav",
+                                    audioVolume: 0.3,
+                                    isLoop: false)
     }
     
     // 화살표 변경시 가이드 음성
@@ -553,7 +557,8 @@ extension UniverseSearchViewController {
 // MARK: - 모드에 따른 소리 증감 기능
 
 extension UniverseSearchViewController {
-    
+        
+    // TODO: 반복되는 부분 클래스로 빼서 재사용하기 (볼륨에 따라)
     /// 탐색 모드일 때 - 모든 행성의 소리의 음량을 동일하게
     private func exploreModeSoundPlay(soundPlayer: [String: SCNAudioPlayer]) {
         

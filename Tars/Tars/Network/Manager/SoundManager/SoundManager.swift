@@ -14,6 +14,33 @@ class AudioManager {
     
     init() {}
     
+    /// pre: searching_ vs detail_
+    /// fileName: name of body
+    /// audioExtension: mp3 vs aif vs wav
+    /// audioVolume: 0.0 ~ 1.0
+    public func playAudio(pre: String,
+                          fileName: String,
+                          audioExtension: String,
+                          audioVolume: Float,
+                          isLoop: Bool) {
+        guard let url = Bundle.main.url(forResource: "\(pre)\(fileName)", withExtension: "\(audioExtension)") else { return }
+        
+        do {
+            try audioPlayer = AVAudioPlayer(contentsOf: url)
+            
+            audioPlayer?.prepareToPlay()
+            audioPlayer?.volume = audioVolume
+            audioPlayer?.play()
+            if isLoop {
+                audioPlayer?.numberOfLoops = -1
+            }
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    /*
     public func playAudio(fileName: String) {
         guard let url = Bundle.main.url(forResource: "Detail_\(fileName)", withExtension: "aif") else { return }
         
@@ -21,7 +48,7 @@ class AudioManager {
             try audioPlayer = AVAudioPlayer(contentsOf: url)
             
             audioPlayer?.prepareToPlay()
-            audioPlayer?.volume = 0.7
+            audioPlayer?.volume = 0.5
             audioPlayer?.play()
             audioPlayer?.numberOfLoops = -1
         } catch {
@@ -43,6 +70,7 @@ class AudioManager {
             print(error.localizedDescription)
         }
     }
+     */
 
     public func pauseAudio() {
         audioPlayer?.pause()
