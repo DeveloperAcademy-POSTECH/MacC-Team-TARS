@@ -254,7 +254,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         selectPlanetCollectionView.setHeight(height: screenHeight * 0.35)
         selectPlanetCollectionView.setWidth(width: screenWidth)
         selectPlanetCollectionView.centerX(inView: view)
-        
+
         selectedSquareView.frame = CGRect(x: 0, y: 0, width: screenWidth / 5.65, height: (screenWidth / 5.65) + (screenHeight / 26.375))
         guideArrowView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
     }
