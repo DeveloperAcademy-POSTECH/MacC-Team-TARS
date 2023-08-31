@@ -5,7 +5,7 @@
 # SpaceOver
 Apple Developer Academy @ POSTECH 1기 Spotlight 프로젝트
 > **“Hear the Universe”** <br/><br/>
-> 시각작애인 유저들이 스스로 우주를 탐색하고 태양계의 천체들을 찾을 수 있는 천문학적 경험을 제공합니다. <br/>
+> 시각장애인 유저들이 스스로 우주를 탐색하고 태양계의 천체들을 찾을 수 있는 천문학적 경험을 제공합니다. <br/>
 > SpaceOver provides an astronomical experience for BVI(blind and visually impaired) users <br/>to independently navigate through space and locate the planets of the solar system.
   
 </div>
@@ -54,4 +54,4 @@ Apple Developer Academy @ POSTECH 1기 Spotlight 프로젝트
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |<img src="https://github.com/Genesis2010.png" width="190">|<img src="https://github.com/lenamin.png" width="190">|<img src="https://github.com/glitterer.png" width="190">|<img src = "https://github.com/DoAY9.png" width="190">|<img src="https://github.com/HeejiSohn.png" width="190">|<img src="https://github.com/SohyeonKim-dev.png" width="190">|<img src="https://github.com/YoonyoungL.png" width="190">|
 |[Niro](https://github.com/Genesis2010)|[Lena](https://github.com/lenamin)|[Oz](https://github.com/glitterer)|[Ayden](https://github.com/DoAY9)|[Sohni](https://github.com/HeejiSohn)|[Colli](https://github.com/SohyeonKim-dev)|[Jerry](https://github.com/YoonyoungL)|
-|<p align="left">- ARKit 관련 기능<br>- 행성 배치 구현<br>- 오디오 재생 기능 구현|<p align="left">- 오디오 기능 및 음원 제작<br>- InfoView 구현<br>- VoiceOver 기능<br>- 배포 및 유지보수|<p align="left">- Localization<br>- VoiceOver 기능<br>- LaunchScreen 구현|<p align="left">- UI/UX 디자인 총괄<br>- 앱 로고 및 스크린샷 제작<br>- InfoView 구현<br>- 3D animation 구현|<p align="left">- 햅틱 기능 구현<br>- VoiceOver 기능<br>- 천체 컨텐츠 제작|<p align="left">- SearchView 구현<br>- MainView 구현<br>- tap gesture 기능<br>- 데이터 관련 구현|<p align="left">- 실시간 천체 위치 API 구현<br>- 네트워크 모델링<br>- 사용자 위치 모델<br>- 행성 탐색 로직|
+|<p align="left">- ARKit 관련 기능<br>- 행성 배치 구현<br>- 오디오 재생 기능 구현|<p align="left">- 오디오 기능 및 음원 제작<br>- InfoView 구현<br>- VoiceOver 기능<br>- 배포 및 유지보수|<p align="left">- Localization<br>- VoiceOver 기능<br>- LaunchScreen 구현|<p align="left">- UI/UX 디자인 총괄<br>- 앱 로고 및 스크린샷 제작<br>- InfoView 구현<br>- 3D animation 구현|<p align="left">- 햅틱 기능 구현<br>- VoiceOver 기능<br>- 천체 컨텐츠 제작|<p align="left">- SearchView 구현<br>- MainView 구현<br>- tap gesture 기능<br>- 데이터 관련 구현|<p align="left">- 실시간 천체 위치 API 구현<br>- 네트워크 모델링<br>- 사용자 위치 모델<br>- 행성 탐색 로직<br>- VoiceOver 기능|
