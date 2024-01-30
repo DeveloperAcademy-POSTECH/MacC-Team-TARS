@@ -23,6 +23,16 @@ struct Body: Decodable {
 }
 
 extension Body {
+    // TODO: - API 임시 변경 관련 코드 해결
+    init(id: String, name: String, altitude: String, azimuth: String) {
+        self.id = id
+        self.name = name
+        self.distanceFromEarth = "0"
+        self.altitude = altitude
+        self.azimuth = azimuth
+        self.coordinate = Self.horizontalCoordinateToXYZ(azimuth: self.azimuth, altitude: self.altitude)
+    }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         var array = try container.nestedUnkeyedContainer(forKey: .cells)
@@ -51,5 +61,48 @@ extension Body {
         let z = 5 * -(cos(altitude) * cos(azimuth))
         
         return (x, y, z)
+    }
+}
+
+enum MajorBody: String, CaseIterable {
+    case sun
+    case moon
+    case mercury
+    case venus
+    case mars
+    case jupiter
+    case saturn
+    case uranus
+    case neptune
+    
+    var id: String {
+        return "\(rawValue)"
+    }
+    
+    var name: String {
+        return "\(rawValue)".capitalized
+    }
+    
+    var command: String {
+        switch self {
+        case .sun:
+            return "10"
+        case .moon:
+            return "301"
+        case .mercury:
+            return "199"
+        case .venus:
+            return "299"
+        case .mars:
+            return "499"
+        case .jupiter:
+            return "599"
+        case .saturn:
+            return "699"
+        case .uranus:
+            return "799"
+        case .neptune:
+            return "899"
+        }
     }
 }
