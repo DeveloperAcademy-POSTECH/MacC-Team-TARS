@@ -12,6 +12,15 @@
 		3726FE022923B02E0062B667 /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3726FE012923B02E0062B667 /* CGPoint+Extension.swift */; };
 		3726FE042923B12C0062B667 /* SCNVector3+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3726FE032923B12C0062B667 /* SCNVector3+Extension.swift */; };
 		374FEE372909597B00E0C56B /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374FEE362909597B00E0C56B /* Float+Extension.swift */; };
+		37EF27032B6922920092C65B /* Detail_Saturn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37EF26FA2B6922920092C65B /* Detail_Saturn.mp3 */; };
+		37EF27042B6922920092C65B /* Detail_Venus.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37EF26FB2B6922920092C65B /* Detail_Venus.mp3 */; };
+		37EF27052B6922920092C65B /* Detail_Uranus.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37EF26FC2B6922920092C65B /* Detail_Uranus.mp3 */; };
+		37EF27062B6922920092C65B /* Detail_Jupiter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37EF26FD2B6922920092C65B /* Detail_Jupiter.mp3 */; };
+		37EF27072B6922920092C65B /* Detail_Sun.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37EF26FE2B6922920092C65B /* Detail_Sun.mp3 */; };
+		37EF27082B6922920092C65B /* Detail_Mars.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37EF26FF2B6922920092C65B /* Detail_Mars.mp3 */; };
+		37EF27092B6922920092C65B /* Detail_Neptune.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37EF27002B6922920092C65B /* Detail_Neptune.mp3 */; };
+		37EF270A2B6922920092C65B /* Detail_Moon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37EF27012B6922920092C65B /* Detail_Moon.mp3 */; };
+		37EF270B2B6922920092C65B /* Detail_Mercury.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37EF27022B6922920092C65B /* Detail_Mercury.mp3 */; };
 		3F3C20FE29375E8F007007C2 /* Detecting_planet.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3F3C20FD29375E8F007007C2 /* Detecting_planet.wav */; };
 		452F77C5292E28DD0088E684 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452F77C4292E28DD0088E684 /* HapticManager.swift */; };
 		5533717729123F17004AD6E8 /* UniverseSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */; };
@@ -30,15 +39,6 @@
 		599A78D12917FF4E0070CE15 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599A78D02917FF4E0070CE15 /* Localized.swift */; };
 		59B270782929049800061825 /* CustomOnboardingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B270772929049800061825 /* CustomOnboardingOverlayView.swift */; };
 		59B2707E2929188600061825 /* CustomBackgroundOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B2707D2929188600061825 /* CustomBackgroundOverlayView.swift */; };
-		BF58D40A29B5C0C900CC2D98 /* Detail_Saturn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF58D40129B5C0C900CC2D98 /* Detail_Saturn.mp3 */; };
-		BF58D40B29B5C0C900CC2D98 /* Detail_Sun.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF58D40229B5C0C900CC2D98 /* Detail_Sun.mp3 */; };
-		BF58D40C29B5C0C900CC2D98 /* Detail_Jupiter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF58D40329B5C0C900CC2D98 /* Detail_Jupiter.mp3 */; };
-		BF58D40D29B5C0C900CC2D98 /* Detail_Neptune.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF58D40429B5C0C900CC2D98 /* Detail_Neptune.mp3 */; };
-		BF58D40E29B5C0C900CC2D98 /* Detail_Uranus.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF58D40529B5C0C900CC2D98 /* Detail_Uranus.mp3 */; };
-		BF58D40F29B5C0C900CC2D98 /* Detail_Venus.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF58D40629B5C0C900CC2D98 /* Detail_Venus.mp3 */; };
-		BF58D41029B5C0C900CC2D98 /* Detail_Mars.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF58D40729B5C0C900CC2D98 /* Detail_Mars.mp3 */; };
-		BF58D41129B5C0C900CC2D98 /* Detail_Mercury.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF58D40829B5C0C900CC2D98 /* Detail_Mercury.mp3 */; };
-		BF58D41229B5C0C900CC2D98 /* Detail_Moon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF58D40929B5C0C900CC2D98 /* Detail_Moon.mp3 */; };
 		BF6BCBA629090E060042B522 /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BCBA529090E050042B522 /* URLConstants.swift */; };
 		BF6BCBA829090E0E0042B522 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BCBA729090E0E0042B522 /* APIManager.swift */; };
 		BF6BCBAA29090E130042B522 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BCBA929090E120042B522 /* Endpoint.swift */; };
@@ -81,6 +81,15 @@
 		3726FE012923B02E0062B667 /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
 		3726FE032923B12C0062B667 /* SCNVector3+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Extension.swift"; sourceTree = "<group>"; };
 		374FEE362909597B00E0C56B /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
+		37EF26FA2B6922920092C65B /* Detail_Saturn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Detail_Saturn.mp3; sourceTree = "<group>"; };
+		37EF26FB2B6922920092C65B /* Detail_Venus.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Detail_Venus.mp3; sourceTree = "<group>"; };
+		37EF26FC2B6922920092C65B /* Detail_Uranus.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Detail_Uranus.mp3; sourceTree = "<group>"; };
+		37EF26FD2B6922920092C65B /* Detail_Jupiter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Detail_Jupiter.mp3; sourceTree = "<group>"; };
+		37EF26FE2B6922920092C65B /* Detail_Sun.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Detail_Sun.mp3; sourceTree = "<group>"; };
+		37EF26FF2B6922920092C65B /* Detail_Mars.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Detail_Mars.mp3; sourceTree = "<group>"; };
+		37EF27002B6922920092C65B /* Detail_Neptune.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Detail_Neptune.mp3; sourceTree = "<group>"; };
+		37EF27012B6922920092C65B /* Detail_Moon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Detail_Moon.mp3; sourceTree = "<group>"; };
+		37EF27022B6922920092C65B /* Detail_Mercury.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Detail_Mercury.mp3; sourceTree = "<group>"; };
 		3F3C20FD29375E8F007007C2 /* Detecting_planet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Detecting_planet.wav; sourceTree = "<group>"; };
 		452F77C4292E28DD0088E684 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseSearchViewController.swift; sourceTree = "<group>"; };
@@ -100,15 +109,6 @@
 		599A78D02917FF4E0070CE15 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		59B270772929049800061825 /* CustomOnboardingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOnboardingOverlayView.swift; sourceTree = "<group>"; };
 		59B2707D2929188600061825 /* CustomBackgroundOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundOverlayView.swift; sourceTree = "<group>"; };
-		BF58D40129B5C0C900CC2D98 /* Detail_Saturn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Detail_Saturn.mp3; path = "../../../../../../../../Audio Universe/DetailView/Detail_Spatial/Detail_mp3/Detail_Saturn.mp3"; sourceTree = "<group>"; };
-		BF58D40229B5C0C900CC2D98 /* Detail_Sun.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Detail_Sun.mp3; path = "../../../../../../../../Audio Universe/DetailView/Detail_Spatial/Detail_mp3/Detail_Sun.mp3"; sourceTree = "<group>"; };
-		BF58D40329B5C0C900CC2D98 /* Detail_Jupiter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Detail_Jupiter.mp3; path = "../../../../../../../../Audio Universe/DetailView/Detail_Spatial/Detail_mp3/Detail_Jupiter.mp3"; sourceTree = "<group>"; };
-		BF58D40429B5C0C900CC2D98 /* Detail_Neptune.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Detail_Neptune.mp3; path = "../../../../../../../../Audio Universe/DetailView/Detail_Spatial/Detail_mp3/Detail_Neptune.mp3"; sourceTree = "<group>"; };
-		BF58D40529B5C0C900CC2D98 /* Detail_Uranus.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Detail_Uranus.mp3; path = "../../../../../../../../Audio Universe/DetailView/Detail_Spatial/Detail_mp3/Detail_Uranus.mp3"; sourceTree = "<group>"; };
-		BF58D40629B5C0C900CC2D98 /* Detail_Venus.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Detail_Venus.mp3; path = "../../../../../../../../Audio Universe/DetailView/Detail_Spatial/Detail_mp3/Detail_Venus.mp3"; sourceTree = "<group>"; };
-		BF58D40729B5C0C900CC2D98 /* Detail_Mars.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Detail_Mars.mp3; path = "../../../../../../../../Audio Universe/DetailView/Detail_Spatial/Detail_mp3/Detail_Mars.mp3"; sourceTree = "<group>"; };
-		BF58D40829B5C0C900CC2D98 /* Detail_Mercury.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Detail_Mercury.mp3; path = "../../../../../../../../Audio Universe/DetailView/Detail_Spatial/Detail_mp3/Detail_Mercury.mp3"; sourceTree = "<group>"; };
-		BF58D40929B5C0C900CC2D98 /* Detail_Moon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Detail_Moon.mp3; path = "../../../../../../../../Audio Universe/DetailView/Detail_Spatial/Detail_mp3/Detail_Moon.mp3"; sourceTree = "<group>"; };
 		BF6BCBA529090E050042B522 /* URLConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
 		BF6BCBA729090E0E0042B522 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		BF6BCBA929090E120042B522 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -410,15 +410,15 @@
 		BFAD1E84292C62290081C4A3 /* SoundSpatial */ = {
 			isa = PBXGroup;
 			children = (
-				BF58D40329B5C0C900CC2D98 /* Detail_Jupiter.mp3 */,
-				BF58D40729B5C0C900CC2D98 /* Detail_Mars.mp3 */,
-				BF58D40829B5C0C900CC2D98 /* Detail_Mercury.mp3 */,
-				BF58D40929B5C0C900CC2D98 /* Detail_Moon.mp3 */,
-				BF58D40429B5C0C900CC2D98 /* Detail_Neptune.mp3 */,
-				BF58D40129B5C0C900CC2D98 /* Detail_Saturn.mp3 */,
-				BF58D40229B5C0C900CC2D98 /* Detail_Sun.mp3 */,
-				BF58D40529B5C0C900CC2D98 /* Detail_Uranus.mp3 */,
-				BF58D40629B5C0C900CC2D98 /* Detail_Venus.mp3 */,
+				37EF26FD2B6922920092C65B /* Detail_Jupiter.mp3 */,
+				37EF26FF2B6922920092C65B /* Detail_Mars.mp3 */,
+				37EF27022B6922920092C65B /* Detail_Mercury.mp3 */,
+				37EF27012B6922920092C65B /* Detail_Moon.mp3 */,
+				37EF27002B6922920092C65B /* Detail_Neptune.mp3 */,
+				37EF26FA2B6922920092C65B /* Detail_Saturn.mp3 */,
+				37EF26FE2B6922920092C65B /* Detail_Sun.mp3 */,
+				37EF26FC2B6922920092C65B /* Detail_Uranus.mp3 */,
+				37EF26FB2B6922920092C65B /* Detail_Venus.mp3 */,
 			);
 			path = SoundSpatial;
 			sourceTree = "<group>";
@@ -519,30 +519,30 @@
 			files = (
 				BFAD1EDB2934C9AD0081C4A3 /* InfoPlist.strings in Resources */,
 				599A78CB2917F75F0070CE15 /* Localizable.strings in Resources */,
-				BF58D41029B5C0C900CC2D98 /* Detail_Mars.mp3 in Resources */,
-				BF58D40D29B5C0C900CC2D98 /* Detail_Neptune.mp3 in Resources */,
 				BFAD1EC8292C80030081C4A3 /* 3dPlanets in Resources */,
-				BF58D40B29B5C0C900CC2D98 /* Detail_Sun.mp3 in Resources */,
 				3F3C20FE29375E8F007007C2 /* Detecting_planet.wav in Resources */,
+				37EF270B2B6922920092C65B /* Detail_Mercury.mp3 in Resources */,
 				BFAD1EA0292C62F00081C4A3 /* Searching_Neptune.mp3 in Resources */,
 				BF7B4FD528FE47B200F83158 /* .swiftlint.yml in Resources */,
+				37EF27062B6922920092C65B /* Detail_Jupiter.mp3 in Resources */,
 				BF788B8629052230002BF8C0 /* UniverseBackground.scn in Resources */,
 				BFAD1EA5292C62F00081C4A3 /* Searching_Sun.mp3 in Resources */,
-				BF58D40C29B5C0C900CC2D98 /* Detail_Jupiter.mp3 in Resources */,
-				BF58D41129B5C0C900CC2D98 /* Detail_Mercury.mp3 in Resources */,
-				BF58D40E29B5C0C900CC2D98 /* Detail_Uranus.mp3 in Resources */,
+				37EF27032B6922920092C65B /* Detail_Saturn.mp3 in Resources */,
 				BF7B4FC228FE431A00F83158 /* LaunchScreen.storyboard in Resources */,
+				37EF27072B6922920092C65B /* Detail_Sun.mp3 in Resources */,
+				37EF27082B6922920092C65B /* Detail_Mars.mp3 in Resources */,
+				37EF27052B6922920092C65B /* Detail_Uranus.mp3 in Resources */,
 				BFAD1EA4292C62F00081C4A3 /* Searching_Jupiter.mp3 in Resources */,
-				BF58D40F29B5C0C900CC2D98 /* Detail_Venus.mp3 in Resources */,
 				BFAD1EA7292C62F00081C4A3 /* Searching_Saturn.mp3 in Resources */,
 				BFAD1EA8292C62F00081C4A3 /* Searching_Moon.mp3 in Resources */,
-				BF58D40A29B5C0C900CC2D98 /* Detail_Saturn.mp3 in Resources */,
+				37EF27042B6922920092C65B /* Detail_Venus.mp3 in Resources */,
+				37EF270A2B6922920092C65B /* Detail_Moon.mp3 in Resources */,
 				BFAD1EA2292C62F00081C4A3 /* Searching_Mercury.mp3 in Resources */,
 				BF7B4FBF28FE431A00F83158 /* Assets.xcassets in Resources */,
 				BFAD1EA6292C62F00081C4A3 /* Searching_Venus.mp3 in Resources */,
 				BFAD1EA3292C62F00081C4A3 /* Searching_Uranus.mp3 in Resources */,
-				BF58D41229B5C0C900CC2D98 /* Detail_Moon.mp3 in Resources */,
 				BFAD1EA1292C62F00081C4A3 /* Searching_Mars.mp3 in Resources */,
+				37EF27092B6922920092C65B /* Detail_Neptune.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

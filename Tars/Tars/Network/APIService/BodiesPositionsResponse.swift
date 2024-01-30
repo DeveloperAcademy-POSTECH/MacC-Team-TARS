@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Mark: - Astronomy API
 struct BodiesPositionsResponse: Decodable {
     var bodiesData: [Body]
     
@@ -22,4 +23,15 @@ extension BodiesPositionsResponse {
         let table = try data.nestedContainer(keyedBy: CodingKeys.self, forKey: .table)
         bodiesData = try table.decode([Body].self, forKey: .rows)
     }
+}
+
+// Mark: - Horizons API
+struct HorizonResponse: Decodable {
+    var signature: Signature
+    var result: String
+}
+
+struct Signature: Decodable {
+    var source: String
+    var version: String
 }

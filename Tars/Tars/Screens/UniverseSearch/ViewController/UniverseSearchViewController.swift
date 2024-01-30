@@ -285,7 +285,9 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     // MARK: - LocationManagerDelegate
     func didUpdateUserLocation() {
         Task {
-            let bodies = try await AstronomyAPIManager().requestBodies()
+            let bodies = try await HorizonsAPIManager().requestBodies()
+            // TODO: - API 임시 변경 해결
+            // let bodies = try await AstronomyAPIManager().requestBodies()
             setPlanetPosition(to: sceneView.scene, planets: bodies)
         }
     }
