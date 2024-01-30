@@ -68,10 +68,7 @@ extension HorizonsAPIManager {
     func getSiteCoordParameter() throws -> String {
         let locationManager = LocationManager.shared
         guard let (latitude, longtitude, elevation) = locationManager.getCurrentLocation() else { throw LocationError.currentLocationFailure}
-        let eLon = String(format: "%.5f", longtitude)
-        let lat = String(format: "%.5f", latitude)
-        let alt = String(format: "%.3f", elevation/1000)
-        let site_coord = String("'\(eLon),\(lat),\(alt)'")
+        let site_coord = String("'\(longtitude),\(latitude),\(elevation/1000)")
         
         return site_coord
     }
@@ -80,6 +77,7 @@ extension HorizonsAPIManager {
         // Get time now and 1 minute later
         
         let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(identifier: "Europe/London")
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let nowTime = Date()
         let afterTime = Date(timeInterval: 60, since: nowTime)
