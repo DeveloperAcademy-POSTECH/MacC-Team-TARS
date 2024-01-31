@@ -58,7 +58,6 @@ class HorizonsAPIManager: NetworkService {
             let data: HorizonResponse = try await getRequest(request)
             let (azimuth, altitude) = data.result.extractCoord()
             bodiesData.append(Body(id: body.id, name: body.name, altitude: altitude, azimuth: azimuth))
-            print(body.id, body.name, body.command, azimuth, altitude)
         }
 
         return bodiesData
