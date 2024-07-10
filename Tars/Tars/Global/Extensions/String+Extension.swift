@@ -26,4 +26,13 @@ extension String {
             return (self, self)
         }
     }
+    
+    /// for localization language selection
+    func localized(for locale: Locale = .current) -> String {
+        guard let path = Bundle.main.path(forResource: locale.identifier, ofType: "lproj"),
+                let bundle = Bundle(path: path) else {
+            return NSLocalizedString(self, comment: "")
+        }
+        return NSLocalizedString(self, tableName: nil, bundle: bundle, value: "", comment: "")
+    }
 }
