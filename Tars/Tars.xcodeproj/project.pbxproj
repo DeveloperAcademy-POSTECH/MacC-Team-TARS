@@ -35,10 +35,11 @@
 		59261F45292379BB005B6E3D /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59261F44292379BB005B6E3D /* UserDefaults+Extension.swift */; };
 		5943244C2908EFB9000518FD /* CustomSquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943244B2908EFB9000518FD /* CustomSquareView.swift */; };
 		5943244E2908EFFF000518FD /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5943244D2908EFFF000518FD /* String+Extension.swift */; };
-		599A78CB2917F75F0070CE15 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 599A78CD2917F75F0070CE15 /* Localizable.strings */; };
-		599A78D12917FF4E0070CE15 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599A78D02917FF4E0070CE15 /* Localized.swift */; };
+		599A78D12917FF4E0070CE15 /* LocalizableKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599A78D02917FF4E0070CE15 /* LocalizableKeys.swift */; };
 		59B270782929049800061825 /* CustomOnboardingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B270772929049800061825 /* CustomOnboardingOverlayView.swift */; };
 		59B2707E2929188600061825 /* CustomBackgroundOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B2707D2929188600061825 /* CustomBackgroundOverlayView.swift */; };
+		BF1B762F2C3E91150051815A /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BF1B762E2C3E91150051815A /* InfoPlist.xcstrings */; };
+		BF1B76312C3E91150051815A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = BF1B76302C3E91150051815A /* Localizable.xcstrings */; };
 		BF6BCBA629090E060042B522 /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BCBA529090E050042B522 /* URLConstants.swift */; };
 		BF6BCBA829090E0E0042B522 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BCBA729090E0E0042B522 /* APIManager.swift */; };
 		BF6BCBAA29090E130042B522 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BCBA929090E120042B522 /* Endpoint.swift */; };
@@ -68,7 +69,6 @@
 		BFAD1EA8292C62F00081C4A3 /* Searching_Moon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFAD1E9F292C62F00081C4A3 /* Searching_Moon.mp3 */; };
 		BFAD1EC8292C80030081C4A3 /* 3dPlanets in Resources */ = {isa = PBXBuildFile; fileRef = BFAD1EC7292C80030081C4A3 /* 3dPlanets */; };
 		BFAD1ECE2931F7CC0081C4A3 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAD1ECD2931F7CC0081C4A3 /* SoundManager.swift */; };
-		BFAD1EDB2934C9AD0081C4A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BFAD1EDD2934C9AD0081C4A3 /* InfoPlist.strings */; };
 		DD653AAE292E13490061211D /* PlanetContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD653AAD292E13490061211D /* PlanetContent.swift */; };
 		DD653AB0292E14F90061211D /* CustomPlanetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD653AAF292E14F90061211D /* CustomPlanetInfoView.swift */; };
 		DDB7DD932906B2B000FC0BA4 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */; };
@@ -104,11 +104,11 @@
 		59261F44292379BB005B6E3D /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		5943244B2908EFB9000518FD /* CustomSquareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSquareView.swift; sourceTree = "<group>"; };
 		5943244D2908EFFF000518FD /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
-		599A78CC2917F75F0070CE15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		599A78CF2917F7DF0070CE15 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
-		599A78D02917FF4E0070CE15 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		599A78D02917FF4E0070CE15 /* LocalizableKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableKeys.swift; sourceTree = "<group>"; };
 		59B270772929049800061825 /* CustomOnboardingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOnboardingOverlayView.swift; sourceTree = "<group>"; };
 		59B2707D2929188600061825 /* CustomBackgroundOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundOverlayView.swift; sourceTree = "<group>"; };
+		BF1B762E2C3E91150051815A /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		BF1B76302C3E91150051815A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		BF6BCBA529090E050042B522 /* URLConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLConstants.swift; sourceTree = "<group>"; };
 		BF6BCBA729090E0E0042B522 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		BF6BCBA929090E120042B522 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -140,8 +140,6 @@
 		BFAD1E9F292C62F00081C4A3 /* Searching_Moon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Searching_Moon.mp3; sourceTree = "<group>"; };
 		BFAD1EC7292C80030081C4A3 /* 3dPlanets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 3dPlanets; sourceTree = "<group>"; };
 		BFAD1ECD2931F7CC0081C4A3 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
-		BFAD1EDC2934C9AD0081C4A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		BFAD1EDE2934C9B10081C4A3 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DD653AAD292E13490061211D /* PlanetContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetContent.swift; sourceTree = "<group>"; };
 		DD653AAF292E14F90061211D /* CustomPlanetInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlanetInfoView.swift; sourceTree = "<group>"; };
 		DDB7DD922906B2B000FC0BA4 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -188,9 +186,19 @@
 			path = HapticManager;
 			sourceTree = "<group>";
 		};
+		BF1B76322C3E99950051815A /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				BF1B76302C3E91150051815A /* Localizable.xcstrings */,
+				599A78D02917FF4E0070CE15 /* LocalizableKeys.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		BF58D3EF29B4994600CC2D98 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				BF1B76322C3E99950051815A /* Localization */,
 				BF58D3FA29B49D4500CC2D98 /* Extensions */,
 				BF58D3F129B499A200CC2D98 /* Resource */,
 				BF58D3F029B4997300CC2D98 /* Supports */,
@@ -304,7 +312,6 @@
 				DDB7DD96290814AB00FC0BA4 /* Label+Extension.swift */,
 				5943244D2908EFFF000518FD /* String+Extension.swift */,
 				BF7B4FD128FE454A00F83158 /* View+Extension.swift */,
-				599A78D02917FF4E0070CE15 /* Localized.swift */,
 				BF788B7F2903C903002BF8C0 /* DashedCircle+Extension.swift */,
 				BF788B832903D3BB002BF8C0 /* CommonVariables+Extension.swift */,
 				374FEE362909597B00E0C56B /* Float+Extension.swift */,
@@ -371,8 +378,7 @@
 		BF7B4FA928FE431900F83158 = {
 			isa = PBXGroup;
 			children = (
-				BFAD1EDD2934C9AD0081C4A3 /* InfoPlist.strings */,
-				599A78CD2917F75F0070CE15 /* Localizable.strings */,
+				BF1B762E2C3E91150051815A /* InfoPlist.xcstrings */,
 				BF7B4FB428FE431900F83158 /* Tars */,
 				BF7B4FB328FE431900F83158 /* Products */,
 			);
@@ -517,8 +523,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFAD1EDB2934C9AD0081C4A3 /* InfoPlist.strings in Resources */,
-				599A78CB2917F75F0070CE15 /* Localizable.strings in Resources */,
 				BFAD1EC8292C80030081C4A3 /* 3dPlanets in Resources */,
 				3F3C20FE29375E8F007007C2 /* Detecting_planet.wav in Resources */,
 				37EF270B2B6922920092C65B /* Detail_Mercury.mp3 in Resources */,
@@ -538,10 +542,12 @@
 				37EF27042B6922920092C65B /* Detail_Venus.mp3 in Resources */,
 				37EF270A2B6922920092C65B /* Detail_Moon.mp3 in Resources */,
 				BFAD1EA2292C62F00081C4A3 /* Searching_Mercury.mp3 in Resources */,
+				BF1B762F2C3E91150051815A /* InfoPlist.xcstrings in Resources */,
 				BF7B4FBF28FE431A00F83158 /* Assets.xcassets in Resources */,
 				BFAD1EA6292C62F00081C4A3 /* Searching_Venus.mp3 in Resources */,
 				BFAD1EA3292C62F00081C4A3 /* Searching_Uranus.mp3 in Resources */,
 				BFAD1EA1292C62F00081C4A3 /* Searching_Mars.mp3 in Resources */,
+				BF1B76312C3E91150051815A /* Localizable.xcstrings in Resources */,
 				37EF27092B6922920092C65B /* Detail_Neptune.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,7 +598,7 @@
 				3726FE042923B12C0062B667 /* SCNVector3+Extension.swift in Sources */,
 				37024B0F2912083E00BC64AE /* LocationManagerDelegate.swift in Sources */,
 				55C8495A2910A9F00041F334 /* PlanetList+Extension.swift in Sources */,
-				599A78D12917FF4E0070CE15 /* Localized.swift in Sources */,
+				599A78D12917FF4E0070CE15 /* LocalizableKeys.swift in Sources */,
 				55F3B9B3290FA2D50033041E /* SelectPlanetCollectionViewCell.swift in Sources */,
 				5943244E2908EFFF000518FD /* String+Extension.swift in Sources */,
 				3726FE002923A8740062B667 /* CustomArrowView.swift in Sources */,
@@ -621,30 +627,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		599A78CD2917F75F0070CE15 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				599A78CC2917F75F0070CE15 /* en */,
-				599A78CF2917F7DF0070CE15 /* ko */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
 		BF7B4FC028FE431A00F83158 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BF7B4FC128FE431A00F83158 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		BFAD1EDD2934C9AD0081C4A3 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BFAD1EDC2934C9AD0081C4A3 /* en */,
-				BFAD1EDE2934C9B10081C4A3 /* ko */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -773,7 +761,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = D9CAJN27UH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tars/Global/Supports/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "증강현실 기능을 제공하기 위한 카메라 사용 권한이 필요합니다.";
@@ -808,7 +796,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = D9CAJN27UH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tars/Global/Supports/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "증강현실 기능을 제공하기 위한 카메라 사용 권한이 필요합니다.";
