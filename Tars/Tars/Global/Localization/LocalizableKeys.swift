@@ -25,4 +25,11 @@ enum LocalizableKeys: String {
     case uranusChapterOneTitle, uranusChapterOneContent, uranusChapterTwoTitle, uranusChapterTwoContent, uranusChapterThreeTitle, uranusChapterThreeContent
     case neptuneChapterOneTitle, neptuneChapterOneContent, neptuneChapterTwoTitle, neptuneChapterTwoContent, neptuneChapterThreeTitle, neptuneChapterThreeContent
     
+    var localized: String {
+        return self.rawValue.localized()
+    }
+    
+    func localized(for locale: Locale) -> String {
+        return self.rawValue.localized(for: locale)
+    }
 }
