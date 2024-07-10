@@ -28,8 +28,8 @@ extension String {
     }
     
     /// for localization language selection
-    func localized(for locale: Locale = .current) -> String {
-        guard let path = Bundle.main.path(forResource: locale.identifier, ofType: "lproj"),
+    func localized(for language: Language = .korean) -> String {
+        guard let path = Bundle.main.path(forResource: language.rawValue, ofType: "lproj"),
                 let bundle = Bundle(path: path) else {
             return NSLocalizedString(self, comment: "")
         }

@@ -29,7 +29,16 @@ enum LocalizableKeys: String {
         return self.rawValue.localized()
     }
     
-    func localized(for locale: Locale) -> String {
-        return self.rawValue.localized(for: locale)
+    func localized(for language: Language) -> String {
+        return self.rawValue.localized(for: language)
+    }
+}
+
+enum Language: String {
+    case korean = "ko"
+    case english = "en"
+
+    var locale: Locale {
+        return Locale(identifier: self.rawValue)
     }
 }
