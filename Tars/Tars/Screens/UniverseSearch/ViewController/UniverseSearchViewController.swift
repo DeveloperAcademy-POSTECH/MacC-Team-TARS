@@ -53,8 +53,8 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     
     let searchGuideLabel: UILabel = {
         let label: UILabel = UILabel()
-        label.text = LocalizableStrings.collectionViewTitle
-        label.accessibilityHint = LocalizableStrings.collectionViewContent
+        label.text = LocalizableKeys.collectionViewTitle.localized
+        label.accessibilityHint = LocalizableKeys.collectionViewContent.localized
         label.textColor = .white
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
@@ -90,7 +90,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         super.viewDidLoad()
         
         coachingOverlayView.isAccessibilityElement = true
-        coachingOverlayView.accessibilityLabel = PlanetStrings.onboardingInstructionstring.localizedKey
+        coachingOverlayView.accessibilityLabel = LocalizableKeys.onboardingInstructionstring.localized
         UIAccessibility.post(notification: .layoutChanged, argument: coachingOverlayView)
         
         [guideCircleView, guideArrowView, selectedSquareView].forEach { sceneView.addSubview($0) }
@@ -105,18 +105,12 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
             self.coachingBackgroundOverlayView.removeFromSuperview()
             self.navigationController?.navigationBar.layer.zPosition = 0
             
-            // UIAccessibility.post(notification: .layoutChanged, argument: self.sceneView)
-            
             // navigation title 설정
             self.navigationController?.isNavigationBarHidden = false
-            self.navigationController?.topViewController?.title = LocalizableStrings.exploreUniverseNavigationTitle
+            self.navigationController?.topViewController?.title = LocalizableKeys.exploreUniverseNavigationTitle.localized
             self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
             self.navigationController?.navigationBar.backgroundColor = .black
             
-            // settingButton navigationItem
-//            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(self.settingButtonTapped))
-//            self.navigationItem.rightBarButtonItem?.accessibilityLabel = "설정"
-            self.navigationItem.rightBarButtonItem?.tintColor = .white
             self.navigationItem.hidesBackButton = true
         }
         
@@ -133,10 +127,10 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         var result: Bool = checkAuthorization()
         
         // 권한을 체크해서 허용인 경우에만 overlay뷰가 없어지도록 구현
-        let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+        _ = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             if result == true {
                 timer.invalidate()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                     self.coachingOverlayView.isAccessibilityElement = false
                     self.coachingOverlayView.removeFromSuperview()
                     self.coachingBackgroundOverlayView.removeFromSuperview()
@@ -146,7 +140,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                     
                     // navigation title 설정
                     self.navigationController?.isNavigationBarHidden = false
-                    self.navigationController?.topViewController?.title = LocalizableStrings.exploreUniverseNavigationTitle
+                    self.navigationController?.topViewController?.title = LocalizableKeys.exploreUniverseNavigationTitle.localized
                     self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
                     self.navigationController?.navigationBar.backgroundColor = .black
                     
@@ -154,9 +148,6 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                     self.navigationItem.backBarButtonItem = backBarButtonItem
                     backBarButtonItem.tintColor = .customYellow
                     
-                    // settingButton navigationItem
-//                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(self.settingButtonTapped))
-//                    self.navigationItem.rightBarButtonItem?.accessibilityLabel = "설정"
                     self.navigationItem.rightBarButtonItem?.tintColor = .white
                     self.navigationItem.hidesBackButton = true
                     
@@ -171,30 +162,20 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         selectedSquareView.addGestureRecognizer(selectedSquareViewTap)
     }
     
-    // TapGesture 화면 전환 동작
+    /// TapGesture 화면 전환 동작
     @objc func squareViewTapped() {
-        let planetKoreanName = self.selectedSquareView.planetLabel.text ?? ""
-        let index: Int = planetList.firstIndex(where: { $0.planetKoreanName == planetKoreanName }) ?? 0
-        
-        // tap 실행 시 매번 infoViewController 생성
         let infoViewController = InfoViewController()
-        infoViewController.planet.planetKoreanName = planetKoreanName
-        infoViewController.planet.planetEnglishName = planetEnglishNames[index]
         self.navigationController?.pushViewController(infoViewController, animated: true)
     }
-    
-//    @objc func settingButtonTapped() {
-//        self.navigationController?.pushViewController(SettingViewController(), animated: false)
-//    }
     
     /// 행성을 배치하기 위한 함수
     private func setPlanetPosition(to scene: SCNScene?, planets: [Body]) {
         for planet in planets {
-            if planet.name == "Earth" || planet.name == "Pluto" {
+            if !PlanetConstants.planetsEn.contains(planet.name) {
                 continue
             } else {
                 let sphere = SCNSphere(radius: 0.2)
-                sphere.firstMaterial?.diffuse.contents = UIImage(named: planet.name + "_Map")
+                sphere.firstMaterial?.diffuse.contents = UIImage(named: planet.name + ResourceConstants.map.rawValue)
                 let sphereNode = SCNNode(geometry: sphere)
                 sphereNode.position = SCNVector3(planet.coordinate.x, planet.coordinate.y, planet.coordinate.z)
                 sphereNode.name = planet.name
@@ -202,10 +183,11 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
                 planetObjectList[planet.name] = sphereNode
                 
                 let audioSource: SCNAudioSource = {
-                    let source = SCNAudioSource(fileNamed: "Searching_\(planet.name).mp3")!
+                    let source = SCNAudioSource(fileNamed: "\(AudioMode.search.prefix)\(planet.name).\(ResourceConstants.mp3.name)")!
+                    // TODO: 강제언래핑 제거하기
                     /// 노드와 해당 위치에와 소스의 볼륨, 반향 및 거리에 따라 자동으로 변경
                     source.isPositional = true
-                    source.volume = 0.5
+                    source.volume = AudioVolume.half.volume
                     /// 오디오 소스를 반복적으로 재상할지 여부를 결정
                     source.loops = true
                     source.load()
@@ -222,6 +204,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     
     /// 위치사용 및 카메라 사용권한을 체크하기 위한 함수 (사용권한이 모두 허용된 경우에만 true를 반환)
     func checkAuthorization() -> Bool {
+        
         let locationStatus = CLLocationManager.authorizationStatus()
         let cameraStatus = AVCaptureDevice.authorizationStatus(for: .video)
         
@@ -319,7 +302,7 @@ extension UniverseSearchViewController {
     
     // 행성이 탐지되지 않았을 때 레이아웃 설정
     private func setNotDetectedLayout() {
-        detectedNode = ""
+        detectedNode = String()
         DispatchQueue.main.async {
             self.guideCircleView.isHidden = false
             self.selectedSquareView.isHidden = true
@@ -329,9 +312,13 @@ extension UniverseSearchViewController {
     // 행성이 탐지되었을 때 레이아웃 설정
     private func setDetectedLayout(name: String, point: CGPoint) {
         detectedNode = name
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [self] in
+            
+            let localizedDetectedNode = Planet(from: detectedNode.lowercased())?.planetName
+            
             self.selectedSquareView.frame.origin = point
-            self.selectedSquareView.setLabel(planetNameDict[name] ?? name)
+            self.selectedSquareView.planetLabel.text = localizedDetectedNode
+
             self.guideCircleView.isHidden = true
             self.selectedSquareView.isHidden = false
             self.selectedSquareView.isAccessibilityElement = true
@@ -383,16 +370,19 @@ extension UniverseSearchViewController {
     // 행성 detect되었을 때 announce
     private func guideDetectedAnnounce(name: String) {
         UIAccessibility.post(notification: .layoutChanged, argument: selectedSquareView)
-        UIAccessibility.post(notification: .announcement, argument: planetNameDict[name] ?? name)
+        UIAccessibility.post(notification: .announcement,
+                             argument: name)
         HapticManager.instance.hapticImpact(style: .soft)
-        self.audioManager.playAudio(pre: "Detecting_",
-                                    fileName: "planet",
-                                    audioExtension: "wav",
-                                    audioVolume: 0.3,
+        PlanetManager.shared.currentPlanet = Planet(from: name.lowercased())
+        
+        self.audioManager.playAudio(pre: AudioMode.detected.prefix,
+                                    fileName: name,
+                                    audioExtension: ResourceConstants.wav.name,
+                                    audioVolume: AudioVolume.third.volume,
                                     isLoop: false)
     }
     
-    // 화살표 변경시 가이드 음성
+    /// 화살표 변경시 가이드 음성
     private func guideAnnounce() {
         let announcementText = "\(arrowCardinal.directionText)"
         Task {
@@ -402,7 +392,7 @@ extension UniverseSearchViewController {
     }
 }
 
-// MARK: - enum
+// MARK: - enum Mode
 extension UniverseSearchViewController {
     enum Mode {
         case explore
@@ -411,9 +401,9 @@ extension UniverseSearchViewController {
         var titleText: String {
             switch self {
             case .explore:
-                return LocalizableStrings.exploreUniverseNavigationTitle
+                    return LocalizableKeys.exploreUniverseNavigationTitle.localized
             case .search(planet: let name):
-                return LocalizableStrings.searchingNavigationTitle
+                    return LocalizableKeys.searchingNavigationTitle.localized
             }
         }
     }
@@ -443,21 +433,21 @@ extension UniverseSearchViewController {
         var directionText: String {
             switch self {
             case .N:
-                    return LocalizableStrings.directionUp
+                    return LocalizableKeys.directionUp.localized
             case .NE:
-                    return LocalizableStrings.directionUpRight
+                    return LocalizableKeys.directionUpRight.localized
             case .E:
-                    return LocalizableStrings.directionRight
+                    return LocalizableKeys.directionRight.localized
             case .SE:
-                    return LocalizableStrings.directionDownRight
+                    return LocalizableKeys.directionDownRight.localized
             case .S:
-                    return LocalizableStrings.directionDown
+                    return LocalizableKeys.directionDown.localized
             case .SW:
-                    return LocalizableStrings.directionDownLeft
+                    return LocalizableKeys.directionDownLeft.localized
             case .W:
-                    return LocalizableStrings.directionLeft
+                    return LocalizableKeys.directionLeft.localized
             case .NW:
-                    return LocalizableStrings.directionUpLeft
+                    return LocalizableKeys.directionUpLeft.localized
             default:
                 return ""
             }
@@ -500,7 +490,7 @@ extension UniverseSearchViewController {
         
         guard let pointOfView = sceneView.pointOfView else { return }
         let detectNodes = sceneView.nodesInsideFrustum(of: pointOfView) // 화면에 들어온 노드 리스트
-        
+
         for node in detectNodes {
             let nodePosition = sceneView.projectPoint(node.position)
             let nodeScreenPos = nodePosition.toCGPoint()
@@ -516,12 +506,11 @@ extension UniverseSearchViewController {
         
         if let detectNode = detectNode {
             // 원 안에 들어온 노드 존재했을 때
-            guard let planetName = detectNode.name else { return }
-            guard let name = planetNameDict[planetName] else { return }
+            guard let detectedPlanet = detectNode.name else { return }
             
             let nodeOrigin = CGPoint(x: nodeCenter.x - screenWidth / 11.3, y: nodeCenter.y - screenWidth / 11.3)
-            setDetectedLayout(name: name, point: nodeOrigin)
-            selectedExploreSoundPlay(soundPlayer: planetObjectSound, selectedName: planetName)
+            setDetectedLayout(name: detectedPlanet, point: nodeOrigin)
+            selectedExploreSoundPlay(soundPlayer: planetObjectSound, selectedName: detectedPlanet)
         } else {
             // 탐지된 노드가 없을 때
             setNotDetectedLayout()
@@ -567,7 +556,7 @@ extension UniverseSearchViewController {
         for audioPlayer in soundPlayer.values {
             guard let avNode = audioPlayer.audioNode as? AVAudioMixing else { return }
             
-            avNode.volume = 0.5
+            avNode.volume = AudioVolume.half.volume
         }
     }
     
@@ -580,13 +569,13 @@ extension UniverseSearchViewController {
                 
                 guard let avNode = audioPlayer?.audioNode as? AVAudioMixing else { return }
                 
-                avNode.volume = 0.5
+                avNode.volume = AudioVolume.half.volume
             } else {
                 let audioPlayer = soundPlayer[name]
                 
                 guard let avNode = audioPlayer?.audioNode as? AVAudioMixing else { return }
                 
-                avNode.volume = 0.0
+                avNode.volume = AudioVolume.mute.volume
             }
         }
     }
@@ -600,13 +589,13 @@ extension UniverseSearchViewController {
                 
                 guard let avNode = audioPlayer?.audioNode as? AVAudioMixing else { return }
                 
-                avNode.volume = 1.0
+                avNode.volume = AudioVolume.max.volume
             } else {
                 let audioPlayer = soundPlayer[name]
                 
                 guard let avNode = audioPlayer?.audioNode as? AVAudioMixing else { return }
                 
-                avNode.volume = 0.15
+                avNode.volume = AudioVolume.tenth.volume
             }
         }
     }
@@ -617,7 +606,7 @@ extension UniverseSearchViewController {
         for audioPlayer in soundPlayer.values {
             guard let avNode = audioPlayer.audioNode as? AVAudioMixing else { return }
             
-            avNode.volume = 0.0
+            avNode.volume = AudioVolume.mute.volume
         }
     }
 }
