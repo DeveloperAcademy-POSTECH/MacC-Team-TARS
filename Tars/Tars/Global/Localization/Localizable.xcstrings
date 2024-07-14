@@ -19,12 +19,19 @@
         }
       }
     },
-    "AR기능 사용을 위해 주변 스캔이 필요합니다. \n아이폰을 좌우, 아래 위로 움직여 주변을 스캔하세요." : {
+    "cancel" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "AR기능 사용을 위해 주변 스캔이 필요합니다. \n아이폰을 좌우, 아래 위로 움직여 주변을 스캔하세요."
+            "value" : "Cancel"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "취소"
           }
         }
       }
@@ -111,6 +118,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "빠르게 천체 찾기"
+          }
+        }
+      }
+    },
+    "defaultAction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move to Settings"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정으로 이동"
           }
         }
       }
@@ -305,6 +329,7 @@
       }
     },
     "jupiterChapterOneContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -321,6 +346,7 @@
       }
     },
     "jupiterChapterOneTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -337,6 +363,7 @@
       }
     },
     "jupiterChapterThreeContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -353,6 +380,7 @@
       }
     },
     "jupiterChapterThreeTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -369,6 +397,7 @@
       }
     },
     "jupiterChapterTwoContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -385,6 +414,7 @@
       }
     },
     "jupiterChapterTwoTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -396,6 +426,41 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "목성의 날씨"
+          }
+        }
+      }
+    },
+    "locationAuthRequest" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location access is not available. Turn on location access in Device Settings > SpaceOver > Location"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "위치서비스를 사용할 수 없습니다. 기기의 설정 > SpaceOver > 위치에서 위치 서비스를 켜주세요"
+          }
+        }
+      }
+    },
+    "locationUsageMessage" : {
+      "comment" : "alert message",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Using Location Services"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "위치 서비스 사용"
           }
         }
       }
@@ -418,6 +483,7 @@
       }
     },
     "marsChapterOneContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -435,6 +501,7 @@
     },
     "marsChapterOneTitle" : {
       "comment" : "contents",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -451,6 +518,7 @@
       }
     },
     "marsChapterThreeContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -467,6 +535,7 @@
       }
     },
     "marsChapterThreeTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -483,6 +552,7 @@
       }
     },
     "marsChapterTwoContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -499,6 +569,7 @@
       }
     },
     "marsChapterTwoTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -532,6 +603,7 @@
       }
     },
     "mercuryChapterOneContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -548,6 +620,7 @@
       }
     },
     "mercuryChapterOneTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -564,6 +637,7 @@
       }
     },
     "mercuryChapterThreeContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -580,6 +654,7 @@
       }
     },
     "mercuryChapterThreeTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -596,6 +671,7 @@
       }
     },
     "mercuryChapterTwoContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -612,6 +688,7 @@
       }
     },
     "mercuryChapterTwoTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -645,6 +722,7 @@
       }
     },
     "moonChapterOneContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -661,6 +739,7 @@
       }
     },
     "moonChapterOneTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -677,6 +756,7 @@
       }
     },
     "moonChapterThreeContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -693,6 +773,7 @@
       }
     },
     "moonChapterThreeTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -709,6 +790,7 @@
       }
     },
     "moonChapterTwoContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -725,6 +807,7 @@
       }
     },
     "moonChapterTwoTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -758,6 +841,7 @@
       }
     },
     "neptuneChapterOneContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -774,6 +858,7 @@
       }
     },
     "neptuneChapterOneTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -790,6 +875,7 @@
       }
     },
     "neptuneChapterThreeContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -806,6 +892,7 @@
       }
     },
     "neptuneChapterThreeTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -822,6 +909,7 @@
       }
     },
     "neptuneChapterTwoContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -838,6 +926,7 @@
       }
     },
     "neptuneChapterTwoTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -905,6 +994,7 @@
       }
     },
     "saturnChapterOneContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -921,6 +1011,7 @@
       }
     },
     "saturnChapterOneTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -937,6 +1028,7 @@
       }
     },
     "saturnChapterThreeContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -953,6 +1045,7 @@
       }
     },
     "saturnChapterThreeTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -969,6 +1062,7 @@
       }
     },
     "saturnChapterTwoContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -985,6 +1079,7 @@
       }
     },
     "saturnChapterTwoTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1030,12 +1125,13 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sun"
+            "value" : "태양"
           }
         }
       }
     },
     "sunChapterOneContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1052,6 +1148,7 @@
       }
     },
     "sunChapterOneTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1068,6 +1165,7 @@
       }
     },
     "sunChapterThreeContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1084,6 +1182,7 @@
       }
     },
     "sunChapterThreeTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1100,6 +1199,7 @@
       }
     },
     "sunChapterTwoContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1116,6 +1216,7 @@
       }
     },
     "sunChapterTwoTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1149,6 +1250,7 @@
       }
     },
     "uranusChapterOneContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1165,6 +1267,7 @@
       }
     },
     "uranusChapterOneTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1181,6 +1284,7 @@
       }
     },
     "uranusChapterThreeContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1197,6 +1301,7 @@
       }
     },
     "uranusChapterThreeTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1213,6 +1318,7 @@
       }
     },
     "uranusChapterTwoContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1229,6 +1335,7 @@
       }
     },
     "uranusChapterTwoTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1262,6 +1369,7 @@
       }
     },
     "venusChapterOneContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1278,6 +1386,7 @@
       }
     },
     "venusChapterOneTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1294,6 +1403,7 @@
       }
     },
     "venusChapterThreeContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1310,6 +1420,7 @@
       }
     },
     "venusChapterThreeTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1326,6 +1437,7 @@
       }
     },
     "venusChapterTwoContent" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1342,6 +1454,7 @@
       }
     },
     "venusChapterTwoTitle" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1356,128 +1469,6 @@
           }
         }
       }
-    },
-    "금성" : {
-
-    },
-    "달" : {
-
-    },
-    "목성" : {
-
-    },
-    "몰입감 있게 우주를 경험하려면 에어팟을 꼭 착용해주세요" : {
-
-    },
-    "빠르게 천체 찾기" : {
-
-    },
-    "설정으로 이동" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Move to Settings"
-          }
-        }
-      }
-    },
-    "수성" : {
-
-    },
-    "아래로 이동하세요" : {
-
-    },
-    "오른쪽 아래로 이동하세요" : {
-
-    },
-    "오른쪽 위로 이동하세요" : {
-
-    },
-    "오른쪽으로 이동하세요" : {
-
-    },
-    "왼쪽 아래로 이동하세요" : {
-
-    },
-    "왼쪽 위로 이동하세요" : {
-
-    },
-    "왼쪽으로 이동하세요" : {
-
-    },
-    "우주 둘러보기" : {
-
-    },
-    "위로 이동하세요" : {
-
-    },
-    "위치 서비스 사용" : {
-      "comment" : "alert message",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Using Location Services"
-          }
-        }
-      }
-    },
-    "위치서비스를 사용할 수 없습니다. 기기의 설정 > SpaceOver > 위치에서 위치 서비스를 켜주세요" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Location access is not available. Turn on location access in Device Settings > SpaceOver > Location"
-          }
-        }
-      }
-    },
-    "이미지" : {
-
-    },
-    "찾고싶은 천체를 선택해보세요" : {
-
-    },
-    "천왕성" : {
-
-    },
-    "천체 찾는 중" : {
-
-    },
-    "총 3 chapter 중에서 chapter 1" : {
-
-    },
-    "총 3 chapter 중에서 chapter 2" : {
-
-    },
-    "총 3 chapter 중에서 chapter 3" : {
-
-    },
-    "취소" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancel"
-          }
-        }
-      }
-    },
-    "태양" : {
-
-    },
-    "토성" : {
-
-    },
-    "팔을 뻗어 아이폰 카메라를 정면으로 향하게 하고 주변을 스캔하듯 아이폰을 움직이세요. 이제부터 우주탐색뷰로 넘어갑니다." : {
-
-    },
-    "해왕성" : {
-
-    },
-    "화성" : {
-
     }
   },
   "version" : "1.0"
