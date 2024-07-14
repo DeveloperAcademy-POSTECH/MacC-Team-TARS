@@ -6,15 +6,23 @@
 //
 
 import UIKit
+import Combine
 import SceneKit.ModelIO
 
 class InfoViewController: UIViewController {
     
-    public var planet: Planet = Planet(planetKoreanName: "", planetEnglishName: "", planetImage: UIImage(named: ""))
+    var cancellables = Set<AnyCancellable>()
+    var currentPlanet: Planet? {
+        didSet {
+            if let planet = currentPlanet {
+                let planetString = planet.rawValue
+            }
+        }
+    }
+    
     private var customPlanetInfoChapterOne = CustomPlanetInfoView()
     private var customPlanetInfoChapterTwo = CustomPlanetInfoView()
     private var customPlanetInfoChapterThree = CustomPlanetInfoView()
-    private var planetContentsList: [PlanetContent] = PlanetContent.planetContentsList
     
     private var audioManager = AudioManager()
     
@@ -22,22 +30,22 @@ class InfoViewController: UIViewController {
         let sceneView = SCNView()
         
         // usdz 파일 사용하기 위해 url 받아온 뒤 scene을 생성합니다.
-        let path = Bundle.main.path(forResource: planet.planetEnglishName, ofType: "usdz", inDirectory: "3dPlanets") ?? ""
-        let url = URL(string: path)
-        let mdlAsset = MDLAsset(url: url!)
+        let path = Bundle.main.path(forResource: currentPlanet?.nameEnglish, ofType: ResourceConstants.usdz.name, inDirectory: "3dPlanets") ?? ""
+        guard let url = URL(string: path) else { return sceneView }
+        let mdlAsset = MDLAsset(url: url)
         mdlAsset.loadTextures()
         let scene = SCNScene(mdlAsset: mdlAsset)
         
-        scene.rootNode.childNode(withName: "Cube_002", recursively: true)
+        scene.rootNode.childNode(withName: ResourceConstants.Cube_002.name, recursively: true)
         scene.rootNode.scale = SCNVector3(1.13, 1.13, 1.13)
         
         // 오브젝트가 회전하는 애니메이션(액션)을 추가합니다.
         let action = SCNAction.rotateBy(x: 0, y: CGFloat(GLKMathDegreesToRadians(-360)), z: 0, duration: 30)
         let rotateForever = SCNAction.repeatForever(action)
-        scene.rootNode.childNode(withName: "Cube_002", recursively: true)?.runAction(rotateForever)
+        scene.rootNode.childNode(withName: ResourceConstants.Cube_002.name, recursively: true)?.runAction(rotateForever)
         
         // 토성인 경우, 고리가 보이게 pitch 각도를 조정합니다.
-        if planet.planetEnglishName == "Saturn" {
+        if currentPlanet == .saturn {
             scene.rootNode.eulerAngles = SCNVector3(0.1, 0, 0)
         }
         sceneView.allowsCameraControl = true
@@ -49,7 +57,7 @@ class InfoViewController: UIViewController {
         // 한 손가락을 제외한 손가락 제스처를 막습니다.
         for reco in sceneView.gestureRecognizers! {
             if let panReco = reco as? UIPanGestureRecognizer {
-                panReco.maximumNumberOfTouches = 1
+                panReco.maximumNumberOfTouches = 0
             }
             if let panReco = reco as? UIPinchGestureRecognizer {
                 panReco.isEnabled = false
@@ -61,7 +69,7 @@ class InfoViewController: UIViewController {
         sceneView.scene = scene
         
         sceneView.isAccessibilityElement = true
-        sceneView.accessibilityLabel = "\(planet.planetKoreanName) \(LocalizableStrings.image)"
+        sceneView.accessibilityLabel = "\(String(describing: currentPlanet?.planetName)) \(LocalizableKeys.image)"
         
         return sceneView
     }()
@@ -74,15 +82,11 @@ class InfoViewController: UIViewController {
     }()
     
     lazy var customInfoStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [customPlanetInfoChapterOne, customPlanetInfoChapterTwo, customPlanetInfoChapterThree])
-                
-        planetContentsList.forEach {
-            if planet.planetKoreanName == $0.planetName {
-                customPlanetInfoChapterOne.setInfoContents(chapter: "Chapter 1", title: $0.planetTitle1, contents: $0.planetContents1)
-                customPlanetInfoChapterTwo.setInfoContents(chapter: "Chapter 2", title: $0.planetTitle2, contents: $0.planetContents2)
-                customPlanetInfoChapterThree.setInfoContents(chapter: "Chapter 3", title: $0.planetTitle3, contents: $0.planetContents3)
-            }
-        }
+        let stackView = UIStackView(arrangedSubviews: [self.customPlanetInfoChapterOne, self.customPlanetInfoChapterTwo, self.customPlanetInfoChapterThree])
+        customPlanetInfoChapterOne.setContentsIndex(planet: currentPlanet ?? .mars, chapterIndex: 1)
+        customPlanetInfoChapterTwo.setContentsIndex(planet: currentPlanet ?? .mars, chapterIndex: 2)
+        customPlanetInfoChapterThree.setContentsIndex(planet: currentPlanet ?? .mars, chapterIndex: 3)
+        
         stackView.distribution = .fillProportionally
         stackView.axis = .vertical
         stackView.alignment = .leading
@@ -93,24 +97,30 @@ class InfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .black
+        
+        PlanetManager.shared.$currentPlanet
+            .assign(to: \.currentPlanet, on: self)
+            .store(in: &cancellables)
+        
         [sceneView, customInfoScrollView].forEach { view.addSubview($0) }
         customInfoScrollView.addSubview(customInfoStackView)
         
-        customPlanetInfoChapterOne.chapter.accessibilityHint = LocalizableStrings.chapterOneHint
-        customPlanetInfoChapterTwo.chapter.accessibilityHint = LocalizableStrings.chapterTwoHint
-        customPlanetInfoChapterThree.chapter.accessibilityHint = LocalizableStrings.chapterThreeHint
+        let chapters = [customPlanetInfoChapterOne, customPlanetInfoChapterTwo, customPlanetInfoChapterThree]
+        let hints = [LocalizableKeys.chapterOneHint, LocalizableKeys.chapterTwoHint, LocalizableKeys.chapterThreeHint]
         
-        customInfoScrollView.accessibilityElements = [customPlanetInfoChapterOne.chapter, customPlanetInfoChapterOne.planetInfoTitle, customPlanetInfoChapterOne.planetInfoContents, customPlanetInfoChapterTwo.chapter, customPlanetInfoChapterTwo.planetInfoTitle, customPlanetInfoChapterTwo.planetInfoContents, customPlanetInfoChapterThree.chapter, customPlanetInfoChapterThree.planetInfoTitle, customPlanetInfoChapterThree.planetInfoContents]
+        chapters.enumerated().forEach { index, chapterInfo in
+            chapterInfo.chapter.accessibilityHint = hints[index].localized
+        }
         
         configureConstraints()
-        navigationItem.title = planet.planetKoreanName
+        navigationItem.title = currentPlanet?.planetName
+            
         // 해당 천체의 사운드 재생
-        audioManager.playAudio(pre: "Detail_",
-                               fileName: planet.planetEnglishName,
-                               audioExtension: "mp3",
-                               audioVolume: 0.4,
+        audioManager.playAudio(pre: AudioMode.detail.prefix,
+                               fileName: currentPlanet?.nameEnglish ?? String(),
+                               audioExtension: ResourceConstants.mp3.name,
+                               audioVolume: AudioVolume.half.volume,
                                isLoop: true)
     }
     
@@ -120,10 +130,10 @@ class InfoViewController: UIViewController {
         audioManager.pauseAudio()
         audioManager.audioPlayer?.prepareToPlay()
     }
-
+    
     private func configureConstraints() {
         sceneView.centerX(inView: view)
-        if planet.planetEnglishName != "Saturn" {
+        if currentPlanet == .saturn {
             sceneView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: screenHeight / 21.6, width: screenWidth, height: screenWidth / 1.56)
             customInfoScrollView.anchor(top: sceneView.bottomAnchor,
                                         leading: view.leadingAnchor,
@@ -146,4 +156,6 @@ class InfoViewController: UIViewController {
                                    trailing: customInfoScrollView.trailingAnchor)
         customInfoStackView.setWidth(width: customInfoScrollView.frame.width)
     }
+    
+    deinit { }
 }

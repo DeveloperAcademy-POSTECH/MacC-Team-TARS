@@ -24,19 +24,20 @@ class CustomPlanetInfoView: UIView {
         }
         planetInfoTitle.textColor = .white
         planetInfoTitle.textAlignment = .left
+        planetInfoTitle.numberOfLines = 0
         planetInfoTitle.adjustsFontForContentSizeCategory = true
        return planetInfoTitle
     }()
     
     lazy var planetInfoContents: UILabel = {
         let label = UILabel()
-        let attributedString = NSMutableAttributedString(string: "")
+        let attributedString = NSMutableAttributedString(string: String())
         let paragraphStyle = NSMutableParagraphStyle()
         
         label.font = .preferredFont(forTextStyle: .title2)
         label.numberOfLines = 0
         label.attributedText = attributedString
-        // 텍스트 양쪽 정렬, 문자 단위로 라인 넘어가기에 관련한 코드입니다.
+        
         label.textAlignment = .justified
         label.lineBreakMode = .byCharWrapping
         paragraphStyle.hyphenationFactor = 1
@@ -65,6 +66,23 @@ class CustomPlanetInfoView: UIView {
         self.chapter.accessibilityLabel = chapter
         self.planetInfoTitle.accessibilityLabel = title
         self.planetInfoContents.accessibilityLabel = contents
+    }
+    
+    public func setContentsIndex(planet: Planet, chapterIndex: Int) {
+        let chapterNumber = "Chapter \(chapterIndex)"
+        let titlesAndContents = planet.titlesAndContents
+        
+        guard chapterIndex > 0 && chapterIndex <= titlesAndContents.count else {
+            print("Invalid chapter index")
+            return
+        }
+        
+        let (title, content) = (titlesAndContents[chapterIndex - 1].0, titlesAndContents[chapterIndex - 1].1)
+        let localizedTitle = LocalizableKeys(from: title)?.localized ?? String()
+        let localizedContent = LocalizableKeys(from: content)?.localized ?? String()
+        
+        print("title과 content는 : \(title), \(content)")
+        setInfoContents(chapter: chapterNumber, title: localizedTitle, contents: localizedContent)
     }
     
     private func configurePlanetInfoContents() {

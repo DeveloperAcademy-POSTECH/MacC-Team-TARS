@@ -11,7 +11,7 @@ class CustomOnboardingOverlayView: UIView {
 
     lazy var coachingOnboardingLabel: UILabel = {
         let coachingOverlay = UILabel()
-        coachingOverlay.text = PlanetStrings.onboardingInstructionTitle.localizedKey
+        coachingOverlay.text = LocalizableKeys.onboardingInstructionTitle.localized
         coachingOverlay.font = .preferredFont(forTextStyle: .largeTitle)
         coachingOverlay.textAlignment = .center
         coachingOverlay.numberOfLines = 0

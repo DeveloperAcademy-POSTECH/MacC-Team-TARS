@@ -12,21 +12,19 @@ class SelectPlanetCollectionViewCell: UICollectionViewCell {
     
     let planetBackgroundView: UIImageView = {
         let imageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: screenWidth * 0.27, height: screenWidth * 0.17))
-        imageView.image = UIImage(named: "BackgroundImage")
+        imageView.image = UIImage(resource: .background)
         return imageView
     }()
     
     let planetImageView: UIImageView = {
         let imageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: screenWidth * 0.24, height: screenWidth * 0.24))
         imageView.isUserInteractionEnabled = true
-        imageView.image = UIImage(named: "default")
         imageView.sizeToFit()
         return imageView
     }()
     
     let planetNameLabel: UILabel = {
         let label: UILabel = UILabel()
-        label.text = "default"
         label.textColor = .white
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)

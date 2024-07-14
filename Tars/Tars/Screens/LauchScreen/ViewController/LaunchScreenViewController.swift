@@ -13,14 +13,14 @@ class LaunchScreenViewController: UIViewController {
     
     private let airPodsImage: UIImageView = {
         let airPodsImage = UIImageView()
-        airPodsImage.image = UIImage(named: "airpods.png")
+        airPodsImage.image = UIImage(resource: .airpods)
         airPodsImage.contentMode = .scaleAspectFit
         return airPodsImage
     }()
     
     private let airPodsInstruction: UILabel = {
         let label = UILabel()
-        let attributedString = NSMutableAttributedString(string: PlanetStrings.airPodsInstructionstring.localizedKey)
+        let attributedString = NSMutableAttributedString(string: LocalizableKeys.airPodsInstructionstring.localized)
         let paragraphStyle = NSMutableParagraphStyle()
         
         label.font = .preferredFont(forTextStyle: .largeTitle)
@@ -65,7 +65,7 @@ class LaunchScreenViewController: UIViewController {
         configureConstraints()
         
         airPodsInstruction.isAccessibilityElement = true
-        airPodsInstruction.accessibilityLabel = PlanetStrings.airPodsInstructionstring.localizedKey
+        airPodsInstruction.accessibilityLabel = LocalizableKeys.airPodsInstructionstring.localized
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             self.airPodsInstruction.isAccessibilityElement = false
