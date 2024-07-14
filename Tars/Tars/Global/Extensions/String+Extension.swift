@@ -27,12 +27,24 @@ extension String {
         }
     }
     
-    /// for localization language selection
-    func localized(for language: Language = .korean) -> String {
-        guard let path = Bundle.main.path(forResource: language.rawValue, ofType: "lproj"),
-                let bundle = Bundle(path: path) else {
+    /// 원하는 언어에 따라 localize 하는 메서드
+    /// - Parameter language: .english / .korean 입력에 따라 원하는 언어로 localize 가능 / 입력하지 않으면 시스템언어 
+    func localized(for language: Language? = nil) -> String {
+        let languageCode: String
+        
+        if let language = language {
+            languageCode = language.rawValue
+        } else {
+            let preferredLanguage = Locale.preferredLanguages.first ?? "en"
+            
+            languageCode = preferredLanguage.components(separatedBy: "-").first ?? "en"
+        }
+        
+        guard let path = Bundle.main.path(forResource: languageCode, ofType: "lproj"),
+              let bundle = Bundle(path: path) else {
             return NSLocalizedString(self, comment: "")
         }
+
         return NSLocalizedString(self, tableName: nil, bundle: bundle, value: "", comment: "")
     }
-}
+ }
