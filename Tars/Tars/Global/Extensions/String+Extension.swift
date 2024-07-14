@@ -13,7 +13,7 @@ extension String {
     }
     
     func extractCoord() -> (String, String) {
-        if let range = self.range(of: "$") {
+        if self.range(of: "$") != nil {
             let firstS = self.firstIndex(of: "$")!
             let lastS = self.lastIndex(of: "$")!
             let firstExtraction = self[firstS..<lastS]

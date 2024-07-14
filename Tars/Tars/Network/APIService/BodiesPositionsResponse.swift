@@ -7,7 +7,7 @@
 
 import Foundation
 
-// Mark: - Astronomy API
+// MARK: - Astronomy API
 struct BodiesPositionsResponse: Decodable {
     var bodiesData: [Body]
     
@@ -25,7 +25,7 @@ extension BodiesPositionsResponse {
     }
 }
 
-// Mark: - Horizons API
+// MARK: - Horizons API
 struct HorizonResponse: Decodable {
     var signature: Signature
     var result: String
