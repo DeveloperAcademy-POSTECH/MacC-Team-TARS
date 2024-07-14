@@ -81,7 +81,6 @@ class CustomPlanetInfoView: UIView {
         let localizedTitle = LocalizableKeys(from: title)?.localized ?? String()
         let localizedContent = LocalizableKeys(from: content)?.localized ?? String()
         
-        print("title과 content는 : \(title), \(content)")
         setInfoContents(chapter: chapterNumber, title: localizedTitle, contents: localizedContent)
     }
     
