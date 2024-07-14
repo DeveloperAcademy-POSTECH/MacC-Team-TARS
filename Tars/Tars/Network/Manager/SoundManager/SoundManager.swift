@@ -14,10 +14,10 @@ class AudioManager {
     
     init() {}
     
-    public func playAudio(pre: String = "Searching_",
-                          fileName: String = "Jupiter",
-                          audioExtension: String = "mp3",
-                          audioVolume: Float = 0.7,
+    public func playAudio(pre: String = AudioMode.search.prefix,
+                          fileName: String,
+                          audioExtension: String,
+                          audioVolume: Float,
                           isLoop: Bool = true) {
         guard let url = Bundle.main.url(forResource: "\(pre)\(fileName)", withExtension: "\(audioExtension)") else { return }
         
