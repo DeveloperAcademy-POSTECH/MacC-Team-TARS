@@ -18,5 +18,4 @@ enum ResourceConstants: String, CaseIterable {
     var name: String {
         return "\(rawValue)"
     }
-    
 }

@@ -66,7 +66,6 @@ enum Planet: String, CaseIterable {
     static func allPlanetNames(in language: Language? = nil) -> [String] {
         return self.allCases.map { planet in
             switch language {
-
             case .english:
                 return planet.nameEnglish
             case .korean:
@@ -74,7 +73,6 @@ enum Planet: String, CaseIterable {
             default:
                 return planet.planetName
             }
-            
         }
     }
 }
