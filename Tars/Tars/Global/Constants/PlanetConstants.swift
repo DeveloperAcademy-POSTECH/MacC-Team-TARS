@@ -17,13 +17,16 @@ enum Planet: String, CaseIterable {
     case saturn
     case uranus
     case neptune
-    
+}
+
+// MARK: - Localization
+extension Planet {
     /// 문자열을 열거형으로 변환
     init?(from string: String) {
         self.init(rawValue: string)
     }
     
-    /// localized 된 행성이름
+    /// 시스템 언어에 따라 localized 된 행성이름
     var planetName: String {
         return self.rawValue.localized()
     }
@@ -46,22 +49,6 @@ enum Planet: String, CaseIterable {
         return name
     }
     
-    /// LocalizableKey에서 각 컨텐츠의 키를 매핑
-    private var chapterKeys: [Chapter] {
-        return ["One", "Two", "Three"].map {
-            Chapter(titleKey: "\(self.rawValue)Chapter\($0)Title",
-                    contentKey: "\(self.rawValue)Chapter\($0)Content")
-        }
-    }
-    
-    var titlesAndContents: [(String, String)] {
-        return chapterKeys.map { chapter in
-            let titleKey = chapter.titleKey
-            let contentKey = chapter.contentKey
-            return (titleKey, contentKey)
-        }
-    }
-    
     /// 모든 행성들의 배열 (.en, .ko, systemLanguage)
     static func allPlanetNames(in language: Language? = nil) -> [String] {
         return self.allCases.map { planet in
@@ -73,6 +60,26 @@ enum Planet: String, CaseIterable {
             default:
                 return planet.planetName
             }
+        }
+    }
+}
+
+// MARK: - Planet Contents
+extension Planet {
+    /// LocalizableKeys와 매핑하여 해당 key를 가진 프로퍼티
+    private var chapterKeys: [Chapter] {
+        return ["One", "Two", "Three"].map {
+            Chapter(titleKey: "\(self.rawValue)Chapter\($0)Title",
+                    contentKey: "\(self.rawValue)Chapter\($0)Content")
+        }
+    }
+    
+    /// 매핑 후 실제 value를 가진 프로퍼티
+    var titlesAndContents: [(String, String)] {
+        return chapterKeys.map { chapter in
+            let titleKey = chapter.titleKey
+            let contentKey = chapter.contentKey
+            return (titleKey, contentKey)
         }
     }
 }
