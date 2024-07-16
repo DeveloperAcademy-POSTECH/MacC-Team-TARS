@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UniverseSearchViewController: UICollectionViewDataSource {
+extension UniverseMainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Planet.allCases.count
     }
