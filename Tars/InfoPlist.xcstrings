@@ -1,0 +1,58 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "CFBundleName" : {
+      "comment" : "Bundle name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "SpaceOver"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SpaceOver"
+          }
+        }
+      }
+    },
+    "NSCameraUsageDescription" : {
+      "comment" : "InfoPlist.strings\n  Tars\n\n  Created by Lena on 2022/11/28.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app use camera for AR experience"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "증강현실 기능을 사용하기 위해, 카메라 기능을 사용합니다."
+          }
+        }
+      }
+    },
+    "NSLocationWhenInUseUsageDescription" : {
+      "comment" : "Privacy - Location When In Use Usage Description",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turning on location service allows us to show where the planet is based on location"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "행성 위치를 실시간으로 표시하기 위해, 위치 서비스를 켜주세요."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

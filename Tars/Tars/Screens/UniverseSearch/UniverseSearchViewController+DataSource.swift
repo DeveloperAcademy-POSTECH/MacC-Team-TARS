@@ -9,7 +9,7 @@ import UIKit
 
 extension UniverseSearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return planetList.count
+        return Planet.allCases.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -19,11 +19,9 @@ extension UniverseSearchViewController: UICollectionViewDataSource {
         // reusable cell init
         cell.backgroundView = nil
         cell.planetNameLabel.textColor = .white
-        let selectedPlanetName = planetList[indexPath.row].planetKoreanName
-        let selectedPlanetImage = planetList[indexPath.row].planetImage
         
-        cell.planetNameLabel.text = selectedPlanetName
-        cell.planetImageView.image = selectedPlanetImage
+        cell.planetNameLabel.text = PlanetConstants.planetsSystem[indexPath.row]
+        cell.planetImageView.image = UIImage(named: PlanetConstants.planetsEn[indexPath.row])
         
         // VoiceOver 처리
         cell.isAccessibilityElement = true
@@ -57,7 +55,7 @@ extension UniverseSearchViewController: UICollectionViewDataSource {
             cell.planetNameLabel.textColor = .black
             cell.backgroundView = cell.planetBackgroundView
             
-            self.mode = .search(planet: planetEnglishNames[indexPath.row])
+            self.mode = .search(planet: PlanetConstants.planetsEn[indexPath.row])
         }
     }
 
