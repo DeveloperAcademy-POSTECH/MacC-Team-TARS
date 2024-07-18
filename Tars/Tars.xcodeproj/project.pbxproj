@@ -22,6 +22,10 @@
 		37EF270A2B6922920092C65B /* Detail_Moon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37EF27012B6922920092C65B /* Detail_Moon.mp3 */; };
 		37EF270B2B6922920092C65B /* Detail_Mercury.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37EF27022B6922920092C65B /* Detail_Mercury.mp3 */; };
 		3F3C20FE29375E8F007007C2 /* Detecting_planet.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3F3C20FD29375E8F007007C2 /* Detecting_planet.wav */; };
+		3F8171922C46B3F000CEE21E /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3F8171912C46B3F000CEE21E /* Then */; };
+		3F8171952C46B3FC00CEE21E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3F8171942C46B3FC00CEE21E /* SnapKit */; };
+		3F8171972C46B3FC00CEE21E /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 3F8171962C46B3FC00CEE21E /* SnapKit-Dynamic */; };
+		3F8171992C46B52600CEE21E /* UniverseMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171982C46B52600CEE21E /* UniverseMainViewController.swift */; };
 		452F77C5292E28DD0088E684 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452F77C4292E28DD0088E684 /* HapticManager.swift */; };
 		5533717729123F17004AD6E8 /* UniverseSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */; };
 		558932C9291429E90032D459 /* UniverseSearchViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558932C8291429E90032D459 /* UniverseSearchViewController+DataSource.swift */; };
@@ -92,6 +96,7 @@
 		37EF27012B6922920092C65B /* Detail_Moon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Detail_Moon.mp3; sourceTree = "<group>"; };
 		37EF27022B6922920092C65B /* Detail_Mercury.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Detail_Mercury.mp3; sourceTree = "<group>"; };
 		3F3C20FD29375E8F007007C2 /* Detecting_planet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Detecting_planet.wav; sourceTree = "<group>"; };
+		3F8171982C46B52600CEE21E /* UniverseMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseMainViewController.swift; sourceTree = "<group>"; };
 		452F77C4292E28DD0088E684 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseSearchViewController.swift; sourceTree = "<group>"; };
 		558932C8291429E90032D459 /* UniverseSearchViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UniverseSearchViewController+DataSource.swift"; sourceTree = "<group>"; };
@@ -153,6 +158,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F8171922C46B3F000CEE21E /* Then in Frameworks */,
+				3F8171952C46B3FC00CEE21E /* SnapKit in Frameworks */,
+				3F8171972C46B3FC00CEE21E /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */,
+				3F8171982C46B52600CEE21E /* UniverseMainViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -491,6 +500,11 @@
 			dependencies = (
 			);
 			name = Tars;
+			packageProductDependencies = (
+				3F8171912C46B3F000CEE21E /* Then */,
+				3F8171942C46B3FC00CEE21E /* SnapKit */,
+				3F8171962C46B3FC00CEE21E /* SnapKit-Dynamic */,
+			);
 			productName = Tars;
 			productReference = BF7B4FB228FE431900F83158 /* SpaceOver.app */;
 			productType = "com.apple.product-type.application";
@@ -520,6 +534,10 @@
 				ko,
 			);
 			mainGroup = BF7B4FA928FE431900F83158;
+			packageReferences = (
+				3F8171902C46B3F000CEE21E /* XCRemoteSwiftPackageReference "Then" */,
+				3F8171932C46B3FC00CEE21E /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = BF7B4FB328FE431900F83158 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -632,6 +650,7 @@
 				BF7B4FD028FE452200F83158 /* Color+Extension.swift in Sources */,
 				BF7B4FD228FE454A00F83158 /* View+Extension.swift in Sources */,
 				BF6BCBB229090E4E0042B522 /* Body.swift in Sources */,
+				3F8171992C46B52600CEE21E /* UniverseMainViewController.swift in Sources */,
 				DD653AB0292E14F90061211D /* CustomPlanetInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -858,6 +877,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3F8171902C46B3F000CEE21E /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		3F8171932C46B3FC00CEE21E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3F8171912C46B3F000CEE21E /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F8171902C46B3F000CEE21E /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		3F8171942C46B3FC00CEE21E /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F8171932C46B3FC00CEE21E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		3F8171962C46B3FC00CEE21E /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F8171932C46B3FC00CEE21E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BF7B4FAA28FE431900F83158 /* Project object */;
 }
