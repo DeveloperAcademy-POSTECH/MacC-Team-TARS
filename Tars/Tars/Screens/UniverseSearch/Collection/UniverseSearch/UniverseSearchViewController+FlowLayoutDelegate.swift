@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UniverseMainViewController: UICollectionViewDelegateFlowLayout {
+extension UniverseSearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let cellWidth = screenWidth * 0.27
