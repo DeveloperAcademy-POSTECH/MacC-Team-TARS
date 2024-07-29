@@ -22,6 +22,14 @@ final class UniverseMainViewController: UIViewController {
     private var planetObjectSound: [String: SCNAudioPlayer] = [:]
     private var circleCenter: CGPoint = .zero
     
+    var mode: Mode = .explore {
+        didSet {
+            setModeChangedLayout()
+        }
+    }
+    
+    var announceCardinal: Cardinal = .None
+    
     // MARK: - UI Properties
     
     private lazy var arSceneView: ARSCNView = ARSCNView()
@@ -278,5 +286,110 @@ private extension UniverseMainViewController {
             
             return planetNodes[index]
         }
+    }
+}
+
+// TODO: - 오류가 나지 않기 위해 실행을 위한 메서드 (VM 으로 바꾸어야 합니다.)
+extension UniverseMainViewController {
+    private func setArrowHidden() {
+        DispatchQueue.main.async {
+            self.guideArrowView.isHidden = true
+        }
+    }
+
+    
+    private func setModeChangedLayout() {
+        self.navigationController?.topViewController?.title = mode.titleText
+        switch mode {
+        case .explore:
+            setArrowHidden()
+            announceCardinal = .None
+        case .search(planet: _):
+            announceCardinal = .None
+        }
+    }
+    
+    enum Mode {
+        case explore
+        case search(planet: String)
+        
+        var titleText: String {
+            switch self {
+            case .explore:
+                    return LocalizableKeys.exploreUniverseNavigationTitle.localized
+            case .search(planet: let name):
+                    return LocalizableKeys.searchingNavigationTitle.localized
+            }
+        }
+    }
+    
+    enum Cardinal: Int {
+        case N = 0
+        case NE = 1
+        case E = 2
+        case SE = 3
+        case S = 4
+        case SW = 5
+        case W = 6
+        case NW = 7
+        case None
+        
+        func isNear(new: Cardinal) -> Bool {
+            if new == .None {
+                return true
+            } else if self == .None {
+                return false
+            } else {
+                let difference = abs(self.rawValue - new.rawValue) % 7
+                return difference <= 1
+            }
+        }
+        
+        var directionText: String {
+            switch self {
+            case .N:
+                    return LocalizableKeys.directionUp.localized
+            case .NE:
+                    return LocalizableKeys.directionUpRight.localized
+            case .E:
+                    return LocalizableKeys.directionRight.localized
+            case .SE:
+                    return LocalizableKeys.directionDownRight.localized
+            case .S:
+                    return LocalizableKeys.directionDown.localized
+            case .SW:
+                    return LocalizableKeys.directionDownLeft.localized
+            case .W:
+                    return LocalizableKeys.directionLeft.localized
+            case .NW:
+                    return LocalizableKeys.directionUpLeft.localized
+            default:
+                return ""
+            }
+        }
+    }
+    
+    private func getCardinal(angle: CGFloat) -> Cardinal {
+        let angle = angle < 0 ? angle + 360 : angle
+        
+        if angle >= 22.5 && angle < 67.5 {
+            return Cardinal.NE
+        } else if angle >= 67.5 && angle < 112.5 {
+            return Cardinal.N
+        } else if angle >= 112.5 && angle < 157.5 {
+            return Cardinal.NW
+        } else if angle >= 157.5 && angle < 202.5 {
+            return Cardinal.W
+        } else if angle >= 202.5 && angle < 247.5 {
+            return Cardinal.SW
+        } else if angle >= 247.5 && angle < 292.5 {
+            return Cardinal.S
+        } else if angle >= 292.5 && angle < 337.5 {
+            return Cardinal.SE
+        } else if (angle >= 337.5 && angle < 360) || (angle >= 0 && angle < 22.5) {
+            return Cardinal.E
+        }
+        
+        return Cardinal.None
     }
 }
