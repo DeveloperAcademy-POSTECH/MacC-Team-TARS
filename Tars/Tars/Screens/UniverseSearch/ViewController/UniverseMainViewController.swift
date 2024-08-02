@@ -30,6 +30,11 @@ final class UniverseMainViewController: UIViewController {
     
     var announceCardinal: Cardinal = .None
     
+    private let planetCollectionViewFlowLayout = UICollectionViewFlowLayout()
+    
+    var planetListData = [PlanetInfo]()
+    var selectedIndexPath: IndexPath? 
+    
     // MARK: - UI Properties
     
     private lazy var arSceneView: ARSCNView = ARSCNView()
@@ -55,6 +60,16 @@ final class UniverseMainViewController: UIViewController {
         configureTapGesture()
         configureVoiceOver()
         configureNavigationTitle()
+        
+        Planet.allCases.forEach {
+            planetListData.append(
+                PlanetInfo(
+                    planetName: $0.planetName,
+                    planetImage: $0.nameEnglish,
+                    isSelected: .notSelect
+                )
+            )
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,6 +126,12 @@ private extension UniverseMainViewController {
             $0.layer.zPosition = 1
         }
         
+        planetCollectionViewFlowLayout.do {
+            $0.scrollDirection = .horizontal
+            $0.minimumLineSpacing = screenWidth * 0.05
+            $0.minimumInteritemSpacing = CGFloat(UInt16.max)
+        }
+        
         searchGuideLabel.do {
             $0.text = LocalizableKeys.collectionViewTitle.localized
             $0.accessibilityHint = LocalizableKeys.collectionViewContent.localized
@@ -120,10 +141,18 @@ private extension UniverseMainViewController {
         }
         
         selectPlanetCollectionView.do {
-            $0.register(SelectPlanetCollectionViewCell.self, forCellWithReuseIdentifier: SelectPlanetCollectionViewCell.identifier)
+            let layout = UICollectionViewFlowLayout().then {
+                $0.scrollDirection = .horizontal
+                $0.minimumLineSpacing = screenWidth * 0.05
+                $0.minimumInteritemSpacing = CGFloat(UInt16.max)
+            }
+            
+            $0.register(SelectPlanetMainCollectionViewCell.self, forCellWithReuseIdentifier: SelectPlanetMainCollectionViewCell.identifier)
             $0.backgroundColor = .black
             $0.showsHorizontalScrollIndicator = true
             $0.contentInset = UIEdgeInsets(top: 0, left: screenWidth * 0.09, bottom: 0, right: screenWidth * 0.09)
+            $0.allowsMultipleSelection = false
+            $0.collectionViewLayout = layout
         }
     }
     
@@ -143,6 +172,7 @@ private extension UniverseMainViewController {
          
         searchGuideLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(screenHeight * 0.7)
+            $0.centerX.equalToSuperview()
         }
         
         selectPlanetCollectionView.snp.makeConstraints {
