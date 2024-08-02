@@ -7,103 +7,109 @@
 
 import UIKit
 
-class LaunchScreenViewController: UIViewController {
+import SnapKit
+import Then
+
+final class LaunchScreenViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let airPodsImage: UIImageView = {
-        let airPodsImage = UIImageView()
-        airPodsImage.image = UIImage(resource: .airpods)
-        airPodsImage.contentMode = .scaleAspectFit
-        return airPodsImage
-    }()
+    private var airPodsImage = UIImageView()
+    private var airPodsInstruction = UILabel()
+    private var appName = UILabel()
     
-    private let airPodsInstruction: UILabel = {
-        let label = UILabel()
-        let attributedString = NSMutableAttributedString(string: LocalizableKeys.airPodsInstructionstring.localized)
-        let paragraphStyle = NSMutableParagraphStyle()
-        
-        label.font = .preferredFont(forTextStyle: .largeTitle)
-        if let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .title1).withSymbolicTraits(.traitBold) {
-            label.font = .init(descriptor: descriptor, size: 0)
-        }
-        label.numberOfLines = 0
-        label.attributedText = attributedString
-        label.textAlignment = .center
-        paragraphStyle.lineSpacing = 10
-        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributedString.length))
-        label.textColor = .white
-        label.adjustsFontForContentSizeCategory = true
-        return label
-    }()
-    
-    private let appNameLabel: UILabel = {
-        let label = UILabel()
-        let attributedString = NSMutableAttributedString(string: "SpaceOver")
-        let paragraphStyle = NSMutableParagraphStyle()
-        
-        label.font = .preferredFont(forTextStyle: .footnote)
-        if let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .title1).withSymbolicTraits(.traitBold) {
-            label.font = .init(descriptor: descriptor, size: 0)
-        }
-        label.numberOfLines = 0
-        label.attributedText = attributedString
-        label.textAlignment = .center
-        paragraphStyle.lineSpacing = 10
-        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributedString.length))
-        label.textColor = .white
-        label.adjustsFontForContentSizeCategory = true
-        return label
-    }()
+    // MARK: - Life Cycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.layer.configureGradientBackground(UIColor.customGradientPurple.cgColor, UIColor.customGradientBlue.cgColor)
-        
-        [airPodsInstruction, airPodsImage, appNameLabel].forEach { view.addSubview($0) }
+        makeGradientBackground()
+        configureStyle()
+        configureHierarchy()
         configureConstraints()
-        
-        airPodsInstruction.isAccessibilityElement = true
-        airPodsInstruction.accessibilityLabel = LocalizableKeys.airPodsInstructionstring.localized
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            self.airPodsInstruction.isAccessibilityElement = false
-            let universeVC = UniverseSearchViewController()
-            self.navigationController?.pushViewController(universeVC, animated: true)
-            self.navigationController?.isNavigationBarHidden = true
-        }
-    }
-    
-    private func configureConstraints() {
-        airPodsImage.centerX(inView: view)
-        airPodsImage.anchor(paddingTop: screenHeight / 21.6, width: screenWidth / 2.21, height: screenWidth / 1.56)
-        NSLayoutConstraint.activate([
-            airPodsImage.topAnchor.constraint(equalTo: view.topAnchor, constant: screenHeight / 3.81)
-            ])
-        
-        airPodsInstruction.anchor(leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingLeading: screenWidth / 9.75, paddingTrailing: screenWidth / 9.75)
-        NSLayoutConstraint.activate([
-            airPodsInstruction.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            airPodsInstruction.topAnchor.constraint(equalTo: airPodsImage.bottomAnchor, constant: 0)
-        ])
-        
-        appNameLabel.anchor(leading: view.leadingAnchor, trailing: view.trailingAnchor, paddingLeading: screenWidth / 9.75, paddingTrailing: screenWidth / 9.75)
-        NSLayoutConstraint.activate([
-            appNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            appNameLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 4)
-        ])
-        
+        configureAccessibility()
+        navigateToUniverseVCWithDelay()
     }
 }
 
-extension CALayer {
-    public func configureGradientBackground(_ colors: CGColor...) {
-        let gradient = CAGradientLayer()
-        let maxWidth = max(self.bounds.size.height, self.bounds.size.width)
-        let squareFrame = CGRect(origin: self.bounds.origin, size: CGSize(width: maxWidth, height: maxWidth))
-        gradient.frame = squareFrame
-        gradient.colors = colors
-        self.insertSublayer(gradient, at: 0)
+// MARK: - Configure View Layout
+
+private extension LaunchScreenViewController {
+    
+    func makeGradientBackground() {
+        self.view.layer.configureGradientBackground(UIColor.customGradientPurple.cgColor, UIColor.customGradientBlue.cgColor)
+    }
+    
+    func configureHierarchy() {
+        view.addSubviews(airPodsImage, airPodsInstruction, appName)
+    }
+    
+    func configureStyle() {
+        airPodsImage.do {
+            $0.image = UIImage(resource: .airpods)
+            $0.contentMode = .scaleAspectFit
+        }
+        
+        airPodsInstruction.do {
+            let attributedString = NSMutableAttributedString(string: LocalizableKeys.airPodsInstructionstring.localized)
+            $0.attributedText = attributedString
+            $0.setBoldFont(forTextStyle: .title1)
+            $0.numberOfLines = 0
+            $0.textAlignment = .center
+            $0.textColor = .white
+        }
+        
+        appName.do {
+            let attributedString = NSMutableAttributedString(string: "SpaceOver")
+            $0.attributedText = attributedString
+            $0.font = .preferredFont(forTextStyle: .title2)
+            $0.textAlignment = .center
+            $0.textColor = .white
+        }
+    }
+}
+
+// MARK: - Auto Layout 설정
+
+private extension LaunchScreenViewController {
+    func configureConstraints() {
+        airPodsImage.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(-32)
+            $0.width.height.equalTo(screenWidth * 0.6)
+        }
+
+        airPodsInstruction.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(screenWidth * 0.6)
+            $0.top.equalTo(airPodsImage.snp.bottom).offset(16)
+        }
+        
+        appName.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+}
+
+// MARK: - accessibility 및 내비게이션 설정
+
+private extension LaunchScreenViewController {
+    
+    /// accessibility 설정
+    private func configureAccessibility() {
+        airPodsInstruction.isAccessibilityElement = true
+        airPodsInstruction.accessibilityLabel = LocalizableKeys.airPodsInstructionstring.localized
+    }
+    
+    /// 화면 이동
+    private func navigateToUniverseVCWithDelay() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            self.airPodsInstruction.isAccessibilityElement = false
+            
+            let universeViewController = UniverseSearchViewController()
+            self.navigationController?.pushViewController(universeViewController, animated: true)
+            self.navigationController?.isNavigationBarHidden = true
+        }
     }
 }
