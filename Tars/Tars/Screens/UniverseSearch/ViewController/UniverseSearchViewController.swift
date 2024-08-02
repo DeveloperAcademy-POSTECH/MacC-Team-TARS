@@ -16,8 +16,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     private var guideCircleView = CustomCircleView()
     private var selectedSquareView = CustomSquareView()
     private var guideArrowView = CustomArrowView()
-    private var coachingOverlayView = CustomOnboardingOverlayView()
-    private var coachingBackgroundOverlayView = CustomBackgroundOverlayView()
+    private var onboardingView = OnboardingView()
     
     private var audioManager = AudioManager.shared
     
@@ -89,20 +88,19 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        coachingOverlayView.isAccessibilityElement = true
-        coachingOverlayView.accessibilityLabel = LocalizableKeys.onboardingInstructionstring.localized
-        UIAccessibility.post(notification: .layoutChanged, argument: coachingOverlayView)
+        onboardingView.isAccessibilityElement = true
+        onboardingView.accessibilityLabel = LocalizableKeys.onboardingInstructionstring.localized
+        UIAccessibility.post(notification: .layoutChanged, argument: onboardingView)
         
         [guideCircleView, guideArrowView, selectedSquareView].forEach { sceneView.addSubview($0) }
-        [coachingBackgroundOverlayView, coachingOverlayView, sceneView, selectPlanetCollectionView, searchGuideLabel].forEach { view.addSubview($0) }
+        [onboardingView, sceneView, selectPlanetCollectionView, searchGuideLabel].forEach { view.addSubview($0) }
         configureConstraints()
         
         self.accessibilityElements = [selectPlanetCollectionView]
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
-            self.coachingOverlayView.isAccessibilityElement = false
-            self.coachingOverlayView.removeFromSuperview()
-            self.coachingBackgroundOverlayView.removeFromSuperview()
+            self.onboardingView.isAccessibilityElement = false
+            self.onboardingView.removeFromSuperview()
             self.navigationController?.navigationBar.layer.zPosition = 0
             
             // navigation title 설정
@@ -131,9 +129,8 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
             if result == true {
                 timer.invalidate()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                    self.coachingOverlayView.isAccessibilityElement = false
-                    self.coachingOverlayView.removeFromSuperview()
-                    self.coachingBackgroundOverlayView.removeFromSuperview()
+                    self.onboardingView.isAccessibilityElement = false
+                    self.onboardingView.removeFromSuperview()
                     self.navigationController?.navigationBar.layer.zPosition = 0
                     
                     // UIAccessibility.post(notification: .layoutChanged, argument: self.sceneView)
@@ -220,11 +217,11 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
     private func configureConstraints() {
         sceneView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, paddingTop: screenHeight * 0.1)
         
-        coachingOverlayView.layer.zPosition = 2
-        coachingOverlayView.centerX(inView: view)
-        coachingOverlayView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.23)
+        onboardingView.layer.zPosition = 2
+        onboardingView.centerX(inView: view)
+//        onboardingView.anchor(top: view.topAnchor, paddingTop: screenHeight * 0.23)
         
-        coachingBackgroundOverlayView.layer.zPosition = 1
+        onboardingView.layer.zPosition = 1
         self.navigationController?.navigationBar.layer.zPosition = -1
         
         guideCircleView.centerX(inView: view)

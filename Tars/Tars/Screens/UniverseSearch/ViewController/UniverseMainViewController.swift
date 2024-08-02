@@ -41,8 +41,7 @@ final class UniverseMainViewController: UIViewController {
     private var guideCircleView = CustomCircleView()
     private var selectedSquareView = CustomSquareView()
     private var guideArrowView = CustomArrowView()
-    private var coachingOverlayView = CustomOnboardingOverlayView()
-    private var coachingBackgroundOverlayView = CustomBackgroundOverlayView()
+    private var onboardingView = OnboardingView()
 
     // MARK: - Life Cycle
     
@@ -108,7 +107,7 @@ private extension UniverseMainViewController {
     
     /// UIView 의 Layout 을 할당하는 메서드
     func configureStyle() {
-        coachingOverlayView.do {
+        onboardingView.do {
             $0.layer.zPosition = 1
         }
         
@@ -130,15 +129,15 @@ private extension UniverseMainViewController {
     
     /// VC 에 출력할 요소를 할당하는 메서드
     func configureHierarchy() {
-        view.addSubviews(coachingBackgroundOverlayView, coachingOverlayView, arSceneView, selectPlanetCollectionView, searchGuideLabel)
+        view.addSubviews(onboardingView, arSceneView, selectPlanetCollectionView, searchGuideLabel)
         
         arSceneView.addSubviews(guideCircleView, guideArrowView, selectedSquareView)
     }
     
     /// Snapkit 을 이용해  AutoLayout 을 설계하는 메서드
     func configureLayout() {
-        coachingOverlayView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(screenHeight * 0.23)
+        onboardingView.snp.makeConstraints {
+//            $0.top.equalToSuperview().offset(screenHeight * 0.23)
             $0.centerX.equalToSuperview()
         }
          
@@ -175,9 +174,9 @@ private extension UniverseMainViewController {
     
     /// VoiceOver 를 구성하기 위한 메서드
     func configureVoiceOver() {
-        coachingOverlayView.isAccessibilityElement = true
-        coachingOverlayView.accessibilityLabel = LocalizableKeys.onboardingInstructionstring.localized
-        UIAccessibility.post(notification: .layoutChanged, argument: coachingOverlayView)
+        onboardingView.isAccessibilityElement = true
+        onboardingView.accessibilityLabel = LocalizableKeys.onboardingInstructionstring.localized
+        UIAccessibility.post(notification: .layoutChanged, argument: onboardingView)
         
         self.accessibilityElements = [selectPlanetCollectionView]
     }
