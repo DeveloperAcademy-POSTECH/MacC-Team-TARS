@@ -21,12 +21,14 @@
 		37EF27092B6922920092C65B /* Detail_Neptune.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37EF27002B6922920092C65B /* Detail_Neptune.mp3 */; };
 		37EF270A2B6922920092C65B /* Detail_Moon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37EF27012B6922920092C65B /* Detail_Moon.mp3 */; };
 		37EF270B2B6922920092C65B /* Detail_Mercury.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37EF27022B6922920092C65B /* Detail_Mercury.mp3 */; };
+		3F2036002C5C77BD00B9EFE5 /* PlanetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2035FF2C5C77BD00B9EFE5 /* PlanetInfo.swift */; };
 		3F3C20FE29375E8F007007C2 /* Detecting_planet.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3F3C20FD29375E8F007007C2 /* Detecting_planet.wav */; };
 		3F8171992C46B52600CEE21E /* UniverseMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171982C46B52600CEE21E /* UniverseMainViewController.swift */; };
 		3F8530FB2C572A70003FA07A /* UniverseMainViewControllerUniverseMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8530FA2C572A6F003FA07A /* UniverseMainViewControllerUniverseMainViewController.swift */; };
 		3F8530FD2C572A8E003FA07A /* UniverseMainViewController+FlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8530FC2C572A8E003FA07A /* UniverseMainViewController+FlowLayoutDelegate.swift */; };
 		3F8531002C574029003FA07A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3F8530FF2C574029003FA07A /* SnapKit */; };
 		3F8531032C574030003FA07A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3F8531022C574030003FA07A /* Then */; };
+		3F8531052C5753A3003FA07A /* SelectPlanetMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8531042C5753A3003FA07A /* SelectPlanetMainCollectionViewCell.swift */; };
 		452F77C5292E28DD0088E684 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452F77C4292E28DD0088E684 /* HapticManager.swift */; };
 		5533717729123F17004AD6E8 /* UniverseSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */; };
 		558932C9291429E90032D459 /* UniverseSearchViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558932C8291429E90032D459 /* UniverseSearchViewController+DataSource.swift */; };
@@ -96,10 +98,12 @@
 		37EF27002B6922920092C65B /* Detail_Neptune.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Detail_Neptune.mp3; sourceTree = "<group>"; };
 		37EF27012B6922920092C65B /* Detail_Moon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Detail_Moon.mp3; sourceTree = "<group>"; };
 		37EF27022B6922920092C65B /* Detail_Mercury.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Detail_Mercury.mp3; sourceTree = "<group>"; };
+		3F2035FF2C5C77BD00B9EFE5 /* PlanetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetInfo.swift; sourceTree = "<group>"; };
 		3F3C20FD29375E8F007007C2 /* Detecting_planet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Detecting_planet.wav; sourceTree = "<group>"; };
 		3F8171982C46B52600CEE21E /* UniverseMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseMainViewController.swift; sourceTree = "<group>"; };
 		3F8530FA2C572A6F003FA07A /* UniverseMainViewControllerUniverseMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseMainViewControllerUniverseMainViewController.swift; sourceTree = "<group>"; };
 		3F8530FC2C572A8E003FA07A /* UniverseMainViewController+FlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UniverseMainViewController+FlowLayoutDelegate.swift"; sourceTree = "<group>"; };
+		3F8531042C5753A3003FA07A /* SelectPlanetMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlanetMainCollectionViewCell.swift; sourceTree = "<group>"; };
 		452F77C4292E28DD0088E684 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		5533717629123F17004AD6E8 /* UniverseSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseSearchViewController.swift; sourceTree = "<group>"; };
 		558932C8291429E90032D459 /* UniverseSearchViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UniverseSearchViewController+DataSource.swift"; sourceTree = "<group>"; };
@@ -188,6 +192,14 @@
 				55F3B9AB290FA1FE0033041E /* Keys.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		3F2035FE2C5C77AA00B9EFE5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3F2035FF2C5C77BD00B9EFE5 /* PlanetInfo.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		3F8530F72C5729C3003FA07A /* Collection */ = {
@@ -302,6 +314,7 @@
 		BF58D3F429B49BCE00CC2D98 /* UniverseSearch */ = {
 			isa = PBXGroup;
 			children = (
+				3F2035FE2C5C77AA00B9EFE5 /* Model */,
 				BF58D3FD29B49E3300CC2D98 /* ViewController */,
 				3F8530F72C5729C3003FA07A /* Collection */,
 				BF58D3FF29B49F7400CC2D98 /* Cells */,
@@ -411,6 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				55F3B9B2290FA2D50033041E /* SelectPlanetCollectionViewCell.swift */,
+				3F8531042C5753A3003FA07A /* SelectPlanetMainCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -658,6 +672,7 @@
 				55F3B9B3290FA2D50033041E /* SelectPlanetCollectionViewCell.swift in Sources */,
 				5943244E2908EFFF000518FD /* String+Extension.swift in Sources */,
 				3726FE002923A8740062B667 /* CustomArrowView.swift in Sources */,
+				3F8531052C5753A3003FA07A /* SelectPlanetMainCollectionViewCell.swift in Sources */,
 				374FEE372909597B00E0C56B /* Float+Extension.swift in Sources */,
 				BF7B4FB628FE431900F83158 /* AppDelegate.swift in Sources */,
 				558932C9291429E90032D459 /* UniverseSearchViewController+DataSource.swift in Sources */,
@@ -669,6 +684,7 @@
 				59261F45292379BB005B6E3D /* UserDefaults+Extension.swift in Sources */,
 				59B2707E2929188600061825 /* CustomBackgroundOverlayView.swift in Sources */,
 				BF6BCBAA29090E130042B522 /* Endpoint.swift in Sources */,
+				3F2036002C5C77BD00B9EFE5 /* PlanetInfo.swift in Sources */,
 				DDB7DD97290814AB00FC0BA4 /* Label+Extension.swift in Sources */,
 				59B270782929049800061825 /* CustomOnboardingOverlayView.swift in Sources */,
 				BF788B802903C903002BF8C0 /* DashedCircle+Extension.swift in Sources */,
