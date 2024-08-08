@@ -5,8 +5,8 @@
 //  Created by ParkJunHyuk on 7/16/24.
 //
 
-import Foundation
 import UIKit
+import Combine
 import SceneKit
 import ARKit
 
@@ -17,10 +17,11 @@ final class UniverseMainViewController: UIViewController {
     
     // MARK: - Properties
     
-    // TODO: - 해당 프로퍼티는 VM 로 위치 변경 필요
     private var planetObjectList: [String: SCNNode] = [:]
     private var planetObjectSound: [String: SCNAudioPlayer] = [:]
     private var circleCenter: CGPoint = .zero
+    private var universeLocationViewModel = UniverseLocationViewModel()
+    private var cancellables = Set<AnyCancellable>()
     
     var mode: Mode = .explore {
         didSet {
@@ -33,7 +34,7 @@ final class UniverseMainViewController: UIViewController {
     private let planetCollectionViewFlowLayout = UICollectionViewFlowLayout()
     
     var planetListData = [PlanetInfo]()
-    var selectedIndexPath: IndexPath? 
+    var selectedIndexPath: IndexPath?
     
     // MARK: - UI Properties
     
@@ -52,7 +53,7 @@ final class UniverseMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configureDelegate()
         configureStyle()
         configureHierarchy()
@@ -70,6 +71,12 @@ final class UniverseMainViewController: UIViewController {
                 )
             )
         }
+        
+        setUpAuthorizationBinding()
+        showOnboarding()
+        setUpLocationBinding()
+        setUpShowSettingBindidng()
+        setUpBodiesBinding()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -166,8 +173,7 @@ private extension UniverseMainViewController {
     /// Snapkit 을 이용해  AutoLayout 을 설계하는 메서드
     func configureLayout() {
         onboardingView.snp.makeConstraints {
-//            $0.top.equalToSuperview().offset(screenHeight * 0.23)
-            $0.centerX.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
          
         searchGuideLabel.snp.makeConstraints {
@@ -238,16 +244,17 @@ extension UniverseMainViewController: ARSCNViewDelegate {
 }
 
 // MARK: - LocationManagerDelegate
-
+/*
 private extension UniverseMainViewController {
+    
     func updateUserLocation() {
         Task {
-            let bodies = try await HorizonsAPIManager().requestBodies()
-//            setPlanetPosition(to: arSceneView.scene, planets: bodies)
+//            let bodies = try await HorizonsAPIManager().requestBodies()
+            
         }
     }
 }
-
+*/
 // MARK: - ARKit 관련 Planet Sphere, Node 메서드
 
 private extension UniverseMainViewController {
@@ -280,7 +287,7 @@ private extension UniverseMainViewController {
             return sphereNode
         }
     }
-    
+
     /// SNCScene 에 PlanetNode 를 배치하는 메서드
     /// - Parameters:
     ///     - scene : SceneKit 으로 만든 객체를 해당 scene 에 렌더링하기 위한 View
@@ -325,7 +332,6 @@ extension UniverseMainViewController {
             self.guideArrowView.isHidden = true
         }
     }
-
     
     private func setModeChangedLayout() {
         self.navigationController?.topViewController?.title = mode.titleText
@@ -420,5 +426,154 @@ extension UniverseMainViewController {
         }
         
         return Cardinal.None
+    }
+}
+
+// MARK: - Binding Methods
+
+private extension UniverseMainViewController {
+    
+    /// User의 현재 위치 사용 권한 여부를 확인합니다.
+    private func setUpAuthorizationBinding() {
+        universeLocationViewModel.$isAuthorized
+            .sink { [weak self] isAuthorized in
+                if isAuthorized {
+                    self?.showOnboarding()
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func setUpLocationBinding() {
+        universeLocationViewModel.$currentLocation
+            .sink { [weak self] location in
+                if let location = location {
+                    self?.setUpLocationBinding()
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func setUpBodiesBinding() {
+        universeLocationViewModel.$bodies
+            .sink { [weak self] bodies in
+                self?.setPlanetPosition(to: self?.arSceneView.scene, planets: bodies)
+            }
+            .store(in: &cancellables)
+    }
+
+    func setUpShowSettingBindidng() {
+        
+        universeLocationViewModel.$showSettingAlert
+            .sink { [weak self] showAlert in
+                if showAlert {
+                    self?.showLocationSettingsAlert()
+                }
+            }
+            .store(in: &cancellables)
+        universeLocationViewModel.updateLocation()
+    }
+
+    func showOnboarding() {
+        Task {
+            try await Task.sleep(nanoseconds: 5_000_000_000)
+            
+            await MainActor.run {
+                self.onboardingView.isAccessibilityElement = false
+                self.onboardingView.removeFromSuperview()
+                self.navigationController?.navigationBar.layer.zPosition = 0
+                
+                // UIAccessibility.post(notification: .layoutChanged, argument: self.sceneView)
+                
+                self.navigationController?.isNavigationBarHidden = false
+                self.navigationController?.topViewController?.title = LocalizableKeys.exploreUniverseNavigationTitle.localized
+                self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
+                self.navigationController?.navigationBar.backgroundColor = .black
+                
+                let backBarButtonItem = UIBarButtonItem(title: self.navigationItem.title, style: .plain, target: self, action: nil)
+                self.navigationItem.backBarButtonItem = backBarButtonItem
+                backBarButtonItem.tintColor = .customYellow
+                
+                self.navigationItem.rightBarButtonItem?.tintColor = .white
+                self.navigationItem.hidesBackButton = true
+            }
+        }
+    }
+    
+    func showLocationSettingsAlert() {
+        let alert = UIAlertController(title: LocalizableKeys.locationUsageMessage.localized,
+                                      message: LocalizableKeys.locationAuthRequest.localized,
+                                      preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: LocalizableKeys.defaultAction.localized, style: .default, handler: { _ in
+            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+            DispatchQueue.main.async {
+                UIApplication.shared.open(url)
+            }
+        })
+        let destructiveAction = UIAlertAction(title: LocalizableKeys.cancel.localized, style: .destructive, handler: nil)
+        
+        alert.addAction(destructiveAction)
+        alert.addAction(defaultAction)
+        present(alert, animated: true, completion: nil)
+    }
+}
+
+// MARK: - 행성의 위치 좌표 및 AR 노드 생성
+private extension UniverseMainViewController {
+    /*
+    func setUpPlanetBinding() {
+        planetViewModel.$planetData
+            .sink { [weak self] planets in
+                guard let self = self else { return }
+                let planetSpheres = self.makePlanetSphere(planets: planets)
+                let planetNodes = self.makePlanetNode(planets: planets, planetSpheres: planetSpheres)
+                self.setupPlanetPosition(to: self.arSceneView.scene, planetNodes: planetNodes)
+                self.addAudioToPlanetNode(planets: planets, planetNodes: planetNodes)
+            }
+            .store(in: &cancellables)
+    }
+    */
+    
+    /// 행성을 배치하기 위한 함수
+    private func setPlanetPosition(to scene: SCNScene?, planets: [Body]) {
+        for planet in planets {
+            if !PlanetConstants.planetsEn.contains(planet.name) {
+                continue
+            } else {
+                let sphere = SCNSphere(radius: 0.2)
+                sphere.firstMaterial?.diffuse.contents = UIImage(named: planet.name + ResourceConstants.map.rawValue)
+                let sphereNode = SCNNode(geometry: sphere)
+                sphereNode.position = SCNVector3(planet.coordinate.x, planet.coordinate.y, planet.coordinate.z)
+                sphereNode.name = planet.name
+                scene?.rootNode.addChildNode(sphereNode)
+                planetObjectList[planet.name] = sphereNode
+                
+                let audioSource: SCNAudioSource = {
+                    let source = SCNAudioSource(fileNamed: "\(AudioMode.search.prefix)\(planet.name).\(ResourceConstants.mp3.name)")!
+                    // TODO: 강제언래핑 제거하기
+                    /// 노드와 해당 위치에와 소스의 볼륨, 반향 및 거리에 따라 자동으로 변경
+                    source.isPositional = true
+                    source.volume = AudioVolume.half.volume
+                    /// 오디오 소스를 반복적으로 재상할지 여부를 결정
+                    source.loops = true
+                    source.load()
+                    return source
+                }()
+                
+                let scnPlayer = SCNAudioPlayer(source: audioSource)
+                planetObjectSound[planet.name] = scnPlayer
+                sphereNode.removeAllAudioPlayers()
+                sphereNode.addAudioPlayer(scnPlayer)
+            }
+        }
+    }
+    
+    func updateSceneWithNodes(_ nodes: [SCNNode]) {
+        arSceneView.scene.rootNode.enumerateChildNodes { (node, _) in
+            node.removeFromParentNode()
+        }
+        for node in nodes {
+            arSceneView.scene.rootNode.addChildNode(node)
+        }
     }
 }
