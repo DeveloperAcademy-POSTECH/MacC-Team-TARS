@@ -52,24 +52,22 @@ private extension OnboardingView {
         }
     }
     
+    func configureSubviews() {
+        self.addSubview(onboardingBackground)
+        onboardingBackground.addSubview(coachingOnboardingLabel)
+    }
+    
     func configureLayout() {
-        
         onboardingBackground.snp.makeConstraints {
+            $0.edges.equalToSuperview()
             $0.centerX.centerY.equalToSuperview()
             $0.width.equalTo(screenWidth)
             $0.height.equalTo(screenHeight)
         }
         
         coachingOnboardingLabel.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
-            $0.width.height.equalTo(screenWidth * 0.6)
+            $0.center.equalToSuperview()
+            $0.width.height.lessThanOrEqualToSuperview().multipliedBy(0.6)
         }
-    }
-}
-
-private extension OnboardingView {
-    func configureSubviews() {
-        self.addSubview(onboardingBackground)
-        onboardingBackground.addSubview(coachingOnboardingLabel)
     }
 }

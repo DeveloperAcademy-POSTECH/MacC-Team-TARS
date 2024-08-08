@@ -107,7 +107,7 @@ private extension LaunchScreenViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             self.airPodsInstruction.isAccessibilityElement = false
             
-            let universeViewController = UniverseSearchViewController()
+            let universeViewController = UniverseMainViewController()
             self.navigationController?.pushViewController(universeViewController, animated: true)
             self.navigationController?.isNavigationBarHidden = true
         }
