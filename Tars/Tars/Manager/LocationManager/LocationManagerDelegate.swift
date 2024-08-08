@@ -5,13 +5,15 @@
 //  Created by 이윤영 on 2022/11/02.
 //
 
+
 import UIKit
 
 protocol LocationManagerDelegate: AnyObject, UIViewController {
-    func didUpdateUserLocation()
+//    func didUpdateUserLocation()
 }
 
 extension LocationManagerDelegate {
+    /*
     func openSetting() {
         let alert = UIAlertController(title: LocalizableKeys.locationUsageMessage.localized,
                                       message: LocalizableKeys.locationAuthRequest.localized,
@@ -28,4 +30,5 @@ extension LocationManagerDelegate {
         alert.addAction(defaultAction)
         present(alert, animated: true, completion: nil)
     }
+ */
 }

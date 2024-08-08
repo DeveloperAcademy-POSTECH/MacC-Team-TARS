@@ -5,8 +5,10 @@
 //  Created by 이윤영 on 2022/10/24.
 //
 
+/*
 import Foundation
 import CoreLocation
+
 
 enum LocationError: Error {
     case currentLocationFailure
@@ -83,5 +85,162 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         guard let delegate = delegate else { return }
         delegate.openSetting()
 
+    }
+}
+*/
+
+
+/*
+import Foundation
+import CoreLocation
+import Combine
+
+enum LocationError: Error {
+    case currentLocationFailure
+}
+
+class LocationManagerPublisher: NSObject, CLLocationManagerDelegate {
+    static let shared = LocationManagerPublisher()
+    weak var delegate: LocationManagerDelegate?
+
+    private let locationManager = CLLocationManager()
+    private var location: CLLocation?
+    private var isLocationUpdated: Bool = false
+    
+    // Publihsers
+    var locationPublisher = PassthroughSubject<CLLocation, LocationError>
+    var authorizationStatusPublisher = PassthroughSubject
+
+    override init() {
+        super.init()
+        locationManager.delegate = self
+    }
+    
+    // MARK: - CLLocationManagerDelegate
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if !isLocationUpdated {
+            isLocationUpdated = true
+
+            manager.stopUpdatingLocation()
+            let location = locations[locations.count - 1]
+            self.location = location
+            
+            didUpdateUserLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("\(error): \(error.localizedDescription)")
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+        case .authorizedWhenInUse:
+            manager.startUpdatingLocation()
+        case .restricted, .denied:
+            openSetting()
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        default:
+            break
+        }
+    }
+    
+    // MARK: - LocationManager method
+
+    func updateLocation() {
+        if locationManager.authorizationStatus == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+        } else {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    func getCurrentLocation() -> (Double, Double, Double)? {
+        guard let location = location else { return nil }
+        let latitude = location.coordinate.latitude
+        let longtitude = location.coordinate.longitude
+        let altitude = location.altitude
+        return (latitude, longtitude, altitude)
+    }
+    
+    private func didUpdateUserLocation() {
+        guard let delegate = delegate else { return }
+        delegate.didUpdateUserLocation()
+    }
+    
+    private func openSetting() {
+        guard let delegate = delegate else { return }
+        delegate.openSetting()
+
+    }
+}
+*/
+
+import Foundation
+import CoreLocation
+import Combine
+
+enum LocationError: Error {
+    case currentLocationFailure
+}
+
+class LocationManager: NSObject {
+    static let shared = LocationManager()
+    @Published var location: CLLocation?
+    @Published var isLocationUpdated: Bool = false
+    @Published var needsSettingAlert: Bool = false
+    
+    private let locationManager = CLLocationManager()
+    private var cancellable = Set<AnyCancellable>()
+    
+    override init() {
+        super.init()
+        locationManager.delegate = self
+    }
+    
+    func updateLocation() {
+        if locationManager.authorizationStatus == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+        } else {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    func getCurrentLocation() -> (Double, Double, Double)? {
+        guard let location = location else { return nil }
+        let latitude = location.coordinate.latitude
+        let longtitude = location.coordinate.longitude
+        let altitude = location.altitude
+        return (latitude, longtitude, altitude)
+    }
+}
+
+extension LocationManager: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if !isLocationUpdated {
+            isLocationUpdated = true
+            manager.stopUpdatingLocation()
+            let location = locations.last
+            self.location = location
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
+        print("(didFailWithError : \(error.localizedDescription)")
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+        case .authorizedWhenInUse:
+            manager.startUpdatingLocation()
+        case .restricted, .denied:
+            needsSettingAlert = true
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        default:
+            break
+        }
     }
 }
