@@ -67,8 +67,6 @@
 		BF7B4FD228FE454A00F83158 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7B4FD128FE454A00F83158 /* View+Extension.swift */; };
 		BF7B4FD528FE47B200F83158 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4FD428FE47B200F83158 /* .swiftlint.yml */; };
 		BF9D65EB2C5C97AC00D30AA5 /* UniverseLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9D65EA2C5C97AC00D30AA5 /* UniverseLocationViewModel.swift */; };
-		BF9D65ED2C5C982B00D30AA5 /* UniversePlanetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9D65EC2C5C982B00D30AA5 /* UniversePlanetsViewModel.swift */; };
-		BF9D65EF2C5CA9BA00D30AA5 /* UniverseModeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9D65EE2C5CA9BA00D30AA5 /* UniverseModeViewModel.swift */; };
 		BFAD1EA0292C62F00081C4A3 /* Searching_Neptune.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFAD1E97292C62F00081C4A3 /* Searching_Neptune.mp3 */; };
 		BFAD1EA1292C62F00081C4A3 /* Searching_Mars.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFAD1E98292C62F00081C4A3 /* Searching_Mars.mp3 */; };
 		BFAD1EA2292C62F00081C4A3 /* Searching_Mercury.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFAD1E99292C62F00081C4A3 /* Searching_Mercury.mp3 */; };
@@ -148,8 +146,6 @@
 		BF7B4FD128FE454A00F83158 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		BF7B4FD428FE47B200F83158 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		BF9D65EA2C5C97AC00D30AA5 /* UniverseLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseLocationViewModel.swift; sourceTree = "<group>"; };
-		BF9D65EC2C5C982B00D30AA5 /* UniversePlanetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversePlanetsViewModel.swift; sourceTree = "<group>"; };
-		BF9D65EE2C5CA9BA00D30AA5 /* UniverseModeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseModeViewModel.swift; sourceTree = "<group>"; };
 		BFAD1E97292C62F00081C4A3 /* Searching_Neptune.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Searching_Neptune.mp3; sourceTree = "<group>"; };
 		BFAD1E98292C62F00081C4A3 /* Searching_Mars.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Searching_Mars.mp3; sourceTree = "<group>"; };
 		BFAD1E99292C62F00081C4A3 /* Searching_Mercury.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Searching_Mercury.mp3; sourceTree = "<group>"; };
@@ -481,8 +477,6 @@
 			isa = PBXGroup;
 			children = (
 				BF9D65EA2C5C97AC00D30AA5 /* UniverseLocationViewModel.swift */,
-				BF9D65EC2C5C982B00D30AA5 /* UniversePlanetsViewModel.swift */,
-				BF9D65EE2C5CA9BA00D30AA5 /* UniverseModeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -700,14 +694,12 @@
 				DDB7DD932906B2B000FC0BA4 /* InfoViewController.swift in Sources */,
 				BF9D65EB2C5C97AC00D30AA5 /* UniverseLocationViewModel.swift in Sources */,
 				5533717729123F17004AD6E8 /* UniverseSearchViewController.swift in Sources */,
-				BF9D65ED2C5C982B00D30AA5 /* UniversePlanetsViewModel.swift in Sources */,
 				BFD127B82C5768FE002AEE22 /* CALayer+Extension.swift in Sources */,
 				3726FE022923B02E0062B667 /* CGPoint+Extension.swift in Sources */,
 				BF7B4FB828FE431900F83158 /* SceneDelegate.swift in Sources */,
 				BF1B76352C3F76B00051815A /* PlanetConstants.swift in Sources */,
 				59261F45292379BB005B6E3D /* UserDefaults+Extension.swift in Sources */,
 				59B2707E2929188600061825 /* CustomBackgroundOverlayView.swift in Sources */,
-				BF9D65EF2C5CA9BA00D30AA5 /* UniverseModeViewModel.swift in Sources */,
 				BF6BCBAA29090E130042B522 /* Endpoint.swift in Sources */,
 				3F2036002C5C77BD00B9EFE5 /* PlanetInfo.swift in Sources */,
 				DDB7DD97290814AB00FC0BA4 /* Label+Extension.swift in Sources */,
