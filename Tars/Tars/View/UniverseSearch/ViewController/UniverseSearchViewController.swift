@@ -119,7 +119,7 @@ class UniverseSearchViewController: UIViewController, ARSCNViewDelegate, Locatio
         guideArrowView.isHidden = true
         
         let locationManager = LocationManager.shared
-        locationManager.delegate = self
+//        locationManager.delegate = self
         locationManager.updateLocation()
         
         var result: Bool = checkAuthorization()
@@ -607,3 +607,4 @@ extension UniverseSearchViewController {
         }
     }
 }
+
