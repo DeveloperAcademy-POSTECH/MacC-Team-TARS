@@ -446,10 +446,8 @@ private extension UniverseMainViewController {
     
     private func setUpLocationBinding() {
         universeLocationViewModel.$currentLocation
-            .sink { [weak self] location in
-                if let location = location {
-                    self?.setUpLocationBinding()
-                }
+            .sink { [weak self] _ in
+                self?.setUpLocationBinding()
             }
             .store(in: &cancellables)
     }
