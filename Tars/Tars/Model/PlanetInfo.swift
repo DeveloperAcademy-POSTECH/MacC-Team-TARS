@@ -8,6 +8,7 @@
 import Foundation
 
 struct PlanetInfo {
+    let planetIdName: String
     let planetName: String
     let planetImage: String
     var isSelected: StateCell
