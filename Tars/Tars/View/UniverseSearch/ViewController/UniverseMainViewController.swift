@@ -75,6 +75,9 @@ final class UniverseMainViewController: UIViewController {
         setUpShowSettingBindidng()
         setUpBodiesBinding()
         configureModeBinding()
+        
+        selectedSquareView.isHidden = true
+        guideArrowView.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
