@@ -23,8 +23,12 @@
 		37EF270B2B6922920092C65B /* Detail_Mercury.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37EF27022B6922920092C65B /* Detail_Mercury.mp3 */; };
 		3F2036002C5C77BD00B9EFE5 /* PlanetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2035FF2C5C77BD00B9EFE5 /* PlanetInfo.swift */; };
 		3F3C20FE29375E8F007007C2 /* Detecting_planet.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3F3C20FD29375E8F007007C2 /* Detecting_planet.wav */; };
+		3F76A4252C6646E000D7DD5B /* UniverseModeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76A4242C6646E000D7DD5B /* UniverseModeViewModel.swift */; };
+		3F76A4272C66475A00D7DD5B /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76A4262C66475A00D7DD5B /* Mode.swift */; };
+		3F76A4292C66479900D7DD5B /* Cardinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76A4282C66479900D7DD5B /* Cardinal.swift */; };
+		3F76A42B2C687CD300D7DD5B /* SceneKitAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76A42A2C687CD300D7DD5B /* SceneKitAudioPlayer.swift */; };
 		3F8171992C46B52600CEE21E /* UniverseMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8171982C46B52600CEE21E /* UniverseMainViewController.swift */; };
-		3F8530FB2C572A70003FA07A /* UniverseMainViewControllerUniverseMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8530FA2C572A6F003FA07A /* UniverseMainViewControllerUniverseMainViewController.swift */; };
+		3F8530FB2C572A70003FA07A /* UniverseMainViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8530FA2C572A6F003FA07A /* UniverseMainViewController+DataSource.swift */; };
 		3F8530FD2C572A8E003FA07A /* UniverseMainViewController+FlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8530FC2C572A8E003FA07A /* UniverseMainViewController+FlowLayoutDelegate.swift */; };
 		3F8531002C574029003FA07A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3F8530FF2C574029003FA07A /* SnapKit */; };
 		3F8531032C574030003FA07A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 3F8531022C574030003FA07A /* Then */; };
@@ -102,8 +106,12 @@
 		37EF27022B6922920092C65B /* Detail_Mercury.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Detail_Mercury.mp3; sourceTree = "<group>"; };
 		3F2035FF2C5C77BD00B9EFE5 /* PlanetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetInfo.swift; sourceTree = "<group>"; };
 		3F3C20FD29375E8F007007C2 /* Detecting_planet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Detecting_planet.wav; sourceTree = "<group>"; };
+		3F76A4242C6646E000D7DD5B /* UniverseModeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseModeViewModel.swift; sourceTree = "<group>"; };
+		3F76A4262C66475A00D7DD5B /* Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
+		3F76A4282C66479900D7DD5B /* Cardinal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cardinal.swift; sourceTree = "<group>"; };
+		3F76A42A2C687CD300D7DD5B /* SceneKitAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneKitAudioPlayer.swift; sourceTree = "<group>"; };
 		3F8171982C46B52600CEE21E /* UniverseMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseMainViewController.swift; sourceTree = "<group>"; };
-		3F8530FA2C572A6F003FA07A /* UniverseMainViewControllerUniverseMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniverseMainViewControllerUniverseMainViewController.swift; sourceTree = "<group>"; };
+		3F8530FA2C572A6F003FA07A /* UniverseMainViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UniverseMainViewController+DataSource.swift"; sourceTree = "<group>"; };
 		3F8530FC2C572A8E003FA07A /* UniverseMainViewController+FlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UniverseMainViewController+FlowLayoutDelegate.swift"; sourceTree = "<group>"; };
 		3F8531042C5753A3003FA07A /* SelectPlanetMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlanetMainCollectionViewCell.swift; sourceTree = "<group>"; };
 		452F77C4292E28DD0088E684 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
@@ -224,7 +232,7 @@
 		3F8530F92C5729FE003FA07A /* UniverseMain */ = {
 			isa = PBXGroup;
 			children = (
-				3F8530FA2C572A6F003FA07A /* UniverseMainViewControllerUniverseMainViewController.swift */,
+				3F8530FA2C572A6F003FA07A /* UniverseMainViewController+DataSource.swift */,
 				3F8530FC2C572A8E003FA07A /* UniverseMainViewController+FlowLayoutDelegate.swift */,
 			);
 			name = UniverseMain;
@@ -451,6 +459,7 @@
 				BF58D3EF29B4994600CC2D98 /* Global */,
 				BF58D40029B49F9500CC2D98 /* Manager */,
 				37AE64B82906B766000ABC86 /* Network */,
+				3F76A42A2C687CD300D7DD5B /* SceneKitAudioPlayer.swift */,
 			);
 			path = Tars;
 			sourceTree = "<group>";
@@ -477,6 +486,7 @@
 			isa = PBXGroup;
 			children = (
 				BF9D65EA2C5C97AC00D30AA5 /* UniverseLocationViewModel.swift */,
+				3F76A4242C6646E000D7DD5B /* UniverseModeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -485,6 +495,8 @@
 			isa = PBXGroup;
 			children = (
 				3F2035FF2C5C77BD00B9EFE5 /* PlanetInfo.swift */,
+				3F76A4262C66475A00D7DD5B /* Mode.swift */,
+				3F76A4282C66479900D7DD5B /* Cardinal.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -671,6 +683,7 @@
 				5943244C2908EFB9000518FD /* CustomSquareView.swift in Sources */,
 				55F3B9AC290FA1FE0033041E /* Keys.swift in Sources */,
 				BF1B763B2C42709E0051815A /* ResourceConstants.swift in Sources */,
+				3F76A4272C66475A00D7DD5B /* Mode.swift in Sources */,
 				452F77C5292E28DD0088E684 /* HapticManager.swift in Sources */,
 				BFD127B62C57415B002AEE22 /* OnboardingView.swift in Sources */,
 				558932CB29142A930032D459 /* UniverseSearchViewController+FlowLayoutDelegate.swift in Sources */,
@@ -683,7 +696,7 @@
 				3726FE042923B12C0062B667 /* SCNVector3+Extension.swift in Sources */,
 				37024B0F2912083E00BC64AE /* LocationManagerDelegate.swift in Sources */,
 				599A78D12917FF4E0070CE15 /* LocalizableKeys.swift in Sources */,
-				3F8530FB2C572A70003FA07A /* UniverseMainViewControllerUniverseMainViewController.swift in Sources */,
+				3F8530FB2C572A70003FA07A /* UniverseMainViewController+DataSource.swift in Sources */,
 				55F3B9B3290FA2D50033041E /* SelectPlanetCollectionViewCell.swift in Sources */,
 				5943244E2908EFFF000518FD /* String+Extension.swift in Sources */,
 				3726FE002923A8740062B667 /* CustomArrowView.swift in Sources */,
@@ -696,6 +709,7 @@
 				5533717729123F17004AD6E8 /* UniverseSearchViewController.swift in Sources */,
 				BFD127B82C5768FE002AEE22 /* CALayer+Extension.swift in Sources */,
 				3726FE022923B02E0062B667 /* CGPoint+Extension.swift in Sources */,
+				3F76A4292C66479900D7DD5B /* Cardinal.swift in Sources */,
 				BF7B4FB828FE431900F83158 /* SceneDelegate.swift in Sources */,
 				BF1B76352C3F76B00051815A /* PlanetConstants.swift in Sources */,
 				59261F45292379BB005B6E3D /* UserDefaults+Extension.swift in Sources */,
@@ -708,6 +722,8 @@
 				3F8530FD2C572A8E003FA07A /* UniverseMainViewController+FlowLayoutDelegate.swift in Sources */,
 				BF1B76392C41A2DD0051815A /* PlanetManager.swift in Sources */,
 				BF6BCBA829090E0E0042B522 /* APIManager.swift in Sources */,
+				3F76A42B2C687CD300D7DD5B /* SceneKitAudioPlayer.swift in Sources */,
+				3F76A4252C6646E000D7DD5B /* UniverseModeViewModel.swift in Sources */,
 				BF7B4FD028FE452200F83158 /* Color+Extension.swift in Sources */,
 				BF7B4FD228FE454A00F83158 /* View+Extension.swift in Sources */,
 				BF6BCBB229090E4E0042B522 /* Body.swift in Sources */,
@@ -853,7 +869,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = D9CAJN27UH;
+				DEVELOPMENT_TEAM = N3H27N59VG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tars/Global/Supports/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "증강현실 기능을 제공하기 위한 카메라 사용 권한이 필요합니다.";
@@ -888,7 +904,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = D9CAJN27UH;
+				DEVELOPMENT_TEAM = N3H27N59VG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tars/Global/Supports/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "증강현실 기능을 제공하기 위한 카메라 사용 권한이 필요합니다.";

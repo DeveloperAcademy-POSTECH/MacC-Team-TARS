@@ -18,23 +18,19 @@ final class UniverseMainViewController: UIViewController {
     // MARK: - Properties
     
     private var planetObjectList: [String: SCNNode] = [:]
-    private var planetObjectSound: [String: SCNAudioPlayer] = [:]
     private var circleCenter: CGPoint = .zero
+    
     private var universeLocationViewModel = UniverseLocationViewModel()
+    var universeModeViewModel = UniverseModeViewModel(sceneKitAudioVolumeManager: SceneKitAudioVolumeManager())
+    
     private var cancellables = Set<AnyCancellable>()
-    
-    var mode: Mode = .explore {
-        didSet {
-            setModeChangedLayout()
-        }
-    }
-    
-    var announceCardinal: Cardinal = .None
     
     private let planetCollectionViewFlowLayout = UICollectionViewFlowLayout()
     
     var planetListData = [PlanetInfo]()
     var selectedIndexPath: IndexPath?
+    
+    private var audioManager = AudioManager.shared
     
     // MARK: - UI Properties
     
@@ -65,6 +61,7 @@ final class UniverseMainViewController: UIViewController {
         Planet.allCases.forEach {
             planetListData.append(
                 PlanetInfo(
+                    planetIdName: $0.nameEnglish,
                     planetName: $0.planetName,
                     planetImage: $0.nameEnglish,
                     isSelected: .notSelect
@@ -76,6 +73,10 @@ final class UniverseMainViewController: UIViewController {
         showOnboarding()
         setUpShowSettingBindidng()
         setUpBodiesBinding()
+        configureModeBinding()
+        
+        selectedSquareView.isHidden = true
+        guideArrowView.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -101,7 +102,7 @@ final class UniverseMainViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-//        muteExploreSearchModeSound(soundPlayer: planetObjectSound)
+        universeModeViewModel.muteAllNode()
     }
 }
  
@@ -192,7 +193,7 @@ private extension UniverseMainViewController {
         }
         
         guideCircleView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(screenHeight * 0.7)
+            $0.top.equalToSuperview().offset(screenHeight * 0.24 / 2)
             $0.centerX.equalToSuperview()
         }
         
@@ -233,12 +234,12 @@ private extension UniverseMainViewController {
 
 extension UniverseMainViewController: ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
-//        switch mode {
-//        case .explore:
-//            explore()
-//        case .search(planet: let name):
-//            search(for: name)
-//        }
+        switch universeModeViewModel.modeStateSubject.value {
+        case .explore:
+            explore()
+        case .search(planet: let name):
+            search(for: name)
+        }
     }
 }
 
@@ -254,6 +255,75 @@ private extension UniverseMainViewController {
     }
 }
 */
+
+// MARK: - 탐색 / 검색 모드 기능
+
+extension UniverseMainViewController {
+    // MARK: - 탐색 모드 기능
+    private func explore() {
+        var detectNode: SCNNode?
+        var nodeCenter: CGPoint = .zero
+        var minDistance: CGFloat = screenHeight
+        
+        guard let pointOfView = arSceneView.pointOfView else { return }
+        let detectNodes = arSceneView.nodesInsideFrustum(of: pointOfView) // 화면에 들어온 노드 리스트
+        
+        for node in detectNodes {
+            let nodePosition = arSceneView.projectPoint(node.position)
+            let nodeScreenPos = nodePosition.toCGPoint()
+            let distance = circleCenter.distanceTo(nodeScreenPos)
+            
+            // 원 안에 들어온 가장 짧은 거리, 노드, 화면상의 위치 저장
+            if distance < screenWidth / 3 && distance < minDistance {
+                detectNode = node
+                nodeCenter = nodeScreenPos
+                minDistance = distance
+            }
+        }
+        
+        if let detectNode = detectNode {
+            // 원 안에 들어온 노드 존재했을 때
+            guard let detectedPlanet = detectNode.name else { return }
+            
+            let nodeOrigin = CGPoint(x: nodeCenter.x - screenWidth / 11.3, y: nodeCenter.y - screenWidth / 11.3)
+            setDetectedLayout(name: detectedPlanet, point: nodeOrigin)
+            
+            universeModeViewModel.selectedNodeExploreMode(selectPlanetName: detectedPlanet)
+        } else {
+            // 탐지된 노드가 없을 때
+            setNotDetectedLayout()
+            universeModeViewModel.exploreMode()
+        }
+    }
+    
+    // MARK: - 검색 모드 기능
+    private func search(for name: String) {
+        guard let node = planetObjectList[name] else {return}
+        let nodePosition = arSceneView.projectPoint(node.position)
+        let nodeScreenPos = nodePosition.toCGPoint()
+        let distanceToCenter = circleCenter.distanceTo(nodeScreenPos)
+        
+        universeModeViewModel.searchMode(selectPlanetName: name)
+        
+        if nodePosition.z >= 1 {
+            // 찾는 노드가 뒤에 있을 때
+            setNotDetectedLayout()
+            setArrowLayout(point: nodeScreenPos, locatedBehind: true)
+        } else if distanceToCenter >= (screenWidth / 3) {
+            // 찾는 노드가 원의 바깥에 있을 때
+            setNotDetectedLayout()
+            setArrowLayout(point: nodeScreenPos)
+        } else {
+            // 찾는 노드가 원 안에 있을 때
+            let nodeOrigin = CGPoint(x: nodeScreenPos.x - screenWidth / 11.3, y: nodeScreenPos.y - screenWidth / 11.3)
+            setArrowHidden()
+            setDetectedLayout(name: name, point: nodeOrigin)
+            
+            universeModeViewModel.updateAnnounceCardinal(.None)
+        }
+    }
+}
+    
 // MARK: - ARKit 관련 Planet Sphere, Node 메서드
 
 private extension UniverseMainViewController {
@@ -308,7 +378,7 @@ private extension UniverseMainViewController {
             
             // 노드와 해당 위치에와 소스의 볼륨, 반향 및 거리에 따라 자동으로 변경
             audioSource.isPositional = true
-            audioSource.volume = 0.5
+            audioSource.volume = AudioVolume.half.volume
             audioSource.loops = true
             audioSource.load()
             
@@ -317,7 +387,9 @@ private extension UniverseMainViewController {
             planetNodes[index].removeAllAudioPlayers()
             planetNodes[index].addAudioPlayer(scnPlayer)
             
+            var planetObjectSound: [String: SCNAudioPlayer] = [:]
             planetObjectSound[planet.name] = scnPlayer
+            universeModeViewModel.sceneKitAudioVolumeManager.setSoundPlayer(planetObjectSound)
             
             return planetNodes[index]
         }
@@ -332,99 +404,98 @@ extension UniverseMainViewController {
         }
     }
     
-    private func setModeChangedLayout() {
-        self.navigationController?.topViewController?.title = mode.titleText
-        switch mode {
+    // 검색 시 화살표 레이아웃 설정
+    private func setArrowLayout(point: CGPoint, locatedBehind: Bool = false) {
+        var radian = locatedBehind ? atan2(circleCenter.y - point.y, point.x - circleCenter.x)
+        + .pi : atan2(circleCenter.y - point.y, point.x - circleCenter.x)
+        var degree = radian.radiansToDegree
+        
+        if locatedBehind {
+            if degree > 45 && degree <= 90 {
+                degree = 45
+            } else if degree > 90 && degree < 135 {
+                degree = 135
+            } else if degree > 225 && degree < 270 {
+                degree = 225
+            } else if degree < 315 && degree >= 270 {
+                degree = 315
+            }
+            radian = degree.degreeToRadians
+        }
+        
+        let dx = screenWidth / 3  * cos(radian)
+        let dy = screenWidth / 3  * sin(radian)
+        let arrowPosition = CGPoint(x: circleCenter.x + dx, y: circleCenter.y - dy)
+        
+        universeModeViewModel.updateArrowCardinal(universeModeViewModel.getCardinal(angle: degree))
+
+        DispatchQueue.main.async {
+            self.guideArrowView.transform = CGAffineTransform(rotationAngle: -radian)
+            self.guideArrowView.layer.position = arrowPosition
+            self.guideArrowView.isHidden = false
+        }
+    }
+    
+    private func setModeChangedLayout(newMode: Mode) {
+        self.navigationController?.topViewController?.title = newMode.titleText
+        switch newMode {
         case .explore:
             setArrowHidden()
-            announceCardinal = .None
+            universeModeViewModel.updateAnnounceCardinal(.None)
         case .search(planet: _):
-            announceCardinal = .None
+            universeModeViewModel.updateAnnounceCardinal(.None)
         }
     }
     
-    enum Mode {
-        case explore
-        case search(planet: String)
-        
-        var titleText: String {
-            switch self {
-            case .explore:
-                    return LocalizableKeys.exploreUniverseNavigationTitle.localized
-            case .search(planet: let name):
-                    return LocalizableKeys.searchingNavigationTitle.localized
-            }
+    // 행성이 탐지되지 않았을 때 레이아웃 설정
+    private func setNotDetectedLayout() {
+        universeModeViewModel.updateDetectedNodeName("")
+        DispatchQueue.main.async {
+            self.guideCircleView.isHidden = false
+            self.selectedSquareView.isHidden = true
         }
     }
     
-    enum Cardinal: Int {
-        case N = 0
-        case NE = 1
-        case E = 2
-        case SE = 3
-        case S = 4
-        case SW = 5
-        case W = 6
-        case NW = 7
-        case None
-        
-        func isNear(new: Cardinal) -> Bool {
-            if new == .None {
-                return true
-            } else if self == .None {
-                return false
-            } else {
-                let difference = abs(self.rawValue - new.rawValue) % 7
-                return difference <= 1
-            }
-        }
-        
-        var directionText: String {
-            switch self {
-            case .N:
-                    return LocalizableKeys.directionUp.localized
-            case .NE:
-                    return LocalizableKeys.directionUpRight.localized
-            case .E:
-                    return LocalizableKeys.directionRight.localized
-            case .SE:
-                    return LocalizableKeys.directionDownRight.localized
-            case .S:
-                    return LocalizableKeys.directionDown.localized
-            case .SW:
-                    return LocalizableKeys.directionDownLeft.localized
-            case .W:
-                    return LocalizableKeys.directionLeft.localized
-            case .NW:
-                    return LocalizableKeys.directionUpLeft.localized
-            default:
-                return ""
-            }
+    // 행성이 탐지되었을 때 레이아웃 설정
+    private func setDetectedLayout(name: String, point: CGPoint) {
+        DispatchQueue.main.async { [self] in
+            
+            let localizedDetectedNode = Planet(from: name.lowercased())?.planetName
+            
+            self.selectedSquareView.frame.origin = point
+            self.selectedSquareView.planetLabel.text = localizedDetectedNode
+
+            self.guideCircleView.isHidden = true
+            self.selectedSquareView.isHidden = false
+            self.selectedSquareView.isAccessibilityElement = true
+            
+            // 추후 사용예정 주석
+            // self.selectedSquareView.accessibilityLabel = planetNameDict[name] ?? name
         }
     }
     
-    private func getCardinal(angle: CGFloat) -> Cardinal {
-        let angle = angle < 0 ? angle + 360 : angle
+    // 행성 detect되었을 때 announce
+    private func guideDetectedAnnounce(name: String) {
+        UIAccessibility.post(notification: .layoutChanged, argument: selectedSquareView)
+        UIAccessibility.post(notification: .announcement,
+                             argument: name)
+        HapticManager.instance.hapticImpact(style: .soft)
+        PlanetManager.shared.currentPlanet = Planet(from: name.lowercased())
         
-        if angle >= 22.5 && angle < 67.5 {
-            return Cardinal.NE
-        } else if angle >= 67.5 && angle < 112.5 {
-            return Cardinal.N
-        } else if angle >= 112.5 && angle < 157.5 {
-            return Cardinal.NW
-        } else if angle >= 157.5 && angle < 202.5 {
-            return Cardinal.W
-        } else if angle >= 202.5 && angle < 247.5 {
-            return Cardinal.SW
-        } else if angle >= 247.5 && angle < 292.5 {
-            return Cardinal.S
-        } else if angle >= 292.5 && angle < 337.5 {
-            return Cardinal.SE
-        } else if (angle >= 337.5 && angle < 360) || (angle >= 0 && angle < 22.5) {
-            return Cardinal.E
+        self.audioManager.playAudio(pre: AudioMode.detected.prefix,
+                                    fileName: name,
+                                    audioExtension: ResourceConstants.wav.name,
+                                    audioVolume: AudioVolume.third.volume,
+                                    isLoop: false)
+    }
+    
+    /// 화살표 변경시 가이드 음성
+    private func guideAnnounce(_ newCardinal: Cardinal) {
+        let announcementText = "\(newCardinal.directionText)"
+        Task {
+            try await Task.sleep(nanoseconds: 100)
+            UIAccessibility.post(notification: .announcement, argument: announcementText)
         }
-        
-        return Cardinal.None
     }
 }
 
@@ -505,6 +576,34 @@ private extension UniverseMainViewController {
         alert.addAction(defaultAction)
         present(alert, animated: true, completion: nil)
     }
+    
+    func configureModeBinding() {
+        universeModeViewModel.modeStateSubject
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] newMode in
+                self?.setModeChangedLayout(newMode: newMode)
+            }
+            .store(in: &cancellables)
+    
+        universeModeViewModel.detectedNodeSubject
+            .receive(on: DispatchQueue.main)
+            .scan(("", "")) { (old, new) in (old.1, new) }
+            .filter { oldValue, newValue in
+                oldValue != newValue && !newValue.isEmpty
+            }
+            .map { $0.1 }
+            .sink { [weak self] detectedNodeName in
+                self?.guideDetectedAnnounce(name: detectedNodeName)
+            }
+            .store(in: &cancellables)
+        
+        universeModeViewModel.arrowCardinalSubject
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] newCardinal in
+                self?.guideAnnounce(newCardinal)
+            }
+            .store(in: &cancellables)
+    }
 }
 
 // MARK: - 행성의 위치 좌표 및 AR 노드 생성
@@ -550,9 +649,11 @@ private extension UniverseMainViewController {
                 }()
                 
                 let scnPlayer = SCNAudioPlayer(source: audioSource)
+                var planetObjectSound: [String: SCNAudioPlayer] = [:]
                 planetObjectSound[planet.name] = scnPlayer
                 sphereNode.removeAllAudioPlayers()
                 sphereNode.addAudioPlayer(scnPlayer)
+                universeModeViewModel.sceneKitAudioVolumeManager.setSoundPlayer(planetObjectSound)
             }
         }
     }
