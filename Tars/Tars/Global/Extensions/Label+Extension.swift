@@ -20,3 +20,15 @@ extension UILabel {
         attributedText = attributeString
     }
 }
+
+extension UILabel {
+    
+    /// font size의 하드코딩 입력 없이, textStyle에 bold 효과를 주기 위한 메서드
+    func setBoldFont(forTextStyle textStyle: UIFont.TextStyle) {
+        if let descriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: textStyle).withSymbolicTraits(.traitBold) {
+            self.font = UIFont(descriptor: descriptor, size: 0)
+        } else {
+            self.font = UIFont.preferredFont(forTextStyle: textStyle)
+        }
+    }
+}

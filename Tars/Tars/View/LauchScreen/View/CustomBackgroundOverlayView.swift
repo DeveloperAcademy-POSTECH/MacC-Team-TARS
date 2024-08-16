@@ -5,6 +5,7 @@
 //  Created by Seik Oh on 19/11/2022.
 //
 
+/*
 import UIKit
 
 class CustomBackgroundOverlayView: UIView {
@@ -32,3 +33,4 @@ class CustomBackgroundOverlayView: UIView {
         coachingOnboardingBackground.anchor(width: screenWidth, height: screenHeight)
     }
 }
+*/
