@@ -74,7 +74,6 @@ final class UniverseMainViewController: UIViewController {
         
         setUpAuthorizationBinding()
         showOnboarding()
-        setUpLocationBinding()
         setUpShowSettingBindidng()
         setUpBodiesBinding()
     }
@@ -440,14 +439,6 @@ private extension UniverseMainViewController {
                 if isAuthorized {
                     self?.showOnboarding()
                 }
-            }
-            .store(in: &cancellables)
-    }
-    
-    private func setUpLocationBinding() {
-        universeLocationViewModel.$currentLocation
-            .sink { [weak self] _ in
-                self?.setUpLocationBinding()
             }
             .store(in: &cancellables)
     }
