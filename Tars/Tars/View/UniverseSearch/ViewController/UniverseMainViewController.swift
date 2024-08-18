@@ -289,6 +289,7 @@ extension UniverseMainViewController {
             setDetectedLayout(name: detectedPlanet, point: nodeOrigin)
             
             universeModeViewModel.selectedNodeExploreMode(selectPlanetName: detectedPlanet)
+            universeModeViewModel.updateDetectedNodeName(detectedPlanet)
         } else {
             // 탐지된 노드가 없을 때
             setNotDetectedLayout()
@@ -320,6 +321,7 @@ extension UniverseMainViewController {
             setDetectedLayout(name: name, point: nodeOrigin)
             
             universeModeViewModel.updateAnnounceCardinal(.None)
+            universeModeViewModel.updateDetectedNodeName(name)
         }
     }
 }
@@ -481,12 +483,6 @@ extension UniverseMainViewController {
                              argument: name)
         HapticManager.instance.hapticImpact(style: .soft)
         PlanetManager.shared.currentPlanet = Planet(from: name.lowercased())
-        
-        self.audioManager.playAudio(pre: AudioMode.detected.prefix,
-                                    fileName: name,
-                                    audioExtension: ResourceConstants.wav.name,
-                                    audioVolume: AudioVolume.third.volume,
-                                    isLoop: false)
     }
     
     /// 화살표 변경시 가이드 음성
@@ -517,7 +513,7 @@ private extension UniverseMainViewController {
     private func setUpBodiesBinding() {
         universeLocationViewModel.$bodies
             .sink { [weak self] bodies in
-                self?.setPlanetPosition(to: self?.arSceneView.scene, planets: bodies)
+                self?.setUpPlanetBinding()
             }
             .store(in: &cancellables)
     }
@@ -608,9 +604,9 @@ private extension UniverseMainViewController {
 
 // MARK: - 행성의 위치 좌표 및 AR 노드 생성
 private extension UniverseMainViewController {
-    /*
+    
     func setUpPlanetBinding() {
-        planetViewModel.$planetData
+        universeLocationViewModel.$bodies
             .sink { [weak self] planets in
                 guard let self = self else { return }
                 let planetSpheres = self.makePlanetSphere(planets: planets)
@@ -619,43 +615,6 @@ private extension UniverseMainViewController {
                 self.addAudioToPlanetNode(planets: planets, planetNodes: planetNodes)
             }
             .store(in: &cancellables)
-    }
-    */
-    
-    /// 행성을 배치하기 위한 함수
-    private func setPlanetPosition(to scene: SCNScene?, planets: [Body]) {
-        for planet in planets {
-            if !PlanetConstants.planetsEn.contains(planet.name) {
-                continue
-            } else {
-                let sphere = SCNSphere(radius: 0.2)
-                sphere.firstMaterial?.diffuse.contents = UIImage(named: planet.name + ResourceConstants.map.rawValue)
-                let sphereNode = SCNNode(geometry: sphere)
-                sphereNode.position = SCNVector3(planet.coordinate.x, planet.coordinate.y, planet.coordinate.z)
-                sphereNode.name = planet.name
-                scene?.rootNode.addChildNode(sphereNode)
-                planetObjectList[planet.name] = sphereNode
-                
-                let audioSource: SCNAudioSource = {
-                    let source = SCNAudioSource(fileNamed: "\(AudioMode.search.prefix)\(planet.name).\(ResourceConstants.mp3.name)")!
-                    // TODO: 강제언래핑 제거하기
-                    /// 노드와 해당 위치에와 소스의 볼륨, 반향 및 거리에 따라 자동으로 변경
-                    source.isPositional = true
-                    source.volume = AudioVolume.half.volume
-                    /// 오디오 소스를 반복적으로 재상할지 여부를 결정
-                    source.loops = true
-                    source.load()
-                    return source
-                }()
-                
-                let scnPlayer = SCNAudioPlayer(source: audioSource)
-                var planetObjectSound: [String: SCNAudioPlayer] = [:]
-                planetObjectSound[planet.name] = scnPlayer
-                sphereNode.removeAllAudioPlayers()
-                sphereNode.addAudioPlayer(scnPlayer)
-                universeModeViewModel.sceneKitAudioVolumeManager.setSoundPlayer(planetObjectSound)
-            }
-        }
     }
     
     func updateSceneWithNodes(_ nodes: [SCNNode]) {
