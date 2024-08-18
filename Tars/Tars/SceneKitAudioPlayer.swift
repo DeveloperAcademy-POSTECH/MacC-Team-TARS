@@ -20,7 +20,9 @@ class SceneKitAudioVolumeManager: SceneKitAudioVolumeProtocol {
     
     // soundPlayer를 설정하는 메서드
     func setSoundPlayer(_ soundPlayer: [String: SCNAudioPlayer]) {
-        self.soundPlayer = soundPlayer
+        for (key, value) in soundPlayer {
+            self.soundPlayer[key] = value
+        }
     }
     
     // 모든 행성에 대한 볼륨 조절 메서드
