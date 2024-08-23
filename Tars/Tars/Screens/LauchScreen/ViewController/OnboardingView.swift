@@ -56,13 +56,14 @@ private extension OnboardingView {
         
         onboardingBackground.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
+            $0.edges.equalToSuperview()
             $0.width.equalTo(screenWidth)
             $0.height.equalTo(screenHeight)
         }
         
         coachingOnboardingLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().inset(screenHeight / 3.45)
+            $0.top.equalToSuperview().inset(screenHeight * 0.25)
             $0.width.height.lessThanOrEqualToSuperview().multipliedBy(0.6)
         }
     }
