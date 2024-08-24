@@ -13,7 +13,7 @@ final class UniverseModeViewModel {
     let sceneKitAudioVolumeManager: SceneKitAudioVolumeProtocol
     
     /// 현재 방위 정보를 갖고 있는 프로퍼티
-    @Published private(set) var announceCardinal: Cardinal = .None
+    @Published var announceCardinal: Cardinal = .None
 
     /// explore, search  모드에 대한 Publisher
     let modeStateSubject = CurrentValueSubject<Mode, Never>(.explore)
@@ -30,13 +30,6 @@ final class UniverseModeViewModel {
     
     init(sceneKitAudioVolumeManager: SceneKitAudioVolumeProtocol) {
         self.sceneKitAudioVolumeManager = sceneKitAudioVolumeManager
-        
-        arrowCardinalSubject
-            .filter { [weak self] newCardinal in
-                guard let self = self else { return false }
-                return !self.announceCardinal.isNear(new: newCardinal)
-            }
-            .assign(to: &$announceCardinal)
     }
     
     func getCardinal(angle: CGFloat) -> Cardinal {
