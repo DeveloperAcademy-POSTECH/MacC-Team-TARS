@@ -188,7 +188,7 @@ private extension UniverseMainViewController {
         }
         
         arSceneView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(screenHeight * 0.1)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.bottom.equalToSuperview()
         }
         
@@ -221,7 +221,7 @@ private extension UniverseMainViewController {
     func configureNavigationTitle() {
         self.navigationController?.navigationBar.layer.zPosition = 0
         self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.topViewController?.title = LocalizableKeys.exploreUniverseNavigationTitle.localized
+        self.navigationController?.title = LocalizableKeys.exploreUniverseNavigationTitle.localized
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.backgroundColor = .black
         self.navigationItem.rightBarButtonItem?.tintColor = .white
@@ -480,9 +480,11 @@ extension UniverseMainViewController {
     private func guideDetectedAnnounce(name: String) {
         UIAccessibility.post(notification: .layoutChanged, argument: selectedSquareView)
         UIAccessibility.post(notification: .announcement,
-                             argument: name)
+                             argument: Planet(from: name.lowercased())?.planetName)
         HapticManager.instance.hapticImpact(style: .soft)
         PlanetManager.shared.currentPlanet = Planet(from: name.lowercased())
+        
+        self.audioManager.playDetectingAudio(fileName: "Detecting_planet")
     }
     
     /// 화살표 변경시 가이드 음성
@@ -594,8 +596,13 @@ private extension UniverseMainViewController {
             .store(in: &cancellables)
         
         universeModeViewModel.arrowCardinalSubject
+            .filter { [weak self] newCardinal in
+                guard let self = self else { return false }
+                return !self.universeModeViewModel.announceCardinal.isNear(new: newCardinal)
+            }
             .receive(on: DispatchQueue.main)
             .sink { [weak self] newCardinal in
+                self?.universeModeViewModel.announceCardinal = newCardinal
                 self?.guideAnnounce(newCardinal)
             }
             .store(in: &cancellables)
