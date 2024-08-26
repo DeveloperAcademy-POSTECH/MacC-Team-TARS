@@ -164,7 +164,7 @@ class InfoViewController: UIViewController {
      deinit { }
      */
     
-    private var customPlanetInfoChapters: [CustomPlanetInfoView] = [CustomPlanetInfoView(), CustomPlanetInfoView(), CustomPlanetInfoView()]
+    private lazy var customPlanetInfoChapters: [CustomPlanetInfoView] = [CustomPlanetInfoView(), CustomPlanetInfoView(), CustomPlanetInfoView()]
     private var audioManager = AudioManager()
     
     private lazy var sceneView = SCNView().then {
