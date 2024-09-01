@@ -266,10 +266,11 @@ private extension InfoViewController {
     }
     
     func playPlanetAudio() {
-        audioManager.playAudio(fileName: AudioMode.detail.prefix,
-                               audioExtension: currentPlanet?.nameEnglish ?? "",
-                               audioVolume: AudioVolume.half.volume,
-                               isLoop: true)
+        self.audioManager.playAudio(pre: AudioMode.detail.prefix,
+                                    fileName: currentPlanet?.nameEnglish ?? "",
+                                    audioExtension: ResourceConstants.mp3.name,
+                                    audioVolume: AudioVolume.third.volume,
+                                    isLoop: false)
     }
     
     func configureConstraints() {
