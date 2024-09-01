@@ -70,8 +70,8 @@ final class UniverseMainViewController: UIViewController {
         }
         
         setUpAuthorizationBinding()
-        showOnboarding()
         setUpShowSettingBindidng()
+        setUpNetworkState()
         setUpBodiesBinding()
         configureModeBinding()
         
@@ -512,7 +512,7 @@ private extension UniverseMainViewController {
     
     private func setUpBodiesBinding() {
         universeLocationViewModel.$bodies
-            .sink { [weak self] bodies in
+            .sink { [weak self] _ in
                 self?.setUpPlanetBinding()
             }
             .store(in: &cancellables)
