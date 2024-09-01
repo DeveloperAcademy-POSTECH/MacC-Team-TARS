@@ -14,6 +14,7 @@ class UniverseLocationViewModel: NSObject, ObservableObject {
     private let locationManager = LocationManager.shared
     @Published var currentLocation: CLLocation?
     @Published var isAuthorized: Bool = false
+    @Published var isSuccess: Bool?
     @Published var showSettingAlert: Bool = false
     @Published var bodies: [Body] = []
     private var cancellables = Set<AnyCancellable>()
@@ -61,8 +62,11 @@ class UniverseLocationViewModel: NSObject, ObservableObject {
             do {
                 let bodies = try await HorizonsAPIManager().requestBodies()
                 self.bodies = bodies
+                print("====Success API====")
+                self.isSuccess = true
             } catch {
                 print("Failed to fetch bodies: \(error.localizedDescription)")
+                self.isSuccess = false
             }
         }
     }

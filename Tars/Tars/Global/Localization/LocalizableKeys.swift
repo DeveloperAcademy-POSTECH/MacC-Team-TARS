@@ -15,6 +15,7 @@ enum LocalizableKeys: String {
     case exploreUniverseNavigationTitle, searchingNavigationTitle
     case directionUp, directionUpRight, directionRight, directionDownRight, directionDown, directionDownLeft, directionLeft, directionUpLeft
     case locationUsageMessage, locationAuthRequest, defaultAction, cancel
+    case networkTitle, networkUsageMessage
     
     case image
     

@@ -942,6 +942,40 @@
         }
       }
     },
+    "networkTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Network connection failed"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "네트워크 연결 실패!"
+          }
+        }
+      }
+    },
+    "networkUsageMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please check your network connection."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "네트워크 연결을 확인해주세요."
+          }
+        }
+      }
+    },
     "onboardingInstructionstring" : {
       "extractionState" : "manual",
       "localizations" : {

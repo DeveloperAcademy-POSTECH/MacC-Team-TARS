@@ -518,6 +518,21 @@ private extension UniverseMainViewController {
             .store(in: &cancellables)
     }
 
+    func setUpNetworkState() {
+        universeLocationViewModel.$isSuccess
+            .sink { [weak self] success in
+                if let success = success {
+                    if success {
+                        self?.showOnboarding()
+                        print("성공해서 onboarding 화면을 숨깁니다")
+                    } else {
+                        self?.showNetworkSettingsAlert()
+                    }
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
     func setUpShowSettingBindidng() {
         
         universeLocationViewModel.$showSettingAlert
@@ -568,6 +583,16 @@ private extension UniverseMainViewController {
         let destructiveAction = UIAlertAction(title: LocalizableKeys.cancel.localized, style: .destructive, handler: nil)
         
         alert.addAction(destructiveAction)
+        alert.addAction(defaultAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func showNetworkSettingsAlert() {
+        let alert = UIAlertController(title: LocalizableKeys.networkTitle.localized,
+                                      message: LocalizableKeys.networkUsageMessage.localized,
+                                      preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default)
+        
         alert.addAction(defaultAction)
         present(alert, animated: true, completion: nil)
     }
