@@ -219,14 +219,14 @@ private extension UniverseMainViewController {
     
     /// VC 의 NavigationTitle 을 설정하는 메서드
     func configureNavigationTitle() {
-        self.navigationController?.navigationBar.layer.zPosition = 0
+//        self.navigationController?.navigationBar.layer.zPosition = 0
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.topViewController?.title = LocalizableKeys.exploreUniverseNavigationTitle.localized
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.backgroundColor = .black
         self.navigationItem.rightBarButtonItem?.tintColor = .white
         self.navigationItem.hidesBackButton = true
-        self.navigationController?.navigationBar.layer.zPosition = -1
+//        self.navigationController?.navigationBar.layer.zPosition = -1
     }
 }
 
@@ -532,12 +532,11 @@ private extension UniverseMainViewController {
 
     func showOnboarding() {
         Task {
-            try await Task.sleep(nanoseconds: 5_000_000_000)
-            
             await MainActor.run {
                 self.onboardingView.isAccessibilityElement = false
                 self.onboardingView.removeFromSuperview()
                 self.navigationController?.navigationBar.layer.zPosition = 0
+//                self.navigationController?.navigationBar.layer.zPosition = 1
                 
                 // UIAccessibility.post(notification: .layoutChanged, argument: self.sceneView)
                 
