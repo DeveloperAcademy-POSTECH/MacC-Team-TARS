@@ -89,7 +89,7 @@ final class UniverseMainViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        view.layoutIfNeeded()
         circleCenter = guideCircleView.center
     }
     
