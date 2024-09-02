@@ -70,7 +70,7 @@ final class UniverseMainViewController: UIViewController {
         }
         
         setUpAuthorizationBinding()
-        showOnboarding()
+        setUpNetworkState()
         setUpShowSettingBindidng()
         setUpBodiesBinding()
         configureModeBinding()
@@ -506,7 +506,7 @@ private extension UniverseMainViewController {
         universeLocationViewModel.$isAuthorized
             .sink { [weak self] isAuthorized in
                 if isAuthorized {
-                    self?.showOnboarding()
+//                    self?.showOnboarding()
                 }
             }
             .store(in: &cancellables)
@@ -516,6 +516,22 @@ private extension UniverseMainViewController {
         universeLocationViewModel.$bodies
             .sink { [weak self] bodies in
                 self?.setUpPlanetBinding()
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func setUpNetworkState() {
+        universeLocationViewModel.$isSuccess
+            .sink { [weak self] success in
+                if let success = success {
+                    if success {
+                        self?.showOnboarding()
+                        print("성공해서 onboarding 화면을 숨깁니다")
+                    } else {
+                        print("인터넷 연결 불가")
+//                        self?.showNetworkSettingsAlert()
+                    }
+                }
             }
             .store(in: &cancellables)
     }
@@ -534,9 +550,6 @@ private extension UniverseMainViewController {
 
     func showOnboarding() {
         Task {
-            try await Task.sleep(nanoseconds: 5_000_000_000)
-            
-            await MainActor.run {
                 self.onboardingView.isAccessibilityElement = false
                 self.onboardingView.removeFromSuperview()
                 self.navigationController?.navigationBar.layer.zPosition = 0
@@ -554,7 +567,6 @@ private extension UniverseMainViewController {
                 
                 self.navigationItem.rightBarButtonItem?.tintColor = .white
                 self.navigationItem.hidesBackButton = true
-            }
         }
     }
     
