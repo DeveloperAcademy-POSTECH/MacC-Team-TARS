@@ -69,7 +69,6 @@ final class UniverseMainViewController: UIViewController {
             )
         }
         
-        setUpAuthorizationBinding()
         setUpNetworkState()
         setUpShowSettingBindidng()
         setUpBodiesBinding()
@@ -501,17 +500,6 @@ extension UniverseMainViewController {
 
 private extension UniverseMainViewController {
     
-    /// User의 현재 위치 사용 권한 여부를 확인합니다.
-    private func setUpAuthorizationBinding() {
-        universeLocationViewModel.$isAuthorized
-            .sink { [weak self] isAuthorized in
-                if isAuthorized {
-//                    self?.showOnboarding()
-                }
-            }
-            .store(in: &cancellables)
-    }
-    
     private func setUpBodiesBinding() {
         universeLocationViewModel.$bodies
             .sink { [weak self] bodies in
@@ -526,10 +514,8 @@ private extension UniverseMainViewController {
                 if let success = success {
                     if success {
                         self?.showOnboarding()
-                        print("성공해서 onboarding 화면을 숨깁니다")
                     } else {
                         print("인터넷 연결 불가")
-//                        self?.showNetworkSettingsAlert()
                     }
                 }
             }
