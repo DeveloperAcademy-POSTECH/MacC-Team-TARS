@@ -69,8 +69,7 @@ final class UniverseMainViewController: UIViewController {
             )
         }
         
-        setUpAuthorizationBinding()
-        showOnboarding()
+        setUpNetworkState()
         setUpShowSettingBindidng()
         setUpBodiesBinding()
         configureModeBinding()
@@ -89,7 +88,7 @@ final class UniverseMainViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        view.layoutIfNeeded()
         circleCenter = guideCircleView.center
     }
     
@@ -501,21 +500,24 @@ extension UniverseMainViewController {
 
 private extension UniverseMainViewController {
     
-    /// User의 현재 위치 사용 권한 여부를 확인합니다.
-    private func setUpAuthorizationBinding() {
-        universeLocationViewModel.$isAuthorized
-            .sink { [weak self] isAuthorized in
-                if isAuthorized {
-                    self?.showOnboarding()
-                }
-            }
-            .store(in: &cancellables)
-    }
-    
     private func setUpBodiesBinding() {
         universeLocationViewModel.$bodies
             .sink { [weak self] bodies in
                 self?.setUpPlanetBinding()
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func setUpNetworkState() {
+        universeLocationViewModel.$isSuccess
+            .sink { [weak self] success in
+                if let success = success {
+                    if success {
+                        self?.showOnboarding()
+                    } else {
+                        print("인터넷 연결 불가")
+                    }
+                }
             }
             .store(in: &cancellables)
     }
@@ -534,9 +536,6 @@ private extension UniverseMainViewController {
 
     func showOnboarding() {
         Task {
-            try await Task.sleep(nanoseconds: 5_000_000_000)
-            
-            await MainActor.run {
                 self.onboardingView.isAccessibilityElement = false
                 self.onboardingView.removeFromSuperview()
                 self.navigationController?.navigationBar.layer.zPosition = 0
@@ -554,7 +553,6 @@ private extension UniverseMainViewController {
                 
                 self.navigationItem.rightBarButtonItem?.tintColor = .white
                 self.navigationItem.hidesBackButton = true
-            }
         }
     }
     

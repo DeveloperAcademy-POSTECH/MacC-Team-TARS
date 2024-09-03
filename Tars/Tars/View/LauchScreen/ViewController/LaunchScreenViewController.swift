@@ -108,7 +108,7 @@ private extension LaunchScreenViewController {
             self.airPodsInstruction.isAccessibilityElement = false
             
             let universeViewController = UniverseMainViewController()
-            self.navigationController?.pushViewController(universeViewController, animated: true)
+            self.navigationController?.pushViewController(universeViewController, animated: false)
             self.navigationController?.isNavigationBarHidden = true
         }
     }
