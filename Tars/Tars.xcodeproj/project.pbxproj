@@ -885,7 +885,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.spaceover;
 				PRODUCT_NAME = SpaceOver;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -920,7 +920,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.spaceover;
 				PRODUCT_NAME = SpaceOver;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
