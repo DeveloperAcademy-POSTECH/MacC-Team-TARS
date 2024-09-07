@@ -20,8 +20,13 @@ extension String {
             let arr = firstExtraction.split(separator: "\n")
             let main = arr[1].split(separator: " ")
             
-            return (String(main[3]), String(main[4]))
-            
+            if main.count == 4 {
+                return (String(main[2]), String(main[3]))
+            } else if main.count == 5 {
+                return (String(main[3]), String(main[4]))
+            } else {
+                return (self, self)
+            }
         } else {
             return (self, self)
         }
